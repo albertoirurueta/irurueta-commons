@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.irurueta</groupId>
+    <artifactId>irurueta-commons-dependencies</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Alberto Irurueta Carro</name>
+            <email>alberto@irurueta.com</email>
+            <organizationUrl>https://github.com/albertoirurueta</organizationUrl>
+        </developer>
+    </developers>
+
+    <!-- parent coordinates -->
+    <parent>
+      <groupId>com.irurueta</groupId>
+      <artifactId>irurueta-commons-parent</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </parent>    
+
+    <!-- default profile -->
+    <build>
+        <plugins>
+            <!-- install local jar dependencies -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <executions>
+                    <execution>
+                        <id>install-valnif</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>com.irurueta.jar</groupId>
+                            <artifactId>valnif</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>lib/valnif.jar</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
