@@ -3,3 +3,5 @@
 /dependencies/target/
 /irurueta-commons/target/
 .idea
+
+src/main/java/com/irurueta/commons/build-info.properties
