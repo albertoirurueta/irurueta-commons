@@ -16,8 +16,11 @@
 package com.irurueta.commons;
 
 import java.text.DateFormat;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -49,7 +52,7 @@ public class DateUtilsTest {
         String value = "20150429T173115+0200";
         Date d = DateUtils.parse(value);
 
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("ECT"));
         cal.setTime(d);
 
         assertEquals(cal.get(Calendar.YEAR), 2015);
