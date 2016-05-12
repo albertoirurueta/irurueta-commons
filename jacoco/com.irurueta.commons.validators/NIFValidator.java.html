@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>NIFValidator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons.validators</a> &gt; <span class="el_source">NIFValidator.java</span></div><h1>NIFValidator.java</h1><pre class="source lang-java linenums">/**
+ * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.irurueta.commons.validators;
+
+import com.aeat.valida.Validador;
+import java.lang.ref.SoftReference;
+
+/**
+ * Validates provided NIF (Número de Identificación Fiscal) values for Spain.
+ * This class is a wrapper for the library provided by Spain's Ministerio de 
+ * Hacienda to validate DNI's, NIF's, NIE's, CIF's, etc.
+ *
+ */
+public class NIFValidator {
+    /**
+     * Reference to the internal validator provided by Ministerio de
+     * Hacienda.
+     */
+    private static SoftReference&lt;Validador&gt; mValRef;
+
+    /**
+     * Constructor.
+     */
+<span class="nc" id="L37">    protected NIFValidator() { }</span>
+
+    /**
+     * Checks whether provided value is a valid DNI, NIF, NIE or CIF.
+     * @param value DNI, NIF, NIE or CIF to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValid(String value) {
+<span class="fc" id="L45">        int code = getOrCreateValidador().checkNif(value);</span>
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        return isValidDNICode(code) || isValidNIFCode(code) ||</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">                isValidNIFNonResidentsCode(code) ||</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">                isValidNIFMinorsCode(code) || isValidNIECode(code) ||</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                isValidCIFCode(code) ||</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">                isValidCIFOrganizationCode(code) ||</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">                isValidCIFNonResidentsCode(code);</span>
+    }
+
+    /**
+     * Checks whether provided value is a valid DNI (Documento Nacional de
+     * Identidad).
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidDNI(String value) {
+<span class="fc" id="L61">        return isValidDNICode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to the code of a valid DNI.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid DNI, false otherwise.
+     */
+    protected static boolean isValidDNICode(int code) {
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        return code == Validador.DNI_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value is a valid NIF (Número de
+     * Identificación Fiscal).
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIF(String value) {
+<span class="fc" id="L80">        return isValidNIFCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks if provided code corresponds to a valid NIF code.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIF code, false
+     * otherwise.
+     */
+    protected static boolean isValidNIFCode(int code) {
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        return code == Validador.NIF_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid non-resident
+     * NIF.
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIFNonResidents(String value) {
+<span class="fc" id="L100">        return isValidNIFNonResidentsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid non-resident NIF.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid non-resident  NIF, false
+     * otherwise.
+     */
+    protected static boolean isValidNIFNonResidentsCode(int code) {
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">        return code == Validador.NIF_NORESIDENTES;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid NIF for minors
+     * having less than 14 years old.
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIFMinors(String value) {
+<span class="fc" id="L120">        return isValidNIFMinorsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid NIF for minors
+     * having less than 14 years old.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIF for minors having
+     * less than 14 years old, false otherwise.
+     */
+    protected static boolean isValidNIFMinorsCode(int code) {
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">        return code == Validador.NIF_MENORES14ANOS;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid NIE (Número de
+     * Identificación de Extranjeros).
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIE(String value) {
+<span class="fc" id="L141">        return isValidNIECode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid NIE (Número de
+     * Identificación de Extranjeros).
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIE, false otherwise.
+     */
+    protected static boolean isValidNIECode(int code) {
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        return code == Validador.NIF_EXTRANJEROS;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid CIF (Código de
+     * Identificación Fiscal).
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIF(String value) {
+<span class="fc" id="L161">        return isValidCIFCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid CIF (Código de
+     * Identificación Fiscal).
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid CIF, false otherwise.
+     */
+    public static boolean isValidCIFCode(int code) {
+<span class="fc bfc" id="L171" title="All 2 branches covered.">        return code == Validador.CIF_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid Organization
+     * CIF.
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIFOrganization(String value) {
+<span class="nc" id="L181">        return isValidCIFOrganizationCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid Organization CIF
+     * code.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid Organization CIF, false
+     * otherwise.
+     */
+    public static boolean isValidCIFOrganizationCode(int code) {
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">        return code == Validador.CIF_ORGANIZACION_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid non-resident
+     * CIF.
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIFNonResidents(String value) {
+<span class="nc" id="L202">        return isValidCIFNonResidentsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid non-resident CIF.
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid non-resident CIF, false
+     * otherwise.
+     */
+    public static boolean isValidCIFNonResidentsCode(int code) {
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">        return code == Validador.CIF_NORESIDENTES_OK;</span>
+    }
+
+    /**
+     * Gets or creates singleton instance to validate DNI's, NIF's, CIF's,
+     * etc using the library provided by the Ministerio de Hacienda.
+     * @return internal validator provided by Ministerio de Hacienda.
+     */
+    private static synchronized Validador getOrCreateValidador() {
+<span class="pc bpc" id="L221" title="1 of 4 branches missed.">        if (mValRef == null || mValRef.get() == null) {</span>
+<span class="fc" id="L222">            mValRef = new SoftReference&lt;&gt;(new Validador());</span>
+        }
+<span class="fc" id="L224">        return mValRef.get();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
