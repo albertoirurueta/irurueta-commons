@@ -46,6 +46,11 @@ public class DateUtilsTest {
     public void tearDown() {}
 
     @Test
+    public void testConstructor(){
+        assertNotNull(new DateUtils());
+    }
+
+    @Test
     public void testParse(){
         //timestamp without separators
         String value = "20150429T173115+0200";

@@ -76,6 +76,11 @@ public class DistanceConverterTest {
     
     @After
     public void tearDown() {}
+
+    @Test
+    public void testConstructor(){
+        assertNotNull(new DistanceConverter());
+    }
     
     @Test
     public void testMetersMilimeters(){

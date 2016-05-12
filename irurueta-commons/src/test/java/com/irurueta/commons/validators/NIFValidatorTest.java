@@ -47,6 +47,11 @@ public class NIFValidatorTest {
     public void tearDown() {}
 
     @Test
+    public void testConstructor(){
+        assertNotNull(new NIFValidator());
+    }
+
+    @Test
     public void testIsValid() {
         assertTrue(NIFValidator.isValid(VALID_NIF));
         assertFalse(NIFValidator.isValid(INVALID_NIF));

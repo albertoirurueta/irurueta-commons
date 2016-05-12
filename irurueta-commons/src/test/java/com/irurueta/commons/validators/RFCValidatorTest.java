@@ -42,6 +42,11 @@ public class RFCValidatorTest {
     public void tearDown() {}
 
     @Test
+    public void testConstructor(){
+        assertNotNull(new RFCValidator());
+    }
+
+    @Test
     public void testIsValid() {
         assertTrue(RFCValidator.isValid("CUPU800825569"));
 

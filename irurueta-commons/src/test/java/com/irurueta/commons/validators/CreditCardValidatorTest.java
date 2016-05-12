@@ -37,6 +37,11 @@ public class CreditCardValidatorTest {
     
     @After
     public void tearDown() {}
+
+    @Test
+    public void testConstructor(){
+        assertNotNull(new CreditCardValidator());
+    }
     
     @Test
     public void testIsValidMII(){

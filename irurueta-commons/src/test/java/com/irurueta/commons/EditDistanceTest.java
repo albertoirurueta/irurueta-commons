@@ -39,6 +39,11 @@ public class EditDistanceTest {
     public void tearDown() {}
 
     @Test
+    public void testConstructor(){
+        assertNotNull(new EditDistance());
+    }
+
+    @Test
     public void testStringEditDistance() {
         String str1 = "dog";
         String str2 = "dogs";
