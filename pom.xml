@@ -19,11 +19,17 @@
             <organizationUrl>https://github.com/albertoirurueta</organizationUrl>
         </developer>
     </developers>
+    <scm>
+        <connection>scm:git@github.com:albertoirurueta/irurueta-commons.git</connection>
+        <developerConnection>scm:git@github.com:albertoirurueta/irurueta-commons.git</developerConnection>
+        <url>git@github.com:albertoirurueta/irurueta-commons.git</url>
+    </scm>    
 
     <modules>
       <module>dependencies</module>
       <module>irurueta-commons</module>
     </modules>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
