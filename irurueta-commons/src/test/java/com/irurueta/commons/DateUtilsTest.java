@@ -105,6 +105,7 @@ public class DateUtilsTest {
         //date only
         value = "20150429";
         d = DateUtils.parse(value);
+        cal = Calendar.getInstance();
         cal.setTime(d);
 
         assertEquals(cal.get(Calendar.YEAR), 2015);
