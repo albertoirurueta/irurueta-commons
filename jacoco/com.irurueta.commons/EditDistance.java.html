@@ -101,8 +101,8 @@ public class EditDistance {
 <span class="fc bfc" id="L101" title="All 2 branches covered.">            for (int j = 1; j &lt;= m; ++j) {</span>
 <span class="fc" id="L102">                int dist1 = rows[curRow][j] + 1;</span>
 <span class="fc" id="L103">                int dist2 = rows[nextRow][j - 1] + 1;</span>
-<span class="fc" id="L104">                int dist3 = rows[curRow][j - 1] +</span>
-<span class="fc bfc" id="L105" title="All 2 branches covered.">                        (x.equals(y, i - 1, j - 1) ? 0 : 1);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">                int dist3 = rows[curRow][j - 1] +</span>
+                        (x.equals(y, i - 1, j - 1) ? 0 : 1);
 
 <span class="fc" id="L107">                rows[nextRow][j] = Math.min(dist1, Math.min(dist2,  dist3));</span>
             }
