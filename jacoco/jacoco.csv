@@ -1,8 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 com.irurueta:irurueta-commons,com.irurueta.commons.units,DistanceFormatter.new Object() {...},10,69,0,0,0,2,0,1,0,1
 com.irurueta:irurueta-commons,com.irurueta.commons.units,DistanceConverter.new Object() {...},8,53,0,0,0,1,0,1,0,1
-com.irurueta:irurueta-commons,com.irurueta.commons.units,UnknownUnitException,0,16,0,0,0,8,0,4,0,4
 com.irurueta:irurueta-commons,com.irurueta.commons.units,Distance,0,8,0,0,0,4,0,2,0,2
+com.irurueta:irurueta-commons,com.irurueta.commons.units,UnknownUnitException,0,16,0,0,0,8,0,4,0,4
 com.irurueta:irurueta-commons,com.irurueta.commons.units,DistanceUnit,9,124,1,8,0,17,2,10,1,6
 com.irurueta:irurueta-commons,com.irurueta.commons.units,DistanceUnit.new Object() {...},8,53,0,0,0,1,0,1,0,1
 com.irurueta:irurueta-commons,com.irurueta.commons.units,Measurement,0,52,0,8,0,20,0,10,0,6
@@ -20,6 +20,7 @@ com.irurueta:irurueta-commons,com.irurueta.commons,CommonsException,0,16,0,0,0,8
 com.irurueta:irurueta-commons,com.irurueta.commons,DateUtils,7,131,4,8,4,31,4,10,0,8
 com.irurueta:irurueta-commons,com.irurueta.commons,BuildInfo,39,113,6,4,4,30,4,11,0,10
 com.irurueta:irurueta-commons,com.irurueta.commons,EditDistance,8,158,4,14,3,24,4,9,0,4
+com.irurueta:irurueta-commons,com.irurueta.commons.validators,NIFValidator.Validador,232,831,86,72,46,82,58,26,0,5
 com.irurueta:irurueta-commons,com.irurueta.commons.validators,ZipCodeValidator,1,254,1,11,0,53,1,13,0,8
 com.irurueta:irurueta-commons,com.irurueta.commons.validators,CreditCardValidator.new Object() {...},18,113,0,0,0,1,0,1,0,1
 com.irurueta:irurueta-commons,com.irurueta.commons.validators,CreditCardValidator,54,2315,20,183,17,344,20,207,1,94
