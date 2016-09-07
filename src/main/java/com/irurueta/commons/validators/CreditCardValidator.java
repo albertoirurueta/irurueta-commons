@@ -435,6 +435,7 @@ public class CreditCardValidator {
      * Constant containing IIN ranges reserved for MasterCard.
      */
     private static final String[][] MASTERCARD_IIN = new String[][] {
+        new String[]{"222100", "272099"},
         new String[]{"51", "55"}
     };
     

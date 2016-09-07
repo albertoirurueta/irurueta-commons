@@ -1859,7 +1859,27 @@ public class CreditCardValidatorTest {
     
     @Test
     public void testIsMastercardIIN(){
-        String pan = "51";
+        String pan = "222100";
+        assertTrue(CreditCardValidator.isMastercardIIN(pan));
+        assertTrue(CreditCardValidator.isMastercardIIN(
+                CreditCardValidator.toDigits(pan)));
+
+        pan = "250";
+        assertTrue(CreditCardValidator.isMastercardIIN(pan));
+        assertTrue(CreditCardValidator.isMastercardIIN(
+                CreditCardValidator.toDigits(pan)));
+
+        pan = "272099";
+        assertTrue(CreditCardValidator.isMastercardIIN(pan));
+        assertTrue(CreditCardValidator.isMastercardIIN(
+                CreditCardValidator.toDigits(pan)));
+
+        pan = "272100";
+        assertFalse(CreditCardValidator.isMastercardIIN(pan));
+        assertFalse(CreditCardValidator.isMastercardIIN(
+                CreditCardValidator.toDigits(pan)));
+                
+        pan = "51";
         assertTrue(CreditCardValidator.isMastercardIIN(pan));
         assertTrue(CreditCardValidator.isMastercardIIN(
                 CreditCardValidator.toDigits(pan)));
