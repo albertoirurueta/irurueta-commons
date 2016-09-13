@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MaskedPanFormatter.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons</a> &gt; <span class="el_source">MaskedPanFormatter.java</span></div><h1>MaskedPanFormatter.java</h1><pre class="source lang-java linenums">/**
+ * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.irurueta.commons;
+
+import com.irurueta.commons.validators.CreditCardNetwork;
+import com.irurueta.commons.validators.CreditCardValidator;
+import java.util.Arrays;
+
+/**
+ * Generates a masked PAN where only the last 4 digits are displayed and the 
+ * remaining ones are masked using digit groupings according to the 
+ * corresponding credit card network.
+ * Notice that this class displays a maximum of 4 digits to remain PCI DSS no 
+ * matter how many visible digits are requested.
+ * If less than request digits are available in provided PAN, then only 
+ * available digits are displayed as the last digits of masked PAN.
+ */
+public class MaskedPanFormatter {
+    
+    /**
+     * Default character to use as a masked digit on a credit card PAN.
+     */
+    public static final char DEFAULT_MASK_CHAR = '*';
+    
+    /**
+     * Default character to use as a group separator.
+     */
+    public static final char DEFAULT_SEPARATOR_CHAR = ' ';
+    
+    /**
+     * Default number of visible digits to be PCI DSS compliant.
+     */
+    public static final int NUM_VISIBLE_DIGITS = 4;
+    
+    /**
+     * Constructor.
+     */
+<span class="nc" id="L51">    private MaskedPanFormatter() { }</span>
+    
+    /**
+     * Formats a credit card PAN (or its last digits) by making visible only the
+     * last digits and masking the remaining ones following the digits grouping
+     * required for provided credit card network.
+     * @param panOrLastDigits credit card number (or its last digits) to be 
+     * masked.
+     * @param network credit card network.
+     * @param maskChar mask character to be used.
+     * @param separatorChar group separator character to be used.
+     * @return masked PAN.
+     */
+    public static String format(String panOrLastDigits, 
+            CreditCardNetwork network, char maskChar, char separatorChar) {
+<span class="fc" id="L66">        return format(toDigits(panOrLastDigits), network, maskChar, </span>
+                separatorChar, NUM_VISIBLE_DIGITS);
+    }
+    
+    /**
+     * Formats a credit card PAN (or its last digits) by making visible only the
+     * last digits and masking the remaining ones following the digits grouping
+     * required for provided credit card network.
+     * This method uses the space as a group separator.
+     * @param panOrLastDigits credit card number (or its last digits) to be
+     * masked.
+     * @param network credit card network.
+     * @param maskChar mask character to be used.
+     * @return masked PAN.
+     */
+    public static String format(String panOrLastDigits, 
+            CreditCardNetwork network, char maskChar) {
+<span class="fc" id="L83">        return format(panOrLastDigits, network, maskChar, </span>
+                DEFAULT_SEPARATOR_CHAR);
+    }
+    
+    /**
+     * Formats a credit card PAN (or its last digits) by making visible only the
+     * last digits and masking the remaining ones following the digits grouping
+     * required for provided credit card network.
+     * This method uses the space as a group separator and the star character
+     * as a masked digit.
+     * @param panOrLastDigits credit card number (or its last digits) to be
+     * masked.
+     * @param network credit card network.
+     * @return masked PAN.
+     */
+    public static String format(String panOrLastDigits, 
+            CreditCardNetwork network) {
+<span class="fc" id="L100">        return format(panOrLastDigits, network, DEFAULT_MASK_CHAR);</span>
+    }
+    
+    /**
+     * Formats a full credit card PAN by making visible only the last digits and
+     * masking the remaining ones following the digits grouping required for
+     * the detected credit card network.
+     * This method needs a full credit card PAN to detect the credit card 
+     * network using the former digits, and making visible the latter ones.
+     * If a credit card network cannot be determined, default grouping is used
+     * instead.
+     * @param pan a full credit card number.
+     * @param maskChar mask character to be used.
+     * @param separatorChar group separator character to be used.
+     * @return masked PAN.
+     */
+    public static String format(String pan, char maskChar, char separatorChar) {
+<span class="fc" id="L117">        return format(pan, CreditCardValidator.detectNetworkFromPAN(pan), </span>
+                maskChar, separatorChar);
+    }
+    
+    /**
+     * Formats a full credit card PAN by making visible only the last digits and
+     * masking the remaining ones following the digits grouping required for
+     * the detected credit card network.
+     * This method needs a full credit card PAN to detect the credit card
+     * network using the former digits, and making visible the latter ones.
+     * If a credit card network cannot be determined, default grouping is used
+     * instead.
+     * This method uses the space as a group separator.
+     * @param pan a full credit card number.
+     * @param maskChar mask character to be used.
+     * @return masked PAN.
+     */
+    public static String format(String pan, char maskChar) {
+<span class="fc" id="L135">        return format(pan, maskChar, DEFAULT_SEPARATOR_CHAR);</span>
+    }
+    
+    /**
+     * Formats a full credit card PAN by making visible only the last digits and
+     * masking the remaining ones following the digits grouping required for
+     * the detected credit card network.
+     * This method needs a full credit card PAN to detect the credit card
+     * network using the former digits, and making visible the latter ones.
+     * If a credit card network cannot be determined, default grouping is used
+     * instead.
+     * This method uses the space as a group separator and the star character
+     * as a masked digit.
+     * @param pan a full credit card number.
+     * @return masked PAN.
+     */
+    public static String format(String pan) {
+<span class="fc" id="L152">        return format(pan, DEFAULT_MASK_CHAR);</span>
+    }
+    
+    /**
+     * Formats a credit card PAN (or its last digits) by making visible only the
+     * last digits and masking the remaining ones following the digits grouping
+     * required for provided credit card network.
+     * @param digits array containing the full credit card number (or its last
+     * digits) to be masked.
+     * @param network credit card network.
+     * @param maskChar mask character to be used.
+     * @param separatorChar group separator character to be used.
+     * @param numVisibleDigits number of visible digits. The number of visible
+     * digits must not exceed 4 to remain PCI DSS compliant. Only the last group
+     * of digits will be shown unmasked if this value exceed the length of such
+     * group.
+     * @return masked PAN.
+     */
+    private static String format(byte[] digits, CreditCardNetwork network, 
+            char maskChar, char separatorChar, int numVisibleDigits) {
+<span class="fc" id="L172">        String mask = PanMaskGenerator.generate(network, maskChar, </span>
+                separatorChar);
+
+        //limit the number of visible digits to provided value, limited to
+        //the length of last group of digits
+<span class="fc" id="L177">        int numGroups = CreditCardValidator.getNumberOfGroupsForNetwork(</span>
+                network);
+<span class="fc" id="L179">        int lastGroupLength = CreditCardValidator.</span>
+                getMaxDigitsForGroupAndNetwork(numGroups - 1, network);
+
+<span class="fc" id="L182">        numVisibleDigits = Math.min(numVisibleDigits, lastGroupLength);</span>
+<span class="fc" id="L183">        int startPos = Math.max(0, digits.length - numVisibleDigits);</span>
+<span class="fc" id="L184">        int visibleDigits = digits.length - startPos;</span>
+<span class="fc" id="L185">        int endMaskPosition = mask.length() - visibleDigits;</span>
+
+<span class="fc" id="L187">        mask = mask.substring(0, endMaskPosition);</span>
+<span class="fc" id="L188">        StringBuilder builder = new StringBuilder(mask);</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">        for (int i = startPos; i &lt; digits.length; i++) {</span>
+<span class="fc" id="L190">            builder.append(digits[i]);</span>
+        }
+
+<span class="fc" id="L193">        return builder.toString();        </span>
+    }
+    
+    /**
+     * Converts a PAN into an array of digits. Any non digit character is 
+     * ignored.
+     * @param pan PAN to be converted to digits.
+     * @return array containing digits within provided PAN.
+     */
+    private static byte[] toDigits(String pan) {
+<span class="pc bpc" id="L203" title="1 of 2 branches missed.">        if (pan == null) {</span>
+<span class="nc" id="L204">            return null;</span>
+        }
+
+<span class="fc" id="L207">        int length = pan.length();</span>
+<span class="fc" id="L208">        byte[] internal = new byte[length];</span>
+        byte value;
+        char c;
+<span class="fc" id="L211">        int numDigits = 0;</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L213">            c = pan.charAt(i);</span>
+<span class="fc bfc" id="L214" title="All 11 branches covered.">            switch (c) {</span>
+                case '0':
+<span class="fc" id="L216">                    value = 0;</span>
+<span class="fc" id="L217">                    break;</span>
+                case '1':
+<span class="fc" id="L219">                    value = 1;</span>
+<span class="fc" id="L220">                    break;</span>
+                case '2':
+<span class="fc" id="L222">                    value = 2;</span>
+<span class="fc" id="L223">                    break;</span>
+                case '3':
+<span class="fc" id="L225">                    value = 3;</span>
+<span class="fc" id="L226">                    break;</span>
+                case '4':
+<span class="fc" id="L228">                    value = 4;</span>
+<span class="fc" id="L229">                    break;</span>
+                case '5':
+<span class="fc" id="L231">                    value = 5;</span>
+<span class="fc" id="L232">                    break;</span>
+                case '6':
+<span class="fc" id="L234">                    value = 6;</span>
+<span class="fc" id="L235">                    break;</span>
+                case '7':
+<span class="fc" id="L237">                    value = 7;</span>
+<span class="fc" id="L238">                    break;</span>
+                case '8':
+<span class="fc" id="L240">                    value = 8;</span>
+<span class="fc" id="L241">                    break;</span>
+                case '9':
+<span class="fc" id="L243">                    value = 9;</span>
+<span class="fc" id="L244">                    break;</span>
+                default:
+<span class="fc" id="L246">                    continue;</span>
+            }
+
+            //el valor del carácter sólo se concatena si es un dígito,
+            //si no se ignora
+<span class="fc" id="L251">            internal[numDigits] = value;</span>
+<span class="fc" id="L252">            numDigits++;</span>
+        }
+
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">        if (numDigits == 0) {</span>
+<span class="nc" id="L256">            return null;</span>
+        } else {
+<span class="fc" id="L258">            return Arrays.copyOf(internal, numDigits);</span>
+        }
+    }    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

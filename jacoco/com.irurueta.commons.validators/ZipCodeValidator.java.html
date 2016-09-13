@@ -174,6 +174,11 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
      * Regular expression to validate post codes in Hong Kong.
      */
     public static final String HK_ZIPCODE_REGEX = &quot;^\\d*$&quot;;
+    
+    /**
+     * Regular expression to validate post codes in Turkey.
+     */
+    public static final String TR_ZIPCODE_REGEX = &quot;^[0-9]{5}$&quot;;
 
     /**
      * Map that relates country codes with their respective regular expressions to validate post codes.
@@ -193,64 +198,65 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
     /**
      * Constructor.
      */
-<span class="fc" id="L196">    protected ZipCodeValidator() {</span>
-<span class="fc" id="L197">        mMap = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L198">        mMap.put(&quot;ES&quot;, ES_ZIPCODE_REGEX);</span>
-<span class="fc" id="L199">        mMap.put(&quot;FR&quot;, FR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L200">        mMap.put(&quot;DE&quot;, DE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L201">        mMap.put(&quot;IT&quot;, IT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L202">        mMap.put(&quot;PT&quot;, PT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L203">        mMap.put(&quot;GB&quot;, GB_ZIPCODE_REGEX);</span>
-<span class="fc" id="L204">        mMap.put(&quot;AT&quot;, AT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L205">        mMap.put(&quot;IE&quot;, IE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L206">        mMap.put(&quot;BE&quot;, BE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L207">        mMap.put(&quot;NL&quot;, NL_ZIPCODE_REGEX);</span>
-<span class="fc" id="L208">        mMap.put(&quot;LU&quot;, LU_ZIPCODE_REGEX);</span>
-<span class="fc" id="L209">        mMap.put(&quot;MC&quot;, MC_ZIPCODE_REGEX);</span>
-<span class="fc" id="L210">        mMap.put(&quot;CH&quot;, CH_ZIPCODE_REGEX);</span>
-<span class="fc" id="L211">        mMap.put(&quot;NO&quot;, NO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L212">        mMap.put(&quot;DK&quot;, DK_ZIPCODE_REGEX);</span>
-<span class="fc" id="L213">        mMap.put(&quot;SE&quot;, SE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L214">        mMap.put(&quot;FI&quot;, FI_ZIPCODE_REGEX);</span>
-<span class="fc" id="L215">        mMap.put(&quot;US&quot;, US_ZIPCODE_REGEX);</span>
-<span class="fc" id="L216">        mMap.put(&quot;JP&quot;, JP_ZIPCODE_REGEX);</span>
-<span class="fc" id="L217">        mMap.put(&quot;PL&quot;, PL_ZIPCODE_REGEX);</span>
-<span class="fc" id="L218">        mMap.put(&quot;CN&quot;, CN_ZIPCODE_REGEX);</span>
-<span class="fc" id="L219">        mMap.put(&quot;CA&quot;, CA_ZIPCODE_REGEX);</span>
-<span class="fc" id="L220">        mMap.put(&quot;RU&quot;, RU_ZIPCODE_REGEX);</span>
-<span class="fc" id="L221">        mMap.put(&quot;GR&quot;, GR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L222">        mMap.put(&quot;KR&quot;, KR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L223">        mMap.put(&quot;RO&quot;, RO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L224">        mMap.put(&quot;MX&quot;, MX_ZIPCODE_REGEX);</span>
-<span class="fc" id="L225">        mMap.put(&quot;TW&quot;, TW_ZIPCODE_REGEX);</span>
-<span class="fc" id="L226">        mMap.put(&quot;MO&quot;, MO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L227">        mMap.put(&quot;HK&quot;, HK_ZIPCODE_REGEX);</span>
-<span class="fc" id="L228">    }</span>
+<span class="fc" id="L201">    protected ZipCodeValidator() {</span>
+<span class="fc" id="L202">        mMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L203">        mMap.put(&quot;ES&quot;, ES_ZIPCODE_REGEX);</span>
+<span class="fc" id="L204">        mMap.put(&quot;FR&quot;, FR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L205">        mMap.put(&quot;DE&quot;, DE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L206">        mMap.put(&quot;IT&quot;, IT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L207">        mMap.put(&quot;PT&quot;, PT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L208">        mMap.put(&quot;GB&quot;, GB_ZIPCODE_REGEX);</span>
+<span class="fc" id="L209">        mMap.put(&quot;AT&quot;, AT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L210">        mMap.put(&quot;IE&quot;, IE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L211">        mMap.put(&quot;BE&quot;, BE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L212">        mMap.put(&quot;NL&quot;, NL_ZIPCODE_REGEX);</span>
+<span class="fc" id="L213">        mMap.put(&quot;LU&quot;, LU_ZIPCODE_REGEX);</span>
+<span class="fc" id="L214">        mMap.put(&quot;MC&quot;, MC_ZIPCODE_REGEX);</span>
+<span class="fc" id="L215">        mMap.put(&quot;CH&quot;, CH_ZIPCODE_REGEX);</span>
+<span class="fc" id="L216">        mMap.put(&quot;NO&quot;, NO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L217">        mMap.put(&quot;DK&quot;, DK_ZIPCODE_REGEX);</span>
+<span class="fc" id="L218">        mMap.put(&quot;SE&quot;, SE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L219">        mMap.put(&quot;FI&quot;, FI_ZIPCODE_REGEX);</span>
+<span class="fc" id="L220">        mMap.put(&quot;US&quot;, US_ZIPCODE_REGEX);</span>
+<span class="fc" id="L221">        mMap.put(&quot;JP&quot;, JP_ZIPCODE_REGEX);</span>
+<span class="fc" id="L222">        mMap.put(&quot;PL&quot;, PL_ZIPCODE_REGEX);</span>
+<span class="fc" id="L223">        mMap.put(&quot;CN&quot;, CN_ZIPCODE_REGEX);</span>
+<span class="fc" id="L224">        mMap.put(&quot;CA&quot;, CA_ZIPCODE_REGEX);</span>
+<span class="fc" id="L225">        mMap.put(&quot;RU&quot;, RU_ZIPCODE_REGEX);</span>
+<span class="fc" id="L226">        mMap.put(&quot;GR&quot;, GR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L227">        mMap.put(&quot;KR&quot;, KR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L228">        mMap.put(&quot;RO&quot;, RO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L229">        mMap.put(&quot;MX&quot;, MX_ZIPCODE_REGEX);</span>
+<span class="fc" id="L230">        mMap.put(&quot;TW&quot;, TW_ZIPCODE_REGEX);</span>
+<span class="fc" id="L231">        mMap.put(&quot;MO&quot;, MO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L232">        mMap.put(&quot;HK&quot;, HK_ZIPCODE_REGEX);</span>
+<span class="fc" id="L233">        mMap.put(&quot;TR&quot;, TR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L234">    }</span>
 
     /**
      * Constructor.
      * @param countryCode ISO 3166 county code.
      */
     public ZipCodeValidator(String countryCode) {
-<span class="fc" id="L235">        this();</span>
-<span class="fc" id="L236">        setCountryCode(countryCode);</span>
-<span class="fc" id="L237">    }</span>
+<span class="fc" id="L241">        this();</span>
+<span class="fc" id="L242">        setCountryCode(countryCode);</span>
+<span class="fc" id="L243">    }</span>
 
     /**
      * Constructor.
      * @param locale locale associated to an ISO 3166 county code.
      */
     public ZipCodeValidator(Locale locale) {
-<span class="fc" id="L244">        this();</span>
-<span class="fc" id="L245">        setCountryCodeFrom(locale);</span>
-<span class="fc" id="L246">    }</span>
+<span class="fc" id="L250">        this();</span>
+<span class="fc" id="L251">        setCountryCodeFrom(locale);</span>
+<span class="fc" id="L252">    }</span>
 
     /**
      * Returns ISO 3166 country code associated to this instance.
      * @return ISO 3166 country code associated to this instance.
      */
     public String getCountryCode() {
-<span class="fc" id="L253">        return mCountryCode;</span>
+<span class="fc" id="L259">        return mCountryCode;</span>
     }
 
     /**
@@ -258,18 +264,18 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
      * @param countryCode ISO 3166 country code associated to this instance.
      */
     public final void setCountryCode(String countryCode) {
-<span class="fc" id="L261">        mCountryCode = countryCode;</span>
-<span class="fc" id="L262">        buildPattern();</span>
-<span class="fc" id="L263">    }</span>
+<span class="fc" id="L267">        mCountryCode = countryCode;</span>
+<span class="fc" id="L268">        buildPattern();</span>
+<span class="fc" id="L269">    }</span>
 
     /**
      * Sets ISO 3166 country code associated to this instance.
      * @param locale locale associated to an ISO 3166 country code.
      */
     public final void setCountryCodeFrom(Locale locale) {
-<span class="pc bpc" id="L270" title="1 of 2 branches missed.">        mCountryCode = locale != null ? locale.getCountry() : null;</span>
-<span class="fc" id="L271">        buildPattern();</span>
-<span class="fc" id="L272">    }</span>
+<span class="pc bpc" id="L276" title="1 of 2 branches missed.">        mCountryCode = locale != null ? locale.getCountry() : null;</span>
+<span class="fc" id="L277">        buildPattern();</span>
+<span class="fc" id="L278">    }</span>
 
     /**
      * Checks whether provided post code has a valid format for the configured country.
@@ -279,21 +285,21 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
     @Override
     public boolean isValid(String zipCode) {
         //mPostCodePattern == null, para países desconocidos
-<span class="fc bfc" id="L282" title="All 6 branches covered.">        return mPostCodePattern == null || zipCode != null &amp;&amp; mPostCodePattern.matcher(zipCode).matches();</span>
+<span class="fc bfc" id="L288" title="All 6 branches covered.">        return mPostCodePattern == null || zipCode != null &amp;&amp; mPostCodePattern.matcher(zipCode).matches();</span>
     }
 
     /**
      * Initializes regular expression.
      */
     private void buildPattern() {
-<span class="fc" id="L289">        mPostCodePattern = null;</span>
+<span class="fc" id="L295">        mPostCodePattern = null;</span>
 
-<span class="fc bfc" id="L291" title="All 2 branches covered.">        if (mCountryCode != null) {</span>
-<span class="fc" id="L292">            String regex = mMap.get(mCountryCode);</span>
-<span class="fc bfc" id="L293" title="All 2 branches covered.">            if (regex != null) {</span>
-<span class="fc" id="L294">                mPostCodePattern = Pattern.compile(regex);</span>
+<span class="fc bfc" id="L297" title="All 2 branches covered.">        if (mCountryCode != null) {</span>
+<span class="fc" id="L298">            String regex = mMap.get(mCountryCode);</span>
+<span class="fc bfc" id="L299" title="All 2 branches covered.">            if (regex != null) {</span>
+<span class="fc" id="L300">                mPostCodePattern = Pattern.compile(regex);</span>
             }
         }
-<span class="fc" id="L297">    }</span>
+<span class="fc" id="L303">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -391,22 +391,32 @@
 <a class="jxr_linenumber" name="L383" href="#L383">383</a>         <em class="jxr_comment">//invalid post code for Hong Kong</em>
 <a class="jxr_linenumber" name="L384" href="#L384">384</a>         assertFalse(validator.isValid(<span class="jxr_string">"invalid"</span>));
 <a class="jxr_linenumber" name="L385" href="#L385">385</a> 
-<a class="jxr_linenumber" name="L386" href="#L386">386</a> 
-<a class="jxr_linenumber" name="L387" href="#L387">387</a>         <em class="jxr_comment">//Australia</em>
-<a class="jxr_linenumber" name="L388" href="#L388">388</a>         validator.setCountryCode(<span class="jxr_string">"AU"</span>);
-<a class="jxr_linenumber" name="L389" href="#L389">389</a> 
-<a class="jxr_linenumber" name="L390" href="#L390">390</a>         <em class="jxr_comment">//post codes are always valid</em>
-<a class="jxr_linenumber" name="L391" href="#L391">391</a>         assertTrue(validator.isValid(<span class="jxr_string">"invalid"</span>));
-<a class="jxr_linenumber" name="L392" href="#L392">392</a> 
-<a class="jxr_linenumber" name="L393" href="#L393">393</a>         <em class="jxr_comment">//for a null country code, validator always returns true</em>
-<a class="jxr_linenumber" name="L394" href="#L394">394</a>         validator.setCountryCode(<strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L395" href="#L395">395</a>         assertTrue(validator.isValid(<strong class="jxr_keyword">null</strong>));
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>         
+<a class="jxr_linenumber" name="L387" href="#L387">387</a>         <em class="jxr_comment">//Turkey</em>
+<a class="jxr_linenumber" name="L388" href="#L388">388</a>         validator.setCountryCode(<span class="jxr_string">"TR"</span>);
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>         
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>         <em class="jxr_comment">//valid post code for Turkey</em>
+<a class="jxr_linenumber" name="L391" href="#L391">391</a>         assertTrue(validator.isValid(<span class="jxr_string">"12345"</span>));
+<a class="jxr_linenumber" name="L392" href="#L392">392</a>         
+<a class="jxr_linenumber" name="L393" href="#L393">393</a>         <em class="jxr_comment">//invalid post code for Turkey</em>
+<a class="jxr_linenumber" name="L394" href="#L394">394</a>         assertFalse(validator.isValid(<span class="jxr_string">"invalid"</span>));
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>         
 <a class="jxr_linenumber" name="L396" href="#L396">396</a> 
-<a class="jxr_linenumber" name="L397" href="#L397">397</a>         <em class="jxr_comment">//for a known country, a null post code always returns false</em>
-<a class="jxr_linenumber" name="L398" href="#L398">398</a>         validator.setCountryCode(<span class="jxr_string">"ES"</span>);
-<a class="jxr_linenumber" name="L399" href="#L399">399</a>         assertFalse(validator.isValid(<strong class="jxr_keyword">null</strong>));
-<a class="jxr_linenumber" name="L400" href="#L400">400</a>     }
-<a class="jxr_linenumber" name="L401" href="#L401">401</a> }
+<a class="jxr_linenumber" name="L397" href="#L397">397</a>         <em class="jxr_comment">//Australia</em>
+<a class="jxr_linenumber" name="L398" href="#L398">398</a>         validator.setCountryCode(<span class="jxr_string">"AU"</span>);
+<a class="jxr_linenumber" name="L399" href="#L399">399</a> 
+<a class="jxr_linenumber" name="L400" href="#L400">400</a>         <em class="jxr_comment">//post codes are always valid</em>
+<a class="jxr_linenumber" name="L401" href="#L401">401</a>         assertTrue(validator.isValid(<span class="jxr_string">"invalid"</span>));
+<a class="jxr_linenumber" name="L402" href="#L402">402</a> 
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>         <em class="jxr_comment">//for a null country code, validator always returns true</em>
+<a class="jxr_linenumber" name="L404" href="#L404">404</a>         validator.setCountryCode(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L405" href="#L405">405</a>         assertTrue(validator.isValid(<strong class="jxr_keyword">null</strong>));
+<a class="jxr_linenumber" name="L406" href="#L406">406</a> 
+<a class="jxr_linenumber" name="L407" href="#L407">407</a>         <em class="jxr_comment">//for a known country, a null post code always returns false</em>
+<a class="jxr_linenumber" name="L408" href="#L408">408</a>         validator.setCountryCode(<span class="jxr_string">"ES"</span>);
+<a class="jxr_linenumber" name="L409" href="#L409">409</a>         assertFalse(validator.isValid(<strong class="jxr_keyword">null</strong>));
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>     }
+<a class="jxr_linenumber" name="L411" href="#L411">411</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>

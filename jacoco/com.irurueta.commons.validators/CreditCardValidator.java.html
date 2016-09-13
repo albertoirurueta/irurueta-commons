@@ -21,15 +21,15 @@ import java.util.Arrays;
  * Class to validate credit card PAN numbers.
  * PAN numbers are formed by IIN (Issuer Identification Number) followed by a 
  * series of digits + the check digit (using Luhn algorithm), if available for 
- * a given credit card brand. Notice that the first digit of the IIN corresponds
+ * a given credit card network. Notice that the first digit of the IIN corresponds
  * to a MII (Major Industry Identifier).
- * This class also provides functionality to detect brand of a given credit
+ * This class also provides functionality to detect network of a given credit
  * card PAN number.
- * Notice that brand detection and validation is not 100% accurate, hence it is
- * suggested to never prevent users from completing payments if validation does
- * not pass or brand cannot be detected. In those cases simply a warning can be
- * shown to the user indicating that payment data might be wrong.
- * Notice as well that if brand is detected and validation passes, then it is
+ * Notice that network detection and validation is not 100% accurate, hence it 
+ * is suggested to never prevent users from completing payments if validation 
+ * does not pass or network cannot be detected. In those cases simply a warning 
+ * can be shown to the user indicating that payment data might be wrong.
+ * Notice as well that if network is detected and validation passes, then it is
  * almost certain that payment data is correct.
  */
 public class CreditCardValidator {
@@ -69,7 +69,7 @@ public class CreditCardValidator {
     protected static final boolean AMEX_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether American Express brand is still being used.
+     * Constant indicating whether American Express network is still being used.
      */
     protected static final boolean AMEX_IS_ACTIVE = true;
 
@@ -108,7 +108,7 @@ public class CreditCardValidator {
     protected static final boolean BANKCARD_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Bankcard brand is still being used.
+     * Constant indicating whether Bankcard network is still being used.
      */
     protected static final boolean BANKCARD_IS_ACTIVE = false;
 
@@ -137,7 +137,7 @@ public class CreditCardValidator {
     protected static final boolean CHINA_UNIONPAY_HAS_VALIDATION = false;
     
     /**
-     * Constant indicating whether China UnionPay brand is still being used.
+     * Constant indicating whether China UnionPay network is still being used.
      */
     protected static final boolean CHINA_UNIONPAY_IS_ACTIVE = true;
 
@@ -165,7 +165,7 @@ public class CreditCardValidator {
             true;
     
     /**
-     * Constant indicating whether Diners Club Carte Blanche brand is still
+     * Constant indicating whether Diners Club Carte Blanche network is still
      * being used.
      */
     protected static final boolean DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE = true;
@@ -196,11 +196,19 @@ public class CreditCardValidator {
     protected static final boolean DINERS_CLUB_ENROUTE_HAS_VALIDATION = false;
     
     /**
-     * Constant indicating whether Diners Club enRoute brand is still being
+     * Constant indicating whether Diners Club enRoute network is still being
      * used.
      */
     protected static final boolean DINERS_CLUB_ENROUTE_IS_ACTIVE = false;
 
+    /**
+     * Constant defining digit groups for Dinners club enroute.
+     */
+<span class="fc" id="L207">    private static final byte[][] DINERS_CLUB_ENROUTE_GROUPING = new byte[][] {</span>
+            new byte[]{4, 4},
+            new byte[]{7, 7},
+            new byte[]{4, 4} };
+    
     
     
     //Diners Club International
@@ -208,13 +216,13 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Diners Club International.
      */
-<span class="fc" id="L211">    private static final String[][] DINERS_CLUB_INTERNATIONAL_IIN = </span>
+<span class="fc" id="L219">    private static final String[][] DINERS_CLUB_INTERNATIONAL_IIN = </span>
         new String[][] { new String[]{&quot;36&quot;, &quot;36&quot;} };
     
     /**
      * Constant containing valid lengths for Diners Club International.
      */
-<span class="fc" id="L217">    private static final byte[][] DINERS_CLUB_INTERNATIONAL_LENGTH = </span>
+<span class="fc" id="L225">    private static final byte[][] DINERS_CLUB_INTERNATIONAL_LENGTH = </span>
             new byte[][] { new byte[]{14, 14} };
     
     /**
@@ -225,11 +233,20 @@ public class CreditCardValidator {
             true;
     
     /**
-     * Constant indicating whether Diners Club International brand is still 
+     * Constant indicating whether Diners Club International network is still 
      * being used.
      */
     protected static final boolean DINERS_CLUB_INTERATIONAL_IS_ACTIVE = true;
 
+    /**
+     * Constant defining digit groups for Dinners club internacional. This
+     * grouping is also used for DINERS_CLUB_CARTE_BLANCHE.
+     */
+<span class="fc" id="L245">    private static final byte[][] DINERS_CLUB_INTERATIONAL_GROUPING = new byte[][] {</span>
+            new byte[]{4, 4},
+            new byte[]{6, 6},
+            new byte[]{4, 4} };
+    
     
     
     //Diners Club USA &amp; Canada
@@ -237,14 +254,14 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Diners Club USA and Canada.
      */
-<span class="fc" id="L240">    private static final String[][] DINERS_CLUB_USA_CA_IIN = new String[][] {</span>
+<span class="fc" id="L257">    private static final String[][] DINERS_CLUB_USA_CA_IIN = new String[][] {</span>
         new String[]{&quot;54&quot;, &quot;55&quot;}
     };
     
     /**
      * Constant containing valid lengths for Diners Club USA and Canada.
      */
-<span class="fc" id="L247">    private static final byte[][] DINERS_CLUB_USA_CA_LENGTH = new byte[][] {</span>
+<span class="fc" id="L264">    private static final byte[][] DINERS_CLUB_USA_CA_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -255,7 +272,7 @@ public class CreditCardValidator {
     protected static final boolean DINERS_CLUB_USA_CA_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Diners Club USA and Canada brand is still 
+     * Constant indicating whether Diners Club USA and Canada network is still 
      * being used.
      */
     protected static final boolean DINERS_CLUB_USA_CA_IS_ACTIVE = true;
@@ -267,7 +284,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Discover.
      */
-<span class="fc" id="L270">    private static final String[][] DISCOVER_IIN = new String[][] {</span>
+<span class="fc" id="L287">    private static final String[][] DISCOVER_IIN = new String[][] {</span>
         new String[]{&quot;6011&quot;, &quot;6011&quot;},
         new String[]{&quot;622126&quot;, &quot;62295&quot;},
         new String[]{&quot;644&quot;, &quot;649&quot;},
@@ -277,7 +294,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for Discover.
      */
-<span class="fc" id="L280">    private static final byte[][] DISCOVER_LENGTH = new byte[][] {</span>
+<span class="fc" id="L297">    private static final byte[][] DISCOVER_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -288,7 +305,7 @@ public class CreditCardValidator {
     protected static final boolean DISCOVER_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Discover brand is still being used.
+     * Constant indicating whether Discover network is still being used.
      */
     protected static final boolean DISCOVER_IS_ACTIVE = true;
 
@@ -296,9 +313,10 @@ public class CreditCardValidator {
      * Constant defining digit groups for Discover. This grouping is also used
      * for all Diners Club cards.
      */
-<span class="fc" id="L299">    private static final byte[][] DISCOVER_GROUPING = new byte[][] {</span>
+<span class="fc" id="L316">    private static final byte[][] DISCOVER_GROUPING = new byte[][] {</span>
         new byte[]{4, 4},
-        new byte[]{6, 6},
+        new byte[]{4, 4},
+        new byte[]{4, 4},
         new byte[]{4, 4}
     };
     
@@ -308,14 +326,14 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for InstaPayment.
      */
-<span class="fc" id="L311">    private static final String[][] INSTAPAYMENT_IIN = new String[][] {</span>
+<span class="fc" id="L329">    private static final String[][] INSTAPAYMENT_IIN = new String[][] {</span>
         new String[]{&quot;637&quot;, &quot;639&quot;}
     };
     
     /**
      * Constant containing valid lengths for InstaPayment.
      */
-<span class="fc" id="L318">    private static final byte[][] INSTAPAYMENT_LENGTH = new byte[][] {</span>
+<span class="fc" id="L336">    private static final byte[][] INSTAPAYMENT_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -326,7 +344,7 @@ public class CreditCardValidator {
     protected static final boolean INSTAPAYMENT_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether InstaPayment brand is still being used.
+     * Constant indicating whether InstaPayment network is still being used.
      */
     protected static final boolean INSTAPAYMENT_IS_ACTIVE = true;
 
@@ -337,14 +355,14 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for JCB.
      */
-<span class="fc" id="L340">    private static final String[][] JCB_IIN = new String[][] {</span>
+<span class="fc" id="L358">    private static final String[][] JCB_IIN = new String[][] {</span>
         new String[]{&quot;3528&quot;, &quot;3589&quot;}
     };
     
     /**
      * Constant containing valid lengths for JCB.
      */
-<span class="fc" id="L347">    private static final byte[][] JCB_LENGTH = new byte[][] {</span>
+<span class="fc" id="L365">    private static final byte[][] JCB_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -355,7 +373,7 @@ public class CreditCardValidator {
     protected static final boolean JCB_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether JCB brand is still being used.
+     * Constant indicating whether JCB network is still being used.
      */
     protected static final boolean JCB_IS_ACTIVE = true;
 
@@ -366,7 +384,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Laser.
      */
-<span class="fc" id="L369">    private static final String[][] LASER_IIN = new String[][] {</span>
+<span class="fc" id="L387">    private static final String[][] LASER_IIN = new String[][] {</span>
         new String[]{&quot;6304&quot;, &quot;6304&quot;},
         new String[]{&quot;6706&quot;, &quot;6706&quot;},
         new String[]{&quot;6771&quot;, &quot;6771&quot;},
@@ -376,7 +394,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for Laser.
      */
-<span class="fc" id="L379">    private static final byte[][] LASER_LENGTH = new byte[][] {</span>
+<span class="fc" id="L397">    private static final byte[][] LASER_LENGTH = new byte[][] {</span>
         new byte[]{16, 19}
     };
     
@@ -387,7 +405,7 @@ public class CreditCardValidator {
     protected static final boolean LASER_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Laser brand is still being used.
+     * Constant indicating whether Laser network is still being used.
      */
     protected static final boolean LASER_IS_ACTIVE = true;
 
@@ -398,7 +416,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Maestro.
      */
-<span class="fc" id="L401">    private static final String[][] MAESTRO_IIN = new String[][] {</span>
+<span class="fc" id="L419">    private static final String[][] MAESTRO_IIN = new String[][] {</span>
         new String[]{&quot;5018&quot;, &quot;5018&quot;},
         new String[]{&quot;5020&quot;, &quot;5020&quot;},
         new String[]{&quot;5038&quot;, &quot;5038&quot;},
@@ -412,7 +430,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for Maestro.
      */    
-<span class="fc" id="L415">    private static final byte[][] MAESTRO_LENGTH = new byte[][] {</span>
+<span class="fc" id="L433">    private static final byte[][] MAESTRO_LENGTH = new byte[][] {</span>
         new byte[]{12, 19}
     };
     
@@ -423,7 +441,7 @@ public class CreditCardValidator {
     protected static final boolean MAESTRO_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Maestro brand is still being used.
+     * Constant indicating whether Maestro network is still being used.
      */
     protected static final boolean MAESTRO_IS_ACTIVE = true;
 
@@ -434,7 +452,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for MasterCard.
      */
-<span class="fc" id="L437">    private static final String[][] MASTERCARD_IIN = new String[][] {</span>
+<span class="fc" id="L455">    private static final String[][] MASTERCARD_IIN = new String[][] {</span>
         new String[]{&quot;222100&quot;, &quot;272099&quot;},
         new String[]{&quot;51&quot;, &quot;55&quot;}
     };
@@ -442,7 +460,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for MasterCard.
      */        
-<span class="fc" id="L445">    private static final byte[][] MASTERCARD_LENGTH = new byte[][] {</span>
+<span class="fc" id="L463">    private static final byte[][] MASTERCARD_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -453,14 +471,14 @@ public class CreditCardValidator {
     protected static final boolean MASTERCARD_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether MasterCard brand is still being used.
+     * Constant indicating whether MasterCard network is still being used.
      */
     protected static final boolean MASTERCARD_IS_ACTIVE = true;
     
     /**
      * Constant defining digit groups for Mastercard.
      */
-<span class="fc" id="L463">    private static final byte[][] MASTERCARD_GROUPING = new byte[][] {</span>
+<span class="fc" id="L481">    private static final byte[][] MASTERCARD_GROUPING = new byte[][] {</span>
         new byte[]{4, 4},
         new byte[]{4, 4},
         new byte[]{4, 4},
@@ -473,7 +491,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Solo.
      */    
-<span class="fc" id="L476">    private static final String[][] SOLO_IIN = new String[][] {</span>
+<span class="fc" id="L494">    private static final String[][] SOLO_IIN = new String[][] {</span>
         new String[]{&quot;6334&quot;, &quot;6334&quot;},
         new String[]{&quot;6767&quot;, &quot;6767&quot;}
     };
@@ -481,7 +499,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for Solo.
      */            
-<span class="fc" id="L484">    private static final byte[][] SOLO_LENGTH = new byte[][] {</span>
+<span class="fc" id="L502">    private static final byte[][] SOLO_LENGTH = new byte[][] {</span>
         new byte[]{16, 16},
         new byte[]{18, 19}
     };
@@ -493,7 +511,7 @@ public class CreditCardValidator {
     protected static final boolean SOLO_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Solo brand is still being used.
+     * Constant indicating whether Solo network is still being used.
      */    
     protected static final boolean SOLO_IS_ACTIVE = false;
 
@@ -504,7 +522,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for Switch.
      */        
-<span class="fc" id="L507">    private static final String[][] SWITCH_IIN = new String[][] {</span>
+<span class="fc" id="L525">    private static final String[][] SWITCH_IIN = new String[][] {</span>
         new String[]{&quot;4903&quot;, &quot;4903&quot;},
         new String[]{&quot;4905&quot;, &quot;4905&quot;},
         new String[]{&quot;4911&quot;, &quot;4911&quot;},
@@ -518,7 +536,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for Switch.
      */                
-<span class="fc" id="L521">    private static final byte[][] SWITCH_LENGTH = new byte[][] {</span>
+<span class="fc" id="L539">    private static final byte[][] SWITCH_LENGTH = new byte[][] {</span>
         new byte[]{16, 16},
         new byte[]{18, 19}
     };
@@ -530,7 +548,7 @@ public class CreditCardValidator {
     protected static final boolean SWITCH_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Switch brand is still being used.
+     * Constant indicating whether Switch network is still being used.
      */        
     protected static final boolean SWITCH_IS_ACTIVE = false;
 
@@ -541,14 +559,14 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for VISA.
      */            
-<span class="fc" id="L544">    private static final String[][] VISA_IIN = new String[][] {</span>
+<span class="fc" id="L562">    private static final String[][] VISA_IIN = new String[][] {</span>
         new String[]{&quot;4&quot;, &quot;4&quot;}
     };
     
     /**
      * Constant containing valid lengths for VISA.
      */                    
-<span class="fc" id="L551">    private static final byte[][] VISA_LENGTH = new byte[][] {</span>
+<span class="fc" id="L569">    private static final byte[][] VISA_LENGTH = new byte[][] {</span>
         new byte[]{13, 13},
         new byte[]{16, 16}
     };
@@ -560,14 +578,14 @@ public class CreditCardValidator {
     protected static final boolean VISA_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether VISA brand is still being used.
+     * Constant indicating whether VISA network is still being used.
      */            
     protected static final boolean VISA_IS_ACTIVE = true;
 
     /**
      * Constant defining digit groups for VISA.
      */
-<span class="fc" id="L570">    private static final byte[][] VISA_GROUPING = new byte[][] {</span>
+<span class="fc" id="L588">    private static final byte[][] VISA_GROUPING = new byte[][] {</span>
         new byte[]{4, 4},
         new byte[]{4, 4},
         new byte[]{4, 4},
@@ -580,7 +598,7 @@ public class CreditCardValidator {
     /**
      * Constant containing IIN ranges reserved for VISA Electron.
      */                
-<span class="fc" id="L583">    private static final String[][] VISA_ELECTRON_IIN = new String[][] {</span>
+<span class="fc" id="L601">    private static final String[][] VISA_ELECTRON_IIN = new String[][] {</span>
         new String[]{&quot;4026&quot;, &quot;4026&quot;},
         new String[]{&quot;417500&quot;, &quot;417500&quot;},
         new String[]{&quot;4405&quot;, &quot;4405&quot;},
@@ -593,7 +611,7 @@ public class CreditCardValidator {
     /**
      * Constant containing valid lengths for VISA Electron.
      */                        
-<span class="fc" id="L596">    private static final byte[][] VISA_ELECTRON_LENGTH = new byte[][] {</span>
+<span class="fc" id="L614">    private static final byte[][] VISA_ELECTRON_LENGTH = new byte[][] {</span>
         new byte[]{16, 16}
     };
     
@@ -604,14 +622,14 @@ public class CreditCardValidator {
     protected static final boolean VISA_ELECTRON_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether VISA Electron brand is still being used.
+     * Constant indicating whether VISA Electron network is still being used.
      */                
     protected static final boolean VISA_ELECTRON_IS_ACTIVE = true;    
 
     /**
      * Constant defining digit groups for VISA Electron.
      */
-<span class="fc" id="L614">    private static final byte[][] VISA_ELECTRON_GROUPING = new byte[][] {</span>
+<span class="fc" id="L632">    private static final byte[][] VISA_ELECTRON_GROUPING = new byte[][] {</span>
         new byte[]{4, 4},
         new byte[]{4, 4},
         new byte[]{4, 4},
@@ -619,9 +637,9 @@ public class CreditCardValidator {
     };
 
     /**
-     * Constant defining digit groups for any other brand or unknown brands.
+     * Constant defining digit groups for any other network or unknown networks.
      */
-<span class="fc" id="L624">    private static final byte[][] DEFAULT_GROUPING = new byte[][] {</span>
+<span class="fc" id="L642">    private static final byte[][] DEFAULT_GROUPING = new byte[][] {</span>
         new byte[]{4, 4},
         new byte[]{4, 4},
         new byte[]{4, 4},
@@ -631,7 +649,7 @@ public class CreditCardValidator {
     /**
      * Constructor.
      */
-<span class="fc" id="L634">    protected CreditCardValidator() { }</span>
+<span class="fc" id="L652">    protected CreditCardValidator() { }</span>
     
     /**
      * Indicates if provided credit card PAN value corresponds to any valid MII
@@ -641,7 +659,7 @@ public class CreditCardValidator {
      * @return true if PAN corresponds to a valid MII, false otherwise.
      */
     public static boolean isValidMII(String pan) {
-<span class="fc" id="L644">        return isValidMII(toDigits(pan));</span>
+<span class="fc" id="L662">        return isValidMII(toDigits(pan));</span>
     }
     
     /**
@@ -652,305 +670,306 @@ public class CreditCardValidator {
      * @return true if PAN corresponds to a valid MII, false otherwise.
      */
     protected static boolean isValidMII(byte[] panDigits) {
-<span class="fc bfc" id="L655" title="All 4 branches covered.">        if (panDigits == null || panDigits.length == 0) {</span>
-<span class="fc" id="L656">            return false;</span>
+<span class="fc bfc" id="L673" title="All 4 branches covered.">        if (panDigits == null || panDigits.length == 0) {</span>
+<span class="fc" id="L674">            return false;</span>
         }
-<span class="fc" id="L658">        byte first = panDigits[0];</span>
+<span class="fc" id="L676">        byte first = panDigits[0];</span>
         
-<span class="fc bfc" id="L660" title="All 8 branches covered.">        return first == 3 || first == 4 || first == 5 || first == 6;        </span>
+<span class="fc bfc" id="L678" title="All 8 branches covered.">        return first == 3 || first == 4 || first == 5 || first == 6;        </span>
     }
     
     /**
-     * Indicates if a given credit card brand uses Luhn algorithm to validate 
-     * PAN values. For unknown brands validation is assumed to be disabled.
-     * @param brand a credit card brand.
-     * @return true if provided brand uses PAN validation, false otherwise.
+     * Indicates if a given credit card network uses Luhn algorithm to validate 
+     * PAN values. For unknown networks validation is assumed to be disabled.
+     * @param network a credit card network.
+     * @return true if provided network uses PAN validation, false otherwise.
      */
-    public static boolean isValidationEnabledForBrand(CreditCardBrand brand) {
-<span class="fc bfc" id="L670" title="All 2 branches covered.">        if (brand == null) {</span>
-<span class="fc" id="L671">            return false;</span>
+    public static boolean isValidationEnabledForNetwork(CreditCardNetwork network) {
+<span class="fc bfc" id="L688" title="All 2 branches covered.">        if (network == null) {</span>
+<span class="fc" id="L689">            return false;</span>
         }
         
-<span class="pc bfc" id="L674" title="All 18 branches covered.">        switch (brand) {</span>
+<span class="pc bfc" id="L692" title="All 18 branches covered.">        switch (network) {</span>
             case AMERICAN_EXPRESS:
-<span class="fc" id="L676">                return AMEX_HAS_VALIDATION;</span>
+<span class="fc" id="L694">                return AMEX_HAS_VALIDATION;</span>
             case BANKCARD:
-<span class="fc" id="L678">                return BANKCARD_HAS_VALIDATION;</span>
+<span class="fc" id="L696">                return BANKCARD_HAS_VALIDATION;</span>
             case CHINA_UNIONPAY:
-<span class="fc" id="L680">                return CHINA_UNIONPAY_HAS_VALIDATION;</span>
+<span class="fc" id="L698">                return CHINA_UNIONPAY_HAS_VALIDATION;</span>
             case DINERS_CLUB_CARTE_BLANCHE:
-<span class="fc" id="L682">                return DINERS_CLUB_CARTE_BLANCHE_HAS_VALIDATION;</span>
+<span class="fc" id="L700">                return DINERS_CLUB_CARTE_BLANCHE_HAS_VALIDATION;</span>
             case DINERS_CLUB_ENROUTE:
-<span class="fc" id="L684">                return DINERS_CLUB_ENROUTE_HAS_VALIDATION;</span>
+<span class="fc" id="L702">                return DINERS_CLUB_ENROUTE_HAS_VALIDATION;</span>
             case DINERS_CLUB_INTERNATIONAL:
-<span class="fc" id="L686">                return DINERS_CLUB_INTERATIONAL_HAS_VALIDATION;</span>
+<span class="fc" id="L704">                return DINERS_CLUB_INTERATIONAL_HAS_VALIDATION;</span>
             case DINERS_CLUB_USA_CANADA:
-<span class="fc" id="L688">                return DINERS_CLUB_USA_CA_HAS_VALIDATION;</span>
+<span class="fc" id="L706">                return DINERS_CLUB_USA_CA_HAS_VALIDATION;</span>
             case DISCOVER:
-<span class="fc" id="L690">                return DISCOVER_HAS_VALIDATION;</span>
+<span class="fc" id="L708">                return DISCOVER_HAS_VALIDATION;</span>
             case INSTAPAYMENT:
-<span class="fc" id="L692">                return INSTAPAYMENT_HAS_VALIDATION;</span>
+<span class="fc" id="L710">                return INSTAPAYMENT_HAS_VALIDATION;</span>
             case JCB:
-<span class="fc" id="L694">                return JCB_HAS_VALIDATION;</span>
+<span class="fc" id="L712">                return JCB_HAS_VALIDATION;</span>
             case LASER:
-<span class="fc" id="L696">                return LASER_HAS_VALIDATION;</span>
+<span class="fc" id="L714">                return LASER_HAS_VALIDATION;</span>
             case MAESTRO:
-<span class="fc" id="L698">                return MAESTRO_HAS_VALIDATION;</span>
+<span class="fc" id="L716">                return MAESTRO_HAS_VALIDATION;</span>
             case MASTERCARD:
-<span class="fc" id="L700">                return MASTERCARD_HAS_VALIDATION;</span>
+<span class="fc" id="L718">                return MASTERCARD_HAS_VALIDATION;</span>
             case SOLO:
-<span class="fc" id="L702">                return SOLO_HAS_VALIDATION;</span>
+<span class="fc" id="L720">                return SOLO_HAS_VALIDATION;</span>
             case SWITCH:
-<span class="fc" id="L704">                return SWITCH_HAS_VALIDATION;</span>
+<span class="fc" id="L722">                return SWITCH_HAS_VALIDATION;</span>
             case VISA:
-<span class="fc" id="L706">                return VISA_HAS_VALIDATION;</span>
+<span class="fc" id="L724">                return VISA_HAS_VALIDATION;</span>
             case VISA_ELECTRON:
-<span class="fc" id="L708">                return VISA_ELECTRON_HAS_VALIDATION;</span>
+<span class="fc" id="L726">                return VISA_ELECTRON_HAS_VALIDATION;</span>
             case UNKNOWN:
             default:
-<span class="fc" id="L711">                return false;</span>
+<span class="fc" id="L729">                return false;</span>
         }
     }
     
     /**
-     * Indicates if provided credit card brand is still being used commercially.
-     * Unknown brands are assumed to be active.
-     * @param brand a credit card brand.
-     * @return true if provided brand is still being used, false otherwise.
+     * Indicates if provided credit card network is still being used 
+     * commercially.
+     * Unknown networks are assumed to be active.
+     * @param network a credit card network.
+     * @return true if provided network is still being used, false otherwise.
      */
-    public static boolean isBrandActive(CreditCardBrand brand) {
-<span class="fc bfc" id="L722" title="All 2 branches covered.">        if (brand == null) {</span>
-<span class="fc" id="L723">            return true;</span>
+    public static boolean isNetworkActive(CreditCardNetwork network) {
+<span class="fc bfc" id="L741" title="All 2 branches covered.">        if (network == null) {</span>
+<span class="fc" id="L742">            return true;</span>
         }
         
-<span class="fc bfc" id="L726" title="All 18 branches covered.">        switch (brand) {</span>
+<span class="fc bfc" id="L745" title="All 18 branches covered.">        switch (network) {</span>
             case AMERICAN_EXPRESS:
-<span class="fc" id="L728">                return AMEX_IS_ACTIVE;</span>
+<span class="fc" id="L747">                return AMEX_IS_ACTIVE;</span>
             case BANKCARD:
-<span class="fc" id="L730">                return BANKCARD_IS_ACTIVE;</span>
+<span class="fc" id="L749">                return BANKCARD_IS_ACTIVE;</span>
             case CHINA_UNIONPAY:
-<span class="fc" id="L732">                return CHINA_UNIONPAY_IS_ACTIVE;</span>
+<span class="fc" id="L751">                return CHINA_UNIONPAY_IS_ACTIVE;</span>
             case DINERS_CLUB_CARTE_BLANCHE:
-<span class="fc" id="L734">                return DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE;</span>
+<span class="fc" id="L753">                return DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE;</span>
             case DINERS_CLUB_ENROUTE:
-<span class="fc" id="L736">                return DINERS_CLUB_ENROUTE_IS_ACTIVE;</span>
+<span class="fc" id="L755">                return DINERS_CLUB_ENROUTE_IS_ACTIVE;</span>
             case DINERS_CLUB_INTERNATIONAL:
-<span class="fc" id="L738">                return DINERS_CLUB_INTERATIONAL_IS_ACTIVE;</span>
+<span class="fc" id="L757">                return DINERS_CLUB_INTERATIONAL_IS_ACTIVE;</span>
             case DINERS_CLUB_USA_CANADA:
-<span class="fc" id="L740">                return DINERS_CLUB_USA_CA_IS_ACTIVE;</span>
+<span class="fc" id="L759">                return DINERS_CLUB_USA_CA_IS_ACTIVE;</span>
             case DISCOVER:
-<span class="fc" id="L742">                return DISCOVER_IS_ACTIVE;</span>
+<span class="fc" id="L761">                return DISCOVER_IS_ACTIVE;</span>
             case INSTAPAYMENT:
-<span class="fc" id="L744">                return INSTAPAYMENT_IS_ACTIVE;</span>
+<span class="fc" id="L763">                return INSTAPAYMENT_IS_ACTIVE;</span>
             case JCB:
-<span class="fc" id="L746">                return JCB_IS_ACTIVE;</span>
+<span class="fc" id="L765">                return JCB_IS_ACTIVE;</span>
             case LASER:
-<span class="fc" id="L748">                return LASER_IS_ACTIVE;</span>
+<span class="fc" id="L767">                return LASER_IS_ACTIVE;</span>
             case MAESTRO:
-<span class="fc" id="L750">                return MAESTRO_IS_ACTIVE;</span>
+<span class="fc" id="L769">                return MAESTRO_IS_ACTIVE;</span>
             case MASTERCARD:
-<span class="fc" id="L752">                return MASTERCARD_IS_ACTIVE;</span>
+<span class="fc" id="L771">                return MASTERCARD_IS_ACTIVE;</span>
             case SOLO:
-<span class="fc" id="L754">                return SOLO_IS_ACTIVE;</span>
+<span class="fc" id="L773">                return SOLO_IS_ACTIVE;</span>
             case SWITCH:
-<span class="fc" id="L756">                return SWITCH_IS_ACTIVE;</span>
+<span class="fc" id="L775">                return SWITCH_IS_ACTIVE;</span>
             case VISA:
-<span class="fc" id="L758">                return VISA_IS_ACTIVE;</span>
+<span class="fc" id="L777">                return VISA_IS_ACTIVE;</span>
             case VISA_ELECTRON:
-<span class="fc" id="L760">                return VISA_ELECTRON_IS_ACTIVE;</span>
+<span class="fc" id="L779">                return VISA_ELECTRON_IS_ACTIVE;</span>
             case UNKNOWN:
             default:
-<span class="fc" id="L763">                return true;</span>
+<span class="fc" id="L782">                return true;</span>
         }        
     }
     
     /**
-     * Detects credit card brand by using provided credit card PAN value.
+     * Detects credit card network by using provided credit card PAN value.
      * Detection is done by checking all known registered credit card IINs 
      * (Issuer Identification Number) against provided PAN until a match is 
      * found.
      * @param pan a credit card PAN number.
-     * @return detected credit card brand.
+     * @return detected credit card network.
      */
-    public static CreditCardBrand detectBrandFromPAN(String pan) {
-<span class="fc" id="L776">        return detectBrandFromPAN(toDigits(pan));</span>
+    public static CreditCardNetwork detectNetworkFromPAN(String pan) {
+<span class="fc" id="L795">        return detectNetworkFromPAN(toDigits(pan));</span>
     }
     
     /**
-     * Detects credit card brand by using provided credit card PAN digits.
+     * Detects credit card network by using provided credit card PAN digits.
      * Detection is done by checking all known registered credit card IINs
      * (Issuer Identification Number) agains provided PAN digits until a match
      * is found.
      * @param panDigits an array containing a credit card PAN digits.
-     * @return detected credit card brand.
+     * @return detected credit card network.
      */
-    protected static CreditCardBrand detectBrandFromPAN(byte[] panDigits) {
-<span class="fc bfc" id="L788" title="All 2 branches covered.">        if (isAmericanExpressIIN(panDigits)) {</span>
-<span class="fc" id="L789">            return CreditCardBrand.AMERICAN_EXPRESS;</span>
+    protected static CreditCardNetwork detectNetworkFromPAN(byte[] panDigits) {
+<span class="fc bfc" id="L807" title="All 2 branches covered.">        if (isAmericanExpressIIN(panDigits)) {</span>
+<span class="fc" id="L808">            return CreditCardNetwork.AMERICAN_EXPRESS;</span>
         }
-<span class="fc bfc" id="L791" title="All 2 branches covered.">        if (isBankcardIIN(panDigits)) {</span>
-<span class="fc" id="L792">            return CreditCardBrand.BANKCARD;</span>
+<span class="fc bfc" id="L810" title="All 2 branches covered.">        if (isBankcardIIN(panDigits)) {</span>
+<span class="fc" id="L811">            return CreditCardNetwork.BANKCARD;</span>
         }
-<span class="fc bfc" id="L794" title="All 2 branches covered.">        if (isDinersClubCarteBlancheIIN(panDigits)) {</span>
-<span class="fc" id="L795">            return CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE;</span>
+<span class="fc bfc" id="L813" title="All 2 branches covered.">        if (isDinersClubCarteBlancheIIN(panDigits)) {</span>
+<span class="fc" id="L814">            return CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE;</span>
         }
-<span class="fc bfc" id="L797" title="All 2 branches covered.">        if (isDinersClubEnrouteIIN(panDigits)) {</span>
-<span class="fc" id="L798">            return CreditCardBrand.DINERS_CLUB_ENROUTE;</span>
+<span class="fc bfc" id="L816" title="All 2 branches covered.">        if (isDinersClubEnrouteIIN(panDigits)) {</span>
+<span class="fc" id="L817">            return CreditCardNetwork.DINERS_CLUB_ENROUTE;</span>
         }
-<span class="fc bfc" id="L800" title="All 2 branches covered.">        if (isDinersClubInternationalIIN(panDigits)) {</span>
-<span class="fc" id="L801">            return CreditCardBrand.DINERS_CLUB_INTERNATIONAL;</span>
+<span class="fc bfc" id="L819" title="All 2 branches covered.">        if (isDinersClubInternationalIIN(panDigits)) {</span>
+<span class="fc" id="L820">            return CreditCardNetwork.DINERS_CLUB_INTERNATIONAL;</span>
         }
-<span class="fc bfc" id="L803" title="All 2 branches covered.">        if (isDinersClubUSACanadaIIN(panDigits)) {</span>
-<span class="fc" id="L804">            return CreditCardBrand.DINERS_CLUB_USA_CANADA;</span>
+<span class="fc bfc" id="L822" title="All 2 branches covered.">        if (isDinersClubUSACanadaIIN(panDigits)) {</span>
+<span class="fc" id="L823">            return CreditCardNetwork.DINERS_CLUB_USA_CANADA;</span>
         }
-<span class="fc bfc" id="L806" title="All 2 branches covered.">        if (isDiscoverIIN(panDigits)) {</span>
-<span class="fc" id="L807">            return CreditCardBrand.DISCOVER;</span>
+<span class="fc bfc" id="L825" title="All 2 branches covered.">        if (isDiscoverIIN(panDigits)) {</span>
+<span class="fc" id="L826">            return CreditCardNetwork.DISCOVER;</span>
             //Discover lies within China UnionPay range, so we check it first
         }
-<span class="fc bfc" id="L810" title="All 2 branches covered.">        if (isChinaUnionPayIIN(panDigits)) {</span>
-<span class="fc" id="L811">            return CreditCardBrand.CHINA_UNIONPAY;        </span>
+<span class="fc bfc" id="L829" title="All 2 branches covered.">        if (isChinaUnionPayIIN(panDigits)) {</span>
+<span class="fc" id="L830">            return CreditCardNetwork.CHINA_UNIONPAY;        </span>
         }
-<span class="fc bfc" id="L813" title="All 2 branches covered.">        if (isInstaPaymentIIN(panDigits)) {</span>
-<span class="fc" id="L814">            return CreditCardBrand.INSTAPAYMENT;</span>
+<span class="fc bfc" id="L832" title="All 2 branches covered.">        if (isInstaPaymentIIN(panDigits)) {</span>
+<span class="fc" id="L833">            return CreditCardNetwork.INSTAPAYMENT;</span>
         }
-<span class="fc bfc" id="L816" title="All 2 branches covered.">        if (isJCBIIN(panDigits)) {</span>
-<span class="fc" id="L817">            return CreditCardBrand.JCB;</span>
+<span class="fc bfc" id="L835" title="All 2 branches covered.">        if (isJCBIIN(panDigits)) {</span>
+<span class="fc" id="L836">            return CreditCardNetwork.JCB;</span>
         }
-<span class="fc bfc" id="L819" title="All 2 branches covered.">        if (isLaserIIN(panDigits)) {</span>
-<span class="fc" id="L820">            return CreditCardBrand.LASER;</span>
+<span class="fc bfc" id="L838" title="All 2 branches covered.">        if (isLaserIIN(panDigits)) {</span>
+<span class="fc" id="L839">            return CreditCardNetwork.LASER;</span>
         }
-<span class="fc bfc" id="L822" title="All 2 branches covered.">        if (isMaestroIIN(panDigits)) {</span>
-<span class="fc" id="L823">            return CreditCardBrand.MAESTRO;</span>
+<span class="fc bfc" id="L841" title="All 2 branches covered.">        if (isMaestroIIN(panDigits)) {</span>
+<span class="fc" id="L842">            return CreditCardNetwork.MAESTRO;</span>
         }
-<span class="fc bfc" id="L825" title="All 2 branches covered.">        if (isMastercardIIN(panDigits)) {</span>
-<span class="fc" id="L826">            return CreditCardBrand.MASTERCARD;</span>
+<span class="fc bfc" id="L844" title="All 2 branches covered.">        if (isMastercardIIN(panDigits)) {</span>
+<span class="fc" id="L845">            return CreditCardNetwork.MASTERCARD;</span>
         }
-<span class="fc bfc" id="L828" title="All 2 branches covered.">        if (isSoloIIN(panDigits)) {</span>
-<span class="fc" id="L829">            return CreditCardBrand.SOLO;</span>
+<span class="fc bfc" id="L847" title="All 2 branches covered.">        if (isSoloIIN(panDigits)) {</span>
+<span class="fc" id="L848">            return CreditCardNetwork.SOLO;</span>
         }
-<span class="fc bfc" id="L831" title="All 2 branches covered.">        if (isSwitchIIN(panDigits)) {</span>
-<span class="fc" id="L832">            return CreditCardBrand.SWITCH;</span>
+<span class="fc bfc" id="L850" title="All 2 branches covered.">        if (isSwitchIIN(panDigits)) {</span>
+<span class="fc" id="L851">            return CreditCardNetwork.SWITCH;</span>
             //VISA Electron is contained within VISA IIN, so we check it first
         }
-<span class="fc bfc" id="L835" title="All 2 branches covered.">        if (isVISAElectronIIN(panDigits)) {</span>
-<span class="fc" id="L836">            return CreditCardBrand.VISA_ELECTRON; </span>
+<span class="fc bfc" id="L854" title="All 2 branches covered.">        if (isVISAElectronIIN(panDigits)) {</span>
+<span class="fc" id="L855">            return CreditCardNetwork.VISA_ELECTRON; </span>
         }
-<span class="pc bpc" id="L838" title="1 of 2 branches missed.">        if (isVISAIIN(panDigits)) {</span>
-<span class="fc" id="L839">            return CreditCardBrand.VISA;</span>
+<span class="pc bpc" id="L857" title="1 of 2 branches missed.">        if (isVISAIIN(panDigits)) {</span>
+<span class="fc" id="L858">            return CreditCardNetwork.VISA;</span>
         }
-<span class="nc" id="L841">        return CreditCardBrand.UNKNOWN;</span>
+<span class="nc" id="L860">        return CreditCardNetwork.UNKNOWN;</span>
     }
     
     /**
-     * Detects brand for provided PAN and indicates if provided credit card
-     * PAN has an appropriate length for provided credit card brand.
-     * @param pan a credit card brand.
+     * Detects network for provided PAN and indicates if provided credit card
+     * PAN has an appropriate length for provided credit card network.
+     * @param pan a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
     public static boolean isValidLength(String pan) {
-<span class="fc" id="L851">        return isValidLength(toDigits(pan));</span>
+<span class="fc" id="L870">        return isValidLength(toDigits(pan));</span>
     }
     
     /**
-     * Detects brand for provided PAN digits and indicates if provided array
+     * Detects network for provided PAN digits and indicates if provided array
      * of credit card PAN digits has an appropriate length for provided credit 
-     * card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * card network.
+     * PAN for unknown network is assumed to always have a valid length.
      * @param panDigits an array of credit card PAN digits.
      * @return true if PAN has a valid length, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits) {
-<span class="fc" id="L863">        return isValidLength(panDigits, detectBrandFromPAN(panDigits));</span>
+<span class="fc" id="L882">        return isValidLength(panDigits, detectNetworkFromPAN(panDigits));</span>
     }
     
     /**
      * Indicates if provided credit card PAN has an appropriate length for
-     * provided credit card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * provided credit card network.
+     * PAN for unknown network is assumed to always have a valid length.
      * @param pan a credit card PAN.
-     * @param brand a credit card brand.
+     * @param network a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
-    public static boolean isValidLength(String pan, CreditCardBrand brand) {
-<span class="fc" id="L875">        return isValidLength(toDigits(pan), brand);</span>
+    public static boolean isValidLength(String pan, CreditCardNetwork network) {
+<span class="fc" id="L894">        return isValidLength(toDigits(pan), network);</span>
     }
     
     /**
      * Indicates if provided array of credit card PAN digits has an appropriate
-     * length for provided credit card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * length for provided credit card network.
+     * PAN for unknown networks is assumed to always have a valid length.
      * @param panDigits an array of credit card PAN digits.
-     * @param brand a credit card brand.
+     * @param network a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits, 
-            CreditCardBrand brand) {
-<span class="pc bpc" id="L888" title="1 of 18 branches missed.">        switch (brand) {</span>
+            CreditCardNetwork network) {
+<span class="pc bpc" id="L907" title="1 of 18 branches missed.">        switch (network) {</span>
             case AMERICAN_EXPRESS:
-<span class="fc" id="L890">                return isAmericanExpressValidLength(panDigits);</span>
+<span class="fc" id="L909">                return isAmericanExpressValidLength(panDigits);</span>
             case BANKCARD:
-<span class="fc" id="L892">                return isBankcardValidLength(panDigits);</span>
+<span class="fc" id="L911">                return isBankcardValidLength(panDigits);</span>
             case CHINA_UNIONPAY:
-<span class="fc" id="L894">                return isChinaUnionPayValidLength(panDigits);</span>
+<span class="fc" id="L913">                return isChinaUnionPayValidLength(panDigits);</span>
             case DINERS_CLUB_CARTE_BLANCHE:
-<span class="fc" id="L896">                return isDinersClubCarteBlancheValidLength(panDigits);</span>
+<span class="fc" id="L915">                return isDinersClubCarteBlancheValidLength(panDigits);</span>
             case DINERS_CLUB_ENROUTE:
-<span class="fc" id="L898">                return isDinersClubEnrouteValidLength(panDigits);</span>
+<span class="fc" id="L917">                return isDinersClubEnrouteValidLength(panDigits);</span>
             case DINERS_CLUB_INTERNATIONAL:
-<span class="fc" id="L900">                return isDinersClubInternationalValidLength(panDigits);</span>
+<span class="fc" id="L919">                return isDinersClubInternationalValidLength(panDigits);</span>
             case DINERS_CLUB_USA_CANADA:
-<span class="fc" id="L902">                return isDinersClubUSACanadaValidLength(panDigits);</span>
+<span class="fc" id="L921">                return isDinersClubUSACanadaValidLength(panDigits);</span>
             case DISCOVER:
-<span class="fc" id="L904">                return isDiscoverValidLength(panDigits);</span>
+<span class="fc" id="L923">                return isDiscoverValidLength(panDigits);</span>
             case INSTAPAYMENT:
-<span class="fc" id="L906">                return isInstaPaymentValidLength(panDigits);</span>
+<span class="fc" id="L925">                return isInstaPaymentValidLength(panDigits);</span>
             case JCB:
-<span class="fc" id="L908">                return isJCBValidLength(panDigits);</span>
+<span class="fc" id="L927">                return isJCBValidLength(panDigits);</span>
             case LASER:
-<span class="fc" id="L910">                return isLaserValidLength(panDigits);</span>
+<span class="fc" id="L929">                return isLaserValidLength(panDigits);</span>
             case MAESTRO:
-<span class="fc" id="L912">                return isMaestroValidLength(panDigits);</span>
+<span class="fc" id="L931">                return isMaestroValidLength(panDigits);</span>
             case MASTERCARD:
-<span class="fc" id="L914">                return isMastercardValidLength(panDigits);</span>
+<span class="fc" id="L933">                return isMastercardValidLength(panDigits);</span>
             case SOLO:
-<span class="fc" id="L916">                return isSoloValidLength(panDigits);</span>
+<span class="fc" id="L935">                return isSoloValidLength(panDigits);</span>
             case SWITCH:
-<span class="fc" id="L918">                return isSwitchValidLength(panDigits);</span>
+<span class="fc" id="L937">                return isSwitchValidLength(panDigits);</span>
             case VISA:
-<span class="fc" id="L920">                return isVISAValidLength(panDigits);</span>
+<span class="fc" id="L939">                return isVISAValidLength(panDigits);</span>
             case VISA_ELECTRON:
-<span class="fc" id="L922">                return isVISAElectronValidLength(panDigits);</span>
+<span class="fc" id="L941">                return isVISAElectronValidLength(panDigits);</span>
             case UNKNOWN:
             default:
-<span class="nc" id="L925">                return true;</span>
+<span class="nc" id="L944">                return true;</span>
         }
     }
     
     /**
      * Indicates if provided credit card PAN is valid by detecting its assigned
-     * credit card brand, checking its length and validating its checksum if
-     * brand supports validation.
+     * credit card network, checking its length and validating its checksum if
+     * network supports validation.
      * @param pan a credit card pan.
      * @return true if credit card PAN appears to be valid, false otherwise.
      */
     public static boolean isValid(String pan) {
-<span class="fc" id="L937">        return isValid(toDigits(pan));</span>
+<span class="fc" id="L956">        return isValid(toDigits(pan));</span>
     }
     
     /**
      * Indicates if provided credit card PAN is valid by detecting its assigned
-     * credit card brand, checking its length and validating its checksum if
-     * brand supports validation.
+     * credit card network, checking its length and validating its checksum if
+     * network supports validation.
      * @param panDigits an array containing credit card pan digits.
      * @return true if credit card PAN appears to be valid, false otherwise.
      */
     protected static boolean isValid(byte[] panDigits) {
-<span class="fc" id="L948">        CreditCardBrand brand = detectBrandFromPAN(panDigits);</span>
-<span class="fc" id="L949">        boolean valid = isValidLength(panDigits, brand);</span>
-<span class="pc bpc" id="L950" title="2 of 4 branches missed.">        if (valid &amp;&amp; isValidationEnabledForBrand(brand)) {</span>
-<span class="fc" id="L951">            valid = isValidChecksumForPAN(panDigits);</span>
+<span class="fc" id="L967">        CreditCardNetwork network = detectNetworkFromPAN(panDigits);</span>
+<span class="fc" id="L968">        boolean valid = isValidLength(panDigits, network);</span>
+<span class="pc bpc" id="L969" title="2 of 4 branches missed.">        if (valid &amp;&amp; isValidationEnabledForNetwork(network)) {</span>
+<span class="fc" id="L970">            valid = isValidChecksumForPAN(panDigits);</span>
         }
-<span class="fc" id="L953">        return valid;</span>
+<span class="fc" id="L972">        return valid;</span>
     }
     
     /**
@@ -961,7 +980,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isAmericanExpressIIN(String pan) {
-<span class="fc" id="L964">        return isValidIIN(pan, AMEX_IIN);</span>
+<span class="fc" id="L983">        return isValidIIN(pan, AMEX_IIN);</span>
     }
     
     /**
@@ -972,7 +991,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isAmericanExpressIIN(byte[] panDigits) {
-<span class="fc" id="L975">        return isValidIIN(panDigits, AMEX_IIN);</span>
+<span class="fc" id="L994">        return isValidIIN(panDigits, AMEX_IIN);</span>
     }
     
     /**
@@ -982,7 +1001,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid American Express length, false otherwise.
      */
     public static boolean isAmericanExpressValidLength(String pan) {
-<span class="fc" id="L985">        return isValidLength(pan, AMEX_LENGTH);</span>
+<span class="fc" id="L1004">        return isValidLength(pan, AMEX_LENGTH);</span>
     }
     
     /**
@@ -992,7 +1011,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid American Express length, false otherwise.
      */
     protected static boolean isAmericanExpressValidLength(byte[] panDigits) {
-<span class="fc" id="L995">        return isValidLength(panDigits, AMEX_LENGTH);</span>
+<span class="fc" id="L1014">        return isValidLength(panDigits, AMEX_LENGTH);</span>
     }
     
     /**
@@ -1002,7 +1021,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to BankCard, false otherwise.
      */
     public static boolean isBankcardIIN(String pan) {
-<span class="fc" id="L1005">        return isValidIIN(pan, BANKCARD_IIN);</span>
+<span class="fc" id="L1024">        return isValidIIN(pan, BANKCARD_IIN);</span>
     }
 
     /**
@@ -1012,7 +1031,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to BankCard, false otherwise.
      */
     protected static boolean isBankcardIIN(byte[] panDigits) {
-<span class="fc" id="L1015">        return isValidIIN(panDigits, BANKCARD_IIN);</span>
+<span class="fc" id="L1034">        return isValidIIN(panDigits, BANKCARD_IIN);</span>
     }
 
     /**
@@ -1022,7 +1041,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid BankCard length, false otherwise.
      */
     public static boolean isBankcardValidLength(String pan) {
-<span class="fc" id="L1025">        return isValidLength(pan, BANKCARD_LENGTH);</span>
+<span class="fc" id="L1044">        return isValidLength(pan, BANKCARD_LENGTH);</span>
     }
     
     /**
@@ -1032,7 +1051,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid BankCard length, false otherwise.
      */
     protected static boolean isBankcardValidLength(byte[] panDigits) {
-<span class="fc" id="L1035">        return isValidLength(panDigits, BANKCARD_LENGTH);</span>
+<span class="fc" id="L1054">        return isValidLength(panDigits, BANKCARD_LENGTH);</span>
     }
     
     /**
@@ -1043,7 +1062,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isChinaUnionPayIIN(String pan) {
-<span class="fc" id="L1046">        return isValidIIN(pan, CHINA_UNIONPAY_IIN);</span>
+<span class="fc" id="L1065">        return isValidIIN(pan, CHINA_UNIONPAY_IIN);</span>
     }
 
     /**
@@ -1054,7 +1073,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isChinaUnionPayIIN(byte[] panDigits) {
-<span class="fc" id="L1057">        return isValidIIN(panDigits, CHINA_UNIONPAY_IIN);</span>
+<span class="fc" id="L1076">        return isValidIIN(panDigits, CHINA_UNIONPAY_IIN);</span>
     }
     
     /**
@@ -1064,7 +1083,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid China UnionPay length, false otherwise.
      */
     public static boolean isChinaUnionPayValidLength(String pan) {
-<span class="fc" id="L1067">        return isValidLength(pan, CHINA_UNIONPAY_LENGTH);</span>
+<span class="fc" id="L1086">        return isValidLength(pan, CHINA_UNIONPAY_LENGTH);</span>
     }
     
     /**
@@ -1074,7 +1093,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid China UnionPay length, false otherwise.
      */
     protected static boolean isChinaUnionPayValidLength(byte[] panDigits) {
-<span class="fc" id="L1077">        return isValidLength(panDigits, CHINA_UNIONPAY_LENGTH);</span>
+<span class="fc" id="L1096">        return isValidLength(panDigits, CHINA_UNIONPAY_LENGTH);</span>
     }
     
     /**
@@ -1085,7 +1104,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     public static boolean isDinersClubCarteBlancheIIN(String pan) {
-<span class="fc" id="L1088">        return isValidIIN(pan, DINERS_CLUB_CARTE_BLANCHE_IIN);</span>
+<span class="fc" id="L1107">        return isValidIIN(pan, DINERS_CLUB_CARTE_BLANCHE_IIN);</span>
     }
 
     /**
@@ -1096,7 +1115,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     protected static boolean isDinersClubCarteBlancheIIN(byte[] panDigits) {
-<span class="fc" id="L1099">        return isValidIIN(panDigits, DINERS_CLUB_CARTE_BLANCHE_IIN);</span>
+<span class="fc" id="L1118">        return isValidIIN(panDigits, DINERS_CLUB_CARTE_BLANCHE_IIN);</span>
     }
     
     /**
@@ -1107,7 +1126,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isDinersClubCarteBlancheValidLength(String pan) {
-<span class="fc" id="L1110">        return isValidLength(pan, DINERS_CLUB_CARTE_BLANCHE_LENGTH);</span>
+<span class="fc" id="L1129">        return isValidLength(pan, DINERS_CLUB_CARTE_BLANCHE_LENGTH);</span>
     }
     
     /**
@@ -1119,7 +1138,7 @@ public class CreditCardValidator {
      */
     protected static boolean isDinersClubCarteBlancheValidLength(
             byte[] panDigits) {
-<span class="fc" id="L1122">        return isValidLength(panDigits, DINERS_CLUB_CARTE_BLANCHE_LENGTH);</span>
+<span class="fc" id="L1141">        return isValidLength(panDigits, DINERS_CLUB_CARTE_BLANCHE_LENGTH);</span>
     }
     
     /**
@@ -1130,7 +1149,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isDinersClubEnrouteIIN(String pan) {
-<span class="fc" id="L1133">        return isValidIIN(pan, DINERS_CLUB_ENROUTE_IIN);</span>
+<span class="fc" id="L1152">        return isValidIIN(pan, DINERS_CLUB_ENROUTE_IIN);</span>
     }
 
     /**
@@ -1141,7 +1160,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isDinersClubEnrouteIIN(byte[] panDigits) {
-<span class="fc" id="L1144">        return isValidIIN(panDigits, DINERS_CLUB_ENROUTE_IIN);</span>
+<span class="fc" id="L1163">        return isValidIIN(panDigits, DINERS_CLUB_ENROUTE_IIN);</span>
     }
     
     /**
@@ -1152,7 +1171,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isDinersClubEnrouteValidLength(String pan) {
-<span class="fc" id="L1155">        return isValidLength(pan, DINERS_CLUB_ENROUTE_LENGTH);</span>
+<span class="fc" id="L1174">        return isValidLength(pan, DINERS_CLUB_ENROUTE_LENGTH);</span>
     }
     
     /**
@@ -1163,7 +1182,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isDinersClubEnrouteValidLength(byte[] panDigits) {
-<span class="fc" id="L1166">        return isValidLength(panDigits, DINERS_CLUB_ENROUTE_LENGTH);</span>
+<span class="fc" id="L1185">        return isValidLength(panDigits, DINERS_CLUB_ENROUTE_LENGTH);</span>
     }
     
     /**
@@ -1174,7 +1193,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     public static boolean isDinersClubInternationalIIN(String pan) {
-<span class="fc" id="L1177">        return isValidIIN(pan, DINERS_CLUB_INTERNATIONAL_IIN);</span>
+<span class="fc" id="L1196">        return isValidIIN(pan, DINERS_CLUB_INTERNATIONAL_IIN);</span>
     }
 
     /**
@@ -1185,7 +1204,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     protected static boolean isDinersClubInternationalIIN(byte[] panDigits) {
-<span class="fc" id="L1188">        return isValidIIN(panDigits, DINERS_CLUB_INTERNATIONAL_IIN);</span>
+<span class="fc" id="L1207">        return isValidIIN(panDigits, DINERS_CLUB_INTERNATIONAL_IIN);</span>
     }
     
     /**
@@ -1196,7 +1215,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isDinersClubInternationalValidLength(String pan) {
-<span class="fc" id="L1199">        return isValidLength(pan, DINERS_CLUB_INTERNATIONAL_LENGTH);</span>
+<span class="fc" id="L1218">        return isValidLength(pan, DINERS_CLUB_INTERNATIONAL_LENGTH);</span>
     }
     
     /**
@@ -1208,7 +1227,7 @@ public class CreditCardValidator {
      */
     protected static boolean isDinersClubInternationalValidLength(
             byte[] panDigits) {
-<span class="fc" id="L1211">        return isValidLength(panDigits, DINERS_CLUB_INTERNATIONAL_LENGTH);</span>
+<span class="fc" id="L1230">        return isValidLength(panDigits, DINERS_CLUB_INTERNATIONAL_LENGTH);</span>
     }
     
     /**
@@ -1219,7 +1238,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     public static boolean isDinersClubUSACanadaIIN(String pan) {
-<span class="fc" id="L1222">        return isValidIIN(pan, DINERS_CLUB_USA_CA_IIN);</span>
+<span class="fc" id="L1241">        return isValidIIN(pan, DINERS_CLUB_USA_CA_IIN);</span>
     }
 
     /**
@@ -1230,7 +1249,7 @@ public class CreditCardValidator {
      * false otherwise.
      */
     protected static boolean isDinersClubUSACanadaIIN(byte[] panDigits) {
-<span class="fc" id="L1233">        return isValidIIN(panDigits, DINERS_CLUB_USA_CA_IIN);</span>
+<span class="fc" id="L1252">        return isValidIIN(panDigits, DINERS_CLUB_USA_CA_IIN);</span>
     }
     
     /**
@@ -1241,7 +1260,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isDinersClubUSACanadaValidLength(String pan) {
-<span class="fc" id="L1244">        return isValidLength(pan, DINERS_CLUB_USA_CA_LENGTH);</span>
+<span class="fc" id="L1263">        return isValidLength(pan, DINERS_CLUB_USA_CA_LENGTH);</span>
     }
     
     /**
@@ -1253,7 +1272,7 @@ public class CreditCardValidator {
      */
     protected static boolean isDinersClubUSACanadaValidLength(
             byte[] panDigits) {
-<span class="fc" id="L1256">        return isValidLength(panDigits, DINERS_CLUB_USA_CA_LENGTH);</span>
+<span class="fc" id="L1275">        return isValidLength(panDigits, DINERS_CLUB_USA_CA_LENGTH);</span>
     }    
     
     /**
@@ -1263,7 +1282,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Discover, false otherwise.
      */
     public static boolean isDiscoverIIN(String pan) {
-<span class="fc" id="L1266">        return isValidIIN(pan, DISCOVER_IIN);</span>
+<span class="fc" id="L1285">        return isValidIIN(pan, DISCOVER_IIN);</span>
     }
 
     /**
@@ -1273,7 +1292,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Discover, false otherwise.
      */
     protected static boolean isDiscoverIIN(byte[] panDigits) {
-<span class="fc" id="L1276">        return isValidIIN(panDigits, DISCOVER_IIN);</span>
+<span class="fc" id="L1295">        return isValidIIN(panDigits, DISCOVER_IIN);</span>
     }
     
     /**
@@ -1283,7 +1302,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Discover length, false otherwise.
      */
     public static boolean isDiscoverValidLength(String pan) {
-<span class="fc" id="L1286">        return isValidLength(pan, DISCOVER_LENGTH);</span>
+<span class="fc" id="L1305">        return isValidLength(pan, DISCOVER_LENGTH);</span>
     }
     
     /**
@@ -1293,7 +1312,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Discover length, false otherwise.
      */
     protected static boolean isDiscoverValidLength(byte[] panDigits) {
-<span class="fc" id="L1296">        return isValidLength(panDigits, DISCOVER_LENGTH);</span>
+<span class="fc" id="L1315">        return isValidLength(panDigits, DISCOVER_LENGTH);</span>
     }    
     
     /**
@@ -1304,7 +1323,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isInstaPaymentIIN(String pan) {
-<span class="fc" id="L1307">        return isValidIIN(pan, INSTAPAYMENT_IIN);</span>
+<span class="fc" id="L1326">        return isValidIIN(pan, INSTAPAYMENT_IIN);</span>
     }
 
     /**
@@ -1315,7 +1334,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isInstaPaymentIIN(byte[] panDigits) {
-<span class="fc" id="L1318">        return isValidIIN(panDigits, INSTAPAYMENT_IIN);</span>
+<span class="fc" id="L1337">        return isValidIIN(panDigits, INSTAPAYMENT_IIN);</span>
     }
     
     /**
@@ -1325,7 +1344,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid InstaPayment length, false otherwise.
      */
     public static boolean isInstaPaymentValidLength(String pan) {
-<span class="fc" id="L1328">        return isValidLength(pan, INSTAPAYMENT_LENGTH);</span>
+<span class="fc" id="L1347">        return isValidLength(pan, INSTAPAYMENT_LENGTH);</span>
     }
     
     /**
@@ -1335,7 +1354,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid InstaPayment length, false otherwise.
      */
     protected static boolean isInstaPaymentValidLength(byte[] panDigits) {
-<span class="fc" id="L1338">        return isValidLength(panDigits, INSTAPAYMENT_LENGTH);</span>
+<span class="fc" id="L1357">        return isValidLength(panDigits, INSTAPAYMENT_LENGTH);</span>
     }        
     
     /**
@@ -1345,7 +1364,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to JCB, false otherwise.
      */
     public static boolean isJCBIIN(String pan) {
-<span class="fc" id="L1348">        return isValidIIN(pan, JCB_IIN);</span>
+<span class="fc" id="L1367">        return isValidIIN(pan, JCB_IIN);</span>
     }
 
     /**
@@ -1355,7 +1374,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to JCB, false otherwise.
      */
     protected static boolean isJCBIIN(byte[] panDigits) {
-<span class="fc" id="L1358">        return isValidIIN(panDigits, JCB_IIN);</span>
+<span class="fc" id="L1377">        return isValidIIN(panDigits, JCB_IIN);</span>
     }
     
     /**
@@ -1365,7 +1384,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid JCB length, false otherwise.
      */
     public static boolean isJCBValidLength(String pan) {
-<span class="fc" id="L1368">        return isValidLength(pan, JCB_LENGTH);</span>
+<span class="fc" id="L1387">        return isValidLength(pan, JCB_LENGTH);</span>
     }
     
     /**
@@ -1375,7 +1394,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid JCB length, false otherwise.
      */
     protected static boolean isJCBValidLength(byte[] panDigits) {
-<span class="fc" id="L1378">        return isValidLength(panDigits, JCB_LENGTH);</span>
+<span class="fc" id="L1397">        return isValidLength(panDigits, JCB_LENGTH);</span>
     }        
     
     /**
@@ -1385,7 +1404,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Laser, false otherwise.
      */
     public static boolean isLaserIIN(String pan) {
-<span class="fc" id="L1388">        return isValidIIN(pan, LASER_IIN);</span>
+<span class="fc" id="L1407">        return isValidIIN(pan, LASER_IIN);</span>
     }
 
     /**
@@ -1395,7 +1414,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Laser, false otherwise.
      */
     protected static boolean isLaserIIN(byte[] panDigits) {
-<span class="fc" id="L1398">        return isValidIIN(panDigits, LASER_IIN);</span>
+<span class="fc" id="L1417">        return isValidIIN(panDigits, LASER_IIN);</span>
     }
     
     /**
@@ -1405,7 +1424,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Laser length, false otherwise.
      */
     public static boolean isLaserValidLength(String pan) {
-<span class="fc" id="L1408">        return isValidLength(pan, LASER_LENGTH);</span>
+<span class="fc" id="L1427">        return isValidLength(pan, LASER_LENGTH);</span>
     }
     
     /**
@@ -1415,7 +1434,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Laser length, false otherwise.
      */
     protected static boolean isLaserValidLength(byte[] panDigits) {
-<span class="fc" id="L1418">        return isValidLength(panDigits, LASER_LENGTH);</span>
+<span class="fc" id="L1437">        return isValidLength(panDigits, LASER_LENGTH);</span>
     }        
     
     /**
@@ -1425,7 +1444,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Maestro, false otherwise.
      */
     public static boolean isMaestroIIN(String pan) {
-<span class="fc" id="L1428">        return isValidIIN(pan, MAESTRO_IIN);</span>
+<span class="fc" id="L1447">        return isValidIIN(pan, MAESTRO_IIN);</span>
     }
 
     /**
@@ -1435,7 +1454,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Maestro, false otherwise.
      */
     protected static boolean isMaestroIIN(byte[] panDigits) {
-<span class="fc" id="L1438">        return isValidIIN(panDigits, MAESTRO_IIN);</span>
+<span class="fc" id="L1457">        return isValidIIN(panDigits, MAESTRO_IIN);</span>
     }
     
     /**
@@ -1445,7 +1464,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Maestro length, false otherwise.
      */
     public static boolean isMaestroValidLength(String pan) {
-<span class="fc" id="L1448">        return isValidLength(pan, MAESTRO_LENGTH);</span>
+<span class="fc" id="L1467">        return isValidLength(pan, MAESTRO_LENGTH);</span>
     }
     
     /**
@@ -1455,7 +1474,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Maestro length, false otherwise.
      */
     protected static boolean isMaestroValidLength(byte[] panDigits) {
-<span class="fc" id="L1458">        return isValidLength(panDigits, MAESTRO_LENGTH);</span>
+<span class="fc" id="L1477">        return isValidLength(panDigits, MAESTRO_LENGTH);</span>
     }        
     
     /**
@@ -1465,7 +1484,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Mastercard, false otherwise.
      */
     public static boolean isMastercardIIN(String pan) {
-<span class="fc" id="L1468">        return isValidIIN(pan, MASTERCARD_IIN);</span>
+<span class="fc" id="L1487">        return isValidIIN(pan, MASTERCARD_IIN);</span>
     }
 
     /**
@@ -1475,7 +1494,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Mastercard, false otherwise.
      */
     protected static boolean isMastercardIIN(byte[] panDigits) {
-<span class="fc" id="L1478">        return isValidIIN(panDigits, MASTERCARD_IIN);</span>
+<span class="fc" id="L1497">        return isValidIIN(panDigits, MASTERCARD_IIN);</span>
     }
     
     /**
@@ -1485,7 +1504,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Mastercard length, false otherwise.
      */
     public static boolean isMastercardValidLength(String pan) {
-<span class="fc" id="L1488">        return isValidLength(pan, MASTERCARD_LENGTH);</span>
+<span class="fc" id="L1507">        return isValidLength(pan, MASTERCARD_LENGTH);</span>
     }
     
     /**
@@ -1495,7 +1514,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Mastercard length, false otherwise.
      */
     protected static boolean isMastercardValidLength(byte[] panDigits) {
-<span class="fc" id="L1498">        return isValidLength(panDigits, MASTERCARD_LENGTH);</span>
+<span class="fc" id="L1517">        return isValidLength(panDigits, MASTERCARD_LENGTH);</span>
     }        
     
     /**
@@ -1505,7 +1524,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Solo, false otherwise.
      */
     public static boolean isSoloIIN(String pan) {
-<span class="fc" id="L1508">        return isValidIIN(pan, SOLO_IIN);</span>
+<span class="fc" id="L1527">        return isValidIIN(pan, SOLO_IIN);</span>
     }
 
     /**
@@ -1515,7 +1534,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Solo, false otherwise.
      */
     protected static boolean isSoloIIN(byte[] panDigits) {
-<span class="fc" id="L1518">        return isValidIIN(panDigits, SOLO_IIN);</span>
+<span class="fc" id="L1537">        return isValidIIN(panDigits, SOLO_IIN);</span>
     }
     
     /**
@@ -1525,7 +1544,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Solo length, false otherwise.
      */
     public static boolean isSoloValidLength(String pan) {
-<span class="fc" id="L1528">        return isValidLength(pan, SOLO_LENGTH);</span>
+<span class="fc" id="L1547">        return isValidLength(pan, SOLO_LENGTH);</span>
     }
     
     /**
@@ -1535,7 +1554,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Solo length, false otherwise.
      */
     protected static boolean isSoloValidLength(byte[] panDigits) {
-<span class="fc" id="L1538">        return isValidLength(panDigits, SOLO_LENGTH);</span>
+<span class="fc" id="L1557">        return isValidLength(panDigits, SOLO_LENGTH);</span>
     }        
     
     /**
@@ -1545,7 +1564,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Switch, false otherwise.
      */
     public static boolean isSwitchIIN(String pan) {
-<span class="fc" id="L1548">        return isValidIIN(pan, SWITCH_IIN);</span>
+<span class="fc" id="L1567">        return isValidIIN(pan, SWITCH_IIN);</span>
     }
 
     /**
@@ -1555,7 +1574,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to Switch, false otherwise.
      */
     protected static boolean isSwitchIIN(byte[] panDigits) {
-<span class="fc" id="L1558">        return isValidIIN(panDigits, SWITCH_IIN);</span>
+<span class="fc" id="L1577">        return isValidIIN(panDigits, SWITCH_IIN);</span>
     }
     
     /**
@@ -1565,7 +1584,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Switch length, false otherwise.
      */
     public static boolean isSwitchValidLength(String pan) {
-<span class="fc" id="L1568">        return isValidLength(pan, SWITCH_LENGTH);</span>
+<span class="fc" id="L1587">        return isValidLength(pan, SWITCH_LENGTH);</span>
     }
     
     /**
@@ -1575,7 +1594,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid Switch length, false otherwise.
      */
     protected static boolean isSwitchValidLength(byte[] panDigits) {
-<span class="fc" id="L1578">        return isValidLength(panDigits, SWITCH_LENGTH);</span>
+<span class="fc" id="L1597">        return isValidLength(panDigits, SWITCH_LENGTH);</span>
     }        
     
     /**
@@ -1585,7 +1604,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to VISA, false otherwise.
      */
     public static boolean isVISAIIN(String pan) {
-<span class="fc" id="L1588">        return isValidIIN(pan, VISA_IIN);</span>
+<span class="fc" id="L1607">        return isValidIIN(pan, VISA_IIN);</span>
     }
 
     /**
@@ -1595,7 +1614,7 @@ public class CreditCardValidator {
      * @return true if provided PAN corresponds to VISA, false otherwise.
      */
     protected static boolean isVISAIIN(byte[] panDigits) {
-<span class="fc" id="L1598">        return isValidIIN(panDigits, VISA_IIN);</span>
+<span class="fc" id="L1617">        return isValidIIN(panDigits, VISA_IIN);</span>
     }
     
     /**
@@ -1604,7 +1623,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid VISA length, false otherwise.
      */
     public static boolean isVISAValidLength(String pan) {
-<span class="fc" id="L1607">        return isValidLength(pan, VISA_LENGTH);</span>
+<span class="fc" id="L1626">        return isValidLength(pan, VISA_LENGTH);</span>
     }
     
     /**
@@ -1614,7 +1633,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid VISA length, false otherwise.
      */
     protected static boolean isVISAValidLength(byte[] panDigits) {
-<span class="fc" id="L1617">        return isValidLength(panDigits, VISA_LENGTH);</span>
+<span class="fc" id="L1636">        return isValidLength(panDigits, VISA_LENGTH);</span>
     }        
     
     /**
@@ -1625,7 +1644,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     public static boolean isVISAElectronIIN(String pan) {
-<span class="fc" id="L1628">        return isValidIIN(pan, VISA_ELECTRON_IIN);</span>
+<span class="fc" id="L1647">        return isValidIIN(pan, VISA_ELECTRON_IIN);</span>
     }
 
     /**
@@ -1636,7 +1655,7 @@ public class CreditCardValidator {
      * otherwise.
      */
     protected static boolean isVISAElectronIIN(byte[] panDigits) {
-<span class="fc" id="L1639">        return isValidIIN(panDigits, VISA_ELECTRON_IIN);</span>
+<span class="fc" id="L1658">        return isValidIIN(panDigits, VISA_ELECTRON_IIN);</span>
     }
 
     /**
@@ -1646,7 +1665,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid VISA Electron length, false otherwise.
      */
     public static boolean isVISAElectronValidLength(String pan) {
-<span class="fc" id="L1649">        return isValidLength(pan, VISA_ELECTRON_LENGTH);</span>
+<span class="fc" id="L1668">        return isValidLength(pan, VISA_ELECTRON_LENGTH);</span>
     }
     
     /**
@@ -1656,7 +1675,7 @@ public class CreditCardValidator {
      * @return true if PAN has a valid VISA Electron length, false otherwise.
      */
     protected static boolean isVISAElectronValidLength(byte[] panDigits) {
-<span class="fc" id="L1659">        return isValidLength(panDigits, VISA_ELECTRON_LENGTH);</span>
+<span class="fc" id="L1678">        return isValidLength(panDigits, VISA_ELECTRON_LENGTH);</span>
     }    
     
     /**
@@ -1669,7 +1688,7 @@ public class CreditCardValidator {
      * @return true if checksum is valid, false otherwise.
      */
     public static boolean isValidChecksumForPAN(String pan) {
-<span class="nc" id="L1672">        return isValidChecksumForPAN(toDigits(pan));</span>
+<span class="fc" id="L1691">        return isValidChecksumForPAN(toDigits(pan));</span>
     }
     
     /**
@@ -1682,22 +1701,22 @@ public class CreditCardValidator {
      * @return true if checksum is valid, false otherwise.
      */
     protected static boolean isValidChecksumForPAN(byte[] panDigits) {
-<span class="pc bpc" id="L1685" title="1 of 2 branches missed.">        if (panDigits == null) {</span>
-<span class="nc" id="L1686">            return false;</span>
+<span class="pc bpc" id="L1704" title="1 of 2 branches missed.">        if (panDigits == null) {</span>
+<span class="nc" id="L1705">            return false;</span>
         }
         
         //last digit is check value
-<span class="fc" id="L1690">        int length = panDigits.length;</span>
-<span class="pc bpc" id="L1691" title="1 of 2 branches missed.">        if(length &lt; 2) return false; //we need at least two digits (digits + </span>
+<span class="fc" id="L1709">        int length = panDigits.length;</span>
+<span class="pc bpc" id="L1710" title="1 of 2 branches missed.">        if(length &lt; 2) return false; //we need at least two digits (digits + </span>
                                     //checksum)
-<span class="fc" id="L1693">        byte check = panDigits[length - 1];</span>
+<span class="fc" id="L1712">        byte check = panDigits[length - 1];</span>
         
         //copy digits without check into new array
-<span class="fc" id="L1696">        byte[] digitsWithoutCheck = Arrays.copyOf(panDigits, length - 1);</span>
+<span class="fc" id="L1715">        byte[] digitsWithoutCheck = Arrays.copyOf(panDigits, length - 1);</span>
         
         //compare checksums
-<span class="fc" id="L1699">        byte computedCheck = computeCheck(digitsWithoutCheck);</span>
-<span class="fc bfc" id="L1700" title="All 2 branches covered.">        return check == computedCheck;</span>
+<span class="fc" id="L1718">        byte computedCheck = computeCheck(digitsWithoutCheck);</span>
+<span class="fc bfc" id="L1719" title="All 2 branches covered.">        return check == computedCheck;</span>
     }
     
     /**
@@ -1708,11 +1727,11 @@ public class CreditCardValidator {
      * @return true if PAN corresponds to a valid IIN, false otherwise.
      */
     protected static boolean isValidIIN(String pan, String[][] iins) {
-<span class="pc bpc" id="L1711" title="2 of 4 branches missed.">        if (pan == null || iins == null) {</span>
-<span class="nc" id="L1712">            return false;</span>
+<span class="pc bpc" id="L1730" title="2 of 4 branches missed.">        if (pan == null || iins == null) {</span>
+<span class="nc" id="L1731">            return false;</span>
         }
         //remove hyphens, spaces or any punctuation mark from pan string
-<span class="fc" id="L1715">        return isValidIIN(toDigits(pan), iins);</span>
+<span class="fc" id="L1734">        return isValidIIN(toDigits(pan), iins);</span>
     }
     
     /**
@@ -1723,68 +1742,68 @@ public class CreditCardValidator {
      * @return true if PAN corresponds to valid IIN, false otherwise.
      */
     protected static boolean isValidIIN(byte[] panDigits, String[][] iins) {
-<span class="pc bpc" id="L1726" title="1 of 2 branches missed.">        if (iins == null) {</span>
-<span class="nc" id="L1727">            return false;</span>
+<span class="pc bpc" id="L1745" title="1 of 2 branches missed.">        if (iins == null) {</span>
+<span class="nc" id="L1746">            return false;</span>
         }
-<span class="pc bpc" id="L1729" title="2 of 4 branches missed.">        if (panDigits == null || panDigits.length == 0) {</span>
-<span class="nc" id="L1730">            return false;</span>
+<span class="pc bpc" id="L1748" title="2 of 4 branches missed.">        if (panDigits == null || panDigits.length == 0) {</span>
+<span class="nc" id="L1749">            return false;</span>
         }
-<span class="fc" id="L1732">        StringBuilder panBuilder = new StringBuilder();</span>
-<span class="fc bfc" id="L1733" title="All 2 branches covered.">        for (int i = 0; i &lt; panDigits.length; i++) {</span>
-<span class="fc" id="L1734">            panBuilder.append(panDigits[i]);</span>
+<span class="fc" id="L1751">        StringBuilder panBuilder = new StringBuilder();</span>
+<span class="fc bfc" id="L1752" title="All 2 branches covered.">        for (int i = 0; i &lt; panDigits.length; i++) {</span>
+<span class="fc" id="L1753">            panBuilder.append(panDigits[i]);</span>
         }
-<span class="fc" id="L1736">        String pan2 = panBuilder.toString();</span>
+<span class="fc" id="L1755">        String pan2 = panBuilder.toString();</span>
         
-<span class="fc" id="L1738">        int n = iins.length;</span>
+<span class="fc" id="L1757">        int n = iins.length;</span>
         String iinStartStr, iinEndStr, iinStr;
         int iinStart, iinEnd, leadingZeros;
         StringBuilder iinBuilder;        
         //try for all possible IIN ranges
-<span class="fc bfc" id="L1743" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
-<span class="fc" id="L1744">            iinStartStr = iins[i][0];</span>
-<span class="fc" id="L1745">            iinEndStr = iins[i][1];</span>
-<span class="fc" id="L1746">            leadingZeros = numLeadingZeros(iinStartStr);</span>
-<span class="pc bpc" id="L1747" title="1 of 2 branches missed.">            if (iinStartStr.length() &lt; iinEndStr.length()) {</span>
+<span class="fc bfc" id="L1762" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L1763">            iinStartStr = iins[i][0];</span>
+<span class="fc" id="L1764">            iinEndStr = iins[i][1];</span>
+<span class="fc" id="L1765">            leadingZeros = numLeadingZeros(iinStartStr);</span>
+<span class="pc bpc" id="L1766" title="1 of 2 branches missed.">            if (iinStartStr.length() &lt; iinEndStr.length()) {</span>
                 //add 0's to start of range until both start and end have the 
                 //same length
-<span class="nc" id="L1750">                iinBuilder = new StringBuilder();</span>
-<span class="nc" id="L1751">                iinBuilder.append(iinStartStr);</span>
-<span class="nc" id="L1752">                int diff = iinEndStr.length() - iinStartStr.length();</span>
-<span class="nc bnc" id="L1753" title="All 2 branches missed.">                for (int j = 0; j &lt; diff; j++) {</span>
-<span class="nc" id="L1754">                    iinBuilder.append('0');</span>
+<span class="nc" id="L1769">                iinBuilder = new StringBuilder();</span>
+<span class="nc" id="L1770">                iinBuilder.append(iinStartStr);</span>
+<span class="nc" id="L1771">                int diff = iinEndStr.length() - iinStartStr.length();</span>
+<span class="nc bnc" id="L1772" title="All 2 branches missed.">                for (int j = 0; j &lt; diff; j++) {</span>
+<span class="nc" id="L1773">                    iinBuilder.append('0');</span>
                 }
-<span class="nc" id="L1756">                iinStartStr = iinBuilder.toString();</span>
+<span class="nc" id="L1775">                iinStartStr = iinBuilder.toString();</span>
             }
-<span class="fc bfc" id="L1758" title="All 2 branches covered.">            if (iinStartStr.length() &gt; iinEndStr.length()) {</span>
+<span class="fc bfc" id="L1777" title="All 2 branches covered.">            if (iinStartStr.length() &gt; iinEndStr.length()) {</span>
                 //add 9's to end of range until both start and end have the same
                 //length
-<span class="fc" id="L1761">                iinBuilder = new StringBuilder();</span>
-<span class="fc" id="L1762">                iinBuilder.append(iinEndStr);</span>
-<span class="fc" id="L1763">                int diff = iinStartStr.length() - iinEndStr.length();</span>
-<span class="fc bfc" id="L1764" title="All 2 branches covered.">                for (int j = 0; j &lt; diff; j++) {</span>
-<span class="fc" id="L1765">                    iinBuilder.append('9');</span>
+<span class="fc" id="L1780">                iinBuilder = new StringBuilder();</span>
+<span class="fc" id="L1781">                iinBuilder.append(iinEndStr);</span>
+<span class="fc" id="L1782">                int diff = iinStartStr.length() - iinEndStr.length();</span>
+<span class="fc bfc" id="L1783" title="All 2 branches covered.">                for (int j = 0; j &lt; diff; j++) {</span>
+<span class="fc" id="L1784">                    iinBuilder.append('9');</span>
                 }
-<span class="fc" id="L1767">                iinEndStr = iinBuilder.toString();</span>
+<span class="fc" id="L1786">                iinEndStr = iinBuilder.toString();</span>
             }
-<span class="fc" id="L1769">            iinStart = Integer.parseInt(iinStartStr);            </span>
-<span class="fc" id="L1770">            iinEnd = Integer.parseInt(iinEndStr);</span>
-<span class="fc bfc" id="L1771" title="All 2 branches covered.">            for (int j = iinStart; j &lt;= iinEnd; j++) {</span>
+<span class="fc" id="L1788">            iinStart = Integer.parseInt(iinStartStr);            </span>
+<span class="fc" id="L1789">            iinEnd = Integer.parseInt(iinEndStr);</span>
+<span class="fc bfc" id="L1790" title="All 2 branches covered.">            for (int j = iinStart; j &lt;= iinEnd; j++) {</span>
                 //try for all values within a range
-<span class="fc" id="L1773">                iinBuilder = new StringBuilder();</span>
-<span class="fc bfc" id="L1774" title="All 2 branches covered.">                for (int m = 0; m &lt; leadingZeros; m++) {</span>
-<span class="fc" id="L1775">                    iinBuilder.append('0');</span>
+<span class="fc" id="L1792">                iinBuilder = new StringBuilder();</span>
+<span class="fc bfc" id="L1793" title="All 2 branches covered.">                for (int m = 0; m &lt; leadingZeros; m++) {</span>
+<span class="fc" id="L1794">                    iinBuilder.append('0');</span>
                 }
-<span class="fc" id="L1777">                iinBuilder.append(j);</span>
+<span class="fc" id="L1796">                iinBuilder.append(j);</span>
                 
                 //check if pan starts with computed IIN
-<span class="fc" id="L1780">                iinStr = iinBuilder.toString();</span>
-<span class="fc bfc" id="L1781" title="All 4 branches covered.">                if (pan2.startsWith(iinStr) || iinStr.startsWith(pan2)) {</span>
-<span class="fc" id="L1782">                    return true;</span>
+<span class="fc" id="L1799">                iinStr = iinBuilder.toString();</span>
+<span class="fc bfc" id="L1800" title="All 4 branches covered.">                if (pan2.startsWith(iinStr) || iinStr.startsWith(pan2)) {</span>
+<span class="fc" id="L1801">                    return true;</span>
                 }
             }
         }
         
-<span class="fc" id="L1787">        return false;</span>
+<span class="fc" id="L1806">        return false;</span>
     }
     
     /**
@@ -1795,10 +1814,10 @@ public class CreditCardValidator {
      * @return true if PAN length is valid, false otherwise.
      */
     protected static boolean isValidLength(String pan, byte[][] lengths) {
-<span class="pc bpc" id="L1798" title="2 of 4 branches missed.">        if (pan == null || lengths == null) {</span>
-<span class="nc" id="L1799">            return false;</span>
+<span class="pc bpc" id="L1817" title="2 of 4 branches missed.">        if (pan == null || lengths == null) {</span>
+<span class="nc" id="L1818">            return false;</span>
         }
-<span class="fc" id="L1801">        return isValidLength(toDigits(pan), lengths);</span>
+<span class="fc" id="L1820">        return isValidLength(toDigits(pan), lengths);</span>
     }
     
     /**
@@ -1809,21 +1828,21 @@ public class CreditCardValidator {
      * @return true if PAN length is valid, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits, byte[][] lengths) {
-<span class="pc bpc" id="L1812" title="2 of 4 branches missed.">        if (panDigits == null || lengths == null) {</span>
-<span class="nc" id="L1813">            return false;</span>
+<span class="pc bpc" id="L1831" title="2 of 4 branches missed.">        if (panDigits == null || lengths == null) {</span>
+<span class="nc" id="L1832">            return false;</span>
         }
-<span class="fc" id="L1815">        int length = panDigits.length;</span>
+<span class="fc" id="L1834">        int length = panDigits.length;</span>
         
-<span class="fc" id="L1817">        int n = lengths.length;</span>
+<span class="fc" id="L1836">        int n = lengths.length;</span>
         int minLength, maxLength;
-<span class="fc bfc" id="L1819" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
-<span class="fc" id="L1820">            minLength = lengths[i][0];</span>
-<span class="fc" id="L1821">            maxLength = lengths[i][1];</span>
-<span class="fc bfc" id="L1822" title="All 4 branches covered.">            if (length &gt;= minLength &amp;&amp; length &lt;= maxLength) {</span>
-<span class="fc" id="L1823">                return true;</span>
+<span class="fc bfc" id="L1838" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L1839">            minLength = lengths[i][0];</span>
+<span class="fc" id="L1840">            maxLength = lengths[i][1];</span>
+<span class="fc bfc" id="L1841" title="All 4 branches covered.">            if (length &gt;= minLength &amp;&amp; length &lt;= maxLength) {</span>
+<span class="fc" id="L1842">                return true;</span>
             }
         }
-<span class="fc" id="L1826">        return false;</span>
+<span class="fc" id="L1845">        return false;</span>
     }
     
     /**
@@ -1832,17 +1851,17 @@ public class CreditCardValidator {
      * @return number of leading zeros.
      */
     protected static int numLeadingZeros(String iin) {
-<span class="pc bpc" id="L1835" title="1 of 2 branches missed.">        if (iin == null) {</span>
-<span class="nc" id="L1836">            return 0;</span>
+<span class="pc bpc" id="L1854" title="1 of 2 branches missed.">        if (iin == null) {</span>
+<span class="nc" id="L1855">            return 0;</span>
         }
         
-<span class="fc" id="L1839">        int length = iin.length();</span>
-<span class="pc bpc" id="L1840" title="1 of 2 branches missed.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc bfc" id="L1841" title="All 2 branches covered.">            if(iin.charAt(i) != '0') {</span>
-<span class="fc" id="L1842">                return i;</span>
+<span class="fc" id="L1858">        int length = iin.length();</span>
+<span class="pc bpc" id="L1859" title="1 of 2 branches missed.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc bfc" id="L1860" title="All 2 branches covered.">            if(iin.charAt(i) != '0') {</span>
+<span class="fc" id="L1861">                return i;</span>
             }
         }
-<span class="nc" id="L1845">        return length;</span>
+<span class="nc" id="L1864">        return length;</span>
     }
     
     /**
@@ -1854,62 +1873,62 @@ public class CreditCardValidator {
      * @return credit card PAN represented as an array of digits.
      */
     protected static byte[] toDigits(String pan) {
-<span class="fc bfc" id="L1857" title="All 2 branches covered.">        if (pan == null) {</span>
-<span class="fc" id="L1858">            return null;</span>
+<span class="fc bfc" id="L1876" title="All 2 branches covered.">        if (pan == null) {</span>
+<span class="fc" id="L1877">            return null;</span>
         }
         
-<span class="fc" id="L1861">        int length = pan.length();</span>
-<span class="fc" id="L1862">        byte[] internal = new byte[length];</span>
+<span class="fc" id="L1880">        int length = pan.length();</span>
+<span class="fc" id="L1881">        byte[] internal = new byte[length];</span>
         byte value;
         char c;
-<span class="fc" id="L1865">        int numDigits = 0;</span>
-<span class="fc bfc" id="L1866" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L1867">            c = pan.charAt(i);</span>
-<span class="fc bfc" id="L1868" title="All 11 branches covered.">            switch (c) {</span>
+<span class="fc" id="L1884">        int numDigits = 0;</span>
+<span class="fc bfc" id="L1885" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L1886">            c = pan.charAt(i);</span>
+<span class="fc bfc" id="L1887" title="All 11 branches covered.">            switch (c) {</span>
                 case '0':
-<span class="fc" id="L1870">                    value = 0;</span>
-<span class="fc" id="L1871">                    break;</span>
+<span class="fc" id="L1889">                    value = 0;</span>
+<span class="fc" id="L1890">                    break;</span>
                 case '1':
-<span class="fc" id="L1873">                    value = 1;</span>
-<span class="fc" id="L1874">                    break;</span>
+<span class="fc" id="L1892">                    value = 1;</span>
+<span class="fc" id="L1893">                    break;</span>
                 case '2':
-<span class="fc" id="L1876">                    value = 2;</span>
-<span class="fc" id="L1877">                    break;</span>
+<span class="fc" id="L1895">                    value = 2;</span>
+<span class="fc" id="L1896">                    break;</span>
                 case '3':
-<span class="fc" id="L1879">                    value = 3;</span>
-<span class="fc" id="L1880">                    break;</span>
+<span class="fc" id="L1898">                    value = 3;</span>
+<span class="fc" id="L1899">                    break;</span>
                 case '4':
-<span class="fc" id="L1882">                    value = 4;</span>
-<span class="fc" id="L1883">                    break;</span>
+<span class="fc" id="L1901">                    value = 4;</span>
+<span class="fc" id="L1902">                    break;</span>
                 case '5':
-<span class="fc" id="L1885">                    value = 5;</span>
-<span class="fc" id="L1886">                    break;</span>
+<span class="fc" id="L1904">                    value = 5;</span>
+<span class="fc" id="L1905">                    break;</span>
                 case '6':
-<span class="fc" id="L1888">                    value = 6;</span>
-<span class="fc" id="L1889">                    break;</span>
+<span class="fc" id="L1907">                    value = 6;</span>
+<span class="fc" id="L1908">                    break;</span>
                 case '7':
-<span class="fc" id="L1891">                    value = 7;</span>
-<span class="fc" id="L1892">                    break;</span>
+<span class="fc" id="L1910">                    value = 7;</span>
+<span class="fc" id="L1911">                    break;</span>
                 case '8':
-<span class="fc" id="L1894">                    value = 8;</span>
-<span class="fc" id="L1895">                    break;</span>
+<span class="fc" id="L1913">                    value = 8;</span>
+<span class="fc" id="L1914">                    break;</span>
                 case '9':
-<span class="fc" id="L1897">                    value = 9;</span>
-<span class="fc" id="L1898">                    break;</span>
+<span class="fc" id="L1916">                    value = 9;</span>
+<span class="fc" id="L1917">                    break;</span>
                 default:
-<span class="fc" id="L1900">                    continue;</span>
+<span class="fc" id="L1919">                    continue;</span>
             }
             
             //value of character is only added if it is a digit,
             //otherwise this is never executed
-<span class="fc" id="L1905">            internal[numDigits] = value;</span>
-<span class="fc" id="L1906">            numDigits++;</span>
+<span class="fc" id="L1924">            internal[numDigits] = value;</span>
+<span class="fc" id="L1925">            numDigits++;</span>
         }
         
-<span class="fc bfc" id="L1909" title="All 2 branches covered.">        if (numDigits == 0) {</span>
-<span class="fc" id="L1910">            return null;</span>
+<span class="fc bfc" id="L1928" title="All 2 branches covered.">        if (numDigits == 0) {</span>
+<span class="fc" id="L1929">            return null;</span>
         } else {
-<span class="fc" id="L1912">            return Arrays.copyOf(internal, numDigits);</span>
+<span class="fc" id="L1931">            return Arrays.copyOf(internal, numDigits);</span>
         }
     }
     
@@ -1923,116 +1942,118 @@ public class CreditCardValidator {
      */
     protected static byte computeCheck(byte[] digitsWithoutCheck) {
         //multiply by two even digits
-<span class="fc" id="L1926">        int length = digitsWithoutCheck.length;</span>
-<span class="fc bfc" id="L1927" title="All 2 branches covered.">        for (int i = length - 1; i &gt;= 0; i -= 2) {</span>
-<span class="fc" id="L1928">            digitsWithoutCheck[i] *= 2;</span>
+<span class="fc" id="L1945">        int length = digitsWithoutCheck.length;</span>
+<span class="fc bfc" id="L1946" title="All 2 branches covered.">        for (int i = length - 1; i &gt;= 0; i -= 2) {</span>
+<span class="fc" id="L1947">            digitsWithoutCheck[i] *= 2;</span>
         }
         
         //sum digits of multiplied digits
         byte value, unit, ten;
-<span class="fc bfc" id="L1933" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L1934">            value = digitsWithoutCheck[i];</span>
-<span class="fc" id="L1935">            unit = (byte)(value % 10); //a unit</span>
-<span class="fc" id="L1936">            ten = (byte)((value - unit) / 10); //a ten</span>
-<span class="fc" id="L1937">            digitsWithoutCheck[i] = (byte)(unit + ten);</span>
+<span class="fc bfc" id="L1952" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L1953">            value = digitsWithoutCheck[i];</span>
+<span class="fc" id="L1954">            unit = (byte)(value % 10); //a unit</span>
+<span class="fc" id="L1955">            ten = (byte)((value - unit) / 10); //a ten</span>
+<span class="fc" id="L1956">            digitsWithoutCheck[i] = (byte)(unit + ten);</span>
         }
         
         //sum all values
-<span class="fc" id="L1941">        int sum = 0;</span>
-<span class="fc bfc" id="L1942" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L1943">            sum += digitsWithoutCheck[i];</span>
+<span class="fc" id="L1960">        int sum = 0;</span>
+<span class="fc bfc" id="L1961" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L1962">            sum += digitsWithoutCheck[i];</span>
         }
         
         //multiply by 9 and pick last digit (modulus 10)
-<span class="fc" id="L1947">        return (byte)((sum * 9) % 10);</span>
+<span class="fc" id="L1966">        return (byte)((sum * 9) % 10);</span>
     }
     
     /**
-     * Returns credit card digit groupings for provided credit card brand.
-     * @param brand a credit card brand.
+     * Returns credit card digit groupings for provided credit card network.
+     * @param network a credit card network.
      * @return digit groupings.
      */
-    protected static byte[][] groupingsForBrand(CreditCardBrand brand) {
-<span class="fc bfc" id="L1956" title="All 2 branches covered.">        if (brand == null) {</span>
-<span class="fc" id="L1957">            return DEFAULT_GROUPING;</span>
+    protected static byte[][] groupingsForNetwork(CreditCardNetwork network) {
+<span class="fc bfc" id="L1975" title="All 2 branches covered.">        if (network == null) {</span>
+<span class="fc" id="L1976">            return DEFAULT_GROUPING;</span>
         }
         
-<span class="fc bfc" id="L1960" title="All 6 branches covered.">        switch (brand) {</span>
+<span class="fc bfc" id="L1979" title="All 8 branches covered.">        switch (network) {</span>
             case AMERICAN_EXPRESS:
-<span class="fc" id="L1962">                return AMEX_GROUPING;</span>
+<span class="fc" id="L1981">                return AMEX_GROUPING;</span>
             case VISA:
-<span class="fc" id="L1964">                return VISA_GROUPING;</span>
+<span class="fc" id="L1983">                return VISA_GROUPING;</span>
             case VISA_ELECTRON:
-<span class="fc" id="L1966">                return VISA_ELECTRON_GROUPING;</span>
+<span class="fc" id="L1985">                return VISA_ELECTRON_GROUPING;</span>
             case MASTERCARD:
-<span class="fc" id="L1968">                return MASTERCARD_GROUPING;</span>
-            case DINERS_CLUB_CARTE_BLANCHE:
-            case DINERS_CLUB_ENROUTE:
+<span class="fc" id="L1987">                return MASTERCARD_GROUPING;</span>
             case DINERS_CLUB_INTERNATIONAL:
+            case DINERS_CLUB_CARTE_BLANCHE:
+<span class="fc" id="L1990">                return DINERS_CLUB_INTERATIONAL_GROUPING;</span>
+            case DINERS_CLUB_ENROUTE:
+<span class="fc" id="L1992">                return DINERS_CLUB_ENROUTE_GROUPING;</span>
             case DINERS_CLUB_USA_CANADA:
             case DISCOVER:
-<span class="fc" id="L1974">                return DISCOVER_GROUPING;</span>
+<span class="fc" id="L1995">                return DISCOVER_GROUPING;</span>
             default:
-<span class="fc" id="L1976">                return DEFAULT_GROUPING;                </span>
+<span class="fc" id="L1997">                return DEFAULT_GROUPING;                </span>
         }
     }
     
     /**
-     * Returns number of digit groups for provided credit card brand.
-     * @param brand a credit card brand.
-     * @return number of digit groups for provided credit card brand.
+     * Returns number of digit groups for provided credit card network.
+     * @param network a credit card network.
+     * @return number of digit groups for provided credit card network.
      */
-    public static int getNumberOfGroupsForBrand(CreditCardBrand brand) {
-<span class="fc" id="L1986">        byte[][] groups = groupingsForBrand(brand);</span>
-<span class="fc" id="L1987">        return groups.length;</span>
+    public static int getNumberOfGroupsForNetwork(CreditCardNetwork network) {
+<span class="fc" id="L2007">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L2008">        return groups.length;</span>
     }
     
     /**
      * Returns minimum number of required digits for provided group position
      * (starting at zero until the maximum number of groups minus one).
      * @param groupPos position of group of digits.
-     * @param brand credit card brand.
+     * @param network credit card network.
      * @return minimum number of required digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
-     * maximum number of groups minus one for provided credit card brand.
+ maximum number of groups minus one for provided credit card network.
      */
-    public static int getMinDigitsForGroupAndBrand(int groupPos, 
-            CreditCardBrand brand) throws IllegalArgumentException {
-<span class="fc bfc" id="L2001" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
-<span class="fc" id="L2002">            throw new IllegalArgumentException();</span>
+    public static int getMinDigitsForGroupAndNetwork(int groupPos, 
+            CreditCardNetwork network) throws IllegalArgumentException {
+<span class="fc bfc" id="L2022" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
+<span class="fc" id="L2023">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L2005">        byte[][] groups = groupingsForBrand(brand);</span>
-<span class="fc" id="L2006">        int numGroups = groups.length;</span>
-<span class="fc bfc" id="L2007" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
-<span class="fc" id="L2008">            throw new IllegalArgumentException();</span>
+<span class="fc" id="L2026">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L2027">        int numGroups = groups.length;</span>
+<span class="fc bfc" id="L2028" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
+<span class="fc" id="L2029">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L2011">        return groups[groupPos][0];</span>
+<span class="fc" id="L2032">        return groups[groupPos][0];</span>
     }
     
     /**
      * Returns maximum number of allowed digits for provided group position
      * (starting at zero until the maximum number of groups minus one).
      * @param groupPos position of group of digits.
-     * @param brand credit card brand.
+     * @param network credit card network.
      * @return maximum number of allowed digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
-     * maximum number of groups minus one for provided credit card brand.
+ maximum number of groups minus one for provided credit card network.
      */
-    public static int getMaxDigitsForGroupAndBrand(int groupPos,
-            CreditCardBrand brand) throws IllegalArgumentException {
-<span class="fc bfc" id="L2025" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
-<span class="fc" id="L2026">            throw new IllegalArgumentException();</span>
+    public static int getMaxDigitsForGroupAndNetwork(int groupPos,
+            CreditCardNetwork network) throws IllegalArgumentException {
+<span class="fc bfc" id="L2046" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
+<span class="fc" id="L2047">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L2029">        byte[][] groups = groupingsForBrand(brand);</span>
-<span class="fc" id="L2030">        int numGroups = groups.length;</span>
-<span class="fc bfc" id="L2031" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
-<span class="fc" id="L2032">            throw new IllegalArgumentException();</span>
+<span class="fc" id="L2050">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L2051">        int numGroups = groups.length;</span>
+<span class="fc bfc" id="L2052" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
+<span class="fc" id="L2053">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L2035">        return groups[groupPos][1];</span>
+<span class="fc" id="L2056">        return groups[groupPos][1];</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
