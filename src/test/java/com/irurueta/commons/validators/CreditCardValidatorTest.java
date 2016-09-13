@@ -105,485 +105,485 @@ public class CreditCardValidatorTest {
     }
     
     @Test
-    public void testIsValidationEnabledForBrand(){
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.AMERICAN_EXPRESS), 
+    public void testIsValidationEnabledForNetwork(){
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.AMERICAN_EXPRESS), 
                 CreditCardValidator.AMEX_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.BANKCARD),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.BANKCARD),
                 CreditCardValidator.BANKCARD_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.CHINA_UNIONPAY),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.CHINA_UNIONPAY),
                 CreditCardValidator.CHINA_UNIONPAY_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE),
                 CreditCardValidator.DINERS_CLUB_CARTE_BLANCHE_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.DINERS_CLUB_ENROUTE),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE),
                 CreditCardValidator.DINERS_CLUB_ENROUTE_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL),
                 CreditCardValidator.DINERS_CLUB_INTERATIONAL_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA),
                 CreditCardValidator.DINERS_CLUB_USA_CA_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.DISCOVER),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.DISCOVER),
                 CreditCardValidator.DISCOVER_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.INSTAPAYMENT),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.INSTAPAYMENT),
                 CreditCardValidator.INSTAPAYMENT_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.JCB),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.JCB),
                 CreditCardValidator.JCB_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.LASER),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.LASER),
                 CreditCardValidator.LASER_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.MAESTRO),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.MAESTRO),
                 CreditCardValidator.MAESTRO_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.MASTERCARD),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.MASTERCARD),
                 CreditCardValidator.MASTERCARD_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.SOLO),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.SOLO),
                 CreditCardValidator.SOLO_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.SWITCH),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.SWITCH),
                 CreditCardValidator.SWITCH_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.VISA),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.VISA),
                 CreditCardValidator.VISA_HAS_VALIDATION);
-        assertEquals(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.VISA_ELECTRON),
+        assertEquals(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.VISA_ELECTRON),
                 CreditCardValidator.VISA_ELECTRON_HAS_VALIDATION);
-        assertFalse(CreditCardValidator.isValidationEnabledForBrand(
-                CreditCardBrand.UNKNOWN));
-        assertFalse(CreditCardValidator.isValidationEnabledForBrand(null));
+        assertFalse(CreditCardValidator.isValidationEnabledForNetwork(
+                CreditCardNetwork.UNKNOWN));
+        assertFalse(CreditCardValidator.isValidationEnabledForNetwork(null));
     }
     
     @Test
-    public void testIsBrandActive(){
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.AMERICAN_EXPRESS),
+    public void testIsNetworkActive(){
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.AMERICAN_EXPRESS),
                 CreditCardValidator.AMEX_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.BANKCARD),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.BANKCARD),
                 CreditCardValidator.BANKCARD_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.CHINA_UNIONPAY),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.CHINA_UNIONPAY),
                 CreditCardValidator.CHINA_UNIONPAY_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE),
                 CreditCardValidator.DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.DINERS_CLUB_ENROUTE),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE),
                 CreditCardValidator.DINERS_CLUB_ENROUTE_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL),
                 CreditCardValidator.DINERS_CLUB_INTERATIONAL_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA),
                 CreditCardValidator.DINERS_CLUB_USA_CA_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.DISCOVER),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.DISCOVER),
                 CreditCardValidator.DISCOVER_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.INSTAPAYMENT),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.INSTAPAYMENT),
                 CreditCardValidator.INSTAPAYMENT_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.JCB),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.JCB),
                 CreditCardValidator.JCB_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.LASER),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.LASER),
                 CreditCardValidator.LASER_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.MAESTRO),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.MAESTRO),
                 CreditCardValidator.MAESTRO_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.MASTERCARD),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.MASTERCARD),
                 CreditCardValidator.MASTERCARD_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.SOLO),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.SOLO),
                 CreditCardValidator.SOLO_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.SWITCH),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.SWITCH),
                 CreditCardValidator.SWITCH_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.VISA),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.VISA),
                 CreditCardValidator.VISA_IS_ACTIVE);
-        assertEquals(CreditCardValidator.isBrandActive(
-                CreditCardBrand.VISA_ELECTRON),
+        assertEquals(CreditCardValidator.isNetworkActive(
+                CreditCardNetwork.VISA_ELECTRON),
                 CreditCardValidator.VISA_ELECTRON_IS_ACTIVE);
-        assertTrue(CreditCardValidator.isBrandActive(CreditCardBrand.UNKNOWN));
-        assertTrue(CreditCardValidator.isBrandActive(null));
+        assertTrue(CreditCardValidator.isNetworkActive(CreditCardNetwork.UNKNOWN));
+        assertTrue(CreditCardValidator.isNetworkActive(null));
     }
     
     @Test
-    public void testDetectBrandFromPAN(){
+    public void testDetectNetworkFromPAN(){
         //test for typical credit card test PANs
         
         //VISA
         String pan = "4111 1111 1111 1111";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan), 
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan), 
+                CreditCardNetwork.VISA);
         pan = "4005 5192 0000 0004";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4009-3488-8888-1881";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4012000033330026";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4012000077777777";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4012888888881881";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4217651111111119";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "4500600000000061";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         
         pan = "5555555555554444";
-        assertTrue(CreditCardValidator.detectBrandFromPAN(pan) ==
-                CreditCardBrand.MASTERCARD || 
-                CreditCardValidator.detectBrandFromPAN(pan) == 
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
+        assertTrue(CreditCardValidator.detectNetworkFromPAN(pan) ==
+                CreditCardNetwork.MASTERCARD || 
+                CreditCardValidator.detectNetworkFromPAN(pan) == 
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
         
         pan = "3782 82246 310005";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.AMERICAN_EXPRESS);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.AMERICAN_EXPRESS);
         pan = "371449635398431";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.AMERICAN_EXPRESS);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.AMERICAN_EXPRESS);
         
         pan = "6011111111111117";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         
         pan = "3530111333300000";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);
         
-        //test for credit card IINs (this can be used to detect brand while PAN
+        //test for credit card IINs (this can be used to detect network while PAN
         //is being typed
         
         //American Express
         pan = "34";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.AMERICAN_EXPRESS);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.AMERICAN_EXPRESS);
         pan = "37";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.AMERICAN_EXPRESS);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.AMERICAN_EXPRESS);
         
         //Bankcard
         pan = "5610";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         pan = "560221";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         pan = "560222";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         pan = "560223";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         pan = "560224";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         pan = "560225";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.BANKCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.BANKCARD);
         
         //China UnionPay
         //62 is not enough to determine if it belongs to China UnionPay, as it
         //could also be from Discover, so we use ranges of 62 outside of 
         //Discover
         pan = "620";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.CHINA_UNIONPAY);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.CHINA_UNIONPAY);
         pan = "621";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.CHINA_UNIONPAY);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.CHINA_UNIONPAY);
         pan = "623";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.CHINA_UNIONPAY);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.CHINA_UNIONPAY);
         
         //Diners Club Carte Blanche
         pan = "300";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         pan = "301";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         pan = "302";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         pan = "303";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         pan = "304";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);        
         pan = "305";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         
         //Diners Club Enroute
         pan = "2014";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_ENROUTE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_ENROUTE);
         pan = "2149";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_ENROUTE);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_ENROUTE);
         
         //Diners Club International
         pan = "36";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
         
         //Diners Club USA & Canda
         pan = "54";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
         pan = "55";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
         
         //Discover
         pan = "6011";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         pan = "622126";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         pan = "6223";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6224";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6225";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6226";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6227";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6228";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "6229";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "62295";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         pan = "644";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         pan = "645";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "646";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "647";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "648";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);        
         pan = "649";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         pan = "65";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.DISCOVER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.DISCOVER);
         
         //InstaPayment
         pan = "637";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.INSTAPAYMENT);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.INSTAPAYMENT);
         pan = "638";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.INSTAPAYMENT);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.INSTAPAYMENT);        
         pan = "639";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.INSTAPAYMENT);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.INSTAPAYMENT);
         
         //JCB
         pan = "3528";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);
         pan = "3538";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);        
         pan = "3548";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);                
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);                
         pan = "3558";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);                
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);                
         pan = "3568";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);                
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);                
         pan = "3578";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);                
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);                
         pan = "3588";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);                
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);                
         pan = "3589";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.JCB);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.JCB);
         
         //Laser
         pan = "6304";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.LASER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.LASER);
         pan = "6706";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.LASER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.LASER);
         pan = "6771";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.LASER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.LASER);
         pan = "6709";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.LASER);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.LASER);
         
         //Maestro
         pan = "5018";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "5020";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "5038";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "5893";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "6759";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "6761";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "6762";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);        
         pan = "6763";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         pan = "0604";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MAESTRO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MAESTRO);
         
         //Mastercard
         pan = "51";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MASTERCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MASTERCARD);
         pan = "52";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MASTERCARD);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MASTERCARD);        
         pan = "53";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.MASTERCARD);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.MASTERCARD);
         
         //Solo
         pan = "6334";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SOLO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SOLO);
         pan = "6767";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SOLO);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SOLO);
         
         pan = "4903";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "4905";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "4911";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "4936";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "564182";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "633110";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         pan = "6333";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.SWITCH);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.SWITCH);
         
         //VISA
         pan = "400";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "410";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "42";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "43";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);
         pan = "441";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);        
         pan = "451";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);        
         pan = "46";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);        
         pan = "47";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);        
         pan = "481";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);        
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);        
         pan = "492";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA);  
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA);  
         
         //VISA Electron
         pan = "4026";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "417500";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "4405";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "4508";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "4844";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "4913";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
         pan = "4917";
-        assertEquals(CreditCardValidator.detectBrandFromPAN(pan),
-                CreditCardBrand.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.VISA_ELECTRON);
     }
     
     @Test
@@ -593,56 +593,56 @@ public class CreditCardValidatorTest {
         //VISA
         String pan = "4111 1111 1111 1111";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "4005 5192 0000 0004";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4009-3488-8888-1881";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4012000033330026";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4012000077777777";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4012888888881881";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4217651111111119";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4500600000000061";
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(pan));
         assertTrue(CreditCardValidator.isVISAValidLength(
@@ -651,7 +651,7 @@ public class CreditCardValidatorTest {
         pan = "5555555555554444";
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DINERS_CLUB_USA_CANADA));
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA));
         assertTrue(CreditCardValidator.isDinersClubUSACanadaValidLength(pan));
         assertTrue(CreditCardValidator.isDinersClubUSACanadaValidLength(
                 CreditCardValidator.toDigits(pan)));
@@ -659,14 +659,14 @@ public class CreditCardValidatorTest {
         pan = "3782 82246 310005";
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.AMERICAN_EXPRESS));
+                CreditCardNetwork.AMERICAN_EXPRESS));
         assertTrue(CreditCardValidator.isAmericanExpressValidLength(pan));
         assertTrue(CreditCardValidator.isAmericanExpressValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "371449635398431";
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.AMERICAN_EXPRESS));
+                CreditCardNetwork.AMERICAN_EXPRESS));
         assertTrue(CreditCardValidator.isAmericanExpressValidLength(pan));
         assertTrue(CreditCardValidator.isAmericanExpressValidLength(
                 CreditCardValidator.toDigits(pan)));
@@ -674,33 +674,33 @@ public class CreditCardValidatorTest {
         pan = "6011111111111117";
         assertTrue(CreditCardValidator.isValidLength(pan));
         assertTrue(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertTrue(CreditCardValidator.isDiscoverValidLength(pan));
         assertTrue(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));
         
         pan = "3530111333300000";
         assertTrue(CreditCardValidator.isValidLength(pan));
-        assertTrue(CreditCardValidator.isValidLength(pan, CreditCardBrand.JCB));
+        assertTrue(CreditCardValidator.isValidLength(pan, CreditCardNetwork.JCB));
         assertTrue(CreditCardValidator.isJCBValidLength(pan));
         assertTrue(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));
         
-        //test for credit card IINs (this can be used to detect brand while PAN
+        //test for credit card IINs (this can be used to detect network while PAN
         //is being typed
         
         //American Express
         pan = "34";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.AMERICAN_EXPRESS));
+                CreditCardNetwork.AMERICAN_EXPRESS));
         assertFalse(CreditCardValidator.isAmericanExpressValidLength(pan));
         assertFalse(CreditCardValidator.isAmericanExpressValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "37";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.AMERICAN_EXPRESS));
+                CreditCardNetwork.AMERICAN_EXPRESS));
         assertFalse(CreditCardValidator.isAmericanExpressValidLength(pan));
         assertFalse(CreditCardValidator.isAmericanExpressValidLength(
                 CreditCardValidator.toDigits(pan)));
@@ -709,42 +709,42 @@ public class CreditCardValidatorTest {
         pan = "5610";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "560221";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "560222";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "560223";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "560224";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "560225";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.BANKCARD));
+                CreditCardNetwork.BANKCARD));
         assertFalse(CreditCardValidator.isBankcardValidLength(pan));
         assertFalse(CreditCardValidator.isBankcardValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -756,21 +756,21 @@ public class CreditCardValidatorTest {
         pan = "620";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.CHINA_UNIONPAY));
+                CreditCardNetwork.CHINA_UNIONPAY));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(pan));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "621";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.CHINA_UNIONPAY));
+                CreditCardNetwork.CHINA_UNIONPAY));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(pan));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "623";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.CHINA_UNIONPAY));
+                CreditCardNetwork.CHINA_UNIONPAY));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(pan));
         assertFalse(CreditCardValidator.isChinaUnionPayValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -779,7 +779,7 @@ public class CreditCardValidatorTest {
         pan = "300";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -787,7 +787,7 @@ public class CreditCardValidatorTest {
         pan = "301";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -795,7 +795,7 @@ public class CreditCardValidatorTest {
         pan = "302";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -803,7 +803,7 @@ public class CreditCardValidatorTest {
         pan = "303";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -811,7 +811,7 @@ public class CreditCardValidatorTest {
         pan = "304";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -819,7 +819,7 @@ public class CreditCardValidatorTest {
         pan = "305";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE));
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubCarteBlancheValidLength(
@@ -829,14 +829,14 @@ public class CreditCardValidatorTest {
         pan = "2014";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DINERS_CLUB_ENROUTE));
+                CreditCardNetwork.DINERS_CLUB_ENROUTE));
         assertFalse(CreditCardValidator.isDinersClubEnrouteValidLength(pan));
         assertFalse(CreditCardValidator.isDinersClubEnrouteValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "2149";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DINERS_CLUB_ENROUTE));
+                CreditCardNetwork.DINERS_CLUB_ENROUTE));
         assertFalse(CreditCardValidator.isDinersClubEnrouteValidLength(pan));
         assertFalse(CreditCardValidator.isDinersClubEnrouteValidLength(
                 CreditCardValidator.toDigits(pan)));
@@ -845,7 +845,7 @@ public class CreditCardValidatorTest {
         pan = "36";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL));
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL));
         assertFalse(CreditCardValidator.isDinersClubInternationalValidLength(
                 pan));
         assertFalse(CreditCardValidator.isDinersClubInternationalValidLength(
@@ -855,14 +855,14 @@ public class CreditCardValidatorTest {
         pan = "54";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DINERS_CLUB_USA_CANADA));
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA));
         assertFalse(CreditCardValidator.isDinersClubUSACanadaValidLength(pan));
         assertFalse(CreditCardValidator.isDinersClubUSACanadaValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "55";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DINERS_CLUB_USA_CANADA));
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA));
         assertFalse(CreditCardValidator.isDinersClubUSACanadaValidLength(pan));
         assertFalse(CreditCardValidator.isDinersClubUSACanadaValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -871,119 +871,119 @@ public class CreditCardValidatorTest {
         pan = "6011";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "622126";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6223";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6224";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6225";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6226";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6227";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6228";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6229";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "62295";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "644";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "645";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "646";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "647";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "648";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "649";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "65";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.DISCOVER));
+                CreditCardNetwork.DISCOVER));
         assertFalse(CreditCardValidator.isDiscoverValidLength(pan));
         assertFalse(CreditCardValidator.isDiscoverValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -992,21 +992,21 @@ public class CreditCardValidatorTest {
         pan = "637";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.INSTAPAYMENT));
+                CreditCardNetwork.INSTAPAYMENT));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(pan));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "638";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.INSTAPAYMENT));
+                CreditCardNetwork.INSTAPAYMENT));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(pan));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "639";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.INSTAPAYMENT));
+                CreditCardNetwork.INSTAPAYMENT));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(pan));
         assertFalse(CreditCardValidator.isInstaPaymentValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1015,56 +1015,56 @@ public class CreditCardValidatorTest {
         pan = "3528";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "3538";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3548";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3558";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3568";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3578";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3588";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "3589";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.JCB));
+                CreditCardNetwork.JCB));
         assertFalse(CreditCardValidator.isJCBValidLength(pan));
         assertFalse(CreditCardValidator.isJCBValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1073,28 +1073,28 @@ public class CreditCardValidatorTest {
         pan = "6304";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.LASER));
+                CreditCardNetwork.LASER));
         assertFalse(CreditCardValidator.isLaserValidLength(pan));
         assertFalse(CreditCardValidator.isLaserValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "6706";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.LASER));
+                CreditCardNetwork.LASER));
         assertFalse(CreditCardValidator.isLaserValidLength(pan));
         assertFalse(CreditCardValidator.isLaserValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6771";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.LASER));
+                CreditCardNetwork.LASER));
         assertFalse(CreditCardValidator.isLaserValidLength(pan));
         assertFalse(CreditCardValidator.isLaserValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6709";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.LASER));
+                CreditCardNetwork.LASER));
         assertFalse(CreditCardValidator.isLaserValidLength(pan));
         assertFalse(CreditCardValidator.isLaserValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1103,63 +1103,63 @@ public class CreditCardValidatorTest {
         pan = "5018";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "5020";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "5038";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "5893";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6759";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6761";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6762";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6763";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "0604";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MAESTRO));
+                CreditCardNetwork.MAESTRO));
         assertFalse(CreditCardValidator.isMaestroValidLength(pan));
         assertFalse(CreditCardValidator.isMaestroValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1168,21 +1168,21 @@ public class CreditCardValidatorTest {
         pan = "51";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MASTERCARD));
+                CreditCardNetwork.MASTERCARD));
         assertFalse(CreditCardValidator.isMastercardValidLength(pan));
         assertFalse(CreditCardValidator.isMastercardValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "52";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MASTERCARD));
+                CreditCardNetwork.MASTERCARD));
         assertFalse(CreditCardValidator.isMastercardValidLength(pan));
         assertFalse(CreditCardValidator.isMastercardValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "53";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.MASTERCARD));
+                CreditCardNetwork.MASTERCARD));
         assertFalse(CreditCardValidator.isMastercardValidLength(pan));
         assertFalse(CreditCardValidator.isMastercardValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1191,14 +1191,14 @@ public class CreditCardValidatorTest {
         pan = "6334";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.SOLO));
+                CreditCardNetwork.SOLO));
         assertFalse(CreditCardValidator.isSoloValidLength(pan));
         assertFalse(CreditCardValidator.isSoloValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "6767";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.SOLO));
+                CreditCardNetwork.SOLO));
         assertFalse(CreditCardValidator.isSoloValidLength(pan));
         assertFalse(CreditCardValidator.isSoloValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1206,49 +1206,49 @@ public class CreditCardValidatorTest {
         pan = "4903";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "4905";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4911";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4936";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "564182";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "633110";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "6333";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan,
-                CreditCardBrand.SWITCH));
+                CreditCardNetwork.SWITCH));
         assertFalse(CreditCardValidator.isSwitchValidLength(pan));
         assertFalse(CreditCardValidator.isSwitchValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1257,70 +1257,70 @@ public class CreditCardValidatorTest {
         pan = "400";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "410";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "42";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "43";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "441";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "451";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "46";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "47";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "481";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "492";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA));
+                CreditCardNetwork.VISA));
         assertFalse(CreditCardValidator.isVISAValidLength(pan));
         assertFalse(CreditCardValidator.isVISAValidLength(
                 CreditCardValidator.toDigits(pan)));        
@@ -1329,121 +1329,147 @@ public class CreditCardValidatorTest {
         pan = "4026";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));
         pan = "417500";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4405";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4508";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4844";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4913";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
         pan = "4917";
         assertFalse(CreditCardValidator.isValidLength(pan));
         assertFalse(CreditCardValidator.isValidLength(pan, 
-                CreditCardBrand.VISA_ELECTRON));
+                CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
                 CreditCardValidator.toDigits(pan)));        
     }
     
     @Test
-    public void testIsValid(){
+    public void testIsValidAndIsValidChecksumForPAN(){
         //VISA
         String pan = "4111 1111 1111 1111";
         assertTrue(CreditCardValidator.isValid(pan));
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4111 1111 1111 1112";
         assertFalse(CreditCardValidator.isValid(pan));
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4005 5192 0000 0004";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4005 5192 0000 0005";
         assertFalse(CreditCardValidator.isValid(pan));
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4009-3488-8888-1881";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4009-3488-8888-1882";
         assertFalse(CreditCardValidator.isValid(pan));
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4012000033330026";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4012000033330027";
         assertFalse(CreditCardValidator.isValid(pan));
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4012000077777777";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4012000077777778";
         assertFalse(CreditCardValidator.isValid(pan));
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4012888888881881";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4012888888881882";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4217651111111119";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4217651111111118";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "4500600000000061";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "4500600000000062";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "5555555555554444";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "5555555555554445";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "3782 82246 310005";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "3782 82246 310006";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "371449635398431";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "371449635398432";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "6011111111111117";
         assertTrue(CreditCardValidator.isValid(pan));        
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "6011111111111118";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
         
         pan = "3530111333300000";
-        assertTrue(CreditCardValidator.isValid(pan));                
+        assertTrue(CreditCardValidator.isValid(pan));               
+        assertTrue(CreditCardValidator.isValidChecksumForPAN(pan));
         pan = "3530111333300001";
         assertFalse(CreditCardValidator.isValid(pan));        
+        assertFalse(CreditCardValidator.isValidChecksumForPAN(pan));
     }
     
     @Test
@@ -2064,915 +2090,915 @@ public class CreditCardValidatorTest {
     }
     
     @Test
-    public void testGetNumberOfGroupsForBrand(){
+    public void testGetNumberOfGroupsForNetwork(){
         //American Express
-        byte[][] groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.AMERICAN_EXPRESS);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.AMERICAN_EXPRESS), groups.length);
+        byte[][] groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.AMERICAN_EXPRESS);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.AMERICAN_EXPRESS), groups.length);
         
         //Bankcard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.BANKCARD);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.BANKCARD), groups.length);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.BANKCARD);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.BANKCARD), groups.length);
         
         //China UnionPay
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.CHINA_UNIONPAY);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.CHINA_UNIONPAY), groups.length);        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.CHINA_UNIONPAY);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.CHINA_UNIONPAY), groups.length);        
         
         //Diners Club Carte Blanche
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE), groups.length);                
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE), groups.length);                
         
         //Diners Club Enroute
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_ENROUTE);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.DINERS_CLUB_ENROUTE), groups.length);                
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE), groups.length);                
 
         //Diners Club International
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL), groups.length);                
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL), groups.length);                
 
         //Diners Club USA & Canada
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA), groups.length);                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA), groups.length);                        
         
         //Discover
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DISCOVER);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.DISCOVER), groups.length);                                
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DISCOVER);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.DISCOVER), groups.length);                                
         
         //InstaPayment
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.INSTAPAYMENT);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.INSTAPAYMENT), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.INSTAPAYMENT);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.INSTAPAYMENT), groups.length);                                        
         
         //JCB
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.JCB);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.JCB), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.JCB);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.JCB), groups.length);                                        
 
         //Laser
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.LASER);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.LASER), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.LASER);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.LASER), groups.length);                                        
 
         //Maestro
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MAESTRO);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.MAESTRO), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MAESTRO);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.MAESTRO), groups.length);                                        
 
         //Mastercard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MASTERCARD);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.MASTERCARD), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MASTERCARD);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.MASTERCARD), groups.length);                                        
 
         //Solo
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SOLO);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.SOLO), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SOLO);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.SOLO), groups.length);                                        
 
         //Switch
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SWITCH);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.SWITCH), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SWITCH);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.SWITCH), groups.length);                                        
 
         //VISA
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.VISA), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.VISA), groups.length);                                        
 
         //VISA Electron
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA_ELECTRON);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.VISA_ELECTRON), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA_ELECTRON);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.VISA_ELECTRON), groups.length);                                        
 
         //Unknown
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.UNKNOWN);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
-                CreditCardBrand.UNKNOWN), groups.length);                                        
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.UNKNOWN);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
+                CreditCardNetwork.UNKNOWN), groups.length);                                        
 
         //null
-        groups = CreditCardValidator.groupingsForBrand(null);
-        assertEquals(CreditCardValidator.getNumberOfGroupsForBrand(
+        groups = CreditCardValidator.groupingsForNetwork(null);
+        assertEquals(CreditCardValidator.getNumberOfGroupsForNetwork(
                 null), groups.length);                                                
     }
     
     @Test
-    public void testGetMinDigitsForGroupAndBrand(){
+    public void testGetMinDigitsForGroupAndNetwork(){
         //American Express
-        byte[][] groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.AMERICAN_EXPRESS);
+        byte[][] groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.AMERICAN_EXPRESS);
         int numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.AMERICAN_EXPRESS), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.AMERICAN_EXPRESS), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.AMERICAN_EXPRESS);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.AMERICAN_EXPRESS);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.AMERICAN_EXPRESS);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.AMERICAN_EXPRESS);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Bankcard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.BANKCARD);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.BANKCARD);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.BANKCARD), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.BANKCARD), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.BANKCARD);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.BANKCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.BANKCARD);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.BANKCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //China UnionPay
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.CHINA_UNIONPAY);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.CHINA_UNIONPAY);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.CHINA_UNIONPAY), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.CHINA_UNIONPAY), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.CHINA_UNIONPAY);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.CHINA_UNIONPAY);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.CHINA_UNIONPAY);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.CHINA_UNIONPAY);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Diners Club Carte Blanche
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Diners Club Enroute
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_ENROUTE);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Diners Club International
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Diners Club USA & Canada
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Discover
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DISCOVER);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DISCOVER);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DISCOVER), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DISCOVER), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DISCOVER);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DISCOVER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DISCOVER);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DISCOVER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //InstaPayment        
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.INSTAPAYMENT);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.INSTAPAYMENT);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.INSTAPAYMENT), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.INSTAPAYMENT), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.INSTAPAYMENT);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.INSTAPAYMENT);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.INSTAPAYMENT);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.INSTAPAYMENT);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //JCB
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.JCB);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.JCB);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.JCB), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.JCB), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.JCB);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.JCB);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.JCB);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.JCB);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Laser
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.LASER);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.LASER);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.LASER), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.LASER), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.LASER);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.LASER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.LASER);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.LASER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Maestro
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MAESTRO);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MAESTRO);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.MAESTRO), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.MAESTRO), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.MAESTRO);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.MAESTRO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.MAESTRO);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.MAESTRO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Mastercard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MASTERCARD);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MASTERCARD);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.MASTERCARD), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.MASTERCARD), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.MASTERCARD);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.MASTERCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.MASTERCARD);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.MASTERCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Solo
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SOLO);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SOLO);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.SOLO), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.SOLO), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.SOLO);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.SOLO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.SOLO);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.SOLO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Switch
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SWITCH);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SWITCH);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.SWITCH), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.SWITCH), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.SWITCH);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.SWITCH);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.SWITCH);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.SWITCH);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //VISA
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.VISA), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.VISA), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.VISA);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.VISA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.VISA);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.VISA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //VISA Electron
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA_ELECTRON);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA_ELECTRON);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.VISA_ELECTRON), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.VISA_ELECTRON), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.VISA_ELECTRON);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.VISA_ELECTRON);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.VISA_ELECTRON);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.VISA_ELECTRON);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Unknown
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.UNKNOWN);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.UNKNOWN);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.UNKNOWN), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.UNKNOWN), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.UNKNOWN);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.UNKNOWN);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.UNKNOWN);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.UNKNOWN);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //null
-        groups = CreditCardValidator.groupingsForBrand(null);
+        groups = CreditCardValidator.groupingsForNetwork(null);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMinDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.UNKNOWN), groups[i][0]);
+            assertEquals(CreditCardValidator.getMinDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.UNKNOWN), groups[i][0]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(-1, null);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(-1, null);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMinDigitsForGroupAndBrand(numGroups, null);
+            CreditCardValidator.getMinDigitsForGroupAndNetwork(numGroups, null);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
     }
 
     @Test
-    public void testGetMaxDigitsForGroupAndBrand(){
+    public void testGetMaxDigitsForGroupAndNetwork(){
         //American Express
-        byte[][] groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.AMERICAN_EXPRESS);
+        byte[][] groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.AMERICAN_EXPRESS);
         int numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.AMERICAN_EXPRESS), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.AMERICAN_EXPRESS), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.AMERICAN_EXPRESS);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.AMERICAN_EXPRESS);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.AMERICAN_EXPRESS);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.AMERICAN_EXPRESS);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Bankcard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.BANKCARD);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.BANKCARD);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.BANKCARD), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.BANKCARD), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.BANKCARD);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.BANKCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.BANKCARD);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.BANKCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //China UnionPay
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.CHINA_UNIONPAY);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.CHINA_UNIONPAY);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.CHINA_UNIONPAY), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.CHINA_UNIONPAY), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.CHINA_UNIONPAY);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.CHINA_UNIONPAY);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.CHINA_UNIONPAY);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.CHINA_UNIONPAY);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Diners Club Carte Blanche
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Diners Club Enroute
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_ENROUTE);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_ENROUTE);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_ENROUTE);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_ENROUTE);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Diners Club International
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_INTERNATIONAL);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_INTERNATIONAL);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Diners Club USA & Canada
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DINERS_CLUB_USA_CANADA);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DINERS_CLUB_USA_CANADA);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DINERS_CLUB_USA_CANADA);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DINERS_CLUB_USA_CANADA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Discover
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.DISCOVER);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.DISCOVER);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.DISCOVER), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.DISCOVER), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.DISCOVER);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.DISCOVER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.DISCOVER);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.DISCOVER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //InstaPayment        
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.INSTAPAYMENT);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.INSTAPAYMENT);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.INSTAPAYMENT), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.INSTAPAYMENT), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.INSTAPAYMENT);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.INSTAPAYMENT);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.INSTAPAYMENT);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.INSTAPAYMENT);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //JCB
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.JCB);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.JCB);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.JCB), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.JCB), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.JCB);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.JCB);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.JCB);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.JCB);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Laser
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.LASER);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.LASER);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.LASER), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.LASER), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.LASER);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.LASER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.LASER);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.LASER);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Maestro
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MAESTRO);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MAESTRO);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.MAESTRO), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.MAESTRO), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.MAESTRO);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.MAESTRO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.MAESTRO);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.MAESTRO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Mastercard
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.MASTERCARD);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.MASTERCARD);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.MASTERCARD), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.MASTERCARD), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.MASTERCARD);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.MASTERCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.MASTERCARD);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.MASTERCARD);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Solo
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SOLO);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SOLO);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.SOLO), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.SOLO), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.SOLO);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.SOLO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.SOLO);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.SOLO);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //Switch
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.SWITCH);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.SWITCH);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.SWITCH), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.SWITCH), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.SWITCH);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.SWITCH);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.SWITCH);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.SWITCH);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //VISA
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.VISA), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.VISA), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.VISA);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.VISA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.VISA);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.VISA);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //VISA Electron
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.VISA_ELECTRON);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.VISA_ELECTRON);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.VISA_ELECTRON), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.VISA_ELECTRON), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.VISA_ELECTRON);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.VISA_ELECTRON);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.VISA_ELECTRON);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.VISA_ELECTRON);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         
         //Unknown
-        groups = CreditCardValidator.groupingsForBrand(
-                CreditCardBrand.UNKNOWN);
+        groups = CreditCardValidator.groupingsForNetwork(
+                CreditCardNetwork.UNKNOWN);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.UNKNOWN), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.UNKNOWN), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, 
-                    CreditCardBrand.UNKNOWN);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, 
+                    CreditCardNetwork.UNKNOWN);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, 
-                    CreditCardBrand.UNKNOWN);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, 
+                    CreditCardNetwork.UNKNOWN);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
 
         //null
-        groups = CreditCardValidator.groupingsForBrand(null);
+        groups = CreditCardValidator.groupingsForNetwork(null);
         numGroups = groups.length;
         for(int i = 0; i < numGroups; i++){
-            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndBrand(i, 
-                    CreditCardBrand.UNKNOWN), groups[i][1]);
+            assertEquals(CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+                    CreditCardNetwork.UNKNOWN), groups[i][1]);
         }
         
         //Force IllegalArgumentException
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(-1, null);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(-1, null);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}
         try{
-            CreditCardValidator.getMaxDigitsForGroupAndBrand(numGroups, null);
+            CreditCardValidator.getMaxDigitsForGroupAndNetwork(numGroups, null);
             fail("IllegalArgumentException expected but not thrown");
         }catch(IllegalArgumentException e){}        
     }

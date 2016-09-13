@@ -174,6 +174,11 @@ public class ZipCodeValidator extends Validator<String> {
      * Regular expression to validate post codes in Hong Kong.
      */
     public static final String HK_ZIPCODE_REGEX = "^\\d*$";
+    
+    /**
+     * Regular expression to validate post codes in Turkey.
+     */
+    public static final String TR_ZIPCODE_REGEX = "^[0-9]{5}$";
 
     /**
      * Map that relates country codes with their respective regular expressions to validate post codes.
@@ -225,6 +230,7 @@ public class ZipCodeValidator extends Validator<String> {
         mMap.put("TW", TW_ZIPCODE_REGEX);
         mMap.put("MO", MO_ZIPCODE_REGEX);
         mMap.put("HK", HK_ZIPCODE_REGEX);
+        mMap.put("TR", TR_ZIPCODE_REGEX);
     }
 
     /**

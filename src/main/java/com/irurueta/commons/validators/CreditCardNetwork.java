@@ -18,7 +18,7 @@ package com.irurueta.commons.validators;
 /**
  * Supported credit card brands.
  */
-public enum CreditCardBrand {
+public enum CreditCardNetwork {
     /**
      * American Express.
      */

@@ -21,15 +21,15 @@ import java.util.Arrays;
  * Class to validate credit card PAN numbers.
  * PAN numbers are formed by IIN (Issuer Identification Number) followed by a 
  * series of digits + the check digit (using Luhn algorithm), if available for 
- * a given credit card brand. Notice that the first digit of the IIN corresponds
+ * a given credit card network. Notice that the first digit of the IIN corresponds
  * to a MII (Major Industry Identifier).
- * This class also provides functionality to detect brand of a given credit
+ * This class also provides functionality to detect network of a given credit
  * card PAN number.
- * Notice that brand detection and validation is not 100% accurate, hence it is
- * suggested to never prevent users from completing payments if validation does
- * not pass or brand cannot be detected. In those cases simply a warning can be
- * shown to the user indicating that payment data might be wrong.
- * Notice as well that if brand is detected and validation passes, then it is
+ * Notice that network detection and validation is not 100% accurate, hence it 
+ * is suggested to never prevent users from completing payments if validation 
+ * does not pass or network cannot be detected. In those cases simply a warning 
+ * can be shown to the user indicating that payment data might be wrong.
+ * Notice as well that if network is detected and validation passes, then it is
  * almost certain that payment data is correct.
  */
 public class CreditCardValidator {
@@ -69,7 +69,7 @@ public class CreditCardValidator {
     protected static final boolean AMEX_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether American Express brand is still being used.
+     * Constant indicating whether American Express network is still being used.
      */
     protected static final boolean AMEX_IS_ACTIVE = true;
 
@@ -108,7 +108,7 @@ public class CreditCardValidator {
     protected static final boolean BANKCARD_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Bankcard brand is still being used.
+     * Constant indicating whether Bankcard network is still being used.
      */
     protected static final boolean BANKCARD_IS_ACTIVE = false;
 
@@ -137,7 +137,7 @@ public class CreditCardValidator {
     protected static final boolean CHINA_UNIONPAY_HAS_VALIDATION = false;
     
     /**
-     * Constant indicating whether China UnionPay brand is still being used.
+     * Constant indicating whether China UnionPay network is still being used.
      */
     protected static final boolean CHINA_UNIONPAY_IS_ACTIVE = true;
 
@@ -165,7 +165,7 @@ public class CreditCardValidator {
             true;
     
     /**
-     * Constant indicating whether Diners Club Carte Blanche brand is still
+     * Constant indicating whether Diners Club Carte Blanche network is still
      * being used.
      */
     protected static final boolean DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE = true;
@@ -196,11 +196,19 @@ public class CreditCardValidator {
     protected static final boolean DINERS_CLUB_ENROUTE_HAS_VALIDATION = false;
     
     /**
-     * Constant indicating whether Diners Club enRoute brand is still being
+     * Constant indicating whether Diners Club enRoute network is still being
      * used.
      */
     protected static final boolean DINERS_CLUB_ENROUTE_IS_ACTIVE = false;
 
+    /**
+     * Constant defining digit groups for Dinners club enroute.
+     */
+    private static final byte[][] DINERS_CLUB_ENROUTE_GROUPING = new byte[][] {
+            new byte[]{4, 4},
+            new byte[]{7, 7},
+            new byte[]{4, 4} };
+    
     
     
     //Diners Club International
@@ -225,11 +233,20 @@ public class CreditCardValidator {
             true;
     
     /**
-     * Constant indicating whether Diners Club International brand is still 
+     * Constant indicating whether Diners Club International network is still 
      * being used.
      */
     protected static final boolean DINERS_CLUB_INTERATIONAL_IS_ACTIVE = true;
 
+    /**
+     * Constant defining digit groups for Dinners club internacional. This
+     * grouping is also used for DINERS_CLUB_CARTE_BLANCHE.
+     */
+    private static final byte[][] DINERS_CLUB_INTERATIONAL_GROUPING = new byte[][] {
+            new byte[]{4, 4},
+            new byte[]{6, 6},
+            new byte[]{4, 4} };
+    
     
     
     //Diners Club USA & Canada
@@ -255,7 +272,7 @@ public class CreditCardValidator {
     protected static final boolean DINERS_CLUB_USA_CA_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Diners Club USA and Canada brand is still 
+     * Constant indicating whether Diners Club USA and Canada network is still 
      * being used.
      */
     protected static final boolean DINERS_CLUB_USA_CA_IS_ACTIVE = true;
@@ -288,7 +305,7 @@ public class CreditCardValidator {
     protected static final boolean DISCOVER_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Discover brand is still being used.
+     * Constant indicating whether Discover network is still being used.
      */
     protected static final boolean DISCOVER_IS_ACTIVE = true;
 
@@ -298,7 +315,8 @@ public class CreditCardValidator {
      */
     private static final byte[][] DISCOVER_GROUPING = new byte[][] {
         new byte[]{4, 4},
-        new byte[]{6, 6},
+        new byte[]{4, 4},
+        new byte[]{4, 4},
         new byte[]{4, 4}
     };
     
@@ -326,7 +344,7 @@ public class CreditCardValidator {
     protected static final boolean INSTAPAYMENT_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether InstaPayment brand is still being used.
+     * Constant indicating whether InstaPayment network is still being used.
      */
     protected static final boolean INSTAPAYMENT_IS_ACTIVE = true;
 
@@ -355,7 +373,7 @@ public class CreditCardValidator {
     protected static final boolean JCB_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether JCB brand is still being used.
+     * Constant indicating whether JCB network is still being used.
      */
     protected static final boolean JCB_IS_ACTIVE = true;
 
@@ -387,7 +405,7 @@ public class CreditCardValidator {
     protected static final boolean LASER_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Laser brand is still being used.
+     * Constant indicating whether Laser network is still being used.
      */
     protected static final boolean LASER_IS_ACTIVE = true;
 
@@ -423,7 +441,7 @@ public class CreditCardValidator {
     protected static final boolean MAESTRO_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Maestro brand is still being used.
+     * Constant indicating whether Maestro network is still being used.
      */
     protected static final boolean MAESTRO_IS_ACTIVE = true;
 
@@ -453,7 +471,7 @@ public class CreditCardValidator {
     protected static final boolean MASTERCARD_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether MasterCard brand is still being used.
+     * Constant indicating whether MasterCard network is still being used.
      */
     protected static final boolean MASTERCARD_IS_ACTIVE = true;
     
@@ -493,7 +511,7 @@ public class CreditCardValidator {
     protected static final boolean SOLO_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Solo brand is still being used.
+     * Constant indicating whether Solo network is still being used.
      */    
     protected static final boolean SOLO_IS_ACTIVE = false;
 
@@ -530,7 +548,7 @@ public class CreditCardValidator {
     protected static final boolean SWITCH_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether Switch brand is still being used.
+     * Constant indicating whether Switch network is still being used.
      */        
     protected static final boolean SWITCH_IS_ACTIVE = false;
 
@@ -560,7 +578,7 @@ public class CreditCardValidator {
     protected static final boolean VISA_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether VISA brand is still being used.
+     * Constant indicating whether VISA network is still being used.
      */            
     protected static final boolean VISA_IS_ACTIVE = true;
 
@@ -604,7 +622,7 @@ public class CreditCardValidator {
     protected static final boolean VISA_ELECTRON_HAS_VALIDATION = true;
     
     /**
-     * Constant indicating whether VISA Electron brand is still being used.
+     * Constant indicating whether VISA Electron network is still being used.
      */                
     protected static final boolean VISA_ELECTRON_IS_ACTIVE = true;    
 
@@ -619,7 +637,7 @@ public class CreditCardValidator {
     };
 
     /**
-     * Constant defining digit groups for any other brand or unknown brands.
+     * Constant defining digit groups for any other network or unknown networks.
      */
     private static final byte[][] DEFAULT_GROUPING = new byte[][] {
         new byte[]{4, 4},
@@ -661,17 +679,17 @@ public class CreditCardValidator {
     }
     
     /**
-     * Indicates if a given credit card brand uses Luhn algorithm to validate 
-     * PAN values. For unknown brands validation is assumed to be disabled.
-     * @param brand a credit card brand.
-     * @return true if provided brand uses PAN validation, false otherwise.
+     * Indicates if a given credit card network uses Luhn algorithm to validate 
+     * PAN values. For unknown networks validation is assumed to be disabled.
+     * @param network a credit card network.
+     * @return true if provided network uses PAN validation, false otherwise.
      */
-    public static boolean isValidationEnabledForBrand(CreditCardBrand brand) {
-        if (brand == null) {
+    public static boolean isValidationEnabledForNetwork(CreditCardNetwork network) {
+        if (network == null) {
             return false;
         }
         
-        switch (brand) {
+        switch (network) {
             case AMERICAN_EXPRESS:
                 return AMEX_HAS_VALIDATION;
             case BANKCARD:
@@ -713,17 +731,18 @@ public class CreditCardValidator {
     }
     
     /**
-     * Indicates if provided credit card brand is still being used commercially.
-     * Unknown brands are assumed to be active.
-     * @param brand a credit card brand.
-     * @return true if provided brand is still being used, false otherwise.
+     * Indicates if provided credit card network is still being used 
+     * commercially.
+     * Unknown networks are assumed to be active.
+     * @param network a credit card network.
+     * @return true if provided network is still being used, false otherwise.
      */
-    public static boolean isBrandActive(CreditCardBrand brand) {
-        if (brand == null) {
+    public static boolean isNetworkActive(CreditCardNetwork network) {
+        if (network == null) {
             return true;
         }
         
-        switch (brand) {
+        switch (network) {
             case AMERICAN_EXPRESS:
                 return AMEX_IS_ACTIVE;
             case BANKCARD:
@@ -765,86 +784,86 @@ public class CreditCardValidator {
     }
     
     /**
-     * Detects credit card brand by using provided credit card PAN value.
+     * Detects credit card network by using provided credit card PAN value.
      * Detection is done by checking all known registered credit card IINs 
      * (Issuer Identification Number) against provided PAN until a match is 
      * found.
      * @param pan a credit card PAN number.
-     * @return detected credit card brand.
+     * @return detected credit card network.
      */
-    public static CreditCardBrand detectBrandFromPAN(String pan) {
-        return detectBrandFromPAN(toDigits(pan));
+    public static CreditCardNetwork detectNetworkFromPAN(String pan) {
+        return detectNetworkFromPAN(toDigits(pan));
     }
     
     /**
-     * Detects credit card brand by using provided credit card PAN digits.
+     * Detects credit card network by using provided credit card PAN digits.
      * Detection is done by checking all known registered credit card IINs
      * (Issuer Identification Number) agains provided PAN digits until a match
      * is found.
      * @param panDigits an array containing a credit card PAN digits.
-     * @return detected credit card brand.
+     * @return detected credit card network.
      */
-    protected static CreditCardBrand detectBrandFromPAN(byte[] panDigits) {
+    protected static CreditCardNetwork detectNetworkFromPAN(byte[] panDigits) {
         if (isAmericanExpressIIN(panDigits)) {
-            return CreditCardBrand.AMERICAN_EXPRESS;
+            return CreditCardNetwork.AMERICAN_EXPRESS;
         }
         if (isBankcardIIN(panDigits)) {
-            return CreditCardBrand.BANKCARD;
+            return CreditCardNetwork.BANKCARD;
         }
         if (isDinersClubCarteBlancheIIN(panDigits)) {
-            return CreditCardBrand.DINERS_CLUB_CARTE_BLANCHE;
+            return CreditCardNetwork.DINERS_CLUB_CARTE_BLANCHE;
         }
         if (isDinersClubEnrouteIIN(panDigits)) {
-            return CreditCardBrand.DINERS_CLUB_ENROUTE;
+            return CreditCardNetwork.DINERS_CLUB_ENROUTE;
         }
         if (isDinersClubInternationalIIN(panDigits)) {
-            return CreditCardBrand.DINERS_CLUB_INTERNATIONAL;
+            return CreditCardNetwork.DINERS_CLUB_INTERNATIONAL;
         }
         if (isDinersClubUSACanadaIIN(panDigits)) {
-            return CreditCardBrand.DINERS_CLUB_USA_CANADA;
+            return CreditCardNetwork.DINERS_CLUB_USA_CANADA;
         }
         if (isDiscoverIIN(panDigits)) {
-            return CreditCardBrand.DISCOVER;
+            return CreditCardNetwork.DISCOVER;
             //Discover lies within China UnionPay range, so we check it first
         }
         if (isChinaUnionPayIIN(panDigits)) {
-            return CreditCardBrand.CHINA_UNIONPAY;        
+            return CreditCardNetwork.CHINA_UNIONPAY;        
         }
         if (isInstaPaymentIIN(panDigits)) {
-            return CreditCardBrand.INSTAPAYMENT;
+            return CreditCardNetwork.INSTAPAYMENT;
         }
         if (isJCBIIN(panDigits)) {
-            return CreditCardBrand.JCB;
+            return CreditCardNetwork.JCB;
         }
         if (isLaserIIN(panDigits)) {
-            return CreditCardBrand.LASER;
+            return CreditCardNetwork.LASER;
         }
         if (isMaestroIIN(panDigits)) {
-            return CreditCardBrand.MAESTRO;
+            return CreditCardNetwork.MAESTRO;
         }
         if (isMastercardIIN(panDigits)) {
-            return CreditCardBrand.MASTERCARD;
+            return CreditCardNetwork.MASTERCARD;
         }
         if (isSoloIIN(panDigits)) {
-            return CreditCardBrand.SOLO;
+            return CreditCardNetwork.SOLO;
         }
         if (isSwitchIIN(panDigits)) {
-            return CreditCardBrand.SWITCH;
+            return CreditCardNetwork.SWITCH;
             //VISA Electron is contained within VISA IIN, so we check it first
         }
         if (isVISAElectronIIN(panDigits)) {
-            return CreditCardBrand.VISA_ELECTRON; 
+            return CreditCardNetwork.VISA_ELECTRON; 
         }
         if (isVISAIIN(panDigits)) {
-            return CreditCardBrand.VISA;
+            return CreditCardNetwork.VISA;
         }
-        return CreditCardBrand.UNKNOWN;
+        return CreditCardNetwork.UNKNOWN;
     }
     
     /**
-     * Detects brand for provided PAN and indicates if provided credit card
-     * PAN has an appropriate length for provided credit card brand.
-     * @param pan a credit card brand.
+     * Detects network for provided PAN and indicates if provided credit card
+     * PAN has an appropriate length for provided credit card network.
+     * @param pan a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
     public static boolean isValidLength(String pan) {
@@ -852,40 +871,40 @@ public class CreditCardValidator {
     }
     
     /**
-     * Detects brand for provided PAN digits and indicates if provided array
+     * Detects network for provided PAN digits and indicates if provided array
      * of credit card PAN digits has an appropriate length for provided credit 
-     * card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * card network.
+     * PAN for unknown network is assumed to always have a valid length.
      * @param panDigits an array of credit card PAN digits.
      * @return true if PAN has a valid length, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits) {
-        return isValidLength(panDigits, detectBrandFromPAN(panDigits));
+        return isValidLength(panDigits, detectNetworkFromPAN(panDigits));
     }
     
     /**
      * Indicates if provided credit card PAN has an appropriate length for
-     * provided credit card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * provided credit card network.
+     * PAN for unknown network is assumed to always have a valid length.
      * @param pan a credit card PAN.
-     * @param brand a credit card brand.
+     * @param network a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
-    public static boolean isValidLength(String pan, CreditCardBrand brand) {
-        return isValidLength(toDigits(pan), brand);
+    public static boolean isValidLength(String pan, CreditCardNetwork network) {
+        return isValidLength(toDigits(pan), network);
     }
     
     /**
      * Indicates if provided array of credit card PAN digits has an appropriate
-     * length for provided credit card brand.
-     * PAN for unknown brand is assumed to always have a valid length.
+     * length for provided credit card network.
+     * PAN for unknown networks is assumed to always have a valid length.
      * @param panDigits an array of credit card PAN digits.
-     * @param brand a credit card brand.
+     * @param network a credit card network.
      * @return true if PAN has a valid length, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits, 
-            CreditCardBrand brand) {
-        switch (brand) {
+            CreditCardNetwork network) {
+        switch (network) {
             case AMERICAN_EXPRESS:
                 return isAmericanExpressValidLength(panDigits);
             case BANKCARD:
@@ -928,8 +947,8 @@ public class CreditCardValidator {
     
     /**
      * Indicates if provided credit card PAN is valid by detecting its assigned
-     * credit card brand, checking its length and validating its checksum if
-     * brand supports validation.
+     * credit card network, checking its length and validating its checksum if
+     * network supports validation.
      * @param pan a credit card pan.
      * @return true if credit card PAN appears to be valid, false otherwise.
      */
@@ -939,15 +958,15 @@ public class CreditCardValidator {
     
     /**
      * Indicates if provided credit card PAN is valid by detecting its assigned
-     * credit card brand, checking its length and validating its checksum if
-     * brand supports validation.
+     * credit card network, checking its length and validating its checksum if
+     * network supports validation.
      * @param panDigits an array containing credit card pan digits.
      * @return true if credit card PAN appears to be valid, false otherwise.
      */
     protected static boolean isValid(byte[] panDigits) {
-        CreditCardBrand brand = detectBrandFromPAN(panDigits);
-        boolean valid = isValidLength(panDigits, brand);
-        if (valid && isValidationEnabledForBrand(brand)) {
+        CreditCardNetwork network = detectNetworkFromPAN(panDigits);
+        boolean valid = isValidLength(panDigits, network);
+        if (valid && isValidationEnabledForNetwork(network)) {
             valid = isValidChecksumForPAN(panDigits);
         }
         return valid;
@@ -1948,16 +1967,16 @@ public class CreditCardValidator {
     }
     
     /**
-     * Returns credit card digit groupings for provided credit card brand.
-     * @param brand a credit card brand.
+     * Returns credit card digit groupings for provided credit card network.
+     * @param network a credit card network.
      * @return digit groupings.
      */
-    protected static byte[][] groupingsForBrand(CreditCardBrand brand) {
-        if (brand == null) {
+    protected static byte[][] groupingsForNetwork(CreditCardNetwork network) {
+        if (network == null) {
             return DEFAULT_GROUPING;
         }
         
-        switch (brand) {
+        switch (network) {
             case AMERICAN_EXPRESS:
                 return AMEX_GROUPING;
             case VISA:
@@ -1966,9 +1985,11 @@ public class CreditCardValidator {
                 return VISA_ELECTRON_GROUPING;
             case MASTERCARD:
                 return MASTERCARD_GROUPING;
-            case DINERS_CLUB_CARTE_BLANCHE:
-            case DINERS_CLUB_ENROUTE:
             case DINERS_CLUB_INTERNATIONAL:
+            case DINERS_CLUB_CARTE_BLANCHE:
+                return DINERS_CLUB_INTERATIONAL_GROUPING;
+            case DINERS_CLUB_ENROUTE:
+                return DINERS_CLUB_ENROUTE_GROUPING;
             case DINERS_CLUB_USA_CANADA:
             case DISCOVER:
                 return DISCOVER_GROUPING;
@@ -1978,12 +1999,12 @@ public class CreditCardValidator {
     }
     
     /**
-     * Returns number of digit groups for provided credit card brand.
-     * @param brand a credit card brand.
-     * @return number of digit groups for provided credit card brand.
+     * Returns number of digit groups for provided credit card network.
+     * @param network a credit card network.
+     * @return number of digit groups for provided credit card network.
      */
-    public static int getNumberOfGroupsForBrand(CreditCardBrand brand) {
-        byte[][] groups = groupingsForBrand(brand);
+    public static int getNumberOfGroupsForNetwork(CreditCardNetwork network) {
+        byte[][] groups = groupingsForNetwork(network);
         return groups.length;
     }
     
@@ -1991,18 +2012,18 @@ public class CreditCardValidator {
      * Returns minimum number of required digits for provided group position
      * (starting at zero until the maximum number of groups minus one).
      * @param groupPos position of group of digits.
-     * @param brand credit card brand.
+     * @param network credit card network.
      * @return minimum number of required digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
-     * maximum number of groups minus one for provided credit card brand.
+ maximum number of groups minus one for provided credit card network.
      */
-    public static int getMinDigitsForGroupAndBrand(int groupPos, 
-            CreditCardBrand brand) throws IllegalArgumentException {
+    public static int getMinDigitsForGroupAndNetwork(int groupPos, 
+            CreditCardNetwork network) throws IllegalArgumentException {
         if (groupPos < 0) {
             throw new IllegalArgumentException();
         }
         
-        byte[][] groups = groupingsForBrand(brand);
+        byte[][] groups = groupingsForNetwork(network);
         int numGroups = groups.length;
         if (groupPos >= numGroups) {
             throw new IllegalArgumentException();
@@ -2015,18 +2036,18 @@ public class CreditCardValidator {
      * Returns maximum number of allowed digits for provided group position
      * (starting at zero until the maximum number of groups minus one).
      * @param groupPos position of group of digits.
-     * @param brand credit card brand.
+     * @param network credit card network.
      * @return maximum number of allowed digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
-     * maximum number of groups minus one for provided credit card brand.
+ maximum number of groups minus one for provided credit card network.
      */
-    public static int getMaxDigitsForGroupAndBrand(int groupPos,
-            CreditCardBrand brand) throws IllegalArgumentException {
+    public static int getMaxDigitsForGroupAndNetwork(int groupPos,
+            CreditCardNetwork network) throws IllegalArgumentException {
         if (groupPos < 0) {
             throw new IllegalArgumentException();
         }
         
-        byte[][] groups = groupingsForBrand(brand);
+        byte[][] groups = groupingsForNetwork(network);
         int numGroups = groups.length;
         if (groupPos >= numGroups) {
             throw new IllegalArgumentException();

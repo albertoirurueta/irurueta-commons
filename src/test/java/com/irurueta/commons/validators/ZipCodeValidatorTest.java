@@ -383,6 +383,16 @@ public class ZipCodeValidatorTest {
         //invalid post code for Hong Kong
         assertFalse(validator.isValid("invalid"));
 
+        
+        //Turkey
+        validator.setCountryCode("TR");
+        
+        //valid post code for Turkey
+        assertTrue(validator.isValid("12345"));
+        
+        //invalid post code for Turkey
+        assertFalse(validator.isValid("invalid"));
+        
 
         //Australia
         validator.setCountryCode("AU");
