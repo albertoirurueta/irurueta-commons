@@ -28,7 +28,7 @@ public class DistanceConverterTest {
     /**
      * Number of meters in 1 milimeter
      */
-    public static final double METERS_PER_MILIMETER = 0.001;
+    public static final double METERS_PER_MILLIMETER = 0.001;
     
     /**
      * Number of meters in 1 centimeter
@@ -86,10 +86,10 @@ public class DistanceConverterTest {
     public void testMetersMilimeters(){
         double inputValue = new Random().nextDouble();
         
-        assertEquals(DistanceConverter.meterToMilimeter(inputValue), 
-                inputValue / METERS_PER_MILIMETER, ERROR);
-        assertEquals(DistanceConverter.milimeterToMeter(inputValue),
-                inputValue * METERS_PER_MILIMETER, ERROR);
+        assertEquals(DistanceConverter.meterToMillimeter(inputValue),
+                inputValue / METERS_PER_MILLIMETER, ERROR);
+        assertEquals(DistanceConverter.millimeterToMeter(inputValue),
+                inputValue * METERS_PER_MILLIMETER, ERROR);
     }
     
     @Test
@@ -157,39 +157,39 @@ public class DistanceConverterTest {
         double inputValue = new Random().nextDouble();
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.MILIMETER), 
+                DistanceUnit.MILLIMETER, DistanceUnit.MILLIMETER),
                 inputValue, ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
-                DistanceUnit.MILIMETER, DistanceUnit.CENTIMETER),
+                DistanceUnit.MILLIMETER, DistanceUnit.CENTIMETER),
                 DistanceConverter.meterToCentimeter(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.METER),
-                DistanceConverter.milimeterToMeter(inputValue), ERROR);
+                DistanceUnit.MILLIMETER, DistanceUnit.METER),
+                DistanceConverter.millimeterToMeter(inputValue), ERROR);
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.KILOMETER),
+                DistanceUnit.MILLIMETER, DistanceUnit.KILOMETER),
                 DistanceConverter.meterToKilometer(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.INCH),
+                DistanceUnit.MILLIMETER, DistanceUnit.INCH),
                 DistanceConverter.meterToInch(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
-                DistanceUnit.MILIMETER, DistanceUnit.FOOT),
+                DistanceUnit.MILLIMETER, DistanceUnit.FOOT),
                 DistanceConverter.meterToFoot(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.YARD),
+                DistanceUnit.MILLIMETER, DistanceUnit.YARD),
                 DistanceConverter.meterToYard(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILIMETER, DistanceUnit.MILE),
+                DistanceUnit.MILLIMETER, DistanceUnit.MILE),
                 DistanceConverter.meterToMile(
-                DistanceConverter.milimeterToMeter(inputValue)), ERROR);
+                DistanceConverter.millimeterToMeter(inputValue)), ERROR);
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.CENTIMETER, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.CENTIMETER, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.centimeterToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.CENTIMETER, DistanceUnit.CENTIMETER),
@@ -219,8 +219,8 @@ public class DistanceConverterTest {
                 DistanceConverter.centimeterToMeter(inputValue)), ERROR);        
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.METER, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(inputValue), ERROR);
+                DistanceUnit.METER, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(inputValue), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.METER, DistanceUnit.CENTIMETER),
                 DistanceConverter.meterToCentimeter(inputValue), ERROR);
@@ -244,8 +244,8 @@ public class DistanceConverterTest {
                 DistanceConverter.meterToMile(inputValue), ERROR);  
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.KILOMETER, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.KILOMETER, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.kilometerToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.KILOMETER, DistanceUnit.CENTIMETER),
@@ -275,8 +275,8 @@ public class DistanceConverterTest {
                 DistanceConverter.kilometerToMeter(inputValue)), ERROR);                
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.INCH, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.INCH, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.inchToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.INCH, DistanceUnit.CENTIMETER),
@@ -306,8 +306,8 @@ public class DistanceConverterTest {
                 DistanceConverter.inchToMeter(inputValue)), ERROR);                        
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.FOOT, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.FOOT, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.footToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.FOOT, DistanceUnit.CENTIMETER),
@@ -337,8 +337,8 @@ public class DistanceConverterTest {
                 DistanceConverter.footToMeter(inputValue)), ERROR);                                
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.YARD, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.YARD, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.yardToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.YARD, DistanceUnit.CENTIMETER),
@@ -368,8 +368,8 @@ public class DistanceConverterTest {
                 DistanceConverter.yardToMeter(inputValue)), ERROR);                                        
         
         assertEquals(DistanceConverter.convert(inputValue, 
-                DistanceUnit.MILE, DistanceUnit.MILIMETER), 
-                DistanceConverter.meterToMilimeter(
+                DistanceUnit.MILE, DistanceUnit.MILLIMETER),
+                DistanceConverter.meterToMillimeter(
                 DistanceConverter.mileToMeter(inputValue)), ERROR);
         assertEquals(DistanceConverter.convert(inputValue,
                 DistanceUnit.MILE, DistanceUnit.CENTIMETER),

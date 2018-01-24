@@ -20,9 +20,9 @@ package com.irurueta.commons.units;
  */
 public enum DistanceUnit {
     /**
-     * Milimeter distance unit.
+     * Millimeter distance unit.
      */
-    MILIMETER,
+    MILLIMETER,
     
     /**
      * Centimeter distance unit.
@@ -73,7 +73,7 @@ public enum DistanceUnit {
         }
 
         switch (unit) {
-            case MILIMETER:
+            case MILLIMETER:
             case CENTIMETER:
             case METER:
             case KILOMETER:

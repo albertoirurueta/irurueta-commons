@@ -28,9 +28,9 @@ public class DistanceFormatter extends
         MeasureFormatter<Distance, DistanceUnit> implements Cloneable {
     
     /**
-     * Milimeter symbol.
+     * Millimeter symbol.
      */
-    public static final String MILIMETER = "mm";
+    public static final String MILLIMETER = "mm";
     
     /**
      * Centimeter symbol.
@@ -284,10 +284,10 @@ public class DistanceFormatter extends
         double v = value.doubleValue();
         
         double milimeters = DistanceConverter.convert(v, unit, 
-                DistanceUnit.MILIMETER);
+                DistanceUnit.MILLIMETER);
         if (Math.abs(milimeters) < (DistanceConverter.METERS_PER_CENTIMETER / 
-                DistanceConverter.METERS_PER_MILIMETER)) {
-            return format(milimeters, DistanceUnit.MILIMETER);
+                DistanceConverter.METERS_PER_MILLIMETER)) {
+            return format(milimeters, DistanceUnit.MILLIMETER);
         }
         
         double centimeters = DistanceConverter.convert(v, unit, 
@@ -349,8 +349,8 @@ public class DistanceFormatter extends
      */
     @Override
     protected DistanceUnit findUnit(String source) {
-        if (source.contains(MILIMETER + " ") || source.endsWith(MILIMETER)) {
-            return DistanceUnit.MILIMETER;
+        if (source.contains(MILLIMETER + " ") || source.endsWith(MILLIMETER)) {
+            return DistanceUnit.MILLIMETER;
         }
         if (source.contains(CENTIMETER + " ") || source.endsWith(CENTIMETER)) {
             return DistanceUnit.CENTIMETER;
@@ -386,8 +386,8 @@ public class DistanceFormatter extends
     protected String getUnitSymbol(DistanceUnit unit) {
         String unitStr;
         switch (unit) {
-            case MILIMETER:
-                unitStr = MILIMETER;
+            case MILLIMETER:
+                unitStr = MILLIMETER;
                 break;
             case CENTIMETER:
                 unitStr = CENTIMETER;

@@ -136,7 +136,7 @@ public class DistanceFormatterTest {
         DistanceFormatter formatter = DistanceFormatter.getInstance(l);
         
         assertEquals(formatter.format(new BigDecimal(value), 
-                DistanceUnit.MILIMETER), "5,5 mm");
+                DistanceUnit.MILLIMETER), "5,5 mm");
         assertEquals(formatter.format(new BigDecimal(value), 
                 DistanceUnit.CENTIMETER), "5,5 cm");
         assertEquals(formatter.format(new BigDecimal(value), 
@@ -155,7 +155,7 @@ public class DistanceFormatterTest {
         
         StringBuffer buffer = new StringBuffer();
         assertEquals(formatter.format(new BigDecimal(value), 
-                DistanceUnit.MILIMETER, buffer, 
+                DistanceUnit.MILLIMETER, buffer,
                 new FieldPosition(0)).toString(), "5,5 mm");
         
         buffer = new StringBuffer();
@@ -193,7 +193,7 @@ public class DistanceFormatterTest {
                 DistanceUnit.MILE, buffer, 
                 new FieldPosition(0)).toString(), "5,5 mi");        
         
-        assertEquals(formatter.format(value, DistanceUnit.MILIMETER), 
+        assertEquals(formatter.format(value, DistanceUnit.MILLIMETER),
                 "5,5 mm");
         assertEquals(formatter.format(value, DistanceUnit.CENTIMETER), 
                 "5,5 cm");
@@ -212,7 +212,7 @@ public class DistanceFormatterTest {
         
         
         buffer = new StringBuffer();
-        assertEquals(formatter.format(value, DistanceUnit.MILIMETER, buffer, 
+        assertEquals(formatter.format(value, DistanceUnit.MILLIMETER, buffer,
                 new FieldPosition(0)).toString(), "5,5 mm");
         
         buffer = new StringBuffer();
@@ -244,7 +244,7 @@ public class DistanceFormatterTest {
                 new FieldPosition(0)).toString(), "5,5 mi");   
         
         assertEquals(formatter.format(
-                new Distance(value, DistanceUnit.MILIMETER)), "5,5 mm");
+                new Distance(value, DistanceUnit.MILLIMETER)), "5,5 mm");
         assertEquals(formatter.format(
                 new Distance(value, DistanceUnit.CENTIMETER)), "5,5 cm");
         assertEquals(formatter.format(
@@ -262,7 +262,7 @@ public class DistanceFormatterTest {
         
         buffer = new StringBuffer();
         assertEquals(formatter.format(
-                new Distance(value, DistanceUnit.MILIMETER), buffer, 
+                new Distance(value, DistanceUnit.MILLIMETER), buffer,
                 new FieldPosition(0)).toString(), "5,5 mm");
         
         buffer = new StringBuffer();
@@ -310,13 +310,13 @@ public class DistanceFormatterTest {
         formatter.setMaximumFractionDigits(2);
 
         assertEquals(formatter.formatAndConvert(new BigDecimal(5.50), 
-                DistanceUnit.MILIMETER), "5,5 mm");        
+                DistanceUnit.MILLIMETER), "5,5 mm");
         assertEquals(formatter.formatAndConvert(new BigDecimal(50.50), 
-                DistanceUnit.MILIMETER), "5,05 cm");
+                DistanceUnit.MILLIMETER), "5,05 cm");
         assertEquals(formatter.formatAndConvert(new BigDecimal(5000.50), 
-                DistanceUnit.MILIMETER), "5 m");
+                DistanceUnit.MILLIMETER), "5 m");
         assertEquals(formatter.formatAndConvert(new BigDecimal(5000000.50),
-                DistanceUnit.MILIMETER), "5 Km");
+                DistanceUnit.MILLIMETER), "5 Km");
         
         assertEquals(formatter.formatAndConvert(new BigDecimal(1.0), 
                 DistanceUnit.INCH), "2,54 cm");
@@ -328,13 +328,13 @@ public class DistanceFormatterTest {
                 DistanceUnit.MILE), "1,61 Km");
         
         assertEquals(formatter.formatAndConvert(5.50, 
-                DistanceUnit.MILIMETER), "5,5 mm");        
+                DistanceUnit.MILLIMETER), "5,5 mm");
         assertEquals(formatter.formatAndConvert(50.50, 
-                DistanceUnit.MILIMETER), "5,05 cm");
+                DistanceUnit.MILLIMETER), "5,05 cm");
         assertEquals(formatter.formatAndConvert(5000.50, 
-                DistanceUnit.MILIMETER), "5 m");
+                DistanceUnit.MILLIMETER), "5 m");
         assertEquals(formatter.formatAndConvert(5000000.50,
-                DistanceUnit.MILIMETER), "5 Km");
+                DistanceUnit.MILLIMETER), "5 Km");
         
         assertEquals(formatter.formatAndConvert(1.0, 
                 DistanceUnit.INCH), "2,54 cm");
@@ -346,13 +346,13 @@ public class DistanceFormatterTest {
                 DistanceUnit.MILE), "1,61 Km");
 
         assertEquals(formatter.formatAndConvert(new Distance(5.50, 
-                DistanceUnit.MILIMETER)), "5,5 mm");        
+                DistanceUnit.MILLIMETER)), "5,5 mm");
         assertEquals(formatter.formatAndConvert(new Distance(50.50, 
-                DistanceUnit.MILIMETER)), "5,05 cm");
+                DistanceUnit.MILLIMETER)), "5,05 cm");
         assertEquals(formatter.formatAndConvert(new Distance(5000.50, 
-                DistanceUnit.MILIMETER)), "5 m");
+                DistanceUnit.MILLIMETER)), "5 m");
         assertEquals(formatter.formatAndConvert(new Distance(5000000.50,
-                DistanceUnit.MILIMETER)), "5 Km");
+                DistanceUnit.MILLIMETER)), "5 Km");
         
         assertEquals(formatter.formatAndConvert(new Distance(1.0, 
                 DistanceUnit.INCH)), "2,54 cm");
@@ -365,13 +365,13 @@ public class DistanceFormatterTest {
 
         
         assertEquals(formatter.formatAndConvert(new BigDecimal(5.50), 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5,5 mm");        
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5,5 mm");
         assertEquals(formatter.formatAndConvert(new BigDecimal(50.50), 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5,05 cm");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5,05 cm");
         assertEquals(formatter.formatAndConvert(new BigDecimal(5000.50), 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5 m");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5 m");
         assertEquals(formatter.formatAndConvert(new BigDecimal(5000000.50),
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5 Km");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5 Km");
         
         assertEquals(formatter.formatAndConvert(new BigDecimal(1.0), 
                 DistanceUnit.INCH, UnitSystem.IMPERIAL), "1 in");
@@ -383,13 +383,13 @@ public class DistanceFormatterTest {
                 DistanceUnit.MILE, UnitSystem.IMPERIAL), "1 mi");
         
         assertEquals(formatter.formatAndConvert(5.50, 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5,5 mm");        
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5,5 mm");
         assertEquals(formatter.formatAndConvert(50.50, 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5,05 cm");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5,05 cm");
         assertEquals(formatter.formatAndConvert(5000.50, 
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5 m");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5 m");
         assertEquals(formatter.formatAndConvert(5000000.50,
-                DistanceUnit.MILIMETER, UnitSystem.METRIC), "5 Km");
+                DistanceUnit.MILLIMETER, UnitSystem.METRIC), "5 Km");
         
         assertEquals(formatter.formatAndConvert(1.0, 
                 DistanceUnit.INCH, UnitSystem.IMPERIAL), "1 in");
@@ -401,13 +401,13 @@ public class DistanceFormatterTest {
                 DistanceUnit.MILE, UnitSystem.IMPERIAL), "1 mi");
 
         assertEquals(formatter.formatAndConvert(new Distance(5.50, 
-                DistanceUnit.MILIMETER), UnitSystem.METRIC), "5,5 mm");        
+                DistanceUnit.MILLIMETER), UnitSystem.METRIC), "5,5 mm");
         assertEquals(formatter.formatAndConvert(new Distance(50.50, 
-                DistanceUnit.MILIMETER), UnitSystem.METRIC), "5,05 cm");
+                DistanceUnit.MILLIMETER), UnitSystem.METRIC), "5,05 cm");
         assertEquals(formatter.formatAndConvert(new Distance(5000.50, 
-                DistanceUnit.MILIMETER), UnitSystem.METRIC), "5 m");
+                DistanceUnit.MILLIMETER), UnitSystem.METRIC), "5 m");
         assertEquals(formatter.formatAndConvert(new Distance(5000000.50,
-                DistanceUnit.MILIMETER), UnitSystem.METRIC), "5 Km");
+                DistanceUnit.MILLIMETER), UnitSystem.METRIC), "5 Km");
         
         assertEquals(formatter.formatAndConvert(new Distance(1.0, 
                 DistanceUnit.INCH), UnitSystem.IMPERIAL), "1 in");
@@ -462,13 +462,13 @@ public class DistanceFormatterTest {
         formatter.setMaximumFractionDigits(2);
 
         assertEquals(formatter.formatAndConvertMetric(new BigDecimal(5.50), 
-                DistanceUnit.MILIMETER), "5,5 mm");        
+                DistanceUnit.MILLIMETER), "5,5 mm");
         assertEquals(formatter.formatAndConvertMetric(new BigDecimal(50.50), 
-                DistanceUnit.MILIMETER), "5,05 cm");
+                DistanceUnit.MILLIMETER), "5,05 cm");
         assertEquals(formatter.formatAndConvertMetric(new BigDecimal(5000.50), 
-                DistanceUnit.MILIMETER), "5 m");
+                DistanceUnit.MILLIMETER), "5 m");
         assertEquals(formatter.formatAndConvertMetric(new BigDecimal(5000000.50),
-                DistanceUnit.MILIMETER), "5 Km");
+                DistanceUnit.MILLIMETER), "5 Km");
         
         assertEquals(formatter.formatAndConvertMetric(new BigDecimal(1.0), 
                 DistanceUnit.INCH), "2,54 cm");
@@ -642,7 +642,7 @@ public class DistanceFormatterTest {
         String text = "5,5 mm";        
         Distance d = formatter.parse(text);
         assertEquals(d.getValue().doubleValue(), 5.5, 0.0);
-        assertEquals(d.getUnit(), DistanceUnit.MILIMETER);
+        assertEquals(d.getUnit(), DistanceUnit.MILLIMETER);
         
         text = "5,5 cm";
         d = formatter.parse(text);

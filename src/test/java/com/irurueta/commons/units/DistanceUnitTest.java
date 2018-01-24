@@ -40,7 +40,7 @@ public class DistanceUnitTest {
     
     @Test
     public void testGetUnitSystem(){
-        assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.MILIMETER), 
+        assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.MILLIMETER),
                 UnitSystem.METRIC);
         assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.CENTIMETER),
                 UnitSystem.METRIC);
@@ -66,7 +66,7 @@ public class DistanceUnitTest {
     
     @Test
     public void testIsMetric(){
-        assertTrue(DistanceUnit.isMetric(DistanceUnit.MILIMETER));
+        assertTrue(DistanceUnit.isMetric(DistanceUnit.MILLIMETER));
         assertTrue(DistanceUnit.isMetric(DistanceUnit.CENTIMETER));
         assertTrue(DistanceUnit.isMetric(DistanceUnit.METER));
         assertTrue(DistanceUnit.isMetric(DistanceUnit.KILOMETER));
@@ -84,7 +84,7 @@ public class DistanceUnitTest {
     
     @Test
     public void testIsImperial(){
-        assertFalse(DistanceUnit.isImperial(DistanceUnit.MILIMETER));
+        assertFalse(DistanceUnit.isImperial(DistanceUnit.MILLIMETER));
         assertFalse(DistanceUnit.isImperial(DistanceUnit.CENTIMETER));
         assertFalse(DistanceUnit.isImperial(DistanceUnit.METER));
         assertFalse(DistanceUnit.isImperial(DistanceUnit.KILOMETER));

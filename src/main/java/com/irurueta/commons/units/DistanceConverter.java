@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +21,9 @@ package com.irurueta.commons.units;
 public class DistanceConverter {
     
     /**
-     * Number of meters in 1 milimeter.
+     * Number of meters in 1 millimeter.
      */
-    public static final double METERS_PER_MILIMETER = 0.001;
+    public static final double METERS_PER_MILLIMETER = 0.001;
     
     /**
      * Number of meters in 1 centimeter.
@@ -58,7 +58,7 @@ public class DistanceConverter {
     /**
      * Constructor.
      */
-    protected DistanceConverter() { }
+    DistanceConverter() { }
     
     /**
      * Converts a distance value from input unit to provided output unit.
@@ -73,8 +73,8 @@ public class DistanceConverter {
         
         //convert to meters
         switch (inputUnit) {
-            case MILIMETER:
-                meters = milimeterToMeter(input);
+            case MILLIMETER:
+                meters = millimeterToMeter(input);
                 break;
             case CENTIMETER:
                 meters = centimeterToMeter(input);
@@ -103,8 +103,8 @@ public class DistanceConverter {
         
         //convert from meter to required output unit
         switch (outputUnit) {
-            case MILIMETER:
-                return meterToMilimeter(meters);
+            case MILLIMETER:
+                return meterToMillimeter(meters);
             case CENTIMETER:
                 return meterToCentimeter(meters);
             case KILOMETER:
@@ -130,17 +130,17 @@ public class DistanceConverter {
      * @param meter meter value.
      * @return same distance converted to milimeters.
      */
-    public static double meterToMilimeter(double meter) {
-        return meter / METERS_PER_MILIMETER;
+    public static double meterToMillimeter(double meter) {
+        return meter / METERS_PER_MILLIMETER;
     }
     
     /**
      * Converts provided milimeter value to meters.
-     * @param milimeter milimeter value.
+     * @param millimeter milimeter value.
      * @return same distance conterted to meters.
      */
-    public static double milimeterToMeter(double milimeter) {
-        return milimeter * METERS_PER_MILIMETER;
+    public static double millimeterToMeter(double millimeter) {
+        return millimeter * METERS_PER_MILLIMETER;
     }
     
     /**
