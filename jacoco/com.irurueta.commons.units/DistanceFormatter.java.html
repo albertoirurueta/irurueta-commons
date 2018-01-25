@@ -28,9 +28,9 @@ public class DistanceFormatter extends
         MeasureFormatter&lt;Distance, DistanceUnit&gt; implements Cloneable {
     
     /**
-     * Milimeter symbol.
+     * Millimeter symbol.
      */
-    public static final String MILIMETER = &quot;mm&quot;;
+    public static final String MILLIMETER = &quot;mm&quot;;
     
     /**
      * Centimeter symbol.
@@ -284,10 +284,10 @@ public class DistanceFormatter extends
 <span class="fc" id="L284">        double v = value.doubleValue();</span>
         
 <span class="fc" id="L286">        double milimeters = DistanceConverter.convert(v, unit, </span>
-                DistanceUnit.MILIMETER);
+                DistanceUnit.MILLIMETER);
 <span class="fc bfc" id="L288" title="All 2 branches covered.">        if (Math.abs(milimeters) &lt; (DistanceConverter.METERS_PER_CENTIMETER / </span>
-                DistanceConverter.METERS_PER_MILIMETER)) {
-<span class="fc" id="L290">            return format(milimeters, DistanceUnit.MILIMETER);</span>
+                DistanceConverter.METERS_PER_MILLIMETER)) {
+<span class="fc" id="L290">            return format(milimeters, DistanceUnit.MILLIMETER);</span>
         }
         
 <span class="fc" id="L293">        double centimeters = DistanceConverter.convert(v, unit, </span>
@@ -349,8 +349,8 @@ public class DistanceFormatter extends
      */
     @Override
     protected DistanceUnit findUnit(String source) {
-<span class="pc bpc" id="L352" title="1 of 4 branches missed.">        if (source.contains(MILIMETER + &quot; &quot;) || source.endsWith(MILIMETER)) {</span>
-<span class="fc" id="L353">            return DistanceUnit.MILIMETER;</span>
+<span class="pc bpc" id="L352" title="1 of 4 branches missed.">        if (source.contains(MILLIMETER + &quot; &quot;) || source.endsWith(MILLIMETER)) {</span>
+<span class="fc" id="L353">            return DistanceUnit.MILLIMETER;</span>
         }
 <span class="pc bpc" id="L355" title="1 of 4 branches missed.">        if (source.contains(CENTIMETER + &quot; &quot;) || source.endsWith(CENTIMETER)) {</span>
 <span class="fc" id="L356">            return DistanceUnit.CENTIMETER;</span>
@@ -386,8 +386,8 @@ public class DistanceFormatter extends
     protected String getUnitSymbol(DistanceUnit unit) {
         String unitStr;
 <span class="pc bfc" id="L388" title="All 8 branches covered.">        switch (unit) {</span>
-            case MILIMETER:
-<span class="fc" id="L390">                unitStr = MILIMETER;</span>
+            case MILLIMETER:
+<span class="fc" id="L390">                unitStr = MILLIMETER;</span>
 <span class="fc" id="L391">                break;</span>
             case CENTIMETER:
 <span class="fc" id="L393">                unitStr = CENTIMETER;</span>

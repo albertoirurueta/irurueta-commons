@@ -97,7 +97,7 @@ public class DateUtils {
 <span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if (date != null) {</span>
             //formateamos fecha con formato MEDIUM.
 <span class="fc" id="L99">            SimpleDateFormat format =</span>
-                    (SimpleDateFormat) DateFormat.getDateInstance(
+<span class="fc" id="L100">                    (SimpleDateFormat) DateFormat.getDateInstance(</span>
                             DateFormat.MEDIUM);
 <span class="fc" id="L102">            return format.format(date);</span>
         }
@@ -113,7 +113,7 @@ public class DateUtils {
 <span class="pc bpc" id="L113" title="1 of 2 branches missed.">        if (date != null) {</span>
             //formateamos fecha y hora con formato SHORT.
 <span class="fc" id="L115">            SimpleDateFormat format =</span>
-                    (SimpleDateFormat) DateFormat.getDateTimeInstance(
+<span class="fc" id="L116">                    (SimpleDateFormat) DateFormat.getDateTimeInstance(</span>
                             DateFormat.SHORT, DateFormat.SHORT);
 <span class="fc" id="L118">            return format.format(date);</span>
         }
@@ -156,9 +156,9 @@ public class DateUtils {
      * @return true if both calendars have the same date, false otherwise.
      */
     public static boolean isSameDay(Calendar cal1, Calendar cal2) {
-<span class="pc bpc" id="L159" title="2 of 6 branches missed.">        return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &amp;&amp;</span>
-            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &amp;&amp;
-            cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">        return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &amp;&amp;</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &amp;&amp;</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">            cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);</span>
     }
 
     /**

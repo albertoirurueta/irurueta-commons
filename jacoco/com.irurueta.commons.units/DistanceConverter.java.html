@@ -21,9 +21,9 @@ package com.irurueta.commons.units;
 public class DistanceConverter {
     
     /**
-     * Number of meters in 1 milimeter.
+     * Number of meters in 1 millimeter.
      */
-    public static final double METERS_PER_MILIMETER = 0.001;
+    public static final double METERS_PER_MILLIMETER = 0.001;
     
     /**
      * Number of meters in 1 centimeter.
@@ -58,7 +58,7 @@ public class DistanceConverter {
     /**
      * Constructor.
      */
-<span class="fc" id="L61">    protected DistanceConverter() { }</span>
+<span class="fc" id="L61">    DistanceConverter() { }</span>
     
     /**
      * Converts a distance value from input unit to provided output unit.
@@ -73,8 +73,8 @@ public class DistanceConverter {
         
         //convert to meters
 <span class="pc bfc" id="L75" title="All 8 branches covered.">        switch (inputUnit) {</span>
-            case MILIMETER:
-<span class="fc" id="L77">                meters = milimeterToMeter(input);</span>
+            case MILLIMETER:
+<span class="fc" id="L77">                meters = millimeterToMeter(input);</span>
 <span class="fc" id="L78">                break;</span>
             case CENTIMETER:
 <span class="fc" id="L80">                meters = centimeterToMeter(input);</span>
@@ -103,8 +103,8 @@ public class DistanceConverter {
         
         //convert from meter to required output unit
 <span class="fc bfc" id="L105" title="All 8 branches covered.">        switch (outputUnit) {</span>
-            case MILIMETER:
-<span class="fc" id="L107">                return meterToMilimeter(meters);</span>
+            case MILLIMETER:
+<span class="fc" id="L107">                return meterToMillimeter(meters);</span>
             case CENTIMETER:
 <span class="fc" id="L109">                return meterToCentimeter(meters);</span>
             case KILOMETER:
@@ -130,17 +130,17 @@ public class DistanceConverter {
      * @param meter meter value.
      * @return same distance converted to milimeters.
      */
-    public static double meterToMilimeter(double meter) {
-<span class="fc" id="L134">        return meter / METERS_PER_MILIMETER;</span>
+    public static double meterToMillimeter(double meter) {
+<span class="fc" id="L134">        return meter / METERS_PER_MILLIMETER;</span>
     }
     
     /**
      * Converts provided milimeter value to meters.
-     * @param milimeter milimeter value.
+     * @param millimeter milimeter value.
      * @return same distance conterted to meters.
      */
-    public static double milimeterToMeter(double milimeter) {
-<span class="fc" id="L143">        return milimeter * METERS_PER_MILIMETER;</span>
+    public static double millimeterToMeter(double millimeter) {
+<span class="fc" id="L143">        return millimeter * METERS_PER_MILLIMETER;</span>
     }
     
     /**

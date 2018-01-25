@@ -42,12 +42,12 @@ public class NIFValidator {
      */
     public static boolean isValid(String value) {
 <span class="fc" id="L44">        int code = getOrCreateValidador().checkNif(value);</span>
-<span class="pc bpc" id="L45" title="5 of 16 branches missed.">        return isValidDNICode(code) || isValidNIFCode(code) ||</span>
-                isValidNIFNonResidentsCode(code) ||
-                isValidNIFMinorsCode(code) || isValidNIECode(code) ||
-                isValidCIFCode(code) ||
-                isValidCIFOrganizationCode(code) ||
-                isValidCIFNonResidentsCode(code);
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">        return isValidDNICode(code) || isValidNIFCode(code) ||</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">                isValidNIFNonResidentsCode(code) ||</span>
+<span class="pc bpc" id="L47" title="1 of 4 branches missed.">                isValidNIFMinorsCode(code) || isValidNIECode(code) ||</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                isValidCIFCode(code) ||</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">                isValidCIFOrganizationCode(code) ||</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">                isValidCIFNonResidentsCode(code);</span>
     }
 
     /**

@@ -23,10 +23,10 @@ under the License.
     <link>https://github.com/albertoirurueta/irurueta-commons</link>
     <description>com.irurueta:irurueta-commons - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2016 - 2018</copyright>
     <item>
       <title>File: 29,
-             Errors: 243,
+             Errors: 244,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.build-info.properties">com/irurueta/commons/build-info.properties</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.ZipCodeValidator.java">com/irurueta/commons/validators/ZipCodeValidator.java</a>
                 </td>
                 <td>
                   0
@@ -55,63 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.Validator.java">com/irurueta/commons/validators/Validator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.DistanceFormatter.java">com/irurueta/commons/units/DistanceFormatter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.DistanceConverter.java">com/irurueta/commons/units/DistanceConverter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.MaskedPanFormatter.java">com/irurueta/commons/MaskedPanFormatter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
+                  5
                 </td>
               </tr>
                           <tr>
@@ -144,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.LocationDistanceEstimator.java">com/irurueta/commons/units/LocationDistanceEstimator.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.package-info.java">com/irurueta/commons/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.UnitsException.java">com/irurueta/commons/units/UnitsException.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.Validator.java">com/irurueta/commons/validators/Validator.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.NIFValidator.java">com/irurueta/commons/validators/NIFValidator.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.CreditCardValidator.java">com/irurueta/commons/validators/CreditCardValidator.java</a>
                 </td>
                 <td>
                   0
@@ -181,7 +125,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  120
+                  98
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.DistanceConverter.java">com/irurueta/commons/units/DistanceConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.Measurement.java">com/irurueta/commons/units/Measurement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -200,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.DateUtils.java">com/irurueta/commons/DateUtils.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.package-info.java">com/irurueta/commons/validators/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -209,12 +181,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.UnitSystem.java">com/irurueta/commons/units/UnitSystem.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.LocationDistanceEstimator.java">com/irurueta/commons/units/LocationDistanceEstimator.java</a>
                 </td>
                 <td>
                   0
@@ -242,48 +214,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.CreditCardValidator.java">com/irurueta/commons/validators/CreditCardValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  98
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.ZipCodeValidator.java">com/irurueta/commons/validators/ZipCodeValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  5
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.package-info.java">com/irurueta/commons/units/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.BuildInfo.java">com/irurueta/commons/BuildInfo.java</a>
                 </td>
                 <td>
@@ -298,77 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.EmailValidator.java">com/irurueta/commons/validators/EmailValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.Measurement.java">com/irurueta/commons/units/Measurement.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.package-info.java">com/irurueta/commons/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.CommonsException.java">com/irurueta/commons/CommonsException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.PanMaskGenerator.java">com/irurueta/commons/PanMaskGenerator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.package-info.java">com/irurueta/commons/validators/package-info.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.PaperSize.java">com/irurueta/commons/units/PaperSize.java</a>
                 </td>
                 <td>
                   0
@@ -410,6 +270,48 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.DateUtils.java">com/irurueta/commons/DateUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.EmailValidator.java">com/irurueta/commons/validators/EmailValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.DistanceFormatter.java">com/irurueta/commons/units/DistanceFormatter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.DistanceUnit.java">com/irurueta/commons/units/DistanceUnit.java</a>
                 </td>
                 <td>
@@ -424,7 +326,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.PaperSize.java">com/irurueta/commons/units/PaperSize.java</a>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.validators.NIFValidator.java">com/irurueta/commons/validators/NIFValidator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  120
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.PanMaskGenerator.java">com/irurueta/commons/PanMaskGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.UnitSystem.java">com/irurueta/commons/units/UnitSystem.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.MaskedPanFormatter.java">com/irurueta/commons/MaskedPanFormatter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.UnitsException.java">com/irurueta/commons/units/UnitsException.java</a>
                 </td>
                 <td>
                   0
@@ -439,6 +397,48 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.UnitLocale.java">com/irurueta/commons/units/UnitLocale.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.units.package-info.java">com/irurueta/commons/units/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.build-info.properties">com/irurueta/commons/build-info.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/albertoirurueta/irurueta-commons/checkstyle.html#com.irurueta.commons.CommonsException.java">com/irurueta/commons/CommonsException.java</a>
                 </td>
                 <td>
                   0

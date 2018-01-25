@@ -48,7 +48,7 @@
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>      
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>      @Test
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetUnitSystem(){
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.MILIMETER), 
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.MILLIMETER),
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>                  UnitSystem.METRIC);
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          assertEquals(DistanceUnit.getUnitSystem(DistanceUnit.CENTIMETER),
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>                  UnitSystem.METRIC);
@@ -74,7 +74,7 @@
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>      @Test
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsMetric(){
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          assertTrue(DistanceUnit.isMetric(DistanceUnit.MILIMETER));
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          assertTrue(DistanceUnit.isMetric(DistanceUnit.MILLIMETER));
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>          assertTrue(DistanceUnit.isMetric(DistanceUnit.CENTIMETER));
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>          assertTrue(DistanceUnit.isMetric(DistanceUnit.METER));
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          assertTrue(DistanceUnit.isMetric(DistanceUnit.KILOMETER));
@@ -92,7 +92,7 @@
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>      
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>      @Test
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsImperial(){
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>          assertFalse(DistanceUnit.isImperial(DistanceUnit.MILIMETER));
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          assertFalse(DistanceUnit.isImperial(DistanceUnit.MILLIMETER));
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>          assertFalse(DistanceUnit.isImperial(DistanceUnit.CENTIMETER));
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>          assertFalse(DistanceUnit.isImperial(DistanceUnit.METER));
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          assertFalse(DistanceUnit.isImperial(DistanceUnit.KILOMETER));
@@ -110,6 +110,6 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016&#x2013;2018. All rights reserved.</div>
 </body>
 </html>

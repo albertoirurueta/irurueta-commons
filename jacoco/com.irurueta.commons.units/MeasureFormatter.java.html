@@ -141,7 +141,7 @@ public abstract class MeasureFormatter&lt;T extends Measurement, U extends Enum&
     public int hashCode() {
 <span class="fc" id="L142">        int hash = 7;</span>
 <span class="pc bpc" id="L143" title="1 of 2 branches missed.">        hash = 19 * hash + (this.mNumberFormat != null ? </span>
-                this.mNumberFormat.hashCode() : 0);
+<span class="pc" id="L144">                this.mNumberFormat.hashCode() : 0);</span>
 <span class="pc bpc" id="L145" title="1 of 2 branches missed.">        hash = 19 * hash + (this.mFormat != null ? this.mFormat.hashCode() : 0);</span>
 <span class="fc" id="L146">        return hash;</span>
     }
@@ -154,7 +154,7 @@ public abstract class MeasureFormatter&lt;T extends Measurement, U extends Enum&
      */
     public String format(Number value, U unit) {
 <span class="fc" id="L156">        return MessageFormat.format(mValueAndUnitFormatPattern, </span>
-                mNumberFormat.format(value), getUnitSymbol(unit));
+<span class="fc" id="L157">                mNumberFormat.format(value), getUnitSymbol(unit));</span>
     }
     
     /**
@@ -172,7 +172,7 @@ public abstract class MeasureFormatter&lt;T extends Measurement, U extends Enum&
 <span class="fc" id="L172">            mFormat = new MessageFormat(mValueAndUnitFormatPattern);</span>
         }
 <span class="fc" id="L174">        return mFormat.format(new Object[]{mNumberFormat.format(value), </span>
-            getUnitSymbol(unit)}, toAppendTo, pos);
+<span class="fc" id="L175">            getUnitSymbol(unit)}, toAppendTo, pos);</span>
     }    
     
     /**

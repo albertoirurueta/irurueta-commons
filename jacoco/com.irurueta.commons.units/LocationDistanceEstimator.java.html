@@ -123,9 +123,9 @@ public class LocationDistanceEstimator {
 <span class="fc" id="L123">        double dlong = (longitude2 - longitude1) * DEGREES_TO_RADIANS;</span>
 <span class="fc" id="L124">        double dlat = (latitude2 - latitude1) * DEGREES_TO_RADIANS;</span>
 <span class="fc" id="L125">        double a = Math.pow(Math.sin(dlat / 2D), 2D) + </span>
-                Math.cos(latitude1 * DEGREES_TO_RADIANS) * 
-                Math.cos(latitude2 * DEGREES_TO_RADIANS)
-                * Math.pow(Math.sin(dlong / 2D), 2D);
+<span class="fc" id="L126">                Math.cos(latitude1 * DEGREES_TO_RADIANS) * </span>
+<span class="fc" id="L127">                Math.cos(latitude2 * DEGREES_TO_RADIANS)</span>
+<span class="fc" id="L128">                * Math.pow(Math.sin(dlong / 2D), 2D);</span>
 <span class="fc" id="L129">        double c = 2D * Math.atan2(Math.sqrt(a), Math.sqrt(1D - a));</span>
 <span class="fc" id="L130">        double d = radius * c;</span>
 

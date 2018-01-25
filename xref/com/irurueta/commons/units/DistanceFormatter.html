@@ -36,9 +36,9 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>          MeasureFormatter&lt;Distance, DistanceUnit&gt; <strong class="jxr_keyword">implements</strong> Cloneable {
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>      
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">     * Milimeter symbol.</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">     * Millimeter symbol.</em>
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String MILIMETER = <span class="jxr_string">"mm"</span>;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String MILLIMETER = <span class="jxr_string">"mm"</span>;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>      
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * Centimeter symbol.</em>
@@ -292,10 +292,10 @@
 <a class="jxr_linenumber" name="L284" href="#L284">284</a>         <strong class="jxr_keyword">double</strong> v = value.doubleValue();
 <a class="jxr_linenumber" name="L285" href="#L285">285</a>         
 <a class="jxr_linenumber" name="L286" href="#L286">286</a>         <strong class="jxr_keyword">double</strong> milimeters = DistanceConverter.convert(v, unit, 
-<a class="jxr_linenumber" name="L287" href="#L287">287</a>                 DistanceUnit.MILIMETER);
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>                 DistanceUnit.MILLIMETER);
 <a class="jxr_linenumber" name="L288" href="#L288">288</a>         <strong class="jxr_keyword">if</strong> (Math.abs(milimeters) &lt; (DistanceConverter.METERS_PER_CENTIMETER / 
-<a class="jxr_linenumber" name="L289" href="#L289">289</a>                 DistanceConverter.METERS_PER_MILIMETER)) {
-<a class="jxr_linenumber" name="L290" href="#L290">290</a>             <strong class="jxr_keyword">return</strong> format(milimeters, DistanceUnit.MILIMETER);
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>                 DistanceConverter.METERS_PER_MILLIMETER)) {
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>             <strong class="jxr_keyword">return</strong> format(milimeters, DistanceUnit.MILLIMETER);
 <a class="jxr_linenumber" name="L291" href="#L291">291</a>         }
 <a class="jxr_linenumber" name="L292" href="#L292">292</a>         
 <a class="jxr_linenumber" name="L293" href="#L293">293</a>         <strong class="jxr_keyword">double</strong> centimeters = DistanceConverter.convert(v, unit, 
@@ -357,8 +357,8 @@
 <a class="jxr_linenumber" name="L349" href="#L349">349</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L350" href="#L350">350</a>     @Override
 <a class="jxr_linenumber" name="L351" href="#L351">351</a>     <strong class="jxr_keyword">protected</strong> <a href="../../../../com/irurueta/commons/units/DistanceUnit.html">DistanceUnit</a> findUnit(String source) {
-<a class="jxr_linenumber" name="L352" href="#L352">352</a>         <strong class="jxr_keyword">if</strong> (source.contains(MILIMETER + <span class="jxr_string">" "</span>) || source.endsWith(MILIMETER)) {
-<a class="jxr_linenumber" name="L353" href="#L353">353</a>             <strong class="jxr_keyword">return</strong> DistanceUnit.MILIMETER;
+<a class="jxr_linenumber" name="L352" href="#L352">352</a>         <strong class="jxr_keyword">if</strong> (source.contains(MILLIMETER + <span class="jxr_string">" "</span>) || source.endsWith(MILLIMETER)) {
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>             <strong class="jxr_keyword">return</strong> DistanceUnit.MILLIMETER;
 <a class="jxr_linenumber" name="L354" href="#L354">354</a>         }
 <a class="jxr_linenumber" name="L355" href="#L355">355</a>         <strong class="jxr_keyword">if</strong> (source.contains(CENTIMETER + <span class="jxr_string">" "</span>) || source.endsWith(CENTIMETER)) {
 <a class="jxr_linenumber" name="L356" href="#L356">356</a>             <strong class="jxr_keyword">return</strong> DistanceUnit.CENTIMETER;
@@ -394,8 +394,8 @@
 <a class="jxr_linenumber" name="L386" href="#L386">386</a>     <strong class="jxr_keyword">protected</strong> String getUnitSymbol(<a href="../../../../com/irurueta/commons/units/DistanceUnit.html">DistanceUnit</a> unit) {
 <a class="jxr_linenumber" name="L387" href="#L387">387</a>         String unitStr;
 <a class="jxr_linenumber" name="L388" href="#L388">388</a>         <strong class="jxr_keyword">switch</strong> (unit) {
-<a class="jxr_linenumber" name="L389" href="#L389">389</a>             <strong class="jxr_keyword">case</strong> MILIMETER:
-<a class="jxr_linenumber" name="L390" href="#L390">390</a>                 unitStr = MILIMETER;
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>             <strong class="jxr_keyword">case</strong> MILLIMETER:
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>                 unitStr = MILLIMETER;
 <a class="jxr_linenumber" name="L391" href="#L391">391</a>                 <strong class="jxr_keyword">break</strong>;
 <a class="jxr_linenumber" name="L392" href="#L392">392</a>             <strong class="jxr_keyword">case</strong> CENTIMETER:
 <a class="jxr_linenumber" name="L393" href="#L393">393</a>                 unitStr = CENTIMETER;
@@ -426,6 +426,6 @@
 <a class="jxr_linenumber" name="L418" href="#L418">418</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016&#x2013;2018. All rights reserved.</div>
 </body>
 </html>

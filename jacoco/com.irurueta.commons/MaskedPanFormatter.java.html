@@ -177,7 +177,7 @@ public class MaskedPanFormatter {
 <span class="fc" id="L177">        int numGroups = CreditCardValidator.getNumberOfGroupsForNetwork(</span>
                 network);
 <span class="fc" id="L179">        int lastGroupLength = CreditCardValidator.</span>
-                getMaxDigitsForGroupAndNetwork(numGroups - 1, network);
+<span class="fc" id="L180">                getMaxDigitsForGroupAndNetwork(numGroups - 1, network);</span>
 
 <span class="fc" id="L182">        numVisibleDigits = Math.min(numVisibleDigits, lastGroupLength);</span>
 <span class="fc" id="L183">        int startPos = Math.max(0, digits.length - numVisibleDigits);</span>
