@@ -2,8 +2,9 @@ language: java
 sudo: false
 env:
     global:
-      #key for github
-        - secure: "cmM+gGVeDgjsoDRPvVxDu09nbM/0Mxf8KcY4algwqF8HRR4VQ94vQd7XJx7mHdmJkaB4DUXSpeUuswAf40c9HiKB7Or+Ud97ZGfIcRC3AWaSsbR8MlKOruVFsYOeezbIzw1eygo5Ww3X/xE7tZk8gzk3ywIYkfwdK1h5HqWueMjq2SproDyWHqe82IL7ZzMgP74g4kBvHNM+m+3VqgctQI9UojlqUXWBbSGTCb2MnorJypy3+DNhgV2A6yRfSNtcUK9FyuGYHii8BveIqVFvL6BFKaMCy7EMhgKnI3Tse0VI5u0jMbH+fqIszmu/SbvhLQI+15AAXhSr3D6TCStmeamlpZzWe3F20sM5AtTGxdt5aJThqhfHT9VQ4gO6q06GAfK7mCuK59vHdXX+Zp4uXCdKu4qudJVEV2L6dGNDETYnx1R1Q0aWlachvsxpsKsSyk/JaWiXAPRmfhH4wKSjV2eOkBCTilGbIgb8PUIOlnsHpjBly9nqgpa2H28Vw2ojBxxXMRMO9FeWvmH3blvE1tBhN0QYs7JiB4JcyY9bM47BKaPvYARwu8nW/o8FmqOmm6eGlIVOwcp2Sale7m3Z2w4zalURC8GxIvQ45fAuGQRSV3jDASj8bowgbUkPHKTdOVaacggbdrxqEddGoUpGxLjG1msC6cvHvztjNmhRR5U="
+        #key for github
+        #GITHUB_OAUTH_TOKEN
+        - secure: "JV+7ocqjnsDh98TCCZVMAvNUgDvYHmscIqg/z9v1jd+pR2goG7h0MFNnZAQ8G/x7G3XtXAWNfkwDdDTbGyT4jBzNFP/slvlm4cSUydxDJW8KL/9Th4e6cmpkIMFzo6KbXKRJxe+f+41CuAvToSnHGB85l1Zzr7qk9tcfnkCZJFl64Fdbj/WfBaacr/wutK+eMZSi5irnrGGa7GUFuSUe3JRBs3crjlNV3QnmKwZwT4Yreee0nA0e7zj0oQyt8fCrz215Y2FNubKQqHfiRfl7qYF7bSYa23mX2d/lAzLz1Bh6YRZPv1yn+9NFlR97oZqALPKvfmtIvkUBF3a2cVzy6q5t1bVci2c5jHlJCIC5/w+mMCemuv/l2GzGSrsbexxCk7zBLBAvTxAFQw1ofnKX2PIEbB6usDhRHryAk5cV2fUoIJReNQzvWpMin6iAZGlE/980DyvTU8yLkW2vvdFizz3eIJXrFGha/Ac0yEZGPuC1B1r73ShIcJkd+LN+WiQe74xsX6MX1pCy7Barz3Bd/2IKjDx3SaBElAAE6Y7vZVv/75Gb8JR6D5FRLuGRz9A8N2975YXx2iWDpozE2HnTjoLX5IU8sIW175+XnX+w06zPfgH6BjX1GI7VKbjD1+377V6SOR+F5BXyjMfq2zc61yEdxkjAOFzrNLqhhjwi/es="
         - environment=test
         #sonatype credentials
         #OSSRH_JIRA_USERNAME
