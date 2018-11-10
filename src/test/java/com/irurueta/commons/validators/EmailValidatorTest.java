@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,28 +15,25 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+
 import static org.junit.Assert.*;
 
 public class EmailValidatorTest {
     
-    public EmailValidatorTest() {}
+    public EmailValidatorTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
     public void testGetInstance() {
@@ -47,7 +44,7 @@ public class EmailValidatorTest {
     }
 
     @Test
-    public void testIsValid(){
+    public void testIsValid() {
             assertTrue(EmailValidator.getInstance().isValid(
                     "alberto@irurueta.com"));
             assertFalse(EmailValidator.getInstance().isValid("invalid"));

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ import java.lang.ref.SoftReference;
  * Hacienda to validate DNI's, NIF's, NIE's, CIF's, etc.
  *
  */
+@SuppressWarnings("WeakerAccess")
 public class NIFValidator {
     /**
      * Reference to the internal validator provided by Ministerio de
@@ -273,6 +274,7 @@ public class NIFValidator {
             return var1 != null && var1.length() == 9 ? this.vNif(var1) : -1;
         }
 
+        @SuppressWarnings("Duplicates")
         public int vNif(String var1) {
             String var2 = null;
             boolean var4 = false;
@@ -444,10 +446,9 @@ public class NIFValidator {
 
         private boolean caracEnCad(char[] var1, char var2) {
             boolean var3 = false;
-            int var4 = var1.length;
 
-            for (int var5 = 0; var5 < var4; ++var5) {
-                if (var1[var5] == var2) {
+            for (char aVar1 : var1) {
+                if (aVar1 == var2) {
                     var3 = true;
                     break;
                 }

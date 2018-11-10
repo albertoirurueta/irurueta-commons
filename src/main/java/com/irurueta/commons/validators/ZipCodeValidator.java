@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 /**
  * Validates post codes based on county ISO codes.
  */
+@SuppressWarnings("WeakerAccess")
 public class ZipCodeValidator extends Validator<String> {
 
     /**
@@ -284,7 +285,6 @@ public class ZipCodeValidator extends Validator<String> {
      */
     @Override
     public boolean isValid(String zipCode) {
-        //mPostCodePattern == null, para países desconocidos
         return mPostCodePattern == null || zipCode != null && mPostCodePattern.matcher(zipCode).matches();
     }
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,28 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class CreditCardNetworkTest {
     
-    public CreditCardNetworkTest() {}
+    public CreditCardNetworkTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
     
     @Test
-    public void testOrdinals(){
+    public void testOrdinals() {
         assertEquals(CreditCardNetwork.AMERICAN_EXPRESS.ordinal(), 0);
         assertEquals(CreditCardNetwork.BANKCARD.ordinal(), 1);
         assertEquals(CreditCardNetwork.CHINA_UNIONPAY.ordinal(), 2);

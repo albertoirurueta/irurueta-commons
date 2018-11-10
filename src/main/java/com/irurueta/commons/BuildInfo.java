@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -154,9 +154,9 @@ public final class BuildInfo {
             if (stream != null) {
                 try {
                     stream.close();
-                } catch (IOException ignore) {
+                } catch (IOException e) {
                     LOGGER.log(Level.WARNING, "Could not properly close stream",
-                            ignore);
+                            e);
                 }
             }
         }

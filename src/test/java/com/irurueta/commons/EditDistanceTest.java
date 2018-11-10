@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,31 +15,30 @@
  */
 package com.irurueta.commons;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class EditDistanceTest {
     
-    public EditDistanceTest() {}
+    public EditDistanceTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
+        //noinspection all
         assertNotNull(new EditDistance());
     }
 
@@ -49,9 +48,13 @@ public class EditDistanceTest {
         String str2 = "dogs";
 
         Character[] array1 = new Character[str1.length()];
-        for(int i = 0; i < array1.length; i++) array1[i] = str1.charAt(i);
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = str1.charAt(i);
+        }
         Character[] array2 = new Character[str2.length()];
-        for(int i = 0; i < array2.length; i++) array2[i] = str2.charAt(i);
+        for (int i = 0; i < array2.length; i++) {
+            array2[i] = str2.charAt(i);
+        }
 
         //distance is 1 because we can insert an 's' at the end of 'dog' to 
         //obtain 'dogs'
@@ -63,9 +66,13 @@ public class EditDistanceTest {
         str2 = "lucky";
 
         array1 = new Character[str1.length()];
-        for(int i = 0; i < array1.length; i++) array1[i] = str1.charAt(i);
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = str1.charAt(i);
+        }
         array2 = new Character[str2.length()];
-        for(int i = 0; i < array2.length; i++) array2[i] = str2.charAt(i);
+        for (int i = 0; i < array2.length; i++) {
+            array2[i] = str2.charAt(i);
+        }
 
         //distance is 3 because we can exchange the 'l' by the 1st 'p', the 'c' 
         //by the second 'p', and the 'k' by the third 'p'.

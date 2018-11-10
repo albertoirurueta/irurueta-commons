@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,7 @@ import java.util.Locale;
  * and some utility methods such as to determine whether two timestamps 
  * correspond to the same date, etc.
  */
+@SuppressWarnings("WeakerAccess")
 public class DateUtils {
 
     /**
@@ -95,7 +96,7 @@ public class DateUtils {
      */
     public static String formatDate(Date date) {
         if (date != null) {
-            //formateamos fecha con formato MEDIUM.
+            //format date with MEDIUM format
             SimpleDateFormat format =
                     (SimpleDateFormat) DateFormat.getDateInstance(
                             DateFormat.MEDIUM);
@@ -111,7 +112,7 @@ public class DateUtils {
      */
     public static String formatDateAndTime(Date date) {
         if (date != null) {
-            //formateamos fecha y hora con formato SHORT.
+            //format date and time with SHORT format
             SimpleDateFormat format =
                     (SimpleDateFormat) DateFormat.getDateTimeInstance(
                             DateFormat.SHORT, DateFormat.SHORT);
@@ -151,8 +152,8 @@ public class DateUtils {
     /**
      * Indicates if both provided calendar instances have the same calendar date
      * (even if they have different times set).
-     * @param cal1 1st calendar to check
-     * @param cal2 2nd calendar to check
+     * @param cal1 1st calendar to check.
+     * @param cal2 2nd calendar to check.
      * @return true if both calendars have the same date, false otherwise.
      */
     public static boolean isSameDay(Calendar cal1, Calendar cal2) {
@@ -164,7 +165,7 @@ public class DateUtils {
     /**
      * Indicates whether provided date and time instances correspond to today
      * taking into account local timezone.
-     * @param date date and time to check
+     * @param date date and time to check.
      * @return true if date/time corresponds to today, false otherwise.
      */
     public static boolean isToday(Date date) {

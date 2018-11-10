@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,39 +15,37 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+
 import static org.junit.Assert.*;
 
 public class NIFValidatorTest {
     
-    public static final String VALID_NIF = "22072532F";
-    public static final String INVALID_NIF = "22072532E";
-    public static final String VALID_NIE = "Y7921566N";
-    public static final String INVALID_NIE1 = "A0744669N";
-    public static final String INVALID_NIE2 = "Y0744669K";
-    public static final String VALID_CIF = "A78018413";
-    public static final String INVALID_CIF = "XX5636417";
+    private static final String VALID_NIF = "22072532F";
+    private static final String INVALID_NIF = "22072532E";
+    private static final String VALID_NIE = "Y7921566N";
+    private static final String INVALID_NIE1 = "A0744669N";
+    private static final String INVALID_NIE2 = "Y0744669K";
+    private static final String VALID_CIF = "A78018413";
+    private static final String INVALID_CIF = "XX5636417";
         
-    public NIFValidatorTest() {}
+    public NIFValidatorTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
+        //noinspection all
         assertNotNull(new NIFValidator());
     }
 

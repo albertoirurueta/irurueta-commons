@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@ package com.irurueta.commons;
 
 import com.irurueta.commons.validators.CreditCardNetwork;
 import com.irurueta.commons.validators.CreditCardValidator;
+
 import java.util.Arrays;
 
 /**
@@ -28,6 +29,7 @@ import java.util.Arrays;
  * If less than request digits are available in provided PAN, then only 
  * available digits are displayed as the last digits of masked PAN.
  */
+@SuppressWarnings("WeakerAccess")
 public class MaskedPanFormatter {
     
     /**
@@ -199,6 +201,7 @@ public class MaskedPanFormatter {
      * @param pan PAN to be converted to digits.
      * @return array containing digits within provided PAN.
      */
+    @SuppressWarnings("Duplicates")
     private static byte[] toDigits(String pan) {
         if (pan == null) {
             return null;

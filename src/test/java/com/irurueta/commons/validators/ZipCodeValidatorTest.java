@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,11 +15,7 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.Locale;
 
@@ -27,19 +23,19 @@ import static org.junit.Assert.*;
 
 public class ZipCodeValidatorTest {
     
-    public ZipCodeValidatorTest() {}
+    public ZipCodeValidatorTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
     public void testConstructor() {
@@ -53,7 +49,7 @@ public class ZipCodeValidatorTest {
     }
 
     @Test
-    public void testGetSetCountryCode(){
+    public void testGetSetCountryCode() {
         ZipCodeValidator validator = new ZipCodeValidator("ES");
 
         //initial value
@@ -67,7 +63,7 @@ public class ZipCodeValidatorTest {
     }
 
     @Test
-    public void testSetCountryCodeFromLocale(){
+    public void testSetCountryCodeFromLocale() {
         ZipCodeValidator validator = new ZipCodeValidator("ES");
 
         //initial value
@@ -81,7 +77,7 @@ public class ZipCodeValidatorTest {
     }
 
     @Test
-    public void testIsValid(){
+    public void testIsValid() {
         //Spain
         ZipCodeValidator validator = new ZipCodeValidator("ES");
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,9 @@
 package com.irurueta.commons;
 
 import com.irurueta.commons.validators.CreditCardNetwork;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class PanMaskGeneratorTest {
     
@@ -61,7 +58,7 @@ public class PanMaskGeneratorTest {
         //other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB, '*', '_'),
                 "****_****_****_*******");
-        assertEquals(PanMaskGenerator.generate((CreditCardNetwork) null, '*', 
+        assertEquals(PanMaskGenerator.generate(null, '*',
                 '_'), "****_****_****_*******");                
     }
     
@@ -85,7 +82,7 @@ public class PanMaskGeneratorTest {
         //other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB, '*'),
                 "**** **** **** *******");
-        assertEquals(PanMaskGenerator.generate((CreditCardNetwork) null, '*'), 
+        assertEquals(PanMaskGenerator.generate(null, '*'),
                 "**** **** **** *******");                        
     }
     
@@ -108,7 +105,7 @@ public class PanMaskGeneratorTest {
         //other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB),
                 "#### #### #### #######");
-        assertEquals(PanMaskGenerator.generate((CreditCardNetwork)null),
+        assertEquals(PanMaskGenerator.generate(null),
                 "#### #### #### #######");        
     }
 }

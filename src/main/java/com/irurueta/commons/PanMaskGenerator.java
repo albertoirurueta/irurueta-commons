@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ import com.irurueta.commons.validators.CreditCardValidator;
  * masks can also be used to display credit card PAN's on the screen being
  * PCI DSS compliant by showing only the last 4 digits of the PAN.
  */
+@SuppressWarnings("WeakerAccess")
 public class PanMaskGenerator {
     
     /**
@@ -58,12 +59,12 @@ public class PanMaskGenerator {
         
         //generate mask
         StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < numGroups; i++) {
+        for (int i = 0; i < numGroups; i++) {
             groupLength = CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
                     network);
             
             repeatMaskChar(builder, maskChar, groupLength);
-            if(i != lastGroupPos) {
+            if (i != lastGroupPos) {
                 //add separator between groups
                 builder.append(separatorChar);
             }
@@ -74,7 +75,7 @@ public class PanMaskGenerator {
     
     /**
      * Generates a mask having required grouping for text input or PAN masking a
-     * credit card number using default group separactor character.
+     * credit card number using default group separator character.
      * @param network a credit card network to determine grouping format.
      * @param maskChar mask character to use.
      * @return generated mask.
@@ -102,7 +103,7 @@ public class PanMaskGenerator {
      */
     private static void repeatMaskChar(StringBuilder builder, char maskChar, 
             int times) {
-        for(int i = 0; i < times; i++) {
+        for (int i = 0; i < times; i++) {
             builder.append(maskChar);
         }
     }

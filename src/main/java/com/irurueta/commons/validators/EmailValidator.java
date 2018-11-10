@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 /**
  * Validates email format.
  */
+@SuppressWarnings("WeakerAccess")
 public class EmailValidator extends Validator<String> {
 
     /**

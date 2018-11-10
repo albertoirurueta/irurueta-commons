@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,34 +15,29 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import java.util.Locale;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 public class RFCValidatorTest {
 
-    public RFCValidatorTest() {}
+    public RFCValidatorTest() { }
 
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
 
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
 
     @Before
-    public void setUp() {}
+    public void setUp() { }
 
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
+        //noinspection all
         assertNotNull(new RFCValidator());
     }
 
@@ -54,6 +49,7 @@ public class RFCValidatorTest {
         assertFalse(RFCValidator.isValid("CUPU8AA825569"));
         assertFalse(RFCValidator.isValid("CUPU8008255AAA"));
 
+        //noinspection all
         assertFalse(RFCValidator.isValid(null));
     }
 }

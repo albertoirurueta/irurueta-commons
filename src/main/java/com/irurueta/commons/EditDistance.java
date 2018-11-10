@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ package com.irurueta.commons;
  * compare similar but not exactly equal Strings (to take into account 
  * typographic errors, etc).
  */
+@SuppressWarnings("WeakerAccess")
 public class EditDistance {
 
     /**
@@ -171,7 +172,7 @@ public class EditDistance {
         }
 
         /**
-         * Longitud of the string to be compared.
+         * Length of the string to be compared.
          */
         @Override
         public int length() {
@@ -203,9 +204,7 @@ public class EditDistance {
     /**
      * Implementation of ArrayWrapper for generic objects of type T.
      * Allows the efficient and generic comparison of objects of type T, as long
-     * as T is not a primitive data tyep.
-     * @author Alberto Irurueta Carro.
-     *
+     * as T is not a primitive data type.
      * @param <T> generic data type.
      */
     protected static class GenericArrayWrapper<T> implements ArrayWrapper<T[]> {

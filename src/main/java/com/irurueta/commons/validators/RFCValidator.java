@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,7 @@ package com.irurueta.commons.validators;
 /**
  * Validates RFC (Registro Federal de Contribuyentes) for Mexico.
  */
+@SuppressWarnings("WeakerAccess")
 public class RFCValidator {
     /**
      * Regular expression to validate RFC (Registro Federal de Contribuyentes).

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,43 +15,41 @@
  */
 package com.irurueta.commons;
 
+import org.junit.*;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DateUtilsTest {
     
-    public static final int MILLIS_PER_HOUR = 1000 * 3600;
+    private static final int MILLIS_PER_HOUR = 1000 * 3600;
     
-    public DateUtilsTest() {}
+    public DateUtilsTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
+        //noinspection all
         assertNotNull(new DateUtils());
     }
 
     @Test
-    public void testParse(){
+    public void testParse() {
         //timestamp without separators
         String value = "20150429T173115+0200";
         Date d = DateUtils.parse(value);
@@ -124,7 +122,7 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void testFormatDate(){
+    public void testFormatDate() {
         Date date = new Date();
         String value = DateFormat.getDateInstance(DateFormat.MEDIUM).
                 format(date);
@@ -133,7 +131,7 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void testFormatDateAndTime(){
+    public void testFormatDateAndTime() {
         Date date = new Date();
         String value = DateFormat.getDateTimeInstance(DateFormat.SHORT, 
                 DateFormat.SHORT).format(date);
@@ -142,7 +140,7 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void testTodayIsToday(){
+    public void testTodayIsToday() {
         Date someDate = new Date(0);
         Date today = DateUtils.today();
 
@@ -151,7 +149,7 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void testIsSameDay(){
+    public void testIsSameDay() {
         Date someDate = new Date(0);
         Date now = new Date();
 

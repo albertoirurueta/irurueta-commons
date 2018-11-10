@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,169 +32,72 @@ import java.util.Arrays;
  * Notice as well that if network is detected and validation passes, then it is
  * almost certain that payment data is correct.
  */
+@SuppressWarnings("WeakerAccess")
 public class CreditCardValidator {
     /**
      * Minimum allowed length for a credit card PAN.
      */
+    @SuppressWarnings("unused")
     public static final int MIN_LENGTH = 8;
     
     /**
      * Maximum allowed length for a credit card PAN.
      */
+    @SuppressWarnings("unused")
     public static final int MAX_LENGTH = 19;
 
-    
-    
-    //American Express
-    
-    /**
-     * Constant containing IIN ranges reserved for American Express.
-     */
-    private static final String[][] AMEX_IIN = new String[][] {
-        new String[]{"34", "34"}, 
-        new String[]{"37", "37"}
-    };
-    
-    /**
-     * Constant containing valid lengths for American Express.
-     */
-    private static final byte[][] AMEX_LENGTH = new byte[][] {
-        new byte[]{15, 15}
-    };
-    
     /**
      * Constant indicating whether American Express uses Luhn validation to
      * ensure that PAN is valid.
      */
     protected static final boolean AMEX_HAS_VALIDATION = true;
-    
+
     /**
      * Constant indicating whether American Express network is still being used.
      */
     protected static final boolean AMEX_IS_ACTIVE = true;
 
-    
-    /**
-     * Constant defining digit groups for American Express.
-     */
-    private static final byte[][] AMEX_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{6, 6},
-        new byte[]{5, 5}
-    };
-    
-    
-    //Bankcard
-    
-    /**
-     * Constant containing IIN ranges reserved for Bankcard.
-     */
-    private static final String[][] BANKCARD_IIN = new String[][] {
-        new String[]{"5610", "5610"},
-        new String[]{"560221", "560225"}
-    };
-    
-    /**
-     * Constant containing valid lengths for Bankcard.
-     */
-    private static final byte[][] BANKCARD_LENGTH = new byte[][] {
-        new byte[]{16, 16}
-    };
-    
     /**
      * Constant indicating whether Bankcard uses Luhn validation to ensure that
      * PAN is valid.
      */
     protected static final boolean BANKCARD_HAS_VALIDATION = true;
-    
+
     /**
      * Constant indicating whether Bankcard network is still being used.
      */
     protected static final boolean BANKCARD_IS_ACTIVE = false;
 
-    
-    
-    //China UnionPay
-    
     /**
-     * Constant containing IIN ranges reserved for China UnionPay.
-     */
-    private static final String[][] CHINA_UNIONPAY_IIN = new String[][] {
-        new String[]{"62", "62"}
-    };
-    
-    /**
-     * Constant containing valid lengths for China UnionPay.
-     */
-    private static final byte[][] CHINA_UNIONPAY_LENGTH = new byte[][] {
-        new byte[]{16, 19}
-    };
-    
-    /**
-     * Constant indicating whether China UnionPay uses Luhn validation to ensure 
+     * Constant indicating whether China UnionPay uses Luhn validation to ensure
      * that PAN is valid.
      */
     protected static final boolean CHINA_UNIONPAY_HAS_VALIDATION = false;
-    
+
     /**
      * Constant indicating whether China UnionPay network is still being used.
      */
     protected static final boolean CHINA_UNIONPAY_IS_ACTIVE = true;
 
-    
-    
-    //Diners Club Carte Blanche
-    
     /**
-     * Constant containing IIN ranges reserved for Diners Club Carte Blanche.
-     */
-    private static final String[][] DINERS_CLUB_CARTE_BLANCHE_IIN = 
-        new String[][] { new String[]{"300", "305"} };
-    
-    /**
-     * Constant containing valid lengths for Diners Club Carte Blanche.
-     */
-    private static final byte[][] DINERS_CLUB_CARTE_BLANCHE_LENGTH = 
-            new byte[][] { new byte[]{14, 14} };
-    
-    /**
-     * Constant indicating whether Diners Club Carte Blanche uses Luhn 
+     * Constant indicating whether Diners Club Carte Blanche uses Luhn
      * validation to ensure that PAN is valid.
      */
-    protected static final boolean DINERS_CLUB_CARTE_BLANCHE_HAS_VALIDATION = 
+    protected static final boolean DINERS_CLUB_CARTE_BLANCHE_HAS_VALIDATION =
             true;
-    
+
     /**
      * Constant indicating whether Diners Club Carte Blanche network is still
      * being used.
      */
     protected static final boolean DINERS_CLUB_CARTE_BLANCHE_IS_ACTIVE = true;
 
-    
-    
-    //Diners Club enRoute
-    
-    /**
-     * Constant containing IIN ranges reserved for Diners Club enRoute.
-     */
-    private static final String[][] DINERS_CLUB_ENROUTE_IIN = new String[][] {
-        new String[]{"2014", "2014"},
-        new String[]{"2149", "2149"}
-    };
-    
-    /**
-     * Constant containing valid lengths for Diners Club enRoute.
-     */
-    private static final byte[][] DINERS_CLUB_ENROUTE_LENGTH = new byte[][] {
-        new byte[]{15, 15}
-    };
-    
     /**
      * Constant indicating whether Diners Club enRoute uses Luhn validation to
      * ensure that PAN is valid.
      */
     protected static final boolean DINERS_CLUB_ENROUTE_HAS_VALIDATION = false;
-    
+
     /**
      * Constant indicating whether Diners Club enRoute network is still being
      * used.
@@ -202,448 +105,488 @@ public class CreditCardValidator {
     protected static final boolean DINERS_CLUB_ENROUTE_IS_ACTIVE = false;
 
     /**
-     * Constant defining digit groups for Dinners club enroute.
-     */
-    private static final byte[][] DINERS_CLUB_ENROUTE_GROUPING = new byte[][] {
-            new byte[]{4, 4},
-            new byte[]{7, 7},
-            new byte[]{4, 4} };
-    
-    
-    
-    //Diners Club International
-    
-    /**
-     * Constant containing IIN ranges reserved for Diners Club International.
-     */
-    private static final String[][] DINERS_CLUB_INTERNATIONAL_IIN = 
-        new String[][] { new String[]{"36", "36"} };
-    
-    /**
-     * Constant containing valid lengths for Diners Club International.
-     */
-    private static final byte[][] DINERS_CLUB_INTERNATIONAL_LENGTH = 
-            new byte[][] { new byte[]{14, 14} };
-    
-    /**
-     * Constant indicating whether Diners Club International uses Luhn 
+     * Constant indicating whether Diners Club International uses Luhn
      * validation to ensure that PAN is valid.
      */
-    protected static final boolean DINERS_CLUB_INTERATIONAL_HAS_VALIDATION = 
+    protected static final boolean DINERS_CLUB_INTERATIONAL_HAS_VALIDATION =
             true;
-    
+
     /**
-     * Constant indicating whether Diners Club International network is still 
+     * Constant indicating whether Diners Club International network is still
      * being used.
      */
     protected static final boolean DINERS_CLUB_INTERATIONAL_IS_ACTIVE = true;
 
     /**
-     * Constant defining digit groups for Dinners club internacional. This
-     * grouping is also used for DINERS_CLUB_CARTE_BLANCHE.
-     */
-    private static final byte[][] DINERS_CLUB_INTERATIONAL_GROUPING = new byte[][] {
-            new byte[]{4, 4},
-            new byte[]{6, 6},
-            new byte[]{4, 4} };
-    
-    
-    
-    //Diners Club USA & Canada
-    
-    /**
-     * Constant containing IIN ranges reserved for Diners Club USA and Canada.
-     */
-    private static final String[][] DINERS_CLUB_USA_CA_IIN = new String[][] {
-        new String[]{"54", "55"}
-    };
-    
-    /**
-     * Constant containing valid lengths for Diners Club USA and Canada.
-     */
-    private static final byte[][] DINERS_CLUB_USA_CA_LENGTH = new byte[][] {
-        new byte[]{16, 16}
-    };
-    
-    /**
-     * Constant indicating whether Diners Club USA and Canada uses Luhn 
+     * Constant indicating whether Diners Club USA and Canada uses Luhn
      * validation to ensure that PAN is valid.
      */
     protected static final boolean DINERS_CLUB_USA_CA_HAS_VALIDATION = true;
-    
+
     /**
-     * Constant indicating whether Diners Club USA and Canada network is still 
+     * Constant indicating whether Diners Club USA and Canada network is still
      * being used.
      */
     protected static final boolean DINERS_CLUB_USA_CA_IS_ACTIVE = true;
 
-    
-    
-    //Discover
-    
-    /**
-     * Constant containing IIN ranges reserved for Discover.
-     */
-    private static final String[][] DISCOVER_IIN = new String[][] {
-        new String[]{"6011", "6011"},
-        new String[]{"622126", "62295"},
-        new String[]{"644", "649"},
-        new String[]{"65", "65"}
-    };
-    
-    /**
-     * Constant containing valid lengths for Discover.
-     */
-    private static final byte[][] DISCOVER_LENGTH = new byte[][] {
-        new byte[]{16, 16}
-    };
-    
     /**
      * Constant indicating whether Discover uses Luhn validation to ensure that
      * PAN is valid.
      */
     protected static final boolean DISCOVER_HAS_VALIDATION = true;
-    
+
     /**
      * Constant indicating whether Discover network is still being used.
      */
     protected static final boolean DISCOVER_IS_ACTIVE = true;
 
     /**
+     * Constant indicating whether InstaPayment uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean INSTAPAYMENT_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether InstaPayment network is still being used.
+     */
+    protected static final boolean INSTAPAYMENT_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether JCB uses Luhn validation to ensure that PAN
+     * is valid.
+     */
+    protected static final boolean JCB_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether JCB network is still being used.
+     */
+    protected static final boolean JCB_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether Laser uses Luhn validation to ensure that PAN
+     * is valid.
+     */
+    protected static final boolean LASER_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether Laser network is still being used.
+     */
+    protected static final boolean LASER_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether Maestro uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean MAESTRO_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether Maestro network is still being used.
+     */
+    protected static final boolean MAESTRO_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether MasterCard uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean MASTERCARD_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether MasterCard network is still being used.
+     */
+    protected static final boolean MASTERCARD_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether Solo uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean SOLO_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether Solo network is still being used.
+     */
+    protected static final boolean SOLO_IS_ACTIVE = false;
+
+    /**
+     * Constant indicating whether Switch uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean SWITCH_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether Switch network is still being used.
+     */
+    protected static final boolean SWITCH_IS_ACTIVE = false;
+
+    /**
+     * Constant indicating whether VISA uses Luhn validation to ensure
+     * that PAN is valid.
+     */
+    protected static final boolean VISA_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether VISA network is still being used.
+     */
+    protected static final boolean VISA_IS_ACTIVE = true;
+
+    /**
+     * Constant indicating whether VISA Electron uses Luhn validation to
+     * ensure that PAN is valid.
+     */
+    protected static final boolean VISA_ELECTRON_HAS_VALIDATION = true;
+
+    /**
+     * Constant indicating whether VISA Electron network is still being used.
+     */
+    protected static final boolean VISA_ELECTRON_IS_ACTIVE = true;
+
+    /**
+     * Constant containing IIN ranges reserved for American Express.
+     */
+    private static final String[][] AMEX_IIN = new String[][] {
+            new String[] {"34", "34"},
+            new String[] {"37", "37"}
+    };
+    
+    /**
+     * Constant containing valid lengths for American Express.
+     */
+    private static final byte[][] AMEX_LENGTH = new byte[][] {
+            new byte[] {15, 15}
+    };
+
+    /**
+     * Constant defining digit groups for American Express.
+     */
+    private static final byte[][] AMEX_GROUPING = new byte[][] {
+            new byte[] {4, 4},
+            new byte[] {6, 6},
+            new byte[] {5, 5}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for Bankcard.
+     */
+    private static final String[][] BANKCARD_IIN = new String[][] {
+            new String[] {"5610", "5610"},
+            new String[] {"560221", "560225"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Bankcard.
+     */
+    private static final byte[][] BANKCARD_LENGTH = new byte[][] {
+            new byte[] {16, 16}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for China UnionPay.
+     */
+    private static final String[][] CHINA_UNIONPAY_IIN = new String[][] {
+            new String[] {"62", "62"}
+    };
+    
+    /**
+     * Constant containing valid lengths for China UnionPay.
+     */
+    private static final byte[][] CHINA_UNIONPAY_LENGTH = new byte[][] {
+            new byte[] {16, 19}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for Diners Club Carte Blanche.
+     */
+    private static final String[][] DINERS_CLUB_CARTE_BLANCHE_IIN = new String[][] {
+            new String[] {"300", "305"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Diners Club Carte Blanche.
+     */
+    private static final byte[][] DINERS_CLUB_CARTE_BLANCHE_LENGTH = new byte[][] {
+            new byte[] {14, 14}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for Diners Club enRoute.
+     */
+    private static final String[][] DINERS_CLUB_ENROUTE_IIN = new String[][] {
+            new String[] {"2014", "2014"},
+            new String[] {"2149", "2149"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Diners Club enRoute.
+     */
+    private static final byte[][] DINERS_CLUB_ENROUTE_LENGTH = new byte[][] {
+            new byte[] {15, 15}
+    };
+
+    /**
+     * Constant defining digit groups for Dinners club enroute.
+     */
+    private static final byte[][] DINERS_CLUB_ENROUTE_GROUPING = new byte[][] {
+            new byte[] {4, 4},
+            new byte[] {7, 7},
+            new byte[] {4, 4}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for Diners Club International.
+     */
+    private static final String[][] DINERS_CLUB_INTERNATIONAL_IIN = new String[][] {
+            new String[] {"36", "36"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Diners Club International.
+     */
+    private static final byte[][] DINERS_CLUB_INTERNATIONAL_LENGTH = new byte[][] {
+            new byte[] {14, 14}
+    };
+
+    /**
+     * Constant defining digit groups for Dinners club internacional. This
+     * grouping is also used for DINERS_CLUB_CARTE_BLANCHE.
+     */
+    private static final byte[][] DINERS_CLUB_INTERATIONAL_GROUPING = new byte[][] {
+            new byte[] {4, 4},
+            new byte[] {6, 6},
+            new byte[] {4, 4} };
+
+    /**
+     * Constant containing IIN ranges reserved for Diners Club USA and Canada.
+     */
+    private static final String[][] DINERS_CLUB_USA_CA_IIN = new String[][] {
+            new String[] {"54", "55"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Diners Club USA and Canada.
+     */
+    private static final byte[][] DINERS_CLUB_USA_CA_LENGTH = new byte[][] {
+            new byte[] {16, 16}
+    };
+
+    /**
+     * Constant containing IIN ranges reserved for Discover.
+     */
+    private static final String[][] DISCOVER_IIN = new String[][] {
+            new String[] {"6011", "6011"},
+            new String[] {"622126", "62295"},
+            new String[] {"644", "649"},
+            new String[] {"65", "65"}
+    };
+    
+    /**
+     * Constant containing valid lengths for Discover.
+     */
+    private static final byte[][] DISCOVER_LENGTH = new byte[][] {
+            new byte[] {16, 16}
+    };
+
+    /**
      * Constant defining digit groups for Discover. This grouping is also used
      * for all Diners Club cards.
      */
     private static final byte[][] DISCOVER_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4}
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4}
     };
-    
-    
-    //InstaPayment
     
     /**
      * Constant containing IIN ranges reserved for InstaPayment.
      */
     private static final String[][] INSTAPAYMENT_IIN = new String[][] {
-        new String[]{"637", "639"}
+            new String[] {"637", "639"}
     };
     
     /**
      * Constant containing valid lengths for InstaPayment.
      */
     private static final byte[][] INSTAPAYMENT_LENGTH = new byte[][] {
-        new byte[]{16, 16}
+            new byte[] {16, 16}
     };
-    
-    /**
-     * Constant indicating whether InstaPayment uses Luhn validation to ensure 
-     * that PAN is valid.
-     */
-    protected static final boolean INSTAPAYMENT_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether InstaPayment network is still being used.
-     */
-    protected static final boolean INSTAPAYMENT_IS_ACTIVE = true;
 
-    
-    
-    //JCB
-    
     /**
      * Constant containing IIN ranges reserved for JCB.
      */
     private static final String[][] JCB_IIN = new String[][] {
-        new String[]{"3528", "3589"}
+            new String[] {"3528", "3589"}
     };
     
     /**
      * Constant containing valid lengths for JCB.
      */
     private static final byte[][] JCB_LENGTH = new byte[][] {
-        new byte[]{16, 16}
+            new byte[] {16, 16}
     };
-    
-    /**
-     * Constant indicating whether JCB uses Luhn validation to ensure that PAN
-     * is valid.
-     */
-    protected static final boolean JCB_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether JCB network is still being used.
-     */
-    protected static final boolean JCB_IS_ACTIVE = true;
 
-    
-    
-    //Laser
-    
     /**
      * Constant containing IIN ranges reserved for Laser.
      */
     private static final String[][] LASER_IIN = new String[][] {
-        new String[]{"6304", "6304"},
-        new String[]{"6706", "6706"},
-        new String[]{"6771", "6771"},
-        new String[]{"6709", "6709"}
+            new String[] {"6304", "6304"},
+            new String[] {"6706", "6706"},
+            new String[] {"6771", "6771"},
+            new String[] {"6709", "6709"}
     };
     
     /**
      * Constant containing valid lengths for Laser.
      */
     private static final byte[][] LASER_LENGTH = new byte[][] {
-        new byte[]{16, 19}
+            new byte[] {16, 19}
     };
-    
-    /**
-     * Constant indicating whether Laser uses Luhn validation to ensure that PAN
-     * is valid.
-     */
-    protected static final boolean LASER_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether Laser network is still being used.
-     */
-    protected static final boolean LASER_IS_ACTIVE = true;
 
-    
-    
-    //Maestro
-    
     /**
      * Constant containing IIN ranges reserved for Maestro.
      */
     private static final String[][] MAESTRO_IIN = new String[][] {
-        new String[]{"5018", "5018"},
-        new String[]{"5020", "5020"},
-        new String[]{"5038", "5038"},
-        new String[]{"5893", "5893"},
-        new String[]{"6304", "6304"},
-        new String[]{"6759", "6759"},
-        new String[]{"6761", "6763"},
-        new String[]{"0604", "0604"}
+            new String[] {"5018", "5018"},
+            new String[] {"5020", "5020"},
+            new String[] {"5038", "5038"},
+            new String[] {"5893", "5893"},
+            new String[] {"6304", "6304"},
+            new String[] {"6759", "6759"},
+            new String[] {"6761", "6763"},
+            new String[] {"0604", "0604"}
     };
     
     /**
      * Constant containing valid lengths for Maestro.
      */    
     private static final byte[][] MAESTRO_LENGTH = new byte[][] {
-        new byte[]{12, 19}
+            new byte[] {12, 19}
     };
-    
-    /**
-     * Constant indicating whether Maestro uses Luhn validation to ensure 
-     * that PAN is valid.
-     */
-    protected static final boolean MAESTRO_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether Maestro network is still being used.
-     */
-    protected static final boolean MAESTRO_IS_ACTIVE = true;
 
-    
-    
-    //MasterCard
-    
     /**
      * Constant containing IIN ranges reserved for MasterCard.
      */
     private static final String[][] MASTERCARD_IIN = new String[][] {
-        new String[]{"222100", "272099"},
-        new String[]{"51", "55"}
+        new String[] {"222100", "272099"},
+        new String[] {"51", "55"}
     };
     
     /**
      * Constant containing valid lengths for MasterCard.
      */        
     private static final byte[][] MASTERCARD_LENGTH = new byte[][] {
-        new byte[]{16, 16}
+            new byte[] {16, 16}
     };
-    
-    /**
-     * Constant indicating whether MasterCard uses Luhn validation to ensure 
-     * that PAN is valid.
-     */    
-    protected static final boolean MASTERCARD_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether MasterCard network is still being used.
-     */
-    protected static final boolean MASTERCARD_IS_ACTIVE = true;
-    
+
     /**
      * Constant defining digit groups for Mastercard.
      */
     private static final byte[][] MASTERCARD_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4}
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4}
     };
 
-    
-    //Solo
-    
     /**
      * Constant containing IIN ranges reserved for Solo.
      */    
     private static final String[][] SOLO_IIN = new String[][] {
-        new String[]{"6334", "6334"},
-        new String[]{"6767", "6767"}
+            new String[] {"6334", "6334"},
+            new String[] {"6767", "6767"}
     };
     
     /**
      * Constant containing valid lengths for Solo.
      */            
     private static final byte[][] SOLO_LENGTH = new byte[][] {
-        new byte[]{16, 16},
-        new byte[]{18, 19}
+            new byte[] {16, 16},
+            new byte[] {18, 19}
     };
-    
-    /**
-     * Constant indicating whether Solo uses Luhn validation to ensure 
-     * that PAN is valid.
-     */        
-    protected static final boolean SOLO_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether Solo network is still being used.
-     */    
-    protected static final boolean SOLO_IS_ACTIVE = false;
 
-    
-    
-    //Switch
-    
     /**
      * Constant containing IIN ranges reserved for Switch.
      */        
     private static final String[][] SWITCH_IIN = new String[][] {
-        new String[]{"4903", "4903"},
-        new String[]{"4905", "4905"},
-        new String[]{"4911", "4911"},
-        new String[]{"4936", "4936"},
-        new String[]{"564182", "564182"},
-        new String[]{"633110", "633110"},
-        new String[]{"6333", "6333"},
-        new String[]{"6759", "6759"}
+            new String[] {"4903", "4903"},
+            new String[] {"4905", "4905"},
+            new String[] {"4911", "4911"},
+            new String[] {"4936", "4936"},
+            new String[] {"564182", "564182"},
+            new String[] {"633110", "633110"},
+            new String[] {"6333", "6333"},
+            new String[] {"6759", "6759"}
     };
     
     /**
      * Constant containing valid lengths for Switch.
      */                
     private static final byte[][] SWITCH_LENGTH = new byte[][] {
-        new byte[]{16, 16},
-        new byte[]{18, 19}
+            new byte[] {16, 16},
+            new byte[] {18, 19}
     };
-    
-    /**
-     * Constant indicating whether Switch uses Luhn validation to ensure 
-     * that PAN is valid.
-     */            
-    protected static final boolean SWITCH_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether Switch network is still being used.
-     */        
-    protected static final boolean SWITCH_IS_ACTIVE = false;
 
-    
-    
-    //Visa
-    
     /**
      * Constant containing IIN ranges reserved for VISA.
      */            
     private static final String[][] VISA_IIN = new String[][] {
-        new String[]{"4", "4"}
+            new String[] {"4", "4"}
     };
     
     /**
      * Constant containing valid lengths for VISA.
      */                    
     private static final byte[][] VISA_LENGTH = new byte[][] {
-        new byte[]{13, 13},
-        new byte[]{16, 16}
+            new byte[] {13, 13},
+            new byte[] {16, 16}
     };
-    
-    /**
-     * Constant indicating whether VISA uses Luhn validation to ensure 
-     * that PAN is valid.
-     */                
-    protected static final boolean VISA_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether VISA network is still being used.
-     */            
-    protected static final boolean VISA_IS_ACTIVE = true;
 
     /**
      * Constant defining digit groups for VISA.
      */
     private static final byte[][] VISA_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{1, 4}
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {1, 4}
     };
-    
-    
-    //Visa Electron
-    
+
     /**
      * Constant containing IIN ranges reserved for VISA Electron.
      */                
     private static final String[][] VISA_ELECTRON_IIN = new String[][] {
-        new String[]{"4026", "4026"},
-        new String[]{"417500", "417500"},
-        new String[]{"4405", "4405"},
-        new String[]{"4508", "4508"},
-        new String[]{"4844", "4844"},
-        new String[]{"4913", "4913"},
-        new String[]{"4917", "4917"}
+            new String[] {"4026", "4026"},
+            new String[] {"417500", "417500"},
+            new String[] {"4405", "4405"},
+            new String[] {"4508", "4508"},
+            new String[] {"4844", "4844"},
+            new String[] {"4913", "4913"},
+            new String[] {"4917", "4917"}
     };
     
     /**
      * Constant containing valid lengths for VISA Electron.
      */                        
     private static final byte[][] VISA_ELECTRON_LENGTH = new byte[][] {
-        new byte[]{16, 16}
+            new byte[] {16, 16}
     };
-    
-    /**
-     * Constant indicating whether VISA Electron uses Luhn validation to 
-     * ensure that PAN is valid.
-     */                    
-    protected static final boolean VISA_ELECTRON_HAS_VALIDATION = true;
-    
-    /**
-     * Constant indicating whether VISA Electron network is still being used.
-     */                
-    protected static final boolean VISA_ELECTRON_IS_ACTIVE = true;    
 
     /**
      * Constant defining digit groups for VISA Electron.
      */
     private static final byte[][] VISA_ELECTRON_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4}
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4}
     };
 
     /**
      * Constant defining digit groups for any other network or unknown networks.
      */
     private static final byte[][] DEFAULT_GROUPING = new byte[][] {
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{4, 4},
-        new byte[]{0, 7}
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {4, 4},
+            new byte[] {0, 7}
     };
 
     /**
@@ -1707,8 +1650,10 @@ public class CreditCardValidator {
         
         //last digit is check value
         int length = panDigits.length;
-        if(length < 2) return false; //we need at least two digits (digits + 
-                                    //checksum)
+        if (length < 2) {
+            return false; //we need at least two digits (digits + checksum)
+        }
+
         byte check = panDigits[length - 1];
         
         //copy digits without check into new array
@@ -1749,19 +1694,18 @@ public class CreditCardValidator {
             return false;
         }
         StringBuilder panBuilder = new StringBuilder();
-        for (int i = 0; i < panDigits.length; i++) {
-            panBuilder.append(panDigits[i]);
+        for (byte panDigit : panDigits) {
+            panBuilder.append(panDigit);
         }
         String pan2 = panBuilder.toString();
-        
-        int n = iins.length;
+
         String iinStartStr, iinEndStr, iinStr;
         int iinStart, iinEnd, leadingZeros;
         StringBuilder iinBuilder;        
         //try for all possible IIN ranges
-        for (int i = 0; i < n; i++) {
-            iinStartStr = iins[i][0];
-            iinEndStr = iins[i][1];
+        for (String[] iin : iins) {
+            iinStartStr = iin[0];
+            iinEndStr = iin[1];
             leadingZeros = numLeadingZeros(iinStartStr);
             if (iinStartStr.length() < iinEndStr.length()) {
                 //add 0's to start of range until both start and end have the 
@@ -1785,7 +1729,7 @@ public class CreditCardValidator {
                 }
                 iinEndStr = iinBuilder.toString();
             }
-            iinStart = Integer.parseInt(iinStartStr);            
+            iinStart = Integer.parseInt(iinStartStr);
             iinEnd = Integer.parseInt(iinEndStr);
             for (int j = iinStart; j <= iinEnd; j++) {
                 //try for all values within a range
@@ -1794,7 +1738,7 @@ public class CreditCardValidator {
                     iinBuilder.append('0');
                 }
                 iinBuilder.append(j);
-                
+
                 //check if pan starts with computed IIN
                 iinStr = iinBuilder.toString();
                 if (pan2.startsWith(iinStr) || iinStr.startsWith(pan2)) {
@@ -1832,12 +1776,11 @@ public class CreditCardValidator {
             return false;
         }
         int length = panDigits.length;
-        
-        int n = lengths.length;
+
         int minLength, maxLength;
-        for (int i = 0; i < n; i++) {
-            minLength = lengths[i][0];
-            maxLength = lengths[i][1];
+        for (byte[] l : lengths) {
+            minLength = l[0];
+            maxLength = l[1];
             if (length >= minLength && length <= maxLength) {
                 return true;
             }
@@ -1857,7 +1800,7 @@ public class CreditCardValidator {
         
         int length = iin.length();
         for (int i = 0; i < length; i++) {
-            if(iin.charAt(i) != '0') {
+            if (iin.charAt(i) != '0') {
                 return i;
             }
         }
@@ -1872,6 +1815,7 @@ public class CreditCardValidator {
      * @param pan a credit card PAN.
      * @return credit card PAN represented as an array of digits.
      */
+    @SuppressWarnings("Duplicates")
     protected static byte[] toDigits(String pan) {
         if (pan == null) {
             return null;
@@ -1958,8 +1902,8 @@ public class CreditCardValidator {
         
         //sum all values
         int sum = 0;
-        for (int i = 0; i < length; i++) {
-            sum += digitsWithoutCheck[i];
+        for (byte digitWithoutCheck : digitsWithoutCheck) {
+            sum += digitWithoutCheck;
         }
         
         //multiply by 9 and pick last digit (modulus 10)
@@ -2039,7 +1983,7 @@ public class CreditCardValidator {
      * @param network credit card network.
      * @return maximum number of allowed digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
- maximum number of groups minus one for provided credit card network.
+     * maximum number of groups minus one for provided credit card network.
      */
     public static int getMaxDigitsForGroupAndNetwork(int groupPos,
             CreditCardNetwork network) throws IllegalArgumentException {

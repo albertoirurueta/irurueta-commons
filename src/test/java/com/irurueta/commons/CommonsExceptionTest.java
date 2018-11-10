@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,42 +15,39 @@
  */
 package com.irurueta.commons;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.*;
+
+import static org.junit.Assert.assertNotNull;
 
 public class CommonsExceptionTest {
     
-    public CommonsExceptionTest() {}
+    public CommonsExceptionTest() { }
     
     @BeforeClass
-    public static void setUpClass() {}
+    public static void setUpClass() { }
     
     @AfterClass
-    public static void tearDownClass() {}
+    public static void tearDownClass() { }
     
     @Before
-    public void setUp() {}
+    public void setUp() { }
     
     @After
-    public void tearDown() {}
+    public void tearDown() { }
 
     @Test
-    public void testConstructor(){
-        CommonsException ex;
-        assertNotNull(ex = new CommonsException());
-        
-        ex = null;
-        assertNotNull(ex = new CommonsException("message"));
-        
-        ex = null;
-        assertNotNull(ex = new CommonsException(new Exception()));
-        
-        ex = null;
-        assertNotNull(ex = new CommonsException("message", 
-                new Exception()));        
+    public void testConstructor() {
+        CommonsException ex = new CommonsException();
+        assertNotNull(ex);
+
+        ex = new CommonsException("message");
+        assertNotNull(ex);
+
+        ex = new CommonsException(new Exception());
+        assertNotNull(ex);
+
+        ex = new CommonsException("message",
+                new Exception());
+        assertNotNull(ex);
     }    
 }
