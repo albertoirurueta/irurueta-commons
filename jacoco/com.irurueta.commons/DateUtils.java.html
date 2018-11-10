@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DateUtils.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons</a> &gt; <span class="el_source">DateUtils.java</span></div><h1>DateUtils.java</h1><pre class="source lang-java linenums">/**
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DateUtils.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons</a> &gt; <span class="el_source">DateUtils.java</span></div><h1>DateUtils.java</h1><pre class="source lang-java linenums">/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -28,6 +28,7 @@ import java.util.Locale;
  * and some utility methods such as to determine whether two timestamps 
  * correspond to the same date, etc.
  */
+@SuppressWarnings(&quot;WeakerAccess&quot;)
 public class DateUtils {
 
     /**
@@ -50,7 +51,7 @@ public class DateUtils {
     /**
      * Constructor.
      */
-<span class="fc" id="L53">    protected DateUtils() { }</span>
+<span class="fc" id="L54">    protected DateUtils() { }</span>
 
     /**
      * Parses a string representing a date or timestamp in ISO 8601 format.
@@ -58,31 +59,31 @@ public class DateUtils {
      * @return a date object or null if string could not be parsed.
      */
     public static Date parse(String date) {
-<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (date == null) {</span>
-<span class="fc" id="L62">            return null;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (date == null) {</span>
+<span class="fc" id="L63">            return null;</span>
         }
         
         try {
             //try parsing without separators
-<span class="fc" id="L67">            date = date.replaceAll(&quot;Z$&quot;, &quot;+0000&quot;);</span>
-<span class="fc" id="L68">            SimpleDateFormat format = new SimpleDateFormat(</span>
+<span class="fc" id="L68">            date = date.replaceAll(&quot;Z$&quot;, &quot;+0000&quot;);</span>
+<span class="fc" id="L69">            SimpleDateFormat format = new SimpleDateFormat(</span>
                     TIMESTAMP_NO_SEPARATORS_FORMAT, Locale.US);
-<span class="fc" id="L70">            return format.parse(date);</span>
-<span class="fc" id="L71">        } catch (ParseException e) {</span>
+<span class="fc" id="L71">            return format.parse(date);</span>
+<span class="fc" id="L72">        } catch (ParseException e) {</span>
             //if it fails, try parsing with separators
             try {
-<span class="fc" id="L74">                SimpleDateFormat format = new SimpleDateFormat(</span>
+<span class="fc" id="L75">                SimpleDateFormat format = new SimpleDateFormat(</span>
                         TIMESTAMP_SEPARATORS_FORMAT, Locale.US);
-<span class="fc" id="L76">                return format.parse(date);</span>
-<span class="fc" id="L77">            } catch (ParseException e2) {</span>
+<span class="fc" id="L77">                return format.parse(date);</span>
+<span class="fc" id="L78">            } catch (ParseException e2) {</span>
                 //if it fails, try parsing just the date component
                 try {
-<span class="fc" id="L80">                    SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT, </span>
+<span class="fc" id="L81">                    SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT, </span>
                             Locale.US);
-<span class="fc" id="L82">                    return format.parse(date);</span>
-<span class="nc" id="L83">                } catch (ParseException e3) {</span>
+<span class="fc" id="L83">                    return format.parse(date);</span>
+<span class="nc" id="L84">                } catch (ParseException e3) {</span>
                     //if it fails, return null.
-<span class="nc" id="L85">                    return null;</span>
+<span class="nc" id="L86">                    return null;</span>
                 }
             }
         }
@@ -94,14 +95,14 @@ public class DateUtils {
      * @return a date formatted in medium format.
      */
     public static String formatDate(Date date) {
-<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        if (date != null) {</span>
-            //formateamos fecha con formato MEDIUM.
-<span class="fc" id="L99">            SimpleDateFormat format =</span>
-<span class="fc" id="L100">                    (SimpleDateFormat) DateFormat.getDateInstance(</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if (date != null) {</span>
+            //format date with MEDIUM format
+<span class="fc" id="L100">            SimpleDateFormat format =</span>
+<span class="fc" id="L101">                    (SimpleDateFormat) DateFormat.getDateInstance(</span>
                             DateFormat.MEDIUM);
-<span class="fc" id="L102">            return format.format(date);</span>
+<span class="fc" id="L103">            return format.format(date);</span>
         }
-<span class="nc" id="L104">        return &quot;&quot;;</span>
+<span class="nc" id="L105">        return &quot;&quot;;</span>
     }
 
     /**
@@ -110,14 +111,14 @@ public class DateUtils {
      * @return a date and time formatted in short format.
      */
     public static String formatDateAndTime(Date date) {
-<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        if (date != null) {</span>
-            //formateamos fecha y hora con formato SHORT.
-<span class="fc" id="L115">            SimpleDateFormat format =</span>
-<span class="fc" id="L116">                    (SimpleDateFormat) DateFormat.getDateTimeInstance(</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">        if (date != null) {</span>
+            //format date and time with SHORT format
+<span class="fc" id="L116">            SimpleDateFormat format =</span>
+<span class="fc" id="L117">                    (SimpleDateFormat) DateFormat.getDateTimeInstance(</span>
                             DateFormat.SHORT, DateFormat.SHORT);
-<span class="fc" id="L118">            return format.format(date);</span>
+<span class="fc" id="L119">            return format.format(date);</span>
         }
-<span class="nc" id="L120">        return &quot;&quot;;</span>
+<span class="nc" id="L121">        return &quot;&quot;;</span>
     }
 
     /**
@@ -125,12 +126,12 @@ public class DateUtils {
      * @return current date at midnight.
      */
     public static Date today() {
-<span class="fc" id="L128">        Calendar cal = Calendar.getInstance();</span>
-<span class="fc" id="L129">        cal.set(Calendar.HOUR_OF_DAY, 0);</span>
-<span class="fc" id="L130">        cal.set(Calendar.MINUTE, 0);</span>
-<span class="fc" id="L131">        cal.set(Calendar.SECOND, 0);</span>
-<span class="fc" id="L132">        cal.set(Calendar.MILLISECOND, 0);</span>
-<span class="fc" id="L133">        return cal.getTime();</span>
+<span class="fc" id="L129">        Calendar cal = Calendar.getInstance();</span>
+<span class="fc" id="L130">        cal.set(Calendar.HOUR_OF_DAY, 0);</span>
+<span class="fc" id="L131">        cal.set(Calendar.MINUTE, 0);</span>
+<span class="fc" id="L132">        cal.set(Calendar.SECOND, 0);</span>
+<span class="fc" id="L133">        cal.set(Calendar.MILLISECOND, 0);</span>
+<span class="fc" id="L134">        return cal.getTime();</span>
     }
 
     /**
@@ -141,34 +142,34 @@ public class DateUtils {
      * @return true if both dates are the same, false otherwise.
      */
     public static boolean isSameDay(Date date1, Date date2) {
-<span class="fc" id="L144">        Calendar cal1 = Calendar.getInstance();</span>
-<span class="fc" id="L145">        cal1.setTime(date1);</span>
-<span class="fc" id="L146">        Calendar cal2 = Calendar.getInstance();</span>
-<span class="fc" id="L147">        cal2.setTime(date2);</span>
-<span class="fc" id="L148">        return isSameDay(cal1, cal2);</span>
+<span class="fc" id="L145">        Calendar cal1 = Calendar.getInstance();</span>
+<span class="fc" id="L146">        cal1.setTime(date1);</span>
+<span class="fc" id="L147">        Calendar cal2 = Calendar.getInstance();</span>
+<span class="fc" id="L148">        cal2.setTime(date2);</span>
+<span class="fc" id="L149">        return isSameDay(cal1, cal2);</span>
     }
 
     /**
      * Indicates if both provided calendar instances have the same calendar date
      * (even if they have different times set).
-     * @param cal1 1st calendar to check
-     * @param cal2 2nd calendar to check
+     * @param cal1 1st calendar to check.
+     * @param cal2 2nd calendar to check.
      * @return true if both calendars have the same date, false otherwise.
      */
     public static boolean isSameDay(Calendar cal1, Calendar cal2) {
-<span class="pc bpc" id="L159" title="1 of 2 branches missed.">        return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &amp;&amp;</span>
-<span class="fc bfc" id="L160" title="All 2 branches covered.">            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &amp;&amp;</span>
-<span class="pc bpc" id="L161" title="1 of 2 branches missed.">            cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);</span>
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">        return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &amp;&amp;</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &amp;&amp;</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">            cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);</span>
     }
 
     /**
      * Indicates whether provided date and time instances correspond to today
      * taking into account local timezone.
-     * @param date date and time to check
+     * @param date date and time to check.
      * @return true if date/time corresponds to today, false otherwise.
      */
     public static boolean isToday(Date date) {
-<span class="fc" id="L171">        return isSameDay(date, new Date());</span>
+<span class="fc" id="L172">        return isSameDay(date, new Date());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ZipCodeValidator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons.validators</a> &gt; <span class="el_source">ZipCodeValidator.java</span></div><h1>ZipCodeValidator.java</h1><pre class="source lang-java linenums">/**
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ZipCodeValidator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons.validators</a> &gt; <span class="el_source">ZipCodeValidator.java</span></div><h1>ZipCodeValidator.java</h1><pre class="source lang-java linenums">/*
  * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
  *
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 /**
  * Validates post codes based on county ISO codes.
  */
+@SuppressWarnings(&quot;WeakerAccess&quot;)
 public class ZipCodeValidator extends Validator&lt;String&gt; {
 
     /**
@@ -198,65 +199,65 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
     /**
      * Constructor.
      */
-<span class="fc" id="L201">    protected ZipCodeValidator() {</span>
-<span class="fc" id="L202">        mMap = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L203">        mMap.put(&quot;ES&quot;, ES_ZIPCODE_REGEX);</span>
-<span class="fc" id="L204">        mMap.put(&quot;FR&quot;, FR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L205">        mMap.put(&quot;DE&quot;, DE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L206">        mMap.put(&quot;IT&quot;, IT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L207">        mMap.put(&quot;PT&quot;, PT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L208">        mMap.put(&quot;GB&quot;, GB_ZIPCODE_REGEX);</span>
-<span class="fc" id="L209">        mMap.put(&quot;AT&quot;, AT_ZIPCODE_REGEX);</span>
-<span class="fc" id="L210">        mMap.put(&quot;IE&quot;, IE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L211">        mMap.put(&quot;BE&quot;, BE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L212">        mMap.put(&quot;NL&quot;, NL_ZIPCODE_REGEX);</span>
-<span class="fc" id="L213">        mMap.put(&quot;LU&quot;, LU_ZIPCODE_REGEX);</span>
-<span class="fc" id="L214">        mMap.put(&quot;MC&quot;, MC_ZIPCODE_REGEX);</span>
-<span class="fc" id="L215">        mMap.put(&quot;CH&quot;, CH_ZIPCODE_REGEX);</span>
-<span class="fc" id="L216">        mMap.put(&quot;NO&quot;, NO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L217">        mMap.put(&quot;DK&quot;, DK_ZIPCODE_REGEX);</span>
-<span class="fc" id="L218">        mMap.put(&quot;SE&quot;, SE_ZIPCODE_REGEX);</span>
-<span class="fc" id="L219">        mMap.put(&quot;FI&quot;, FI_ZIPCODE_REGEX);</span>
-<span class="fc" id="L220">        mMap.put(&quot;US&quot;, US_ZIPCODE_REGEX);</span>
-<span class="fc" id="L221">        mMap.put(&quot;JP&quot;, JP_ZIPCODE_REGEX);</span>
-<span class="fc" id="L222">        mMap.put(&quot;PL&quot;, PL_ZIPCODE_REGEX);</span>
-<span class="fc" id="L223">        mMap.put(&quot;CN&quot;, CN_ZIPCODE_REGEX);</span>
-<span class="fc" id="L224">        mMap.put(&quot;CA&quot;, CA_ZIPCODE_REGEX);</span>
-<span class="fc" id="L225">        mMap.put(&quot;RU&quot;, RU_ZIPCODE_REGEX);</span>
-<span class="fc" id="L226">        mMap.put(&quot;GR&quot;, GR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L227">        mMap.put(&quot;KR&quot;, KR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L228">        mMap.put(&quot;RO&quot;, RO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L229">        mMap.put(&quot;MX&quot;, MX_ZIPCODE_REGEX);</span>
-<span class="fc" id="L230">        mMap.put(&quot;TW&quot;, TW_ZIPCODE_REGEX);</span>
-<span class="fc" id="L231">        mMap.put(&quot;MO&quot;, MO_ZIPCODE_REGEX);</span>
-<span class="fc" id="L232">        mMap.put(&quot;HK&quot;, HK_ZIPCODE_REGEX);</span>
-<span class="fc" id="L233">        mMap.put(&quot;TR&quot;, TR_ZIPCODE_REGEX);</span>
-<span class="fc" id="L234">    }</span>
+<span class="fc" id="L202">    protected ZipCodeValidator() {</span>
+<span class="fc" id="L203">        mMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L204">        mMap.put(&quot;ES&quot;, ES_ZIPCODE_REGEX);</span>
+<span class="fc" id="L205">        mMap.put(&quot;FR&quot;, FR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L206">        mMap.put(&quot;DE&quot;, DE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L207">        mMap.put(&quot;IT&quot;, IT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L208">        mMap.put(&quot;PT&quot;, PT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L209">        mMap.put(&quot;GB&quot;, GB_ZIPCODE_REGEX);</span>
+<span class="fc" id="L210">        mMap.put(&quot;AT&quot;, AT_ZIPCODE_REGEX);</span>
+<span class="fc" id="L211">        mMap.put(&quot;IE&quot;, IE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L212">        mMap.put(&quot;BE&quot;, BE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L213">        mMap.put(&quot;NL&quot;, NL_ZIPCODE_REGEX);</span>
+<span class="fc" id="L214">        mMap.put(&quot;LU&quot;, LU_ZIPCODE_REGEX);</span>
+<span class="fc" id="L215">        mMap.put(&quot;MC&quot;, MC_ZIPCODE_REGEX);</span>
+<span class="fc" id="L216">        mMap.put(&quot;CH&quot;, CH_ZIPCODE_REGEX);</span>
+<span class="fc" id="L217">        mMap.put(&quot;NO&quot;, NO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L218">        mMap.put(&quot;DK&quot;, DK_ZIPCODE_REGEX);</span>
+<span class="fc" id="L219">        mMap.put(&quot;SE&quot;, SE_ZIPCODE_REGEX);</span>
+<span class="fc" id="L220">        mMap.put(&quot;FI&quot;, FI_ZIPCODE_REGEX);</span>
+<span class="fc" id="L221">        mMap.put(&quot;US&quot;, US_ZIPCODE_REGEX);</span>
+<span class="fc" id="L222">        mMap.put(&quot;JP&quot;, JP_ZIPCODE_REGEX);</span>
+<span class="fc" id="L223">        mMap.put(&quot;PL&quot;, PL_ZIPCODE_REGEX);</span>
+<span class="fc" id="L224">        mMap.put(&quot;CN&quot;, CN_ZIPCODE_REGEX);</span>
+<span class="fc" id="L225">        mMap.put(&quot;CA&quot;, CA_ZIPCODE_REGEX);</span>
+<span class="fc" id="L226">        mMap.put(&quot;RU&quot;, RU_ZIPCODE_REGEX);</span>
+<span class="fc" id="L227">        mMap.put(&quot;GR&quot;, GR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L228">        mMap.put(&quot;KR&quot;, KR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L229">        mMap.put(&quot;RO&quot;, RO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L230">        mMap.put(&quot;MX&quot;, MX_ZIPCODE_REGEX);</span>
+<span class="fc" id="L231">        mMap.put(&quot;TW&quot;, TW_ZIPCODE_REGEX);</span>
+<span class="fc" id="L232">        mMap.put(&quot;MO&quot;, MO_ZIPCODE_REGEX);</span>
+<span class="fc" id="L233">        mMap.put(&quot;HK&quot;, HK_ZIPCODE_REGEX);</span>
+<span class="fc" id="L234">        mMap.put(&quot;TR&quot;, TR_ZIPCODE_REGEX);</span>
+<span class="fc" id="L235">    }</span>
 
     /**
      * Constructor.
      * @param countryCode ISO 3166 county code.
      */
     public ZipCodeValidator(String countryCode) {
-<span class="fc" id="L241">        this();</span>
-<span class="fc" id="L242">        setCountryCode(countryCode);</span>
-<span class="fc" id="L243">    }</span>
+<span class="fc" id="L242">        this();</span>
+<span class="fc" id="L243">        setCountryCode(countryCode);</span>
+<span class="fc" id="L244">    }</span>
 
     /**
      * Constructor.
      * @param locale locale associated to an ISO 3166 county code.
      */
     public ZipCodeValidator(Locale locale) {
-<span class="fc" id="L250">        this();</span>
-<span class="fc" id="L251">        setCountryCodeFrom(locale);</span>
-<span class="fc" id="L252">    }</span>
+<span class="fc" id="L251">        this();</span>
+<span class="fc" id="L252">        setCountryCodeFrom(locale);</span>
+<span class="fc" id="L253">    }</span>
 
     /**
      * Returns ISO 3166 country code associated to this instance.
      * @return ISO 3166 country code associated to this instance.
      */
     public String getCountryCode() {
-<span class="fc" id="L259">        return mCountryCode;</span>
+<span class="fc" id="L260">        return mCountryCode;</span>
     }
 
     /**
@@ -264,18 +265,18 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
      * @param countryCode ISO 3166 country code associated to this instance.
      */
     public final void setCountryCode(String countryCode) {
-<span class="fc" id="L267">        mCountryCode = countryCode;</span>
-<span class="fc" id="L268">        buildPattern();</span>
-<span class="fc" id="L269">    }</span>
+<span class="fc" id="L268">        mCountryCode = countryCode;</span>
+<span class="fc" id="L269">        buildPattern();</span>
+<span class="fc" id="L270">    }</span>
 
     /**
      * Sets ISO 3166 country code associated to this instance.
      * @param locale locale associated to an ISO 3166 country code.
      */
     public final void setCountryCodeFrom(Locale locale) {
-<span class="pc bpc" id="L276" title="1 of 2 branches missed.">        mCountryCode = locale != null ? locale.getCountry() : null;</span>
-<span class="fc" id="L277">        buildPattern();</span>
-<span class="fc" id="L278">    }</span>
+<span class="pc bpc" id="L277" title="1 of 2 branches missed.">        mCountryCode = locale != null ? locale.getCountry() : null;</span>
+<span class="fc" id="L278">        buildPattern();</span>
+<span class="fc" id="L279">    }</span>
 
     /**
      * Checks whether provided post code has a valid format for the configured country.
@@ -284,7 +285,6 @@ public class ZipCodeValidator extends Validator&lt;String&gt; {
      */
     @Override
     public boolean isValid(String zipCode) {
-        //mPostCodePattern == null, para países desconocidos
 <span class="fc bfc" id="L288" title="All 6 branches covered.">        return mPostCodePattern == null || zipCode != null &amp;&amp; mPostCodePattern.matcher(zipCode).matches();</span>
     }
 
