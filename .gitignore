@@ -1,7 +1,4 @@
-/nbproject/
-/target/
-/dependencies/target/
-/irurueta-commons/target/
+target
 .idea
 
-src/main/java/com/irurueta/commons/build-info.properties
+src/main/resources/com/irurueta/commons/build-info.properties
