@@ -2,7 +2,6 @@
 Utility classes for Java SE
 
 [![Build Status](https://travis-ci.org/albertoirurueta/irurueta-commons.svg?branch=master)](https://travis-ci.org/albertoirurueta/irurueta-commons)
-[![Coverage Status](https://coveralls.io/repos/github/albertoirurueta/irurueta-commons/badge.svg?branch=master)](https://coveralls.io/github/albertoirurueta/irurueta-commons?branch=master)
 
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=albertoirurueta_irurueta-commons&metric=bugs)](https://sonarcloud.io/dashboard?id=albertoirurueta_irurueta-commons)
@@ -21,3 +20,8 @@ Utility classes for Java SE
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=albertoirurueta_irurueta-commons&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=albertoirurueta_irurueta-commons)
 
 [Maven Site Report](http://albertoirurueta.github.io/irurueta-commons)
+
+Donations are welcome :)
+Contribute to the maintenance of this project by clicking on the following link:
+
+[![paypal](https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png)](https://paypal.me/albertoirurueta)
