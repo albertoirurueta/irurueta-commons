@@ -18,8 +18,6 @@ package com.irurueta.commons;
 import com.irurueta.commons.validators.CreditCardNetwork;
 import com.irurueta.commons.validators.CreditCardValidator;
 
-import java.util.Arrays;
-
 /**
  * Generates a masked PAN where only the last 4 digits are displayed and the 
  * remaining ones are masked using digit groupings according to the 
