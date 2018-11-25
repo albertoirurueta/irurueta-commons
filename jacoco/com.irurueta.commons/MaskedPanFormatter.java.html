@@ -201,65 +201,8 @@ public class MaskedPanFormatter {
      * @param pan PAN to be converted to digits.
      * @return array containing digits within provided PAN.
      */
-    @SuppressWarnings(&quot;Duplicates&quot;)
     private static byte[] toDigits(String pan) {
-<span class="pc bpc" id="L206" title="1 of 2 branches missed.">        if (pan == null) {</span>
-<span class="nc" id="L207">            return new byte[0];</span>
-        }
-
-<span class="fc" id="L210">        int length = pan.length();</span>
-<span class="fc" id="L211">        byte[] internal = new byte[length];</span>
-        byte value;
-        char c;
-<span class="fc" id="L214">        int numDigits = 0;</span>
-<span class="fc bfc" id="L215" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L216">            c = pan.charAt(i);</span>
-<span class="fc bfc" id="L217" title="All 11 branches covered.">            switch (c) {</span>
-                case '0':
-<span class="fc" id="L219">                    value = 0;</span>
-<span class="fc" id="L220">                    break;</span>
-                case '1':
-<span class="fc" id="L222">                    value = 1;</span>
-<span class="fc" id="L223">                    break;</span>
-                case '2':
-<span class="fc" id="L225">                    value = 2;</span>
-<span class="fc" id="L226">                    break;</span>
-                case '3':
-<span class="fc" id="L228">                    value = 3;</span>
-<span class="fc" id="L229">                    break;</span>
-                case '4':
-<span class="fc" id="L231">                    value = 4;</span>
-<span class="fc" id="L232">                    break;</span>
-                case '5':
-<span class="fc" id="L234">                    value = 5;</span>
-<span class="fc" id="L235">                    break;</span>
-                case '6':
-<span class="fc" id="L237">                    value = 6;</span>
-<span class="fc" id="L238">                    break;</span>
-                case '7':
-<span class="fc" id="L240">                    value = 7;</span>
-<span class="fc" id="L241">                    break;</span>
-                case '8':
-<span class="fc" id="L243">                    value = 8;</span>
-<span class="fc" id="L244">                    break;</span>
-                case '9':
-<span class="fc" id="L246">                    value = 9;</span>
-<span class="fc" id="L247">                    break;</span>
-                default:
-<span class="fc" id="L249">                    continue;</span>
-            }
-
-            //el valor del carácter sólo se concatena si es un dígito,
-            //si no se ignora
-<span class="fc" id="L254">            internal[numDigits] = value;</span>
-<span class="fc" id="L255">            numDigits++;</span>
-        }
-
-<span class="fc bfc" id="L258" title="All 2 branches covered.">        if (numDigits == 0) {</span>
-<span class="fc" id="L259">            return new byte[0];</span>
-        } else {
-<span class="fc" id="L261">            return Arrays.copyOf(internal, numDigits);</span>
-        }
-    }    
+<span class="fc" id="L205">        return CreditCardValidator.toDigits(pan);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
