@@ -1676,6 +1676,7 @@ public class CreditCardValidator {
      * @param pan a credit card PAN.
      * @return credit card PAN represented as an array of digits.
      */
+    @SuppressWarnings("Duplicates")
     public static byte[] toDigits(String pan) {
         if (pan == null) {
             return new byte[0];
