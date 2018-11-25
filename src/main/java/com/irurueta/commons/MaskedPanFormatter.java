@@ -204,7 +204,7 @@ public class MaskedPanFormatter {
     @SuppressWarnings("Duplicates")
     private static byte[] toDigits(String pan) {
         if (pan == null) {
-            return null;
+            return new byte[0];
         }
 
         int length = pan.length();
@@ -256,7 +256,7 @@ public class MaskedPanFormatter {
         }
 
         if (numDigits == 0) {
-            return null;
+            return new byte[0];
         } else {
             return Arrays.copyOf(internal, numDigits);
         }

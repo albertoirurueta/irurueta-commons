@@ -1699,13 +1699,21 @@ public class CreditCardValidator {
         }
         String pan2 = panBuilder.toString();
 
-        String iinStartStr, iinEndStr, iinStr;
-        int iinStart, iinEnd, leadingZeros;
+        String iinStartStr;
+        String iinEndStr;
+        String iinStr;
+        int iinStart;
+        int iinEnd;
+        int leadingZeros;
         StringBuilder iinBuilder;        
         //try for all possible IIN ranges
         for (String[] iin : iins) {
             iinStartStr = iin[0];
             iinEndStr = iin[1];
+            if (iinStartStr == null || iinEndStr == null) {
+                return false;
+            }
+
             leadingZeros = numLeadingZeros(iinStartStr);
             if (iinStartStr.length() < iinEndStr.length()) {
                 //add 0's to start of range until both start and end have the 
@@ -1777,7 +1785,8 @@ public class CreditCardValidator {
         }
         int length = panDigits.length;
 
-        int minLength, maxLength;
+        int minLength;
+        int maxLength;
         for (byte[] l : lengths) {
             minLength = l[0];
             maxLength = l[1];
@@ -1818,7 +1827,7 @@ public class CreditCardValidator {
     @SuppressWarnings("Duplicates")
     protected static byte[] toDigits(String pan) {
         if (pan == null) {
-            return null;
+            return new byte[0];
         }
         
         int length = pan.length();
@@ -1870,7 +1879,7 @@ public class CreditCardValidator {
         }
         
         if (numDigits == 0) {
-            return null;
+            return new byte[0];
         } else {
             return Arrays.copyOf(internal, numDigits);
         }
@@ -1892,7 +1901,9 @@ public class CreditCardValidator {
         }
         
         //sum digits of multiplied digits
-        byte value, unit, ten;
+        byte value;
+        byte unit;
+        byte ten;
         for (int i = 0; i < length; i++) {
             value = digitsWithoutCheck[i];
             unit = (byte)(value % 10); //a unit
@@ -1959,10 +1970,11 @@ public class CreditCardValidator {
      * @param network credit card network.
      * @return minimum number of required digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
- maximum number of groups minus one for provided credit card network.
+     * maximum number of groups minus one for provided credit card network.
      */
+    @SuppressWarnings("Duplicates")
     public static int getMinDigitsForGroupAndNetwork(int groupPos, 
-            CreditCardNetwork network) throws IllegalArgumentException {
+            CreditCardNetwork network) {
         if (groupPos < 0) {
             throw new IllegalArgumentException();
         }
@@ -1985,8 +1997,9 @@ public class CreditCardValidator {
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
      * maximum number of groups minus one for provided credit card network.
      */
+    @SuppressWarnings("Duplicates")
     public static int getMaxDigitsForGroupAndNetwork(int groupPos,
-            CreditCardNetwork network) throws IllegalArgumentException {
+            CreditCardNetwork network) {
         if (groupPos < 0) {
             throw new IllegalArgumentException();
         }

@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  * Validates email format.
  */
 @SuppressWarnings("WeakerAccess")
-public class EmailValidator extends Validator<String> {
+public class EmailValidator implements Validator<String> {
 
     /**
      * Regular expression to validate email format.
@@ -55,8 +55,8 @@ public class EmailValidator extends Validator<String> {
     public static synchronized EmailValidator getInstance() {
         EmailValidator validator;
         if (mSingleton == null || (validator = mSingleton.get()) == null) {
-            mSingleton = new SoftReference<>(
-                    validator = new EmailValidator());
+            validator = new EmailValidator();
+            mSingleton = new SoftReference<>(validator);
         }
         return validator;
     }

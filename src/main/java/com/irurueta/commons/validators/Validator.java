@@ -16,17 +16,17 @@
 package com.irurueta.commons.validators;
 
 /**
- * Base class for all data model validators.
- * All validators implementations of data models should extends this class.
+ * Defines all data model validators.
+ * All validators implementations of data models should extends this interface.
  *
  * @param <T> model of data to be validated.
  */
-public abstract class Validator<T> {
+public interface Validator<T> {
 
     /**
      * Indicates whether data model is valid or not.
      * @param obj object to be validated.
      * @return true if object is valid, false otherwise.
      */
-    public abstract boolean isValid(T obj);
+    boolean isValid(T obj);
 }

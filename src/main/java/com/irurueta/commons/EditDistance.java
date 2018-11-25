@@ -77,7 +77,8 @@ public class EditDistance {
 
         //Obtains length of both parameters. If one of them is 0, we return the
         //length of the other, since that number of insertions will be required
-        int n = x.length(), m = y.length();
+        int n = x.length();
+        int m = y.length();
         if (n == 0) {
             return m;
         }
@@ -89,7 +90,8 @@ public class EditDistance {
         //space, we just keep current and next rows, both of which have a length
         //of m+1, and hence only O(n) space is required.
         //Initialize current row.
-        int curRow = 0, nextRow = 1;
+        int curRow = 0;
+        int nextRow = 1;
         int[][] rows = new int[][]{ new int[m + 1], new int[m + 1] };
         for (int j = 0; j <= m; ++j) {
             rows[curRow][j] = j;
