@@ -201,64 +201,7 @@ public class MaskedPanFormatter {
      * @param pan PAN to be converted to digits.
      * @return array containing digits within provided PAN.
      */
-    @SuppressWarnings("Duplicates")
     private static byte[] toDigits(String pan) {
-        if (pan == null) {
-            return new byte[0];
-        }
-
-        int length = pan.length();
-        byte[] internal = new byte[length];
-        byte value;
-        char c;
-        int numDigits = 0;
-        for (int i = 0; i < length; i++) {
-            c = pan.charAt(i);
-            switch (c) {
-                case '0':
-                    value = 0;
-                    break;
-                case '1':
-                    value = 1;
-                    break;
-                case '2':
-                    value = 2;
-                    break;
-                case '3':
-                    value = 3;
-                    break;
-                case '4':
-                    value = 4;
-                    break;
-                case '5':
-                    value = 5;
-                    break;
-                case '6':
-                    value = 6;
-                    break;
-                case '7':
-                    value = 7;
-                    break;
-                case '8':
-                    value = 8;
-                    break;
-                case '9':
-                    value = 9;
-                    break;
-                default:
-                    continue;
-            }
-
-            //el valor del carácter sólo se concatena si es un dígito,
-            //si no se ignora
-            internal[numDigits] = value;
-            numDigits++;
-        }
-
-        if (numDigits == 0) {
-            return new byte[0];
-        } else {
-            return Arrays.copyOf(internal, numDigits);
-        }
-    }    
+        return CreditCardValidator.toDigits(pan);
+    }
 }

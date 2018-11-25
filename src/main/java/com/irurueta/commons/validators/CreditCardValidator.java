@@ -1667,7 +1667,75 @@ public class CreditCardValidator {
         byte computedCheck = computeCheck(digitsWithoutCheck);
         return check == computedCheck;
     }
-    
+
+    /**
+     * Converts a credit card PAN from its string representation into an array
+     * containing PAN digits.
+     * This method will strip away any spaces or punctuation marks, leaving only
+     * the digits found within provided PAN.
+     * @param pan a credit card PAN.
+     * @return credit card PAN represented as an array of digits.
+     */
+    public static byte[] toDigits(String pan) {
+        if (pan == null) {
+            return new byte[0];
+        }
+
+        int length = pan.length();
+        byte[] internal = new byte[length];
+        byte value;
+        char c;
+        int numDigits = 0;
+        for (int i = 0; i < length; i++) {
+            c = pan.charAt(i);
+            switch (c) {
+                case '0':
+                    value = 0;
+                    break;
+                case '1':
+                    value = 1;
+                    break;
+                case '2':
+                    value = 2;
+                    break;
+                case '3':
+                    value = 3;
+                    break;
+                case '4':
+                    value = 4;
+                    break;
+                case '5':
+                    value = 5;
+                    break;
+                case '6':
+                    value = 6;
+                    break;
+                case '7':
+                    value = 7;
+                    break;
+                case '8':
+                    value = 8;
+                    break;
+                case '9':
+                    value = 9;
+                    break;
+                default:
+                    continue;
+            }
+
+            //value of character is only added if it is a digit,
+            //otherwise this is never executed
+            internal[numDigits] = value;
+            numDigits++;
+        }
+
+        if (numDigits == 0) {
+            return new byte[0];
+        } else {
+            return Arrays.copyOf(internal, numDigits);
+        }
+    }
+
     /**
      * Internal method to check whether provided credit card PAN corresponds
      * to a valid IIN by checking the array of valid IIN ranges.
@@ -1819,76 +1887,7 @@ public class CreditCardValidator {
         }
         return length;
     }
-    
-    /**
-     * Converts a credit card PAN from its string representation into an array
-     * containing PAN digits.
-     * This method will strip away any spaces or punctuation marks, leaving only
-     * the digits found within provided PAN.
-     * @param pan a credit card PAN.
-     * @return credit card PAN represented as an array of digits.
-     */
-    @SuppressWarnings("Duplicates")
-    protected static byte[] toDigits(String pan) {
-        if (pan == null) {
-            return new byte[0];
-        }
-        
-        int length = pan.length();
-        byte[] internal = new byte[length];
-        byte value;
-        char c;
-        int numDigits = 0;
-        for (int i = 0; i < length; i++) {
-            c = pan.charAt(i);
-            switch (c) {
-                case '0':
-                    value = 0;
-                    break;
-                case '1':
-                    value = 1;
-                    break;
-                case '2':
-                    value = 2;
-                    break;
-                case '3':
-                    value = 3;
-                    break;
-                case '4':
-                    value = 4;
-                    break;
-                case '5':
-                    value = 5;
-                    break;
-                case '6':
-                    value = 6;
-                    break;
-                case '7':
-                    value = 7;
-                    break;
-                case '8':
-                    value = 8;
-                    break;
-                case '9':
-                    value = 9;
-                    break;
-                default:
-                    continue;
-            }
-            
-            //value of character is only added if it is a digit,
-            //otherwise this is never executed
-            internal[numDigits] = value;
-            numDigits++;
-        }
-        
-        if (numDigits == 0) {
-            return new byte[0];
-        } else {
-            return Arrays.copyOf(internal, numDigits);
-        }
-    }
-    
+
     /**
      * Computes checksum using Luhn algorithm.
      * Notice that this method will modify the values in provided array of 
