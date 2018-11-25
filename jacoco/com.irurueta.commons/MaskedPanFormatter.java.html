@@ -204,7 +204,7 @@ public class MaskedPanFormatter {
     @SuppressWarnings(&quot;Duplicates&quot;)
     private static byte[] toDigits(String pan) {
 <span class="pc bpc" id="L206" title="1 of 2 branches missed.">        if (pan == null) {</span>
-<span class="nc" id="L207">            return null;</span>
+<span class="nc" id="L207">            return new byte[0];</span>
         }
 
 <span class="fc" id="L210">        int length = pan.length();</span>
@@ -256,7 +256,7 @@ public class MaskedPanFormatter {
         }
 
 <span class="pc bpc" id="L258" title="1 of 2 branches missed.">        if (numDigits == 0) {</span>
-<span class="nc" id="L259">            return null;</span>
+<span class="nc" id="L259">            return new byte[0];</span>
         } else {
 <span class="fc" id="L261">            return Arrays.copyOf(internal, numDigits);</span>
         }

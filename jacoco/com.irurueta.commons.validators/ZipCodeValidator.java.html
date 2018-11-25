@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  * Validates post codes based on county ISO codes.
  */
 @SuppressWarnings(&quot;WeakerAccess&quot;)
-public class ZipCodeValidator extends Validator&lt;String&gt; {
+public class ZipCodeValidator implements Validator&lt;String&gt; {
 
     /**
      * Regular expression to validate post codes in Spain.

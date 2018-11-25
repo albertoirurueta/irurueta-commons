@@ -1699,55 +1699,63 @@ public class CreditCardValidator {
         }
 <span class="fc" id="L1700">        String pan2 = panBuilder.toString();</span>
 
-        String iinStartStr, iinEndStr, iinStr;
-        int iinStart, iinEnd, leadingZeros;
+        String iinStartStr;
+        String iinEndStr;
+        String iinStr;
+        int iinStart;
+        int iinEnd;
+        int leadingZeros;
         StringBuilder iinBuilder;        
         //try for all possible IIN ranges
-<span class="fc bfc" id="L1706" title="All 2 branches covered.">        for (String[] iin : iins) {</span>
-<span class="fc" id="L1707">            iinStartStr = iin[0];</span>
-<span class="fc" id="L1708">            iinEndStr = iin[1];</span>
-<span class="fc" id="L1709">            leadingZeros = numLeadingZeros(iinStartStr);</span>
-<span class="pc bpc" id="L1710" title="1 of 2 branches missed.">            if (iinStartStr.length() &lt; iinEndStr.length()) {</span>
+<span class="fc bfc" id="L1710" title="All 2 branches covered.">        for (String[] iin : iins) {</span>
+<span class="fc" id="L1711">            iinStartStr = iin[0];</span>
+<span class="fc" id="L1712">            iinEndStr = iin[1];</span>
+<span class="pc bpc" id="L1713" title="2 of 4 branches missed.">            if (iinStartStr == null || iinEndStr == null) {</span>
+<span class="nc" id="L1714">                return false;</span>
+            }
+
+<span class="fc" id="L1717">            leadingZeros = numLeadingZeros(iinStartStr);</span>
+<span class="pc bpc" id="L1718" title="1 of 2 branches missed.">            if (iinStartStr.length() &lt; iinEndStr.length()) {</span>
                 //add 0's to start of range until both start and end have the 
                 //same length
-<span class="nc" id="L1713">                iinBuilder = new StringBuilder();</span>
-<span class="nc" id="L1714">                iinBuilder.append(iinStartStr);</span>
-<span class="nc" id="L1715">                int diff = iinEndStr.length() - iinStartStr.length();</span>
-<span class="nc bnc" id="L1716" title="All 2 branches missed.">                for (int j = 0; j &lt; diff; j++) {</span>
-<span class="nc" id="L1717">                    iinBuilder.append('0');</span>
+<span class="nc" id="L1721">                iinBuilder = new StringBuilder();</span>
+<span class="nc" id="L1722">                iinBuilder.append(iinStartStr);</span>
+<span class="nc" id="L1723">                int diff = iinEndStr.length() - iinStartStr.length();</span>
+<span class="nc bnc" id="L1724" title="All 2 branches missed.">                for (int j = 0; j &lt; diff; j++) {</span>
+<span class="nc" id="L1725">                    iinBuilder.append('0');</span>
                 }
-<span class="nc" id="L1719">                iinStartStr = iinBuilder.toString();</span>
+<span class="nc" id="L1727">                iinStartStr = iinBuilder.toString();</span>
             }
-<span class="fc bfc" id="L1721" title="All 2 branches covered.">            if (iinStartStr.length() &gt; iinEndStr.length()) {</span>
+<span class="fc bfc" id="L1729" title="All 2 branches covered.">            if (iinStartStr.length() &gt; iinEndStr.length()) {</span>
                 //add 9's to end of range until both start and end have the same
                 //length
-<span class="fc" id="L1724">                iinBuilder = new StringBuilder();</span>
-<span class="fc" id="L1725">                iinBuilder.append(iinEndStr);</span>
-<span class="fc" id="L1726">                int diff = iinStartStr.length() - iinEndStr.length();</span>
-<span class="fc bfc" id="L1727" title="All 2 branches covered.">                for (int j = 0; j &lt; diff; j++) {</span>
-<span class="fc" id="L1728">                    iinBuilder.append('9');</span>
+<span class="fc" id="L1732">                iinBuilder = new StringBuilder();</span>
+<span class="fc" id="L1733">                iinBuilder.append(iinEndStr);</span>
+<span class="fc" id="L1734">                int diff = iinStartStr.length() - iinEndStr.length();</span>
+<span class="fc bfc" id="L1735" title="All 2 branches covered.">                for (int j = 0; j &lt; diff; j++) {</span>
+<span class="fc" id="L1736">                    iinBuilder.append('9');</span>
                 }
-<span class="fc" id="L1730">                iinEndStr = iinBuilder.toString();</span>
+<span class="fc" id="L1738">                iinEndStr = iinBuilder.toString();</span>
             }
-<span class="fc" id="L1732">            iinStart = Integer.parseInt(iinStartStr);</span>
-<span class="fc" id="L1733">            iinEnd = Integer.parseInt(iinEndStr);</span>
-<span class="fc bfc" id="L1734" title="All 2 branches covered.">            for (int j = iinStart; j &lt;= iinEnd; j++) {</span>
+<span class="fc" id="L1740">            iinStart = Integer.parseInt(iinStartStr);</span>
+<span class="fc" id="L1741">            iinEnd = Integer.parseInt(iinEndStr);</span>
+<span class="fc bfc" id="L1742" title="All 2 branches covered.">            for (int j = iinStart; j &lt;= iinEnd; j++) {</span>
                 //try for all values within a range
-<span class="fc" id="L1736">                iinBuilder = new StringBuilder();</span>
-<span class="fc bfc" id="L1737" title="All 2 branches covered.">                for (int m = 0; m &lt; leadingZeros; m++) {</span>
-<span class="fc" id="L1738">                    iinBuilder.append('0');</span>
+<span class="fc" id="L1744">                iinBuilder = new StringBuilder();</span>
+<span class="fc bfc" id="L1745" title="All 2 branches covered.">                for (int m = 0; m &lt; leadingZeros; m++) {</span>
+<span class="fc" id="L1746">                    iinBuilder.append('0');</span>
                 }
-<span class="fc" id="L1740">                iinBuilder.append(j);</span>
+<span class="fc" id="L1748">                iinBuilder.append(j);</span>
 
                 //check if pan starts with computed IIN
-<span class="fc" id="L1743">                iinStr = iinBuilder.toString();</span>
-<span class="fc bfc" id="L1744" title="All 4 branches covered.">                if (pan2.startsWith(iinStr) || iinStr.startsWith(pan2)) {</span>
-<span class="fc" id="L1745">                    return true;</span>
+<span class="fc" id="L1751">                iinStr = iinBuilder.toString();</span>
+<span class="fc bfc" id="L1752" title="All 4 branches covered.">                if (pan2.startsWith(iinStr) || iinStr.startsWith(pan2)) {</span>
+<span class="fc" id="L1753">                    return true;</span>
                 }
             }
         }
         
-<span class="fc" id="L1750">        return false;</span>
+<span class="fc" id="L1758">        return false;</span>
     }
     
     /**
@@ -1758,10 +1766,10 @@ public class CreditCardValidator {
      * @return true if PAN length is valid, false otherwise.
      */
     protected static boolean isValidLength(String pan, byte[][] lengths) {
-<span class="pc bpc" id="L1761" title="2 of 4 branches missed.">        if (pan == null || lengths == null) {</span>
-<span class="nc" id="L1762">            return false;</span>
+<span class="pc bpc" id="L1769" title="2 of 4 branches missed.">        if (pan == null || lengths == null) {</span>
+<span class="nc" id="L1770">            return false;</span>
         }
-<span class="fc" id="L1764">        return isValidLength(toDigits(pan), lengths);</span>
+<span class="fc" id="L1772">        return isValidLength(toDigits(pan), lengths);</span>
     }
     
     /**
@@ -1772,20 +1780,21 @@ public class CreditCardValidator {
      * @return true if PAN length is valid, false otherwise.
      */
     protected static boolean isValidLength(byte[] panDigits, byte[][] lengths) {
-<span class="pc bpc" id="L1775" title="2 of 4 branches missed.">        if (panDigits == null || lengths == null) {</span>
-<span class="nc" id="L1776">            return false;</span>
+<span class="pc bpc" id="L1783" title="2 of 4 branches missed.">        if (panDigits == null || lengths == null) {</span>
+<span class="nc" id="L1784">            return false;</span>
         }
-<span class="fc" id="L1778">        int length = panDigits.length;</span>
+<span class="fc" id="L1786">        int length = panDigits.length;</span>
 
-        int minLength, maxLength;
-<span class="fc bfc" id="L1781" title="All 2 branches covered.">        for (byte[] l : lengths) {</span>
-<span class="fc" id="L1782">            minLength = l[0];</span>
-<span class="fc" id="L1783">            maxLength = l[1];</span>
-<span class="fc bfc" id="L1784" title="All 4 branches covered.">            if (length &gt;= minLength &amp;&amp; length &lt;= maxLength) {</span>
-<span class="fc" id="L1785">                return true;</span>
+        int minLength;
+        int maxLength;
+<span class="fc bfc" id="L1790" title="All 2 branches covered.">        for (byte[] l : lengths) {</span>
+<span class="fc" id="L1791">            minLength = l[0];</span>
+<span class="fc" id="L1792">            maxLength = l[1];</span>
+<span class="fc bfc" id="L1793" title="All 4 branches covered.">            if (length &gt;= minLength &amp;&amp; length &lt;= maxLength) {</span>
+<span class="fc" id="L1794">                return true;</span>
             }
         }
-<span class="fc" id="L1788">        return false;</span>
+<span class="fc" id="L1797">        return false;</span>
     }
     
     /**
@@ -1794,17 +1803,17 @@ public class CreditCardValidator {
      * @return number of leading zeros.
      */
     protected static int numLeadingZeros(String iin) {
-<span class="pc bpc" id="L1797" title="1 of 2 branches missed.">        if (iin == null) {</span>
-<span class="nc" id="L1798">            return 0;</span>
+<span class="pc bpc" id="L1806" title="1 of 2 branches missed.">        if (iin == null) {</span>
+<span class="nc" id="L1807">            return 0;</span>
         }
         
-<span class="fc" id="L1801">        int length = iin.length();</span>
-<span class="pc bpc" id="L1802" title="1 of 2 branches missed.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc bfc" id="L1803" title="All 2 branches covered.">            if (iin.charAt(i) != '0') {</span>
-<span class="fc" id="L1804">                return i;</span>
+<span class="fc" id="L1810">        int length = iin.length();</span>
+<span class="pc bpc" id="L1811" title="1 of 2 branches missed.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc bfc" id="L1812" title="All 2 branches covered.">            if (iin.charAt(i) != '0') {</span>
+<span class="fc" id="L1813">                return i;</span>
             }
         }
-<span class="nc" id="L1807">        return length;</span>
+<span class="nc" id="L1816">        return length;</span>
     }
     
     /**
@@ -1817,62 +1826,62 @@ public class CreditCardValidator {
      */
     @SuppressWarnings(&quot;Duplicates&quot;)
     protected static byte[] toDigits(String pan) {
-<span class="fc bfc" id="L1820" title="All 2 branches covered.">        if (pan == null) {</span>
-<span class="fc" id="L1821">            return null;</span>
+<span class="fc bfc" id="L1829" title="All 2 branches covered.">        if (pan == null) {</span>
+<span class="fc" id="L1830">            return new byte[0];</span>
         }
         
-<span class="fc" id="L1824">        int length = pan.length();</span>
-<span class="fc" id="L1825">        byte[] internal = new byte[length];</span>
+<span class="fc" id="L1833">        int length = pan.length();</span>
+<span class="fc" id="L1834">        byte[] internal = new byte[length];</span>
         byte value;
         char c;
-<span class="fc" id="L1828">        int numDigits = 0;</span>
-<span class="fc bfc" id="L1829" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L1830">            c = pan.charAt(i);</span>
-<span class="fc bfc" id="L1831" title="All 11 branches covered.">            switch (c) {</span>
+<span class="fc" id="L1837">        int numDigits = 0;</span>
+<span class="fc bfc" id="L1838" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L1839">            c = pan.charAt(i);</span>
+<span class="fc bfc" id="L1840" title="All 11 branches covered.">            switch (c) {</span>
                 case '0':
-<span class="fc" id="L1833">                    value = 0;</span>
-<span class="fc" id="L1834">                    break;</span>
-                case '1':
-<span class="fc" id="L1836">                    value = 1;</span>
-<span class="fc" id="L1837">                    break;</span>
-                case '2':
-<span class="fc" id="L1839">                    value = 2;</span>
-<span class="fc" id="L1840">                    break;</span>
-                case '3':
-<span class="fc" id="L1842">                    value = 3;</span>
+<span class="fc" id="L1842">                    value = 0;</span>
 <span class="fc" id="L1843">                    break;</span>
-                case '4':
-<span class="fc" id="L1845">                    value = 4;</span>
+                case '1':
+<span class="fc" id="L1845">                    value = 1;</span>
 <span class="fc" id="L1846">                    break;</span>
-                case '5':
-<span class="fc" id="L1848">                    value = 5;</span>
+                case '2':
+<span class="fc" id="L1848">                    value = 2;</span>
 <span class="fc" id="L1849">                    break;</span>
-                case '6':
-<span class="fc" id="L1851">                    value = 6;</span>
+                case '3':
+<span class="fc" id="L1851">                    value = 3;</span>
 <span class="fc" id="L1852">                    break;</span>
-                case '7':
-<span class="fc" id="L1854">                    value = 7;</span>
+                case '4':
+<span class="fc" id="L1854">                    value = 4;</span>
 <span class="fc" id="L1855">                    break;</span>
-                case '8':
-<span class="fc" id="L1857">                    value = 8;</span>
+                case '5':
+<span class="fc" id="L1857">                    value = 5;</span>
 <span class="fc" id="L1858">                    break;</span>
-                case '9':
-<span class="fc" id="L1860">                    value = 9;</span>
+                case '6':
+<span class="fc" id="L1860">                    value = 6;</span>
 <span class="fc" id="L1861">                    break;</span>
+                case '7':
+<span class="fc" id="L1863">                    value = 7;</span>
+<span class="fc" id="L1864">                    break;</span>
+                case '8':
+<span class="fc" id="L1866">                    value = 8;</span>
+<span class="fc" id="L1867">                    break;</span>
+                case '9':
+<span class="fc" id="L1869">                    value = 9;</span>
+<span class="fc" id="L1870">                    break;</span>
                 default:
-<span class="fc" id="L1863">                    continue;</span>
+<span class="fc" id="L1872">                    continue;</span>
             }
             
             //value of character is only added if it is a digit,
             //otherwise this is never executed
-<span class="fc" id="L1868">            internal[numDigits] = value;</span>
-<span class="fc" id="L1869">            numDigits++;</span>
+<span class="fc" id="L1877">            internal[numDigits] = value;</span>
+<span class="fc" id="L1878">            numDigits++;</span>
         }
         
-<span class="fc bfc" id="L1872" title="All 2 branches covered.">        if (numDigits == 0) {</span>
-<span class="fc" id="L1873">            return null;</span>
+<span class="fc bfc" id="L1881" title="All 2 branches covered.">        if (numDigits == 0) {</span>
+<span class="fc" id="L1882">            return new byte[0];</span>
         } else {
-<span class="fc" id="L1875">            return Arrays.copyOf(internal, numDigits);</span>
+<span class="fc" id="L1884">            return Arrays.copyOf(internal, numDigits);</span>
         }
     }
     
@@ -1886,28 +1895,30 @@ public class CreditCardValidator {
      */
     protected static byte computeCheck(byte[] digitsWithoutCheck) {
         //multiply by two even digits
-<span class="fc" id="L1889">        int length = digitsWithoutCheck.length;</span>
-<span class="fc bfc" id="L1890" title="All 2 branches covered.">        for (int i = length - 1; i &gt;= 0; i -= 2) {</span>
-<span class="fc" id="L1891">            digitsWithoutCheck[i] *= 2;</span>
+<span class="fc" id="L1898">        int length = digitsWithoutCheck.length;</span>
+<span class="fc bfc" id="L1899" title="All 2 branches covered.">        for (int i = length - 1; i &gt;= 0; i -= 2) {</span>
+<span class="fc" id="L1900">            digitsWithoutCheck[i] *= 2;</span>
         }
         
         //sum digits of multiplied digits
-        byte value, unit, ten;
-<span class="fc bfc" id="L1896" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
-<span class="fc" id="L1897">            value = digitsWithoutCheck[i];</span>
-<span class="fc" id="L1898">            unit = (byte)(value % 10); //a unit</span>
-<span class="fc" id="L1899">            ten = (byte)((value - unit) / 10); //a ten</span>
-<span class="fc" id="L1900">            digitsWithoutCheck[i] = (byte)(unit + ten);</span>
+        byte value;
+        byte unit;
+        byte ten;
+<span class="fc bfc" id="L1907" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L1908">            value = digitsWithoutCheck[i];</span>
+<span class="fc" id="L1909">            unit = (byte)(value % 10); //a unit</span>
+<span class="fc" id="L1910">            ten = (byte)((value - unit) / 10); //a ten</span>
+<span class="fc" id="L1911">            digitsWithoutCheck[i] = (byte)(unit + ten);</span>
         }
         
         //sum all values
-<span class="fc" id="L1904">        int sum = 0;</span>
-<span class="fc bfc" id="L1905" title="All 2 branches covered.">        for (byte digitWithoutCheck : digitsWithoutCheck) {</span>
-<span class="fc" id="L1906">            sum += digitWithoutCheck;</span>
+<span class="fc" id="L1915">        int sum = 0;</span>
+<span class="fc bfc" id="L1916" title="All 2 branches covered.">        for (byte digitWithoutCheck : digitsWithoutCheck) {</span>
+<span class="fc" id="L1917">            sum += digitWithoutCheck;</span>
         }
         
         //multiply by 9 and pick last digit (modulus 10)
-<span class="fc" id="L1910">        return (byte)((sum * 9) % 10);</span>
+<span class="fc" id="L1921">        return (byte)((sum * 9) % 10);</span>
     }
     
     /**
@@ -1916,29 +1927,29 @@ public class CreditCardValidator {
      * @return digit groupings.
      */
     protected static byte[][] groupingsForNetwork(CreditCardNetwork network) {
-<span class="fc bfc" id="L1919" title="All 2 branches covered.">        if (network == null) {</span>
-<span class="fc" id="L1920">            return DEFAULT_GROUPING;</span>
+<span class="fc bfc" id="L1930" title="All 2 branches covered.">        if (network == null) {</span>
+<span class="fc" id="L1931">            return DEFAULT_GROUPING;</span>
         }
         
-<span class="fc bfc" id="L1923" title="All 8 branches covered.">        switch (network) {</span>
+<span class="fc bfc" id="L1934" title="All 8 branches covered.">        switch (network) {</span>
             case AMERICAN_EXPRESS:
-<span class="fc" id="L1925">                return AMEX_GROUPING;</span>
+<span class="fc" id="L1936">                return AMEX_GROUPING;</span>
             case VISA:
-<span class="fc" id="L1927">                return VISA_GROUPING;</span>
+<span class="fc" id="L1938">                return VISA_GROUPING;</span>
             case VISA_ELECTRON:
-<span class="fc" id="L1929">                return VISA_ELECTRON_GROUPING;</span>
+<span class="fc" id="L1940">                return VISA_ELECTRON_GROUPING;</span>
             case MASTERCARD:
-<span class="fc" id="L1931">                return MASTERCARD_GROUPING;</span>
+<span class="fc" id="L1942">                return MASTERCARD_GROUPING;</span>
             case DINERS_CLUB_INTERNATIONAL:
             case DINERS_CLUB_CARTE_BLANCHE:
-<span class="fc" id="L1934">                return DINERS_CLUB_INTERATIONAL_GROUPING;</span>
+<span class="fc" id="L1945">                return DINERS_CLUB_INTERATIONAL_GROUPING;</span>
             case DINERS_CLUB_ENROUTE:
-<span class="fc" id="L1936">                return DINERS_CLUB_ENROUTE_GROUPING;</span>
+<span class="fc" id="L1947">                return DINERS_CLUB_ENROUTE_GROUPING;</span>
             case DINERS_CLUB_USA_CANADA:
             case DISCOVER:
-<span class="fc" id="L1939">                return DISCOVER_GROUPING;</span>
+<span class="fc" id="L1950">                return DISCOVER_GROUPING;</span>
             default:
-<span class="fc" id="L1941">                return DEFAULT_GROUPING;                </span>
+<span class="fc" id="L1952">                return DEFAULT_GROUPING;                </span>
         }
     }
     
@@ -1948,8 +1959,8 @@ public class CreditCardValidator {
      * @return number of digit groups for provided credit card network.
      */
     public static int getNumberOfGroupsForNetwork(CreditCardNetwork network) {
-<span class="fc" id="L1951">        byte[][] groups = groupingsForNetwork(network);</span>
-<span class="fc" id="L1952">        return groups.length;</span>
+<span class="fc" id="L1962">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L1963">        return groups.length;</span>
     }
     
     /**
@@ -1959,21 +1970,22 @@ public class CreditCardValidator {
      * @param network credit card network.
      * @return minimum number of required digits.
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
- maximum number of groups minus one for provided credit card network.
+     * maximum number of groups minus one for provided credit card network.
      */
+    @SuppressWarnings(&quot;Duplicates&quot;)
     public static int getMinDigitsForGroupAndNetwork(int groupPos, 
-            CreditCardNetwork network) throws IllegalArgumentException {
-<span class="fc bfc" id="L1966" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
-<span class="fc" id="L1967">            throw new IllegalArgumentException();</span>
+            CreditCardNetwork network) {
+<span class="fc bfc" id="L1978" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
+<span class="fc" id="L1979">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L1970">        byte[][] groups = groupingsForNetwork(network);</span>
-<span class="fc" id="L1971">        int numGroups = groups.length;</span>
-<span class="fc bfc" id="L1972" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
-<span class="fc" id="L1973">            throw new IllegalArgumentException();</span>
+<span class="fc" id="L1982">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L1983">        int numGroups = groups.length;</span>
+<span class="fc bfc" id="L1984" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
+<span class="fc" id="L1985">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L1976">        return groups[groupPos][0];</span>
+<span class="fc" id="L1988">        return groups[groupPos][0];</span>
     }
     
     /**
@@ -1985,19 +1997,20 @@ public class CreditCardValidator {
      * @throws IllegalArgumentException if groupPos is negative or exceeds the
      * maximum number of groups minus one for provided credit card network.
      */
+    @SuppressWarnings(&quot;Duplicates&quot;)
     public static int getMaxDigitsForGroupAndNetwork(int groupPos,
-            CreditCardNetwork network) throws IllegalArgumentException {
-<span class="fc bfc" id="L1990" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
-<span class="fc" id="L1991">            throw new IllegalArgumentException();</span>
+            CreditCardNetwork network) {
+<span class="fc bfc" id="L2003" title="All 2 branches covered.">        if (groupPos &lt; 0) {</span>
+<span class="fc" id="L2004">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L1994">        byte[][] groups = groupingsForNetwork(network);</span>
-<span class="fc" id="L1995">        int numGroups = groups.length;</span>
-<span class="fc bfc" id="L1996" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
-<span class="fc" id="L1997">            throw new IllegalArgumentException();</span>
+<span class="fc" id="L2007">        byte[][] groups = groupingsForNetwork(network);</span>
+<span class="fc" id="L2008">        int numGroups = groups.length;</span>
+<span class="fc bfc" id="L2009" title="All 2 branches covered.">        if (groupPos &gt;= numGroups) {</span>
+<span class="fc" id="L2010">            throw new IllegalArgumentException();</span>
         }
         
-<span class="fc" id="L2000">        return groups[groupPos][1];</span>
+<span class="fc" id="L2013">        return groups[groupPos][1];</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

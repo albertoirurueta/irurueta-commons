@@ -77,49 +77,51 @@ public class EditDistance {
 
         //Obtains length of both parameters. If one of them is 0, we return the
         //length of the other, since that number of insertions will be required
-<span class="fc" id="L80">        int n = x.length(), m = y.length();</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if (n == 0) {</span>
-<span class="nc" id="L82">            return m;</span>
+<span class="fc" id="L80">        int n = x.length();</span>
+<span class="fc" id="L81">        int m = y.length();</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (n == 0) {</span>
+<span class="nc" id="L83">            return m;</span>
         }
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if (m == 0) {</span>
-<span class="nc" id="L85">            return n;</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">        if (m == 0) {</span>
+<span class="nc" id="L86">            return n;</span>
         }
 
         //Instead of keeping a whole matrix (which would require an O(n*m) 
         //space, we just keep current and next rows, both of which have a length
         //of m+1, and hence only O(n) space is required.
         //Initialize current row.
-<span class="fc" id="L92">        int curRow = 0, nextRow = 1;</span>
-<span class="fc" id="L93">        int[][] rows = new int[][]{ new int[m + 1], new int[m + 1] };</span>
-<span class="fc bfc" id="L94" title="All 2 branches covered.">        for (int j = 0; j &lt;= m; ++j) {</span>
-<span class="fc" id="L95">            rows[curRow][j] = j;</span>
+<span class="fc" id="L93">        int curRow = 0;</span>
+<span class="fc" id="L94">        int nextRow = 1;</span>
+<span class="fc" id="L95">        int[][] rows = new int[][]{ new int[m + 1], new int[m + 1] };</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        for (int j = 0; j &lt;= m; ++j) {</span>
+<span class="fc" id="L97">            rows[curRow][j] = j;</span>
         }
 
         //for each virtual row (since we only keep two)
-<span class="fc bfc" id="L99" title="All 2 branches covered.">        for (int i = 1; i &lt;= n; ++i) {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for (int i = 1; i &lt;= n; ++i) {</span>
             //fill values of row
-<span class="fc" id="L101">            rows[nextRow][0] = i;</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">            for (int j = 1; j &lt;= m; ++j) {</span>
-<span class="fc" id="L103">                int dist1 = rows[curRow][j] + 1;</span>
-<span class="fc" id="L104">                int dist2 = rows[nextRow][j - 1] + 1;</span>
-<span class="fc" id="L105">                int dist3 = rows[curRow][j - 1] +</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">                        (x.equals(y, i - 1, j - 1) ? 0 : 1);</span>
+<span class="fc" id="L103">            rows[nextRow][0] = i;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">            for (int j = 1; j &lt;= m; ++j) {</span>
+<span class="fc" id="L105">                int dist1 = rows[curRow][j] + 1;</span>
+<span class="fc" id="L106">                int dist2 = rows[nextRow][j - 1] + 1;</span>
+<span class="fc" id="L107">                int dist3 = rows[curRow][j - 1] +</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                        (x.equals(y, i - 1, j - 1) ? 0 : 1);</span>
 
-<span class="fc" id="L108">                rows[nextRow][j] = Math.min(dist1, Math.min(dist2,  dist3));</span>
+<span class="fc" id="L110">                rows[nextRow][j] = Math.min(dist1, Math.min(dist2,  dist3));</span>
             }
 
             //exchanges current and next rows
-<span class="fc bfc" id="L112" title="All 2 branches covered.">            if (curRow == 0) {</span>
-<span class="fc" id="L113">                curRow = 1;</span>
-<span class="fc" id="L114">                nextRow = 0;</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">            if (curRow == 0) {</span>
+<span class="fc" id="L115">                curRow = 1;</span>
+<span class="fc" id="L116">                nextRow = 0;</span>
             } else {
-<span class="fc" id="L116">                curRow = 0;</span>
-<span class="fc" id="L117">                nextRow = 1;</span>
+<span class="fc" id="L118">                curRow = 0;</span>
+<span class="fc" id="L119">                nextRow = 1;</span>
             }
         }
 
         //returns computed distance
-<span class="fc" id="L122">        return rows[curRow][m];</span>
+<span class="fc" id="L124">        return rows[curRow][m];</span>
     }
 	
     /**
@@ -167,16 +169,16 @@ public class EditDistance {
          * Constructor.
          * @param object string to be compared.
          */
-<span class="fc" id="L170">        public StringArrayWrapper(String object) {</span>
-<span class="fc" id="L171">            mObject = object;</span>
-<span class="fc" id="L172">        }</span>
+<span class="fc" id="L172">        public StringArrayWrapper(String object) {</span>
+<span class="fc" id="L173">            mObject = object;</span>
+<span class="fc" id="L174">        }</span>
 
         /**
          * Length of the string to be compared.
          */
         @Override
         public int length() {
-<span class="fc" id="L179">            return mObject.length();</span>
+<span class="fc" id="L181">            return mObject.length();</span>
         }
 
         /**
@@ -192,12 +194,12 @@ public class EditDistance {
         public boolean equals(ArrayWrapper&lt;String&gt; other, int posX,
                               int posY) {
 
-<span class="pc bpc" id="L195" title="1 of 2 branches missed.">            if (!(other instanceof StringArrayWrapper)) {</span>
-<span class="nc" id="L196">                return false;</span>
+<span class="pc bpc" id="L197" title="1 of 2 branches missed.">            if (!(other instanceof StringArrayWrapper)) {</span>
+<span class="nc" id="L198">                return false;</span>
             }
 
-<span class="fc" id="L199">            String otherObject = ((StringArrayWrapper)other).mObject;</span>
-<span class="fc bfc" id="L200" title="All 2 branches covered.">            return mObject.charAt(posX) == otherObject.charAt(posY);</span>
+<span class="fc" id="L201">            String otherObject = ((StringArrayWrapper)other).mObject;</span>
+<span class="fc bfc" id="L202" title="All 2 branches covered.">            return mObject.charAt(posX) == otherObject.charAt(posY);</span>
         }
     }
 	
@@ -217,16 +219,16 @@ public class EditDistance {
          * Constructor.
          * @param object generic array of type T to be compared.
          */
-<span class="fc" id="L220">        public GenericArrayWrapper(T[] object) {</span>
-<span class="fc" id="L221">            mObject = object;</span>
-<span class="fc" id="L222">        }</span>
+<span class="fc" id="L222">        public GenericArrayWrapper(T[] object) {</span>
+<span class="fc" id="L223">            mObject = object;</span>
+<span class="fc" id="L224">        }</span>
 
         /**
          * Length of array to be compared.
          */
         @Override
         public int length() {
-<span class="fc" id="L229">            return mObject.length;</span>
+<span class="fc" id="L231">            return mObject.length;</span>
         }
 
         /**
@@ -240,12 +242,12 @@ public class EditDistance {
          */		
         @Override
         public boolean equals(ArrayWrapper&lt;T[]&gt; other, int posX, int posY) {
-<span class="pc bpc" id="L243" title="1 of 2 branches missed.">            if (!(other instanceof GenericArrayWrapper)) {</span>
-<span class="nc" id="L244">                return false;</span>
+<span class="pc bpc" id="L245" title="1 of 2 branches missed.">            if (!(other instanceof GenericArrayWrapper)) {</span>
+<span class="nc" id="L246">                return false;</span>
             }
 
-<span class="fc" id="L247">            T[] otherObject = ((GenericArrayWrapper&lt;T&gt;)other).mObject;</span>
-<span class="fc" id="L248">            return mObject[posX].equals(otherObject[posY]);</span>
+<span class="fc" id="L249">            T[] otherObject = ((GenericArrayWrapper&lt;T&gt;)other).mObject;</span>
+<span class="fc" id="L250">            return mObject[posX].equals(otherObject[posY]);</span>
         }
     }	
 }
