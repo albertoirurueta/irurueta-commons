@@ -585,6 +585,12 @@ public class CreditCardValidatorTest {
         pan = "4917";
         assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
                 CreditCardNetwork.VISA_ELECTRON);
+
+
+        //test unknown
+        pan = "";
+        assertEquals(CreditCardValidator.detectNetworkFromPAN(pan),
+                CreditCardNetwork.UNKNOWN);
     }
     
     @Test
@@ -1375,7 +1381,12 @@ public class CreditCardValidatorTest {
                 CreditCardNetwork.VISA_ELECTRON));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(pan));
         assertFalse(CreditCardValidator.isVISAElectronValidLength(
-                CreditCardValidator.toDigits(pan)));        
+                CreditCardValidator.toDigits(pan)));
+
+        //unknown network
+        assertTrue(CreditCardValidator.isValidLength(pan, CreditCardNetwork.UNKNOWN));
+        assertTrue(CreditCardValidator.isValidLength(pan,
+                (CreditCardNetwork) null));
     }
     
     @Test

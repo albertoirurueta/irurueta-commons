@@ -138,7 +138,16 @@ public class MaskedPanFormatterTest {
 
         //JCB
         assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB, 
-                '·', '_'), "····_····_····_····000");        
+                '·', '_'), "····_····_····_····000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA,
+                '·', '_'), "····_····_····_····");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA,
+                '·', '_'), "····_····_····_····");
     }
     
     @Test
@@ -240,8 +249,17 @@ public class MaskedPanFormatterTest {
 
         //JCB
         assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB, 
-                '·'), "···· ···· ···· ····000");        
-        
+                '·'), "···· ···· ···· ····000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA,
+                '·'), "···· ···· ···· ····");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA,
+                '·'), "···· ···· ···· ····");
+
     }
     
     @Test
@@ -340,6 +358,15 @@ public class MaskedPanFormatterTest {
         //JCB
         assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB),
                 "**** **** **** ****000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA),
+                "**** **** **** ****");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA),
+                "**** **** **** ****");
     }
    
     @Test
@@ -378,7 +405,16 @@ public class MaskedPanFormatterTest {
 
         //JCB
         assertEquals(MaskedPanFormatter.format("3530111333300000", '·', '_'), 
-                "····_····_····_···0000");        
+                "····_····_····_···0000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format("", '·', '_'),
+                "····_····_····_·······");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong", '·', '_'),
+                "····_····_····_·······");
     }
     
     @Test
@@ -418,6 +454,15 @@ public class MaskedPanFormatterTest {
         //JCB
         assertEquals(MaskedPanFormatter.format("3530111333300000", '·'), 
                 "···· ···· ···· ···0000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format("", '·'),
+                "···· ···· ···· ·······");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong", '·'),
+                "···· ···· ···· ·······");
     }
     
     @Test
@@ -457,5 +502,14 @@ public class MaskedPanFormatterTest {
         //JCB
         assertEquals(MaskedPanFormatter.format("3530111333300000"), 
                 "**** **** **** ***0000");
+
+
+        //test with null PAN
+        assertEquals(MaskedPanFormatter.format(""),
+                "**** **** **** *******");
+
+        //test with invalid PAN
+        assertEquals(MaskedPanFormatter.format("wrong"),
+                "**** **** **** *******");
     }    
 }

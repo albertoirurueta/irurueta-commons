@@ -847,6 +847,10 @@ public class CreditCardValidator {
      */
     protected static boolean isValidLength(byte[] panDigits, 
             CreditCardNetwork network) {
+        if (network == null) {
+            return true;
+        }
+
         switch (network) {
             case AMERICAN_EXPRESS:
                 return isAmericanExpressValidLength(panDigits);
