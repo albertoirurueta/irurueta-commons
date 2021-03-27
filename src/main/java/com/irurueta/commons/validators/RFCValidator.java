@@ -18,7 +18,6 @@ package com.irurueta.commons.validators;
 /**
  * Validates RFC (Registro Federal de Contribuyentes) for Mexico.
  */
-@SuppressWarnings("WeakerAccess")
 public class RFCValidator {
     /**
      * Regular expression to validate RFC (Registro Federal de Contribuyentes).
@@ -28,14 +27,16 @@ public class RFCValidator {
     /**
      * Constructor.
      */
-    protected RFCValidator() { }
+    protected RFCValidator() {
+    }
 
     /**
      * Indicates whether provided RFC has a valid format.
+     *
      * @param value RFC to be validated.
      * @return true if RFC has a valid format, false otherwise.
      */
-    public static boolean isValid(String value) {
+    public static boolean isValid(final String value) {
         return value != null && value.matches(RFC_REGEX);
     }
 }

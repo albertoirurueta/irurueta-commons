@@ -23,7 +23,7 @@ public enum CreditCardNetwork {
      * American Express.
      */
     AMERICAN_EXPRESS,
-    
+
     /**
      * Bankcard.
      */
@@ -33,77 +33,77 @@ public enum CreditCardNetwork {
      * China UnionPay.
      */
     CHINA_UNIONPAY,
-    
+
     /**
      * Diners Club Carte Blanche.
      */
     DINERS_CLUB_CARTE_BLANCHE,
-    
+
     /**
      * Diners Club Enroute.
      */
     DINERS_CLUB_ENROUTE,
-    
+
     /**
      * Diners Club International.
      */
     DINERS_CLUB_INTERNATIONAL,
-    
+
     /**
      * Diners Club USA and Canada.
      */
     DINERS_CLUB_USA_CANADA,
-    
+
     /**
      * Discover.
      */
     DISCOVER,
-    
+
     /**
      * Instapayment.
      */
     INSTAPAYMENT,
-    
+
     /**
      * JCB.
      */
     JCB,
-    
+
     /**
      * Laser.
      */
     LASER,
-    
+
     /**
      * Maestro.
      */
     MAESTRO,
-    
+
     /**
      * MasterCard.
      */
     MASTERCARD,
-    
+
     /**
      * Solo.
      */
     SOLO,
-    
+
     /**
      * Switch.
      */
     SWITCH,
-    
+
     /**
      * Visa.
      */
     VISA,
-    
+
     /**
      * VISA ELECTRON.
      */
     VISA_ELECTRON,
-    
+
     /**
      * Unknown.
      */

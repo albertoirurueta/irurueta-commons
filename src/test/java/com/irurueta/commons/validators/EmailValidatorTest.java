@@ -15,39 +15,25 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class EmailValidatorTest {
-    
-    public EmailValidatorTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testGetInstance() {
-            EmailValidator v1 = EmailValidator.getInstance();
-            EmailValidator v2 = EmailValidator.getInstance();
+        final EmailValidator v1 = EmailValidator.getInstance();
+        final EmailValidator v2 = EmailValidator.getInstance();
 
-            assertSame(v1, v2);
+        assertSame(v1, v2);
     }
 
     @Test
     public void testIsValid() {
-            assertTrue(EmailValidator.getInstance().isValid(
-                    "alberto@irurueta.com"));
-            assertFalse(EmailValidator.getInstance().isValid("invalid"));
-            assertFalse(EmailValidator.getInstance().isValid(null));
-    }    
+        assertTrue(EmailValidator.getInstance().isValid(
+                "alberto@irurueta.com"));
+        assertFalse(EmailValidator.getInstance().isValid("invalid"));
+        assertFalse(EmailValidator.getInstance().isValid(null));
+    }
 }

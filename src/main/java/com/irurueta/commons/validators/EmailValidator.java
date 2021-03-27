@@ -21,13 +21,12 @@ import java.util.regex.Pattern;
 /**
  * Validates email format.
  */
-@SuppressWarnings("WeakerAccess")
 public class EmailValidator implements Validator<String> {
 
     /**
      * Regular expression to validate email format.
      */
-    public static final String EMAIL_FORMAT_REGEX = 
+    public static final String EMAIL_FORMAT_REGEX =
             "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
     /**
@@ -39,7 +38,7 @@ public class EmailValidator implements Validator<String> {
      * Pattern to validate email addresses using regular expression defined in
      * EMAIL_FORMAT_REGEX.
      */
-    private Pattern mEmailPattern;
+    private final Pattern mEmailPattern;
 
     /**
      * Constructor.
@@ -50,6 +49,7 @@ public class EmailValidator implements Validator<String> {
 
     /**
      * Creates or obtains the singleton instance of this class.
+     *
      * @return singleton instance of this class.
      */
     public static synchronized EmailValidator getInstance() {
@@ -63,11 +63,12 @@ public class EmailValidator implements Validator<String> {
 
     /**
      * Indicates whether provided email has a valid format.
+     *
      * @param email email to be checked.
      * @return true if email is valid, false otherwise.
      */
     @Override
-    public boolean isValid(String email) {
+    public boolean isValid(final String email) {
         return email != null && mEmailPattern.matcher(email).matches();
     }
 }

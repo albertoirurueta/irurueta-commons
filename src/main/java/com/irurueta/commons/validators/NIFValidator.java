@@ -19,11 +19,9 @@ import java.lang.ref.SoftReference;
 
 /**
  * Validates provided NIF (Número de Identificación Fiscal) values for Spain.
- * This class is a wrapper for the library provided by Spain's Ministerio de 
+ * This class is a wrapper for the library provided by Spain's Ministerio de
  * Hacienda to validate DNI's, NIF's, NIE's, CIF's, etc.
- *
  */
-@SuppressWarnings("WeakerAccess")
 public class NIFValidator {
     /**
      * Reference to the internal validator provided by Ministerio de
@@ -34,15 +32,17 @@ public class NIFValidator {
     /**
      * Constructor.
      */
-    protected NIFValidator() { }
+    protected NIFValidator() {
+    }
 
     /**
      * Checks whether provided value is a valid DNI, NIF, NIE or CIF.
+     *
      * @param value DNI, NIF, NIE or CIF to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValid(String value) {
-        int code = getOrCreateValidador().checkNif(value);
+    public static boolean isValid(final String value) {
+        final int code = getOrCreateValidador().checkNif(value);
         return isValidDNICode(code) || isValidNIFCode(code) ||
                 isValidNIFNonResidentsCode(code) ||
                 isValidNIFMinorsCode(code) || isValidNIECode(code) ||
@@ -54,167 +54,184 @@ public class NIFValidator {
     /**
      * Checks whether provided value is a valid DNI (Documento Nacional de
      * Identidad).
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidDNI(String value) {
+    public static boolean isValidDNI(final String value) {
         return isValidDNICode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to the code of a valid DNI.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid DNI, false otherwise.
      */
-    protected static boolean isValidDNICode(int code) {
+    protected static boolean isValidDNICode(final int code) {
         return code == Validador.DNI_OK;
     }
 
     /**
      * Checks whether provided value is a valid NIF (Número de
      * Identificación Fiscal).
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidNIF(String value) {
+    public static boolean isValidNIF(final String value) {
         return isValidNIFCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks if provided code corresponds to a valid NIF code.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid NIF code, false
      * otherwise.
      */
-    protected static boolean isValidNIFCode(int code) {
+    protected static boolean isValidNIFCode(final int code) {
         return code == Validador.NIF_OK;
     }
 
     /**
      * Checks whether provided value corresponds to a valid non-resident
      * NIF.
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidNIFNonResidents(String value) {
+    public static boolean isValidNIFNonResidents(final String value) {
         return isValidNIFNonResidentsCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid non-resident NIF.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid non-resident  NIF, false
      * otherwise.
      */
-    protected static boolean isValidNIFNonResidentsCode(int code) {
+    protected static boolean isValidNIFNonResidentsCode(final int code) {
         return code == Validador.NIF_NORESIDENTES;
     }
 
     /**
      * Checks whether provided value corresponds to a valid NIF for minors
      * having less than 14 years old.
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidNIFMinors(String value) {
+    public static boolean isValidNIFMinors(final String value) {
         return isValidNIFMinorsCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid NIF for minors
      * having less than 14 years old.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid NIF for minors having
      * less than 14 years old, false otherwise.
      */
-    protected static boolean isValidNIFMinorsCode(int code) {
+    protected static boolean isValidNIFMinorsCode(final int code) {
         return code == Validador.NIF_MENORES14ANOS;
     }
 
     /**
      * Checks whether provided value corresponds to a valid NIE (Número de
      * Identificación de Extranjeros).
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidNIE(String value) {
+    public static boolean isValidNIE(final String value) {
         return isValidNIECode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid NIE (Número de
      * Identificación de Extranjeros).
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid NIE, false otherwise.
      */
-    protected static boolean isValidNIECode(int code) {
+    protected static boolean isValidNIECode(final int code) {
         return code == Validador.NIF_EXTRANJEROS;
     }
 
     /**
      * Checks whether provided value corresponds to a valid CIF (Código de
      * Identificación Fiscal).
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidCIF(String value) {
+    public static boolean isValidCIF(final String value) {
         return isValidCIFCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid CIF (Código de
      * Identificación Fiscal).
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid CIF, false otherwise.
      */
-    public static boolean isValidCIFCode(int code) {
+    public static boolean isValidCIFCode(final int code) {
         return code == Validador.CIF_OK;
     }
 
     /**
      * Checks whether provided value corresponds to a valid Organization
      * CIF.
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidCIFOrganization(String value) {
+    public static boolean isValidCIFOrganization(final String value) {
         return isValidCIFOrganizationCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid Organization CIF
      * code.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid Organization CIF, false
      * otherwise.
      */
-    public static boolean isValidCIFOrganizationCode(int code) {
+    public static boolean isValidCIFOrganizationCode(final int code) {
         return code == Validador.CIF_ORGANIZACION_OK;
     }
 
     /**
      * Checks whether provided value corresponds to a valid non-resident
      * CIF.
+     *
      * @param value value to be validated.
      * @return true if value is valid, false otherwise.
      */
-    public static boolean isValidCIFNonResidents(String value) {
+    public static boolean isValidCIFNonResidents(final String value) {
         return isValidCIFNonResidentsCode(getOrCreateValidador().checkNif(value));
     }
 
     /**
      * Checks whether provided code corresponds to a valid non-resident CIF.
+     *
      * @param code code to be validated.
      * @return true if code corresponds to a valid non-resident CIF, false
      * otherwise.
      */
-    public static boolean isValidCIFNonResidentsCode(int code) {
+    public static boolean isValidCIFNonResidentsCode(final int code) {
         return code == Validador.CIF_NORESIDENTES_OK;
     }
 
     /**
      * Gets or creates singleton instance to validate DNI's, NIF's, CIF's,
      * etc using the library provided by the Ministerio de Hacienda.
+     *
      * @return internal validator provided by Ministerio de Hacienda.
      */
     private static synchronized Validador getOrCreateValidador() {
@@ -248,10 +265,11 @@ public class NIFValidator {
 
         /**
          * Checks nif
+         *
          * @param var1 value to be validated.
          * @return code indicating the result of validation.
          */
-        public int checkNif(String var1) {
+        public int checkNif(final String var1) {
             return var1 != null && var1.length() == 9 ? this.vNif(var1) : -1;
         }
 
@@ -270,12 +288,12 @@ public class NIFValidator {
                 int var12 = 0;
                 int var13 = 0;
                 int var14 = 0;
-                char[] var15 = var1.toCharArray();
+                final char[] var15 = var1.toCharArray();
 
                 int var3;
                 for (var3 = 0; var3 < 9; ++var3) {
-                    char var16 = var15[var3];
-                    int var17 = Character.getType(var16);
+                    final char var16 = var15[var3];
+                    final int var17 = Character.getType(var16);
                     if (var17 == 1 && var12 == 0) {
                         ++var12;
                         var10 = var16;
@@ -299,7 +317,7 @@ public class NIFValidator {
                     if (var15[0] != 48) {
                         return -20;
                     } else {
-                        String var20 = var1.substring(1);
+                        final String var20 = var1.substring(1);
                         if (!var20.equals("11111111") && !var20.equals("22222222") && !var20.equals("33333333") && !var20.equals("44444444") && !var20.equals("55555555") && !var20.equals("66666666") && !var20.equals("77777777") && !var20.equals("88888888") && !var20.equals("99999999") && !var20.equals("00000000")) {
                             return 0;
                         } else {
@@ -421,7 +439,7 @@ public class NIFValidator {
             }
         }
 
-        private boolean caracEnCad(char[] var1, char var2) {
+        private boolean caracEnCad(final char[] var1, final char var2) {
             boolean var3 = false;
 
             for (char aVar1 : var1) {

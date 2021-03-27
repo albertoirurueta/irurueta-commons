@@ -20,20 +20,6 @@ import org.junit.*;
 import static org.junit.Assert.assertNotNull;
 
 public class CommonsExceptionTest {
-    
-    public CommonsExceptionTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testConstructor() {
@@ -49,5 +35,5 @@ public class CommonsExceptionTest {
         ex = new CommonsException("message",
                 new Exception());
         assertNotNull(ex);
-    }    
+    }
 }

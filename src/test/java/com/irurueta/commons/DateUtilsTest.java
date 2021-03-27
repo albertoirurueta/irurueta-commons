@@ -27,20 +27,6 @@ import static org.junit.Assert.*;
 public class DateUtilsTest {
     
     private static final int MILLIS_PER_HOUR = 1000 * 3600;
-    
-    public DateUtilsTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testConstructor() {
@@ -50,7 +36,7 @@ public class DateUtilsTest {
 
     @Test
     public void testParse() {
-        //timestamp without separators
+        // timestamp without separators
         String value = "20150429T173115+0200";
         Date d = DateUtils.parse(value);
 
@@ -64,7 +50,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.MINUTE), 31);
         assertEquals(cal.get(Calendar.SECOND), 15);
 
-        //timestamp at UTC
+        // timestamp at UTC
         value = "20150429T173115Z";
         d = DateUtils.parse(value);
         cal.setTime(d);
@@ -79,7 +65,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.SECOND), 15);
 
 
-        //timestamp with separators
+        // timestamp with separators
         value = "2015-04-29T17:31:15+0200";
         d = DateUtils.parse(value);
         cal.setTime(d);
@@ -91,7 +77,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.MINUTE), 31);
         assertEquals(cal.get(Calendar.SECOND), 15);
 
-        //timestamp with separators at UTC
+        // timestamp with separators at UTC
         value = "2015-04-29T17:31:15Z";
         d = DateUtils.parse(value);
         cal.setTime(d);
@@ -105,7 +91,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.MINUTE), 31);
         assertEquals(cal.get(Calendar.SECOND), 15);
 
-        //date only
+        // date only
         value = "20150429";
         d = DateUtils.parse(value);
         cal = Calendar.getInstance();
@@ -123,8 +109,8 @@ public class DateUtilsTest {
 
     @Test
     public void testFormatDate() {
-        Date date = new Date();
-        String value = DateFormat.getDateInstance(DateFormat.MEDIUM).
+        final Date date = new Date();
+        final String value = DateFormat.getDateInstance(DateFormat.MEDIUM).
                 format(date);
 
         assertEquals(DateUtils.formatDate(date), value);
@@ -132,8 +118,8 @@ public class DateUtilsTest {
 
     @Test
     public void testFormatDateAndTime() {
-        Date date = new Date();
-        String value = DateFormat.getDateTimeInstance(DateFormat.SHORT, 
+        final Date date = new Date();
+        final String value = DateFormat.getDateTimeInstance(DateFormat.SHORT,
                 DateFormat.SHORT).format(date);
 
         assertEquals(DateUtils.formatDateAndTime(date), value);
@@ -141,8 +127,8 @@ public class DateUtilsTest {
 
     @Test
     public void testTodayIsToday() {
-        Date someDate = new Date(0);
-        Date today = DateUtils.today();
+        final Date someDate = new Date(0);
+        final Date today = DateUtils.today();
 
         assertFalse(DateUtils.isToday(someDate));
         assertTrue(DateUtils.isToday(today));
@@ -150,16 +136,16 @@ public class DateUtilsTest {
 
     @Test
     public void testIsSameDay() {
-        Date someDate = new Date(0);
-        Date now = new Date();
+        final Date someDate = new Date(0);
+        final Date now = new Date();
 
         assertFalse(DateUtils.isSameDay(someDate, now));
         assertTrue(DateUtils.isSameDay(someDate, someDate));
         assertTrue(DateUtils.isSameDay(now, now));
         assertTrue(DateUtils.isSameDay(now, DateUtils.today()));
 
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
+        final Calendar cal1 = Calendar.getInstance();
+        final Calendar cal2 = Calendar.getInstance();
 
         cal1.setTime(someDate);
         cal2.setTime(now);

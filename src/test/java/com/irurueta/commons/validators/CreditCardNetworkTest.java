@@ -15,26 +15,12 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CreditCardNetworkTest {
-    
-    public CreditCardNetworkTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
-    
+
     @Test
     public void testOrdinals() {
         assertEquals(CreditCardNetwork.AMERICAN_EXPRESS.ordinal(), 0);

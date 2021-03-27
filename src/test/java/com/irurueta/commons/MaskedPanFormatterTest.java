@@ -16,255 +16,239 @@
 package com.irurueta.commons;
 
 import com.irurueta.commons.validators.CreditCardNetwork;
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class MaskedPanFormatterTest {
-    
-    public MaskedPanFormatterTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testFormat() {
-        //VISA
-        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_1111");
-        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", 
+        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_0004");
-        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881", 
+        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_1881");
-        assertEquals(MaskedPanFormatter.format("4012000033330026", 
+        assertEquals(MaskedPanFormatter.format("4012000033330026",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_0026");
-        assertEquals(MaskedPanFormatter.format("4012000077777777", 
+        assertEquals(MaskedPanFormatter.format("4012000077777777",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_7777");
-        assertEquals(MaskedPanFormatter.format("4012888888881881", 
+        assertEquals(MaskedPanFormatter.format("4012888888881881",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_1881");
-        assertEquals(MaskedPanFormatter.format("4217651111111119", 
+        assertEquals(MaskedPanFormatter.format("4217651111111119",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_1119");
-        assertEquals(MaskedPanFormatter.format("4500600000000061", 
+        assertEquals(MaskedPanFormatter.format("4500600000000061",
                 CreditCardNetwork.VISA, '·', '_'), "····_····_····_0061");
 
-        //Diners Club
+        // Diners Club
         assertEquals(MaskedPanFormatter.format("5555555555554444",
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'), 
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'),
                 "····_······_4444");
 
-        //American Express
+        // American Express
         assertEquals(MaskedPanFormatter.format("3782 82246 310005",
-                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'), 
+                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'),
                 "····_······_·0005");
         assertEquals(MaskedPanFormatter.format("371449635398431",
-                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'), 
+                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'),
                 "····_······_·8431");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("6011111111111117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("6011111111111117",
                 CreditCardNetwork.DISCOVER, '·', '_'), "····_····_····_1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("5555555555554444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("5555555555554444",
                 CreditCardNetwork.MASTERCARD, '·', '_'), "····_····_····_4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("3530111333300000", 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("3530111333300000",
                 CreditCardNetwork.JCB, '·', '_'), "····_····_····_···0000");
 
 
+        // try now only last digits
 
-        //try now only last digits
-
-        //VISA
-        assertEquals(MaskedPanFormatter.format("1111", CreditCardNetwork.VISA, 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("1111", CreditCardNetwork.VISA,
                 '·', '_'), "····_····_····_1111");
 
-        //Diners Club
-        assertEquals(MaskedPanFormatter.format("4444", 
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'), 
+        // Diners Club
+        assertEquals(MaskedPanFormatter.format("4444",
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'),
                 "····_······_4444");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("0005", 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("0005",
                 CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'),
                 "····_······_·0005");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("1117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("1117",
                 CreditCardNetwork.DISCOVER, '·', '_'), "····_····_····_1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("4444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("4444",
                 CreditCardNetwork.MASTERCARD, '·', '_'), "····_····_····_4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("0000", CreditCardNetwork.JCB, 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("0000", CreditCardNetwork.JCB,
                 '·', '_'), "····_····_····_···0000");
 
 
-        //try a smaller number of digits (only available digits are displayed)
+        // try a smaller number of digits (only available digits are displayed)
 
-        //VISA
-        assertEquals(MaskedPanFormatter.format("111", CreditCardNetwork.VISA, 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("111", CreditCardNetwork.VISA,
                 '·', '_'), "····_····_····_·111");
 
-        //Diners Club
-        assertEquals(MaskedPanFormatter.format("444", 
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'), 
+        // Diners Club
+        assertEquals(MaskedPanFormatter.format("444",
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·', '_'),
                 "····_······_·444");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("005", 
-                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'), 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("005",
+                CreditCardNetwork.AMERICAN_EXPRESS, '·', '_'),
                 "····_······_··005");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("117",
                 CreditCardNetwork.DISCOVER, '·', '_'), "····_····_····_·117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("444",
                 CreditCardNetwork.MASTERCARD, '·', '_'), "····_····_····_·444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB, 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB,
                 '·', '_'), "····_····_····_····000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA,
                 '·', '_'), "····_····_····_····");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA,
                 '·', '_'), "····_····_····_····");
     }
-    
+
     @Test
     public void testFormatWithDefaultSeparatorChar() {
-        //VISA
-        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 1111");
-        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", 
+        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 0004");
-        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881", 
+        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 1881");
-        assertEquals(MaskedPanFormatter.format("4012000033330026", 
+        assertEquals(MaskedPanFormatter.format("4012000033330026",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 0026");
-        assertEquals(MaskedPanFormatter.format("4012000077777777", 
+        assertEquals(MaskedPanFormatter.format("4012000077777777",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 7777");
-        assertEquals(MaskedPanFormatter.format("4012888888881881", 
+        assertEquals(MaskedPanFormatter.format("4012888888881881",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 1881");
-        assertEquals(MaskedPanFormatter.format("4217651111111119", 
+        assertEquals(MaskedPanFormatter.format("4217651111111119",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 1119");
-        assertEquals(MaskedPanFormatter.format("4500600000000061", 
+        assertEquals(MaskedPanFormatter.format("4500600000000061",
                 CreditCardNetwork.VISA, '·'), "···· ···· ···· 0061");
 
-        //Diners Club
+        // Diners Club
         assertEquals(MaskedPanFormatter.format("5555555555554444",
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'), 
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'),
                 "···· ······ 4444");
 
-        //American Express
+        // American Express
         assertEquals(MaskedPanFormatter.format("3782 82246 310005",
                 CreditCardNetwork.AMERICAN_EXPRESS, '·'), "···· ······ ·0005");
         assertEquals(MaskedPanFormatter.format("371449635398431",
                 CreditCardNetwork.AMERICAN_EXPRESS, '·'), "···· ······ ·8431");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("6011111111111117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("6011111111111117",
                 CreditCardNetwork.DISCOVER, '·'), "···· ···· ···· 1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("5555555555554444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("5555555555554444",
                 CreditCardNetwork.MASTERCARD, '·'), "···· ···· ···· 4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("3530111333300000", 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("3530111333300000",
                 CreditCardNetwork.JCB, '·'), "···· ···· ···· ···0000");
 
 
+        // try now only last digits
 
-        //try now only last digits
-
-        //VISA
-        assertEquals(MaskedPanFormatter.format("1111", CreditCardNetwork.VISA, 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("1111", CreditCardNetwork.VISA,
                 '·'), "···· ···· ···· 1111");
 
-        //Diners Club
-        assertEquals(MaskedPanFormatter.format("4444", 
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'), 
+        // Diners Club
+        assertEquals(MaskedPanFormatter.format("4444",
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'),
                 "···· ······ 4444");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("0005", 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("0005",
                 CreditCardNetwork.AMERICAN_EXPRESS, '·'), "···· ······ ·0005");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("1117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("1117",
                 CreditCardNetwork.DISCOVER, '·'), "···· ···· ···· 1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("4444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("4444",
                 CreditCardNetwork.MASTERCARD, '·'), "···· ···· ···· 4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("0000", CreditCardNetwork.JCB, 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("0000", CreditCardNetwork.JCB,
                 '·'), "···· ···· ···· ···0000");
 
 
-        //try a smaller number of digits (only available digits are displayed)
+        // try a smaller number of digits (only available digits are displayed)
 
-        //VISA
-        assertEquals(MaskedPanFormatter.format("111", CreditCardNetwork.VISA, 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("111", CreditCardNetwork.VISA,
                 '·'), "···· ···· ···· ·111");
 
-        //Diners Club
-        assertEquals(MaskedPanFormatter.format("444", 
-                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'), 
+        // Diners Club
+        assertEquals(MaskedPanFormatter.format("444",
+                CreditCardNetwork.DINERS_CLUB_INTERNATIONAL, '·'),
                 "···· ······ ·444");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("005", 
-                CreditCardNetwork.AMERICAN_EXPRESS, '·'), 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("005",
+                CreditCardNetwork.AMERICAN_EXPRESS, '·'),
                 "···· ······ ··005");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("117", 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("117",
                 CreditCardNetwork.DISCOVER, '·'), "···· ···· ···· ·117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("444", 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("444",
                 CreditCardNetwork.MASTERCARD, '·'), "···· ···· ···· ·444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB, 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB,
                 '·'), "···· ···· ···· ····000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA,
                 '·'), "···· ···· ···· ····");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA,
                 '·'), "···· ···· ···· ····");
 
     }
-    
+
     @Test
     public void testFormatWithDefaultMaskChar() {
-        //VISA
+        // VISA
         assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", CreditCardNetwork.VISA),
                 "**** **** **** 1111");
         assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", CreditCardNetwork.VISA),
@@ -282,234 +266,233 @@ public class MaskedPanFormatterTest {
         assertEquals(MaskedPanFormatter.format("4500600000000061", CreditCardNetwork.VISA),
                 "**** **** **** 0061");
 
-        //Diners Club
+        // Diners Club
         assertEquals(MaskedPanFormatter.format("5555555555554444",
                 CreditCardNetwork.DINERS_CLUB_INTERNATIONAL), "**** ****** 4444");
 
-        //American Express
+        // American Express
         assertEquals(MaskedPanFormatter.format("3782 82246 310005",
                 CreditCardNetwork.AMERICAN_EXPRESS), "**** ****** *0005");
         assertEquals(MaskedPanFormatter.format("371449635398431",
                 CreditCardNetwork.AMERICAN_EXPRESS), "**** ****** *8431");
 
-        //Discover
+        // Discover
         assertEquals(MaskedPanFormatter.format("6011111111111117", CreditCardNetwork.DISCOVER),
                 "**** **** **** 1117");
 
-        //MasterCard
+        // MasterCard
         assertEquals(MaskedPanFormatter.format("5555555555554444", CreditCardNetwork.MASTERCARD),
                 "**** **** **** 4444");
 
-        //JCB
+        // JCB
         assertEquals(MaskedPanFormatter.format("3530111333300000", CreditCardNetwork.JCB),
                 "**** **** **** ***0000");
 
 
+        // try now only last digits
 
-        //try now only last digits
-
-        //VISA
+        // VISA
         assertEquals(MaskedPanFormatter.format("1111", CreditCardNetwork.VISA),
                 "**** **** **** 1111");
 
-        //Diners Club
+        // Diners Club
         assertEquals(MaskedPanFormatter.format("4444", CreditCardNetwork.DINERS_CLUB_INTERNATIONAL),
                 "**** ****** 4444");
 
-        //American Express
+        // American Express
         assertEquals(MaskedPanFormatter.format("0005", CreditCardNetwork.AMERICAN_EXPRESS),
                 "**** ****** *0005");
 
-        //Discover
+        // Discover
         assertEquals(MaskedPanFormatter.format("1117", CreditCardNetwork.DISCOVER),
                 "**** **** **** 1117");
 
-        //MasterCard
+        // MasterCard
         assertEquals(MaskedPanFormatter.format("4444", CreditCardNetwork.MASTERCARD),
                 "**** **** **** 4444");
 
-        //JCB
+        // JCB
         assertEquals(MaskedPanFormatter.format("0000", CreditCardNetwork.JCB),
                 "**** **** **** ***0000");
 
 
-        //try a smaller number of digits (only available digits are displayed)
+        // try a smaller number of digits (only available digits are displayed)
 
-        //VISA
+        // VISA
         assertEquals(MaskedPanFormatter.format("111", CreditCardNetwork.VISA),
                 "**** **** **** *111");
 
-        //Diners Club
+        // Diners Club
         assertEquals(MaskedPanFormatter.format("444", CreditCardNetwork.DINERS_CLUB_INTERNATIONAL),
                 "**** ****** *444");
 
-        //American Express
+        // American Express
         assertEquals(MaskedPanFormatter.format("005", CreditCardNetwork.AMERICAN_EXPRESS),
                 "**** ****** **005");
 
-        //Discover
+        // Discover
         assertEquals(MaskedPanFormatter.format("117", CreditCardNetwork.DISCOVER),
                 "**** **** **** *117");
 
-        //MasterCard
+        // MasterCard
         assertEquals(MaskedPanFormatter.format("444", CreditCardNetwork.MASTERCARD),
                 "**** **** **** *444");
 
-        //JCB
+        // JCB
         assertEquals(MaskedPanFormatter.format("000", CreditCardNetwork.JCB),
                 "**** **** **** ****000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format("", CreditCardNetwork.VISA),
                 "**** **** **** ****");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong", CreditCardNetwork.VISA),
                 "**** **** **** ****");
     }
-   
+
     @Test
     public void testFormatWithIINDetection() {
-        //VISA
+        // VISA
         assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", '·', '_'),
                 "····_····_····_1111");
         assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", '·', '_'),
                 "····_····_····_0004");
         assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881", '·', '_'),
                 "····_····_····_1881");
-        assertEquals(MaskedPanFormatter.format("4012000033330026", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("4012000033330026", '·', '_'),
                 "····_····_····_0026");
-        assertEquals(MaskedPanFormatter.format("4012000077777777", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("4012000077777777", '·', '_'),
                 "····_····_····_7777");
-        assertEquals(MaskedPanFormatter.format("4012888888881881", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("4012888888881881", '·', '_'),
                 "····_····_····_1881");
-        assertEquals(MaskedPanFormatter.format("4217651111111119", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("4217651111111119", '·', '_'),
                 "····_····_····_1119");
-        assertEquals(MaskedPanFormatter.format("4500600000000061", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("4500600000000061", '·', '_'),
                 "····_····_····_0061");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("3782 82246 310005", '·', '_'), 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("3782 82246 310005", '·', '_'),
                 "····_······_·0005");
-        assertEquals(MaskedPanFormatter.format("371449635398431", '·', '_'), 
+        assertEquals(MaskedPanFormatter.format("371449635398431", '·', '_'),
                 "····_······_·8431");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("6011111111111117", '·', '_'), 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("6011111111111117", '·', '_'),
                 "····_····_····_1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("5555555555554444", '·', '_'), 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("5555555555554444", '·', '_'),
                 "····_····_····_4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("3530111333300000", '·', '_'), 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("3530111333300000", '·', '_'),
                 "····_····_····_···0000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format("", '·', '_'),
                 "····_····_····_·······");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong", '·', '_'),
                 "····_····_····_·······");
     }
-    
+
     @Test
     public void testFormatWithIINDetectionAndDefaultSeparatorChar() {
-        //VISA
-        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", '·'), 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111", '·'),
                 "···· ···· ···· 1111");
-        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", '·'), 
+        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004", '·'),
                 "···· ···· ···· 0004");
-        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881", '·'), 
+        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881", '·'),
                 "···· ···· ···· 1881");
-        assertEquals(MaskedPanFormatter.format("4012000033330026", '·'), 
+        assertEquals(MaskedPanFormatter.format("4012000033330026", '·'),
                 "···· ···· ···· 0026");
-        assertEquals(MaskedPanFormatter.format("4012000077777777", '·'), 
+        assertEquals(MaskedPanFormatter.format("4012000077777777", '·'),
                 "···· ···· ···· 7777");
-        assertEquals(MaskedPanFormatter.format("4012888888881881", '·'), 
+        assertEquals(MaskedPanFormatter.format("4012888888881881", '·'),
                 "···· ···· ···· 1881");
-        assertEquals(MaskedPanFormatter.format("4217651111111119", '·'), 
+        assertEquals(MaskedPanFormatter.format("4217651111111119", '·'),
                 "···· ···· ···· 1119");
-        assertEquals(MaskedPanFormatter.format("4500600000000061", '·'), 
+        assertEquals(MaskedPanFormatter.format("4500600000000061", '·'),
                 "···· ···· ···· 0061");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("3782 82246 310005", '·'), 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("3782 82246 310005", '·'),
                 "···· ······ ·0005");
-        assertEquals(MaskedPanFormatter.format("371449635398431", '·'), 
+        assertEquals(MaskedPanFormatter.format("371449635398431", '·'),
                 "···· ······ ·8431");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("6011111111111117", '·'), 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("6011111111111117", '·'),
                 "···· ···· ···· 1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("5555555555554444", '·'), 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("5555555555554444", '·'),
                 "···· ···· ···· 4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("3530111333300000", '·'), 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("3530111333300000", '·'),
                 "···· ···· ···· ···0000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format("", '·'),
                 "···· ···· ···· ·······");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong", '·'),
                 "···· ···· ···· ·······");
     }
-    
+
     @Test
     public void testFormatWithIINDetectionAndDefaultMaskChar() {
-        //VISA
-        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111"), 
+        // VISA
+        assertEquals(MaskedPanFormatter.format("4111 1111 1111 1111"),
                 "**** **** **** 1111");
-        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004"), 
+        assertEquals(MaskedPanFormatter.format("4005 5192 0000 0004"),
                 "**** **** **** 0004");
-        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881"), 
+        assertEquals(MaskedPanFormatter.format("4009-3488-8888-1881"),
                 "**** **** **** 1881");
-        assertEquals(MaskedPanFormatter.format("4012000033330026"), 
+        assertEquals(MaskedPanFormatter.format("4012000033330026"),
                 "**** **** **** 0026");
-        assertEquals(MaskedPanFormatter.format("4012000077777777"), 
+        assertEquals(MaskedPanFormatter.format("4012000077777777"),
                 "**** **** **** 7777");
-        assertEquals(MaskedPanFormatter.format("4012888888881881"), 
+        assertEquals(MaskedPanFormatter.format("4012888888881881"),
                 "**** **** **** 1881");
-        assertEquals(MaskedPanFormatter.format("4217651111111119"), 
+        assertEquals(MaskedPanFormatter.format("4217651111111119"),
                 "**** **** **** 1119");
-        assertEquals(MaskedPanFormatter.format("4500600000000061"), 
+        assertEquals(MaskedPanFormatter.format("4500600000000061"),
                 "**** **** **** 0061");
 
-        //American Express
-        assertEquals(MaskedPanFormatter.format("3782 82246 310005"), 
+        // American Express
+        assertEquals(MaskedPanFormatter.format("3782 82246 310005"),
                 "**** ****** *0005");
-        assertEquals(MaskedPanFormatter.format("371449635398431"), 
+        assertEquals(MaskedPanFormatter.format("371449635398431"),
                 "**** ****** *8431");
 
-        //Discover
-        assertEquals(MaskedPanFormatter.format("6011111111111117"), 
+        // Discover
+        assertEquals(MaskedPanFormatter.format("6011111111111117"),
                 "**** **** **** 1117");
 
-        //MasterCard
-        assertEquals(MaskedPanFormatter.format("5555555555554444"), 
+        // MasterCard
+        assertEquals(MaskedPanFormatter.format("5555555555554444"),
                 "**** **** **** 4444");
 
-        //JCB
-        assertEquals(MaskedPanFormatter.format("3530111333300000"), 
+        // JCB
+        assertEquals(MaskedPanFormatter.format("3530111333300000"),
                 "**** **** **** ***0000");
 
 
-        //test with null PAN
+        // test with null PAN
         assertEquals(MaskedPanFormatter.format(""),
                 "**** **** **** *******");
 
-        //test with invalid PAN
+        // test with invalid PAN
         assertEquals(MaskedPanFormatter.format("wrong"),
                 "**** **** **** *******");
-    }    
+    }
 }

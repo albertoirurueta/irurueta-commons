@@ -25,8 +25,9 @@ public interface Validator<T> {
 
     /**
      * Indicates whether data model is valid or not.
+     *
      * @param obj object to be validated.
      * @return true if object is valid, false otherwise.
      */
-    boolean isValid(T obj);
+    boolean isValid(final T obj);
 }

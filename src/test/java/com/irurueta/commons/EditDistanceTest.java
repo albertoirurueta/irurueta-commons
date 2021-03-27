@@ -15,26 +15,12 @@
  */
 package com.irurueta.commons;
 
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class EditDistanceTest {
-    
-    public EditDistanceTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testConstructor() {
@@ -56,8 +42,8 @@ public class EditDistanceTest {
             array2[i] = str2.charAt(i);
         }
 
-        //distance is 1 because we can insert an 's' at the end of 'dog' to 
-        //obtain 'dogs'
+        // distance is 1 because we can insert an 's' at the end of 'dog' to
+        // obtain 'dogs'
         assertEquals(EditDistance.stringDistance(str1, str2), 1);
         assertEquals(EditDistance.distance(array1, array2), 1);
 
@@ -74,9 +60,9 @@ public class EditDistanceTest {
             array2[i] = str2.charAt(i);
         }
 
-        //distance is 3 because we can exchange the 'l' by the 1st 'p', the 'c' 
-        //by the second 'p', and the 'k' by the third 'p'.
+        // distance is 3 because we can exchange the 'l' by the 1st 'p', the 'c'
+        // by the second 'p', and the 'k' by the third 'p'.
         assertEquals(EditDistance.stringDistance(str1, str2), 3);
         assertEquals(EditDistance.distance(array1, array2), 3);
-    }    
+    }
 }

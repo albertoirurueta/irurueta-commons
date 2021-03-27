@@ -24,85 +24,89 @@ import com.irurueta.commons.validators.CreditCardValidator;
  * masks can also be used to display credit card PAN's on the screen being
  * PCI DSS compliant by showing only the last 4 digits of the PAN.
  */
-@SuppressWarnings("WeakerAccess")
 public class PanMaskGenerator {
-    
+
     /**
      * Default character to be used to generate masks.
      */
     public static final char DEFAULT_MASK_CHAR = '#';
-    
+
     /**
      * Default character to use to separate groups of digits.
      */
     public static final char DEFAULT_GROUP_SEPARATOR = ' ';
-    
+
     /**
      * Constructor.
      */
-    private PanMaskGenerator() { }
-    
+    private PanMaskGenerator() {
+    }
+
     /**
      * Generates a mask having required grouping for text input or PAN masking a
      * credit card number.
-     * @param network a credit card network to determine grouping format.
-     * @param maskChar mask character to use.
+     *
+     * @param network       a credit card network to determine grouping format.
+     * @param maskChar      mask character to use.
      * @param separatorChar group separator character to use.
      * @return generated mask.
      */
-    public static String generate(CreditCardNetwork network, char maskChar, 
-            char separatorChar) {
-        int numGroups = CreditCardValidator.getNumberOfGroupsForNetwork(
+    public static String generate(final CreditCardNetwork network, final char maskChar,
+                                  final char separatorChar) {
+        final int numGroups = CreditCardValidator.getNumberOfGroupsForNetwork(
                 network);
-        int lastGroupPos = numGroups - 1;
+        final int lastGroupPos = numGroups - 1;
         int groupLength;
-        
-        //generate mask
-        StringBuilder builder = new StringBuilder();
+
+        // generate mask
+        final StringBuilder builder = new StringBuilder();
         for (int i = 0; i < numGroups; i++) {
-            groupLength = CreditCardValidator.getMaxDigitsForGroupAndNetwork(i, 
+            groupLength = CreditCardValidator.getMaxDigitsForGroupAndNetwork(i,
                     network);
-            
+
             repeatMaskChar(builder, maskChar, groupLength);
             if (i != lastGroupPos) {
-                //add separator between groups
+                // add separator between groups
                 builder.append(separatorChar);
             }
         }
-        
+
         return builder.toString();
     }
-    
+
     /**
      * Generates a mask having required grouping for text input or PAN masking a
      * credit card number using default group separator character.
-     * @param network a credit card network to determine grouping format.
+     *
+     * @param network  a credit card network to determine grouping format.
      * @param maskChar mask character to use.
      * @return generated mask.
      */
-    public static String generate(CreditCardNetwork network, char maskChar) {
+    public static String generate(final CreditCardNetwork network, final char maskChar) {
         return generate(network, maskChar, DEFAULT_GROUP_SEPARATOR);
     }
-    
+
     /**
      * Generates a mask having required grouping for text input or PAN masking a
      * credit card number using default group separator and mask characters.
+     *
      * @param network a credit card network to determine grouping format.
      * @return generated mask.
      */
-    public static String generate(CreditCardNetwork network) {
+    public static String generate(final CreditCardNetwork network) {
         return generate(network, DEFAULT_MASK_CHAR);
     }
-    
+
     /**
-     * Repeats a mask character the number of provided times and appends it to 
+     * Repeats a mask character the number of provided times and appends it to
      * provided builder.
-     * @param builder builder where text is added.
+     *
+     * @param builder  builder where text is added.
      * @param maskChar mask character to use.
-     * @param times number of times to repeat mask character.
+     * @param times    number of times to repeat mask character.
      */
-    private static void repeatMaskChar(StringBuilder builder, char maskChar, 
-            int times) {
+    private static void repeatMaskChar(final StringBuilder builder, final char maskChar,
+                                       final int times) {
         for (int i = 0; i < times; i++) {
             builder.append(maskChar);
         }

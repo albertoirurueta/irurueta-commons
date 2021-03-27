@@ -21,24 +21,10 @@ import org.junit.*;
 import static org.junit.Assert.assertEquals;
 
 public class PanMaskGeneratorTest {
-    
-    public PanMaskGeneratorTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
-    
+
     @Test
     public void testGenerate() {
-        //cards with known grouping
+        // cards with known grouping
         assertEquals(PanMaskGenerator.generate(
                 CreditCardNetwork.AMERICAN_EXPRESS, '*', '_'),
                 "****_******_*****");
@@ -55,7 +41,7 @@ public class PanMaskGeneratorTest {
                 CreditCardNetwork.VISA_ELECTRON, '*', '_'),
                 "****_****_****_****");
 
-        //other types of cards
+        // other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB, '*', '_'),
                 "****_****_****_*******");
         assertEquals(PanMaskGenerator.generate(null, '*',
@@ -64,7 +50,7 @@ public class PanMaskGeneratorTest {
     
     @Test
     public void testGenerateWithDefaultSeparatorChar() {
-        //cards with known grouping
+        // cards with known grouping
         assertEquals(PanMaskGenerator.generate(
                 CreditCardNetwork.AMERICAN_EXPRESS, '*'), "**** ****** *****");
         assertEquals(PanMaskGenerator.generate(
@@ -79,7 +65,7 @@ public class PanMaskGeneratorTest {
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.VISA_ELECTRON, 
                 '*'), "**** **** **** ****");
 
-        //other types of cards
+        // other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB, '*'),
                 "**** **** **** *******");
         assertEquals(PanMaskGenerator.generate(null, '*'),
@@ -88,7 +74,7 @@ public class PanMaskGeneratorTest {
     
     @Test
     public void testGenerateWithDefaultMaskChar() {
-        //cards with known grouping
+        // cards with known grouping
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.AMERICAN_EXPRESS),
                 "#### ###### #####");
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.DINERS_CLUB_INTERNATIONAL),
@@ -102,7 +88,7 @@ public class PanMaskGeneratorTest {
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.VISA_ELECTRON),
                 "#### #### #### ####");
 
-        //other types of cards
+        // other types of cards
         assertEquals(PanMaskGenerator.generate(CreditCardNetwork.JCB),
                 "#### #### #### #######");
         assertEquals(PanMaskGenerator.generate(null),

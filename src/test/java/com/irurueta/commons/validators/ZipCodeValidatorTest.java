@@ -15,392 +15,378 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.*;
+import org.junit.Test;
 
 import java.util.Locale;
 
 import static org.junit.Assert.*;
 
 public class ZipCodeValidatorTest {
-    
-    public ZipCodeValidatorTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testConstructor() {
-        //test constructor with country code
+        // test constructor with country code
         ZipCodeValidator validator = new ZipCodeValidator("ES");
         assertEquals(validator.getCountryCode(), "ES");
 
-        //test constructor with Locale
+        // test constructor with Locale
         validator = new ZipCodeValidator(new Locale("es", "ES"));
         assertEquals(validator.getCountryCode(), "ES");
     }
 
     @Test
     public void testGetSetCountryCode() {
-        ZipCodeValidator validator = new ZipCodeValidator("ES");
+        final ZipCodeValidator validator = new ZipCodeValidator("ES");
 
-        //initial value
+        // initial value
         assertEquals(validator.getCountryCode(), "ES");
 
-        //new value
+        // new value
         validator.setCountryCode("FR");
 
-        //check correctness
+        // check correctness
         assertEquals(validator.getCountryCode(), "FR");
     }
 
     @Test
     public void testSetCountryCodeFromLocale() {
-        ZipCodeValidator validator = new ZipCodeValidator("ES");
+        final ZipCodeValidator validator = new ZipCodeValidator("ES");
 
-        //initial value
+        // initial value
         assertEquals(validator.getCountryCode(), "ES");
 
-        //new value
+        // new value
         validator.setCountryCodeFrom(Locale.FRANCE);
 
-        //check correctness
+        // check correctness
         assertEquals(validator.getCountryCode(), "FR");
     }
 
     @Test
     public void testIsValid() {
-        //Spain
-        ZipCodeValidator validator = new ZipCodeValidator("ES");
+        // Spain
+        final ZipCodeValidator validator = new ZipCodeValidator("ES");
 
-        //valid post code for Spain
+        // valid post code for Spain
         assertTrue(validator.isValid("08008"));
 
-        //invalid post code for Spain
+        // invalid post code for Spain
         assertFalse(validator.isValid("abcd"));
 
 
-        //France
+        // France
         validator.setCountryCode("FR");
 
-        //valid post code for France
+        // valid post code for France
         assertTrue(validator.isValid("08008"));
 
-        //invalid post code for France
+        // invalid post code for France
         assertFalse(validator.isValid("abcd"));
 
 
-        //Germany
+        // Germany
         validator.setCountryCode("DE");
 
-        //valid post code for Germany
+        // valid post code for Germany
         assertTrue(validator.isValid("08008"));
 
-        //invalid post code for Germany
+        // invalid post code for Germany
         assertFalse(validator.isValid("abcd"));
 
 
-        //Italy
+        // Italy
         validator.setCountryCode("IT");
 
-        //valid post code for Italy
+        // valid post code for Italy
         assertTrue(validator.isValid("08008"));
 
-        //invalid post code for Italy
+        // invalid post code for Italy
         assertFalse(validator.isValid("abcd"));
 
 
-        //Portugal
+        // Portugal
         validator.setCountryCode("PT");
 
-        //valid post code for Portugal
+        // valid post code for Portugal
         assertTrue(validator.isValid("1234-123"));
 
-        //invalid post code for Portugal
+        // invalid post code for Portugal
         assertFalse(validator.isValid("abcd"));
 
 
-        //United Kingdom
+        // United Kingdom
         validator.setCountryCode("GB");
 
-        //valid post code for UK
+        // valid post code for UK
         assertTrue(validator.isValid("SW1A 1AA"));
 
-        //invalid post code for UK
+        // invalid post code for UK
         assertFalse(validator.isValid("invalid"));
 
 
-        //Austria
+        // Austria
         validator.setCountryCode("AT");
 
-        //valid post code for Austria
+        // valid post code for Austria
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Austria
+        // invalid post code for Austria
         assertFalse(validator.isValid("12345"));
 
 
-        //Ireland
+        // Ireland
         validator.setCountryCode("IE");
 
-        //valid post code for Ireland
+        // valid post code for Ireland
         assertTrue(validator.isValid("1234"));
 
-        //any value is always valid for Ireland
+        // any value is always valid for Ireland
         assertTrue(validator.isValid("invalid"));
 
 
-        //Belgium
+        // Belgium
         validator.setCountryCode("BE");
 
-        //valid post code for Belgium
+        // valid post code for Belgium
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Belgium
+        // invalid post code for Belgium
         assertFalse(validator.isValid("abcd"));
 
 
-        //Netherlands
+        // Netherlands
         validator.setCountryCode("NL");
 
-        //valid post code for Netherlands
+        // valid post code for Netherlands
         assertTrue(validator.isValid("1234AB"));
 
-        //invalid post code for Netherlands
+        // invalid post code for Netherlands
         assertFalse(validator.isValid("abcd12"));
 
 
-        //Luxembourg
+        // Luxembourg
         validator.setCountryCode("LU");
 
-        //valid post code for Luxembourg
+        // valid post code for Luxembourg
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Luxembourg
+        // invalid post code for Luxembourg
         assertFalse(validator.isValid("abcd"));
 
 
-        //Monaco
+        // Monaco
         validator.setCountryCode("MC");
 
-        //valid post code for Monaco
+        // valid post code for Monaco
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Monaco
+        // invalid post code for Monaco
         assertFalse(validator.isValid("abcd"));
 
 
-        //Switzerland
+        // Switzerland
         validator.setCountryCode("CH");
 
-        //valid post code for Switzerland
+        // valid post code for Switzerland
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Switzerland
+        // invalid post code for Switzerland
         assertFalse(validator.isValid("abcd"));
 
 
-        //Norway
+        // Norway
         validator.setCountryCode("NO");
 
-        //valid post code for Norway
+        // valid post code for Norway
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Norway
+        // invalid post code for Norway
         assertFalse(validator.isValid("abcd"));
 
 
-        //Denmark
+        // Denmark
         validator.setCountryCode("DK");
 
-        //valid post code for Denmark
+        // valid post code for Denmark
         assertTrue(validator.isValid("1234"));
 
-        //invalid post code for Denmark
+        // invalid post code for Denmark
         assertFalse(validator.isValid("abcd"));
 
 
-        //Sweden
+        // Sweden
         validator.setCountryCode("SE");
 
-        //valid post code for Sweden
+        // valid post code for Sweden
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Sweden
+        // invalid post code for Sweden
         assertFalse(validator.isValid("abcde"));
 
 
-        //Finland
+        // Finland
         validator.setCountryCode("FI");
 
-        //valid post code for Finland
+        // valid post code for Finland
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Finland
+        // invalid post code for Finland
         assertFalse(validator.isValid("1234"));
 
 
-        //USA
+        // USA
         validator.setCountryCode("US");
 
-        //valid post code for USA
+        // valid post code for USA
         assertTrue(validator.isValid("02139"));
 
-        //invalid post code for USA
+        // invalid post code for USA
         assertFalse(validator.isValid("invalid"));
 
 
-        //Japan
+        // Japan
         validator.setCountryCode("JP");
 
-        //valid psot code for Japan
+        // valid post code for Japan
         assertTrue(validator.isValid("123-1234"));
 
-        //invalid post code for Japan
+        // invalid post code for Japan
         assertFalse(validator.isValid("abc-abcd"));
 
 
-        //Poland
+        // Poland
         validator.setCountryCode("PL");
 
-        //valid post code for Poland
+        // valid post code for Poland
         assertTrue(validator.isValid("12-123"));
 
-        //invalid post code for Poland
+        // invalid post code for Poland
         assertFalse(validator.isValid("invalid"));
 
 
-        //China
+        // China
         validator.setCountryCode("CN");
 
-        //valid post code for China
+        // valid post code for China
         assertTrue(validator.isValid("123456"));
 
-        //invalid post code for China
+        // invalid post code for China
         assertFalse(validator.isValid("invalid"));
 
 
-        //Canada
+        // Canada
         validator.setCountryCode("CA");
 
-        //valid post code for Canada
+        // valid post code for Canada
         assertTrue(validator.isValid("A1B 2C3"));
 
-        //invalid post code for Canada
+        // invalid post code for Canada
         assertFalse(validator.isValid("invalid"));
 
 
-        //Russia
+        // Russia
         validator.setCountryCode("RU");
 
-        //valid post code for Russia
+        // valid post code for Russia
         assertTrue(validator.isValid("123456"));
 
-        //invalid post code for Russia
+        // invalid post code for Russia
         assertFalse(validator.isValid("invalid"));
 
 
-        //Greece
+        // Greece
         validator.setCountryCode("GR");
 
-        //valid post code for Greece
+        // valid post code for Greece
         assertTrue(validator.isValid("123 12"));
 
-        //invalid post code for Greece
+        // invalid post code for Greece
         assertFalse(validator.isValid("invalid"));
 
 
-        //South Korea
+        // South Korea
         validator.setCountryCode("KR");
 
-        //valid post code for South Korea
+        // valid post code for South Korea
         assertTrue(validator.isValid("123-123"));
 
-        //invalid post code for South Korea
+        // invalid post code for South Korea
         assertFalse(validator.isValid("invalid"));
 
 
-        //Romania
+        // Romania
         validator.setCountryCode("RO");
 
-        //valid post code for Romania
+        // valid post code for Romania
         assertTrue(validator.isValid("123456"));
 
-        //invalid post code for Romania
+        // invalid post code for Romania
         assertFalse(validator.isValid("invalid"));
 
 
-        //Mexico
+        // Mexico
         validator.setCountryCode("MX");
 
-        //valid post code for Mexico
+        // valid post code for Mexico
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Mexico
+        // invalid post code for Mexico
         assertFalse(validator.isValid("123.4"));
         assertFalse(validator.isValid("invalid"));
 
 
-        //Taiwan
+        // Taiwan
         validator.setCountryCode("TW");
 
-        //valid post code for Taiwan
+        // valid post code for Taiwan
         assertTrue(validator.isValid("123"));
 
-        //invalid post code for Taiwan
+        // invalid post code for Taiwan
         assertFalse(validator.isValid("012"));
         assertFalse(validator.isValid("invalid"));
 
 
-        //Macao
+        // Macao
         validator.setCountryCode("MO");
 
-        //valid post code for Macao
+        // valid post code for Macao
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Macao
+        // invalid post code for Macao
         assertFalse(validator.isValid("invalid"));
 
 
-        //Hong Kong
+        // Hong Kong
         validator.setCountryCode("HK");
 
-        //valid post code for Hong Kong
+        // valid post code for Hong Kong
         assertTrue(validator.isValid("12345"));
 
-        //invalid post code for Hong Kong
+        // invalid post code for Hong Kong
         assertFalse(validator.isValid("invalid"));
 
-        
-        //Turkey
+
+        // Turkey
         validator.setCountryCode("TR");
-        
-        //valid post code for Turkey
-        assertTrue(validator.isValid("12345"));
-        
-        //invalid post code for Turkey
-        assertFalse(validator.isValid("invalid"));
-        
 
-        //Australia
+        // valid post code for Turkey
+        assertTrue(validator.isValid("12345"));
+
+        // invalid post code for Turkey
+        assertFalse(validator.isValid("invalid"));
+
+
+        // Australia
         validator.setCountryCode("AU");
 
-        //post codes are always valid
+        // post codes are always valid
         assertTrue(validator.isValid("invalid"));
 
-        //for a null country code, validator always returns true
+        // for a null country code, validator always returns true
         validator.setCountryCode(null);
         assertTrue(validator.isValid(null));
 
-        //for a known country, a null post code always returns false
+        // for a known country, a null post code always returns false
         validator.setCountryCode("ES");
         assertFalse(validator.isValid(null));
     }

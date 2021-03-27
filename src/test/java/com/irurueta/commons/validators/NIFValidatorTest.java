@@ -15,12 +15,12 @@
  */
 package com.irurueta.commons.validators;
 
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class NIFValidatorTest {
-    
+
     private static final String VALID_NIF = "22072532F";
     private static final String INVALID_NIF = "22072532E";
     private static final String VALID_NIE = "Y7921566N";
@@ -28,20 +28,6 @@ public class NIFValidatorTest {
     private static final String INVALID_NIE2 = "Y0744669K";
     private static final String VALID_CIF = "A78018413";
     private static final String INVALID_CIF = "XX5636417";
-        
-    public NIFValidatorTest() { }
-    
-    @BeforeClass
-    public static void setUpClass() { }
-    
-    @AfterClass
-    public static void tearDownClass() { }
-    
-    @Before
-    public void setUp() { }
-    
-    @After
-    public void tearDown() { }
 
     @Test
     public void testConstructor() {
@@ -93,14 +79,14 @@ public class NIFValidatorTest {
 
     @Test
     public void testIsValidNIE() {
-            assertTrue(NIFValidator.isValidNIE(VALID_NIE));
-            assertFalse(NIFValidator.isValidNIE(INVALID_NIE1));
-            assertFalse(NIFValidator.isValidNIE(INVALID_NIE2));
+        assertTrue(NIFValidator.isValidNIE(VALID_NIE));
+        assertFalse(NIFValidator.isValidNIE(INVALID_NIE1));
+        assertFalse(NIFValidator.isValidNIE(INVALID_NIE2));
     }
 
     @Test
     public void testIsValidCIF() {
-            assertTrue(NIFValidator.isValidCIF(VALID_CIF));
-            assertFalse(NIFValidator.isValidCIF(INVALID_CIF));
+        assertTrue(NIFValidator.isValidCIF(VALID_CIF));
+        assertFalse(NIFValidator.isValidCIF(INVALID_CIF));
     }
 }

@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 /**
  * Validates post codes based on county ISO codes.
  */
-@SuppressWarnings("WeakerAccess")
 public class ZipCodeValidator implements Validator<String> {
 
     /**
@@ -175,7 +174,7 @@ public class ZipCodeValidator implements Validator<String> {
      * Regular expression to validate post codes in Hong Kong.
      */
     public static final String HK_ZIPCODE_REGEX = "^\\d*$";
-    
+
     /**
      * Regular expression to validate post codes in Turkey.
      */
@@ -184,7 +183,7 @@ public class ZipCodeValidator implements Validator<String> {
     /**
      * Map that relates country codes with their respective regular expressions to validate post codes.
      */
-    private Map<String, String> mMap;
+    private final Map<String, String> mMap;
 
     /**
      * ISO 3166 country code to use to validate post codes.
@@ -236,24 +235,27 @@ public class ZipCodeValidator implements Validator<String> {
 
     /**
      * Constructor.
+     *
      * @param countryCode ISO 3166 county code.
      */
-    public ZipCodeValidator(String countryCode) {
+    public ZipCodeValidator(final String countryCode) {
         this();
         setCountryCode(countryCode);
     }
 
     /**
      * Constructor.
+     *
      * @param locale locale associated to an ISO 3166 county code.
      */
-    public ZipCodeValidator(Locale locale) {
+    public ZipCodeValidator(final Locale locale) {
         this();
         setCountryCodeFrom(locale);
     }
 
     /**
      * Returns ISO 3166 country code associated to this instance.
+     *
      * @return ISO 3166 country code associated to this instance.
      */
     public String getCountryCode() {
@@ -262,29 +264,32 @@ public class ZipCodeValidator implements Validator<String> {
 
     /**
      * Sets ISO 3166 country code associated to this instance.
+     *
      * @param countryCode ISO 3166 country code associated to this instance.
      */
-    public final void setCountryCode(String countryCode) {
+    public final void setCountryCode(final String countryCode) {
         mCountryCode = countryCode;
         buildPattern();
     }
 
     /**
      * Sets ISO 3166 country code associated to this instance.
+     *
      * @param locale locale associated to an ISO 3166 country code.
      */
-    public final void setCountryCodeFrom(Locale locale) {
+    public final void setCountryCodeFrom(final Locale locale) {
         mCountryCode = locale != null ? locale.getCountry() : null;
         buildPattern();
     }
 
     /**
      * Checks whether provided post code has a valid format for the configured country.
+     *
      * @param zipCode post code to be validated.
      * @return true if post code is valid, false otherwise.
      */
     @Override
-    public boolean isValid(String zipCode) {
+    public boolean isValid(final String zipCode) {
         return mPostCodePattern == null || zipCode != null && mPostCodePattern.matcher(zipCode).matches();
     }
 
@@ -295,7 +300,7 @@ public class ZipCodeValidator implements Validator<String> {
         mPostCodePattern = null;
 
         if (mCountryCode != null) {
-            String regex = mMap.get(mCountryCode);
+            final String regex = mMap.get(mCountryCode);
             if (regex != null) {
                 mPostCodePattern = Pattern.compile(regex);
             }
