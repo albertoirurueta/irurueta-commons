@@ -25,7 +25,7 @@ import java.util.TimeZone;
 import static org.junit.Assert.*;
 
 public class DateUtilsTest {
-    
+
     private static final int MILLIS_PER_HOUR = 1000 * 3600;
 
     @Test
@@ -59,7 +59,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.YEAR), 2015);
         assertEquals(cal.get(Calendar.MONTH), 3);
         assertEquals(cal.get(Calendar.DAY_OF_MONTH), 29);
-        assertEquals(cal.get(Calendar.HOUR_OF_DAY), 17 + 
+        assertEquals(cal.get(Calendar.HOUR_OF_DAY), 17 +
                 (millisOffset / MILLIS_PER_HOUR));
         assertEquals(cal.get(Calendar.MINUTE), 31);
         assertEquals(cal.get(Calendar.SECOND), 15);
@@ -86,7 +86,7 @@ public class DateUtilsTest {
         assertEquals(cal.get(Calendar.YEAR), 2015);
         assertEquals(cal.get(Calendar.MONTH), 3);
         assertEquals(cal.get(Calendar.DAY_OF_MONTH), 29);
-        assertEquals(cal.get(Calendar.HOUR_OF_DAY), 17 + 
+        assertEquals(cal.get(Calendar.HOUR_OF_DAY), 17 +
                 (millisOffset / MILLIS_PER_HOUR));
         assertEquals(cal.get(Calendar.MINUTE), 31);
         assertEquals(cal.get(Calendar.SECOND), 15);
@@ -162,5 +162,5 @@ public class DateUtilsTest {
         cal1.setTime(now);
         cal2.setTime(DateUtils.today());
         assertTrue(DateUtils.isSameDay(cal1, cal2));
-    }    
+    }
 }

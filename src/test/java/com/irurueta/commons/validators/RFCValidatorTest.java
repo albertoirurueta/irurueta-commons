@@ -23,7 +23,7 @@ public class RFCValidatorTest {
 
     @Test
     public void testConstructor() {
-        //noinspection all
+        //noinspection ObviousNullCheck,InstantiationOfUtilityClass,InstantiationOfUtilityClass
         assertNotNull(new RFCValidator());
     }
 
@@ -35,7 +35,7 @@ public class RFCValidatorTest {
         assertFalse(RFCValidator.isValid("CUPU8AA825569"));
         assertFalse(RFCValidator.isValid("CUPU8008255AAA"));
 
-        //noinspection all
+        //noinspection ConstantConditions
         assertFalse(RFCValidator.isValid(null));
     }
 }

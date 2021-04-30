@@ -129,10 +129,10 @@ public class EditDistance {
 
     /**
      * Interface used as a wrapper for arrays of type T used to generalized
-     * efficient acces to elements of an array of a generic data type T.
+     * efficient access to elements of an array of a generic data type T.
      * String implementations are provided as well as implementations for
      * generic objects of type T. If primitive data types arrays must be
-     * supported, theen the necessary implementation will need to be added
+     * supported, then the necessary implementation will need to be added
      * similarly to existent ones.
      *
      * @param <T> generic data type.
@@ -150,7 +150,7 @@ public class EditDistance {
          * y.
          *
          * @param other the other array wrapper.
-         * @param posX  position within this array that must be comapared.
+         * @param posX  position within this array that must be compared.
          * @param posY  position within the other array that must be compared.
          * @return true if elements in provided positions are equal, false
          * otherwise.

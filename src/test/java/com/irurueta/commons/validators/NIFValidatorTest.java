@@ -89,4 +89,20 @@ public class NIFValidatorTest {
         assertTrue(NIFValidator.isValidCIF(VALID_CIF));
         assertFalse(NIFValidator.isValidCIF(INVALID_CIF));
     }
+
+    @Test
+    public void testIsValidCIFCode() {
+        assertTrue(NIFValidator.isValidCIFCode(20));
+        assertFalse(NIFValidator.isValidCIFCode(0));
+    }
+
+    @Test
+    public void testIsValidCIFOrganization() {
+        assertFalse(NIFValidator.isValidCIFOrganization(VALID_CIF));
+    }
+
+    @Test
+    public void testIsValidCIFNonResidents() {
+        assertFalse(NIFValidator.isValidCIFNonResidents(VALID_CIF));
+    }
 }

@@ -399,9 +399,7 @@ public class NIFValidator {
                                 var6 = Long.parseLong(var2);
                                 var8 = var6 % 23L;
                                 ++var8;
-                                if (var8 > 23L) {
-                                    return -12;
-                                } else if (var11 == LetrasNIF[(int) (var8 - 1L)]) {
+                                if (var11 == LetrasNIF[(int) (var8 - 1L)]) {
                                     return 2;
                                 } else {
                                     return -11;
@@ -425,9 +423,7 @@ public class NIFValidator {
 
                         var8 = var6 % 23L;
                         ++var8;
-                        if (var8 > 23L) {
-                            return -12;
-                        } else if (var11 == LetrasNIF[(int) (var8 - 1L)]) {
+                        if (var11 == LetrasNIF[(int) (var8 - 1L)]) {
                             return 4;
                         } else {
                             return -11;

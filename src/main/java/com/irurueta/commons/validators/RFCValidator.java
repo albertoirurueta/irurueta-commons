@@ -22,7 +22,7 @@ public class RFCValidator {
     /**
      * Regular expression to validate RFC (Registro Federal de Contribuyentes).
      */
-    public static final String RFC_REGEX = "^[A-Za-z]{3,4}[ |\\-]{0,1}[0-9]{6}[ |\\-]{0,1}[0-9A-Za-z]{3}$";
+    public static final String RFC_REGEX = "^[A-Za-z]{3,4}[ |\\-]?[0-9]{6}[ |\\-]?[0-9A-Za-z]{3}$";
 
     /**
      * Constructor.

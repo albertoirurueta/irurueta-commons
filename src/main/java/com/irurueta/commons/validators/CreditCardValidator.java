@@ -744,7 +744,7 @@ public class CreditCardValidator {
     /**
      * Detects credit card network by using provided credit card PAN digits.
      * Detection is done by checking all known registered credit card IINs
-     * (Issuer Identification Number) agains provided PAN digits until a match
+     * (Issuer Identification Number) against provided PAN digits until a match
      * is found.
      *
      * @param panDigits an array containing a credit card PAN digits.
