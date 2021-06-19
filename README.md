@@ -1,7 +1,7 @@
 # irurueta-commons
 Utility classes for Java SE
 
-[![Build Status](https://travis-ci.org/albertoirurueta/irurueta-commons.svg?branch=master)](https://travis-ci.org/albertoirurueta/irurueta-commons)
+[![Build Status](https://travis-ci.com/albertoirurueta/irurueta-commons.svg?branch=master)](https://travis-ci.com/albertoirurueta/irurueta-commons)
 
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=albertoirurueta_irurueta-commons&metric=bugs)](https://sonarcloud.io/dashboard?id=albertoirurueta_irurueta-commons)
