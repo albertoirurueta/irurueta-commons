@@ -5,50 +5,55 @@ jdk:
 
 sudo: false
 env:
-    global:
-        #key for github
-        #GITHUB_OAUTH_TOKEN
-        - secure: "UPoxLAQ+61ByWe93lnQCC9cVSu1/sb/mvufU+Qy++GOuC14+rGyMZnmlKd2Bn+Qmdo06X8D9qbEoKk24vO++i0P7foW6XJNTdZ9rfE/uXS/G+uYVvDrC+fvrqK3zWEPs4zJ3AQhayL4YdNAo9lRQeURSE473+lgHP160hjiNQjXhXN4CJbvxP1/5n4wQn48GJjFWU+7vcqaHdU2Jw1cZemuY8rZjstKdGWPJRFMmxpSOv2Udd3l7tZ4W67sOVgQp33q/9OlFCmWPwbcQtiYjeqmhmGAi3x094xRaeJ+kPyJCLHC6UbUNWPuJT9yBD3K54yLFh9vaYAZHdCedC4KM4SdNTTXGYl1zdodKac6YqyEeyS5N0w9rpWacblKASRr6QkHN+s3eJkFixWYMdh49EeEmBt02rF+tGXIFTuaCCj4mVmkQDAv2pIOuoIkd3hZUgb6DUt4Vm8K5j7vAlbOHgcGN5Jw2EO12ZIkT8edYKw+TuCG3bZhb56x9TKC6BMj9JD4TmJ69yjLW8c8Iop/QQmOQIQdoC39AgsYisHD67L5qVnyyFbY9ZNZin1XeGQp1c4mYcOsMr68E49PFVVtzGlmKJwsiW/jr8T+MOaY6V8NkT1DkJ70KWj9ZKe+IlaL5zPOmS+KzsQDj9qKbYO6P6fgZogS59JbJAIz3YSp2R2Q="
-        - environment=test
-        #sonatype credentials
-        #OSSRH_JIRA_USERNAME
-        - secure: "LzY52o85ljSvNH2oXYnbKf//u/igXRgtmLhO40e3yl/M+Guoxs96+w5PWNYMd/zlUozvyZMrrbo1lMhzxspihWStN90rUmAB7bXUfd2Q7zgHH4Ntd/7NXmbh+m8ymolqDgCbkiQbJteQBpBhmju8aHibcFd34hRw0fKmI92vOQpRKXDRmeyaZorUX7x3NFqYIrCrvsRkoBYkva6z1bvJOBDgznpFLxA+ENLKofs6x4p2CfTp9D3m4mNbo78g4JWdOffjxqS3/QUnSMFJ+bcIhIx4zbCbrrifCneu+R4ETkL2Hkr25LfNA9ULdcDSG1LjFP1WLgRgFEekiS45KF6/JNCBmVBis7OAYQ2jYcGkE0dL5ogm+UCsq35/BOHaQsbpGxNTvykAyKqMBTBhffC+IoT7iDSpkawBEQ2YitZ4rfVfnhFWE1qcjTTvEw3a1MvFYWifP7c7OHi47R2hclhKB5qosymkBCOhKeA3Xq0PlimWI91zuMiKKkqLtJUMhuAGuvaZpyFAvdoMqJJ7ygJn3R5yuupzuH5yExIFiZZ/r5V5K2EDlzgPhvZGmbW5w25TPFfs9bYnlXw1atlHusfZuy2EImMHD7O39GO1z5bHFHA1ZjwKtSR3AH+I5xmlmkQRe58Cm8c7DnB3VIupYXGw9LkND852KDzHZIX50ojAwXs="
-        #OSSRH_JIRA_PASSWORD
-        - secure: "kSDmqPLw2aDabc8iMBFoIPOmjG6NdFgtcd7BycpWuoyQWlZkkldVyUHcvO07T8Wyk9cwS9e46KXexXNU8ka4CKk+ypRC3NJTYlkjAszukKs0gTTbCV3UoG/lVrkmf2slnljxlGorBBaYgghTkPFpKGoR9LToJcCpczhrt9uSXJDqHIkr0sRGQ8OxtPahvbpnMsMxEX3fjQYkBC9OM7CZWSG5+tw/YCinU1l7Zu//KWGsM5nQ+rBmjXfWWEOYaVX6TX8SMI3oSudxbY/9r6ef6/n9vZQPXjJjoWAHSs9ZvDGblR3p66AkyeWSz4x49I/HSNyR5N+nyzPi94a7QTSMJ6aA4VX+io0g60Mj9TbskJpwXwu5rGOf49aGk2B6Ol3wXGNE41Pip6PFAcS986WVePmqfmK5xgEO4SpHKDqcXbj68fh1pET55A6xeQ8B0ltRiaPpO0YjyxrkAiUoHTvfXiPjarJhAHjuHpcIK3ZfwUiXzzdOtP/nfG3zRq+DeBx82DxNSvfPBmmykbDVmbRvlxwgWxMMO/RriOlE2Hd4mFrB0TAkdCAdzXEXJqsMAjf/wPDJ0styTIAVygatKDefgtFf1tWyYo2JUDt3szAiJ6dCK/0X7Olvqp8mOUU3r9npfggH51QWfUMMZR/Sizx8tZ7jKB8GTfDkUqLouiA+eOI="
-        #signing key
-        #GPG_KEY_NAME
-        - secure: "TTxVjXScv7zg+OgM2xwZj9nUCeR++wERZteTEEtU4CKq07h4KbwdCOwsasb82WnZZyzL0PEBL5A30/ohbsXclkzXdxRNh338zPGDiy2tNr0TTqHa8Kap0MBUJG8URoc3rM3Aq78gTtau8UpJzjzlugz8Q1vXLsG8wmDYALW+eRxj/XYg4psFqdSZnOtgtFj7fbKpdx1zFUfJwMxlkczdYAta8ZnxVJFTe5SMRM8lKfKedCKKMZrX7HgQWQDoT4CL2PPCinHk1suYYFG8c8NNtZQ9rUgFWRX6TpMZH5a5Qq0xiu/u5EPjmrdGA7I3DvlFO4g/u8r9J9EmjWZt7Jbr3Zask1GPaopDm5xxIvEON2of7gWHMDZJDkptqkpc1haE43xoJvlY0xXYcAlIpZF81Leb4cRW4cQmM4Na7TGhWtqpd9d8+Y02PB4wiwpX/PvpZChSAjteEkS2ix5sih4Gm+fYfIipYHUG3amI2jOHmr3OgWqGfu3vSx5qlkvJw8g+dG7goFoSCo8xu6awo7ABd02T769G0fqo0nVt3OrAFE2j4ILN2buOLvVtlrRRHncnMg/bq9D1QuOjHEBCelVu7jUPfJZ58lZFswlA+WEnF+3du6bZW7nyCGORLfHPJ2D1Q7bJUTA7HaV9U8gcNh5tBuJb8YpGjlSgPCF243xnkeg="
-        #GPG_PASSPHRASE
-        - secure: "njQUiFAfFQcX9D8/4AxR7+k4CpkhryJG0NN/XFyL1IV4wJiQX2ZLQ+vQRxZzQOFY2GcPFn7tPEn0hFtym/TTDNXfgKJ3hDWnIZ3Lc56sjbvWsby6RCpmt2P2FKhHD6puroWvFqwAwkZ6JEExWvNNlkU/gfowlVNgvV+Vw+s3q+c8F1KE/UCKZzBPFqUM4DoapLHgOZan5lqw9AIJjFqgVQzwF142Dnj6pYklPpLs8xsX/flyQTqxs2onRyFgnStMm2UfTB3TacMls+FNZVeaJ1INUZpb+FjWDZ0XlhAweO+hLPEHsisEMPzxdBrhvqHNc7rfAVPwfcXDTAuvv2UC4J6l3GmKPX2ZstjVeq+SgocyNcJ1IJpiygo+HhirLRENsNc5I/TkcmUamwHjkWpg/DeNBaPJGg0XdMh2IFZ628U6XAORLE6hrFrv6hPO2vIn5GTIKL6tTaAp/JOQ1HOMielcYuBCWE9YNvoMdFHUJMLpBz3iBR+O3PeD7fLtPUFH/Z/KFH/Tk5ylSeRQQIx1tkkOjXKJ8wfWQ1RAXxQxuMkE+KUMPwC1Ih/B5Z/SJ8GlMEowQFcOplQHQtEAEG73oGSdMD9w+/EdB8bf9cJlrhrToXI08T/qW4SMjwndidrNtRNM7rmrNJnxhiN0bfLcFd4G48THxKUatDuABkWHgmM="
+  global:
+  #key for github
+  #GITHUB_OAUTH_TOKEN
+  - secure: "UPoxLAQ+61ByWe93lnQCC9cVSu1/sb/mvufU+Qy++GOuC14+rGyMZnmlKd2Bn+Qmdo06X8D9qbEoKk24vO++i0P7foW6XJNTdZ9rfE/uXS/G+uYVvDrC+fvrqK3zWEPs4zJ3AQhayL4YdNAo9lRQeURSE473+lgHP160hjiNQjXhXN4CJbvxP1/5n4wQn48GJjFWU+7vcqaHdU2Jw1cZemuY8rZjstKdGWPJRFMmxpSOv2Udd3l7tZ4W67sOVgQp33q/9OlFCmWPwbcQtiYjeqmhmGAi3x094xRaeJ+kPyJCLHC6UbUNWPuJT9yBD3K54yLFh9vaYAZHdCedC4KM4SdNTTXGYl1zdodKac6YqyEeyS5N0w9rpWacblKASRr6QkHN+s3eJkFixWYMdh49EeEmBt02rF+tGXIFTuaCCj4mVmkQDAv2pIOuoIkd3hZUgb6DUt4Vm8K5j7vAlbOHgcGN5Jw2EO12ZIkT8edYKw+TuCG3bZhb56x9TKC6BMj9JD4TmJ69yjLW8c8Iop/QQmOQIQdoC39AgsYisHD67L5qVnyyFbY9ZNZin1XeGQp1c4mYcOsMr68E49PFVVtzGlmKJwsiW/jr8T+MOaY6V8NkT1DkJ70KWj9ZKe+IlaL5zPOmS+KzsQDj9qKbYO6P6fgZogS59JbJAIz3YSp2R2Q="
+  - environment=test
+  #sonatype credentials
+  #OSSRH_JIRA_USERNAME
+  - secure: "LzY52o85ljSvNH2oXYnbKf//u/igXRgtmLhO40e3yl/M+Guoxs96+w5PWNYMd/zlUozvyZMrrbo1lMhzxspihWStN90rUmAB7bXUfd2Q7zgHH4Ntd/7NXmbh+m8ymolqDgCbkiQbJteQBpBhmju8aHibcFd34hRw0fKmI92vOQpRKXDRmeyaZorUX7x3NFqYIrCrvsRkoBYkva6z1bvJOBDgznpFLxA+ENLKofs6x4p2CfTp9D3m4mNbo78g4JWdOffjxqS3/QUnSMFJ+bcIhIx4zbCbrrifCneu+R4ETkL2Hkr25LfNA9ULdcDSG1LjFP1WLgRgFEekiS45KF6/JNCBmVBis7OAYQ2jYcGkE0dL5ogm+UCsq35/BOHaQsbpGxNTvykAyKqMBTBhffC+IoT7iDSpkawBEQ2YitZ4rfVfnhFWE1qcjTTvEw3a1MvFYWifP7c7OHi47R2hclhKB5qosymkBCOhKeA3Xq0PlimWI91zuMiKKkqLtJUMhuAGuvaZpyFAvdoMqJJ7ygJn3R5yuupzuH5yExIFiZZ/r5V5K2EDlzgPhvZGmbW5w25TPFfs9bYnlXw1atlHusfZuy2EImMHD7O39GO1z5bHFHA1ZjwKtSR3AH+I5xmlmkQRe58Cm8c7DnB3VIupYXGw9LkND852KDzHZIX50ojAwXs="
+  #OSSRH_JIRA_PASSWORD
+  - secure: "kSDmqPLw2aDabc8iMBFoIPOmjG6NdFgtcd7BycpWuoyQWlZkkldVyUHcvO07T8Wyk9cwS9e46KXexXNU8ka4CKk+ypRC3NJTYlkjAszukKs0gTTbCV3UoG/lVrkmf2slnljxlGorBBaYgghTkPFpKGoR9LToJcCpczhrt9uSXJDqHIkr0sRGQ8OxtPahvbpnMsMxEX3fjQYkBC9OM7CZWSG5+tw/YCinU1l7Zu//KWGsM5nQ+rBmjXfWWEOYaVX6TX8SMI3oSudxbY/9r6ef6/n9vZQPXjJjoWAHSs9ZvDGblR3p66AkyeWSz4x49I/HSNyR5N+nyzPi94a7QTSMJ6aA4VX+io0g60Mj9TbskJpwXwu5rGOf49aGk2B6Ol3wXGNE41Pip6PFAcS986WVePmqfmK5xgEO4SpHKDqcXbj68fh1pET55A6xeQ8B0ltRiaPpO0YjyxrkAiUoHTvfXiPjarJhAHjuHpcIK3ZfwUiXzzdOtP/nfG3zRq+DeBx82DxNSvfPBmmykbDVmbRvlxwgWxMMO/RriOlE2Hd4mFrB0TAkdCAdzXEXJqsMAjf/wPDJ0styTIAVygatKDefgtFf1tWyYo2JUDt3szAiJ6dCK/0X7Olvqp8mOUU3r9npfggH51QWfUMMZR/Sizx8tZ7jKB8GTfDkUqLouiA+eOI="
+  #signing key
+  #GPG_KEY_NAME
+  - secure: "TTxVjXScv7zg+OgM2xwZj9nUCeR++wERZteTEEtU4CKq07h4KbwdCOwsasb82WnZZyzL0PEBL5A30/ohbsXclkzXdxRNh338zPGDiy2tNr0TTqHa8Kap0MBUJG8URoc3rM3Aq78gTtau8UpJzjzlugz8Q1vXLsG8wmDYALW+eRxj/XYg4psFqdSZnOtgtFj7fbKpdx1zFUfJwMxlkczdYAta8ZnxVJFTe5SMRM8lKfKedCKKMZrX7HgQWQDoT4CL2PPCinHk1suYYFG8c8NNtZQ9rUgFWRX6TpMZH5a5Qq0xiu/u5EPjmrdGA7I3DvlFO4g/u8r9J9EmjWZt7Jbr3Zask1GPaopDm5xxIvEON2of7gWHMDZJDkptqkpc1haE43xoJvlY0xXYcAlIpZF81Leb4cRW4cQmM4Na7TGhWtqpd9d8+Y02PB4wiwpX/PvpZChSAjteEkS2ix5sih4Gm+fYfIipYHUG3amI2jOHmr3OgWqGfu3vSx5qlkvJw8g+dG7goFoSCo8xu6awo7ABd02T769G0fqo0nVt3OrAFE2j4ILN2buOLvVtlrRRHncnMg/bq9D1QuOjHEBCelVu7jUPfJZ58lZFswlA+WEnF+3du6bZW7nyCGORLfHPJ2D1Q7bJUTA7HaV9U8gcNh5tBuJb8YpGjlSgPCF243xnkeg="
+  #GPG_PASSPHRASE
+  - secure: "njQUiFAfFQcX9D8/4AxR7+k4CpkhryJG0NN/XFyL1IV4wJiQX2ZLQ+vQRxZzQOFY2GcPFn7tPEn0hFtym/TTDNXfgKJ3hDWnIZ3Lc56sjbvWsby6RCpmt2P2FKhHD6puroWvFqwAwkZ6JEExWvNNlkU/gfowlVNgvV+Vw+s3q+c8F1KE/UCKZzBPFqUM4DoapLHgOZan5lqw9AIJjFqgVQzwF142Dnj6pYklPpLs8xsX/flyQTqxs2onRyFgnStMm2UfTB3TacMls+FNZVeaJ1INUZpb+FjWDZ0XlhAweO+hLPEHsisEMPzxdBrhvqHNc7rfAVPwfcXDTAuvv2UC4J6l3GmKPX2ZstjVeq+SgocyNcJ1IJpiygo+HhirLRENsNc5I/TkcmUamwHjkWpg/DeNBaPJGg0XdMh2IFZ628U6XAORLE6hrFrv6hPO2vIn5GTIKL6tTaAp/JOQ1HOMielcYuBCWE9YNvoMdFHUJMLpBz3iBR+O3PeD7fLtPUFH/Z/KFH/Tk5ylSeRQQIx1tkkOjXKJ8wfWQ1RAXxQxuMkE+KUMPwC1Ih/B5Z/SJ8GlMEowQFcOplQHQtEAEG73oGSdMD9w+/EdB8bf9cJlrhrToXI08T/qW4SMjwndidrNtRNM7rmrNJnxhiN0bfLcFd4G48THxKUatDuABkWHgmM="
 
 addons:
-    sonarcloud:
-        organization: "albertoirurueta-github"
-        token:
-            secure: "bjBk8vqld+rPan3zIhhcBKkK9FM28MP/0Erhkz7fjiY8eQ49Z9wYjbisf6qLlZFXcFsCwvAPa3DdLiEBi3fV51DVmslTlMbxZi7eG+U/4dEe2hQdyiPzI7OnyVNrQJrMXy5YhEANkZZabODPSqFbcnjUnOYWf5LEUXHXBcwlgPvxsPqQye0vhHEOgwza75gM6XGqGkIY0EUToJju2E8vai2jPNgXh4P3tsBHE+7Bru59TofjJP7Fb9Xl8KcaLFg8s7CgKHHt4GnD3Nv22Z+caq5D+LNx4WId2mA93TTdjxgSLxiRkC3soaK9C7h2Ym45OHymF4313DnDdCnDSwOENbVUK7JS/rCjqyY1ZeYhvcD8buXUGnZA1FuHUawgaW5kWrzeKDBJHX1axXKcc/7wMUyGFIMddDy0g1sQ6EgzBE8hMf2bNgLTyFdhxZEW+i6Gf03vD989gsdQM/ozxUN8Oxf8LSiIKcSPdFpJW9j6uJEh3J1mZlfpY+YVgVtYjo+6FyNcLS9wIWyOQ0JbQkKIx5FWaB9SnPr6pKREOkv8hj5/z9DeR0PQ1v7fvO6MUa0HEbmDXNOc11iortjU1js+HIjxONCfocMSWokQWsew3JSd01ODPy4UKkON6ozU5zuhAiNI4ddSgSTf2gVvqbJp/AHkEdDmDzyycatgrESSPH4="
+  sonarcloud:
+    organization: "albertoirurueta-github"
+    token:
+      secure: "bjBk8vqld+rPan3zIhhcBKkK9FM28MP/0Erhkz7fjiY8eQ49Z9wYjbisf6qLlZFXcFsCwvAPa3DdLiEBi3fV51DVmslTlMbxZi7eG+U/4dEe2hQdyiPzI7OnyVNrQJrMXy5YhEANkZZabODPSqFbcnjUnOYWf5LEUXHXBcwlgPvxsPqQye0vhHEOgwza75gM6XGqGkIY0EUToJju2E8vai2jPNgXh4P3tsBHE+7Bru59TofjJP7Fb9Xl8KcaLFg8s7CgKHHt4GnD3Nv22Z+caq5D+LNx4WId2mA93TTdjxgSLxiRkC3soaK9C7h2Ym45OHymF4313DnDdCnDSwOENbVUK7JS/rCjqyY1ZeYhvcD8buXUGnZA1FuHUawgaW5kWrzeKDBJHX1axXKcc/7wMUyGFIMddDy0g1sQ6EgzBE8hMf2bNgLTyFdhxZEW+i6Gf03vD989gsdQM/ozxUN8Oxf8LSiIKcSPdFpJW9j6uJEh3J1mZlfpY+YVgVtYjo+6FyNcLS9wIWyOQ0JbQkKIx5FWaB9SnPr6pKREOkv8hj5/z9DeR0PQ1v7fvO6MUa0HEbmDXNOc11iortjU1js+HIjxONCfocMSWokQWsew3JSd01ODPy4UKkON6ozU5zuhAiNI4ddSgSTf2gVvqbJp/AHkEdDmDzyycatgrESSPH4="
+
+branches:
+  only:
+  - develop
+  - master
 
 #if timeout occurs, add travis_wait as in example below:
 #script: travis_wait mvn clean jacoco:prepare-agent install jacoco:report site
 
 #add: -Denvironment=test to activate CI profile to publish into gh-pages
 script:
-  - travis_wait mvn clean jacoco:prepare-agent install jacoco:report -P !build-extras
-  - mvn site -Djacoco.skip -DskipTests -P !build-extras
-  - sonar-scanner
+- travis_wait mvn clean jacoco:prepare-agent install jacoco:report -P !build-extras
+- mvn site -Djacoco.skip -DskipTests -P !build-extras
+- sonar-scanner
 
 cache:
   directories:
-    - ~/.m2/repository
+  - ~/.m2/repository
 
 deploy:
-    provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_OAUTH_TOKEN
-    keep-history: true
-    local-dir: ./target/site
-    on:
-        branch: master
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_OAUTH_TOKEN
+  keep-history: true
+  local-dir: ./target/site
+  on:
+    branch: master
 
 after_success:
-  - ./cd/before-deploy.sh
-  - ./cd/deploy.sh
+- ./cd/before-deploy.sh
+- ./cd/deploy.sh

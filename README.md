@@ -20,3 +20,17 @@ Utility classes for Java SE
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=albertoirurueta_irurueta-commons&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=albertoirurueta_irurueta-commons)
 
 [Maven Site Report](http://albertoirurueta.github.io/irurueta-commons)
+
+## Usage
+
+Add the following dependency to your project:
+
+Latest release:
+```
+<dependency>
+    <groupId>com.irurueta</groupId>
+    <artifactId>irurueta-commons</artifactId>
+    <version>1.0.0</version>
+    <scope>compile</scope>
+</dependency>
+```
