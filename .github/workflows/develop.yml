@@ -26,7 +26,7 @@ jobs:
         mvn site -Djacoco.skip -DskipTests -P !build-extras
 
     - name: Send to sonarqube
-      run: mvn org.sonarsource.scanner.maven:sonar
+      run: mvn sonar:sonar
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
