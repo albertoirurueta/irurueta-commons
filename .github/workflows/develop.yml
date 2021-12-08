@@ -19,6 +19,11 @@ jobs:
       with:
         distribution: adopt
         java-version: 11
+        server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
+        server-username: OSSRH_USERNAME # env variable for username in deploy
+        server-password: OSSRH_PASSWORD # env variable for token in deploy
+        gpg-private-key: ${{ secrets.SIGNING_KEY }} # Value of the GPG private key to import
+        gpg-passphrase: SIGNING_PASSWORD # env variable for GPG private key passphrase
 
     - name: Run tests
       run: |
@@ -43,13 +48,6 @@ jobs:
         build_dir: ./target/site
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Import GPG key
-      id: import_gpg
-      uses: crazy-max/ghaction-import-gpg@v4
-      with:
-        gpg_private_key: ${{ secrets.SIGNING_KEY }}
-        passphrase: ${{ secrets.SIGNING_PASSWORD }}
 
     - name: Deploy to maven central
       env:
