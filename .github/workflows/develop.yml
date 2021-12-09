@@ -55,4 +55,4 @@ jobs:
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-      run: mvn deploy -P sign,build-extras -DskipTests
+      run: mvn deploy -P sign,build-extras --settings mvnsettings.xml -DskipTests
