@@ -262,6 +262,7 @@
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     <keepStagingRepositoryOnFailure>true</keepStagingRepositoryOnFailure>
                     <stagingProgressTimeoutMinutes>30</stagingProgressTimeoutMinutes>
+                    <stagingProfileId>${env.SONATYPE_STAGING_PROFILE_ID}</stagingProfileId>
                 </configuration>
             </plugin>                            
         </plugins>
