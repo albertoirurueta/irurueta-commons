@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NIFValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons.validators</a> &gt; <span class="el_source">NIFValidator.java</span></div><h1>NIFValidator.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.irurueta.commons.validators;
+
+import java.lang.ref.SoftReference;
+
+/**
+ * Validates provided NIF (Número de Identificación Fiscal) values for Spain.
+ * This class is a wrapper for the library provided by Spain's Ministerio de
+ * Hacienda to validate DNI's, NIF's, NIE's, CIF's, etc.
+ */
+public class NIFValidator {
+    /**
+     * Reference to the internal validator provided by Ministerio de
+     * Hacienda.
+     */
+    private static SoftReference&lt;Validador&gt; mValRef;
+
+    /**
+     * Constructor.
+     */
+<span class="fc" id="L35">    protected NIFValidator() {</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Checks whether provided value is a valid DNI, NIF, NIE or CIF.
+     *
+     * @param value DNI, NIF, NIE or CIF to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValid(final String value) {
+<span class="fc" id="L45">        final int code = getOrCreateValidador().checkNif(value);</span>
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        return isValidDNICode(code) || isValidNIFCode(code) ||</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">                isValidNIFNonResidentsCode(code) ||</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">                isValidNIFMinorsCode(code) || isValidNIECode(code) ||</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                isValidCIFCode(code) ||</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">                isValidCIFOrganizationCode(code) ||</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">                isValidCIFNonResidentsCode(code);</span>
+    }
+
+    /**
+     * Checks whether provided value is a valid DNI (Documento Nacional de
+     * Identidad).
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidDNI(final String value) {
+<span class="fc" id="L62">        return isValidDNICode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to the code of a valid DNI.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid DNI, false otherwise.
+     */
+    protected static boolean isValidDNICode(final int code) {
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        return code == Validador.DNI_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value is a valid NIF (Número de
+     * Identificación Fiscal).
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIF(final String value) {
+<span class="fc" id="L83">        return isValidNIFCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks if provided code corresponds to a valid NIF code.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIF code, false
+     * otherwise.
+     */
+    protected static boolean isValidNIFCode(final int code) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        return code == Validador.NIF_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid non-resident
+     * NIF.
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIFNonResidents(final String value) {
+<span class="fc" id="L105">        return isValidNIFNonResidentsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid non-resident NIF.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid non-resident  NIF, false
+     * otherwise.
+     */
+    protected static boolean isValidNIFNonResidentsCode(final int code) {
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        return code == Validador.NIF_NORESIDENTES;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid NIF for minors
+     * having less than 14 years old.
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIFMinors(final String value) {
+<span class="fc" id="L127">        return isValidNIFMinorsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid NIF for minors
+     * having less than 14 years old.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIF for minors having
+     * less than 14 years old, false otherwise.
+     */
+    protected static boolean isValidNIFMinorsCode(final int code) {
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">        return code == Validador.NIF_MENORES14ANOS;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid NIE (Número de
+     * Identificación de Extranjeros).
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidNIE(final String value) {
+<span class="fc" id="L150">        return isValidNIECode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid NIE (Número de
+     * Identificación de Extranjeros).
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid NIE, false otherwise.
+     */
+    protected static boolean isValidNIECode(final int code) {
+<span class="fc bfc" id="L161" title="All 2 branches covered.">        return code == Validador.NIF_EXTRANJEROS;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid CIF (Código de
+     * Identificación Fiscal).
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIF(final String value) {
+<span class="fc" id="L172">        return isValidCIFCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid CIF (Código de
+     * Identificación Fiscal).
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid CIF, false otherwise.
+     */
+    public static boolean isValidCIFCode(final int code) {
+<span class="fc bfc" id="L183" title="All 2 branches covered.">        return code == Validador.CIF_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid Organization
+     * CIF.
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIFOrganization(final String value) {
+<span class="fc" id="L194">        return isValidCIFOrganizationCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid Organization CIF
+     * code.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid Organization CIF, false
+     * otherwise.
+     */
+    public static boolean isValidCIFOrganizationCode(final int code) {
+<span class="pc bpc" id="L206" title="1 of 2 branches missed.">        return code == Validador.CIF_ORGANIZACION_OK;</span>
+    }
+
+    /**
+     * Checks whether provided value corresponds to a valid non-resident
+     * CIF.
+     *
+     * @param value value to be validated.
+     * @return true if value is valid, false otherwise.
+     */
+    public static boolean isValidCIFNonResidents(final String value) {
+<span class="fc" id="L217">        return isValidCIFNonResidentsCode(getOrCreateValidador().checkNif(value));</span>
+    }
+
+    /**
+     * Checks whether provided code corresponds to a valid non-resident CIF.
+     *
+     * @param code code to be validated.
+     * @return true if code corresponds to a valid non-resident CIF, false
+     * otherwise.
+     */
+    public static boolean isValidCIFNonResidentsCode(final int code) {
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">        return code == Validador.CIF_NORESIDENTES_OK;</span>
+    }
+
+    /**
+     * Gets or creates singleton instance to validate DNI's, NIF's, CIF's,
+     * etc using the library provided by the Ministerio de Hacienda.
+     *
+     * @return internal validator provided by Ministerio de Hacienda.
+     */
+    private static synchronized Validador getOrCreateValidador() {
+<span class="pc bpc" id="L238" title="1 of 4 branches missed.">        if (mValRef == null || mValRef.get() == null) {</span>
+<span class="fc" id="L239">            mValRef = new SoftReference&lt;&gt;(new Validador());</span>
+        }
+<span class="fc" id="L241">        return mValRef.get();</span>
+    }
+
+    /**
+     * Inner class to perform actual validation.
+     */
+    private static class Validador {
+        public static final int DNI_OK = 0;
+        public static final int NIF_OK = 1;
+        public static final int NIF_NORESIDENTES = 2;
+        public static final int NIF_MENORES14ANOS = 3;
+        public static final int NIF_EXTRANJEROS = 4;
+        public static final int CIF_OK = 20;
+        public static final int CIF_ORGANIZACION_OK = 22;
+        public static final int CIF_NORESIDENTES_OK = 23;
+<span class="fc" id="L256">        private static final char[] Numeros = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};</span>
+<span class="fc" id="L257">        private static final char[] Letras = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};</span>
+<span class="fc" id="L258">        private static final char[] LetrasNIF = new char[]{'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};</span>
+<span class="fc" id="L259">        private static final char[] Letras2CIF = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};</span>
+<span class="fc" id="L260">        private static final char[] LetrasCIF = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'U', 'V'};</span>
+<span class="fc" id="L261">        private static final char[] LetrasCIFORG_Y_EXTR = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'P', 'Q', 'S', 'N', 'W', 'R'};</span>
+<span class="fc" id="L262">        private static final char[] LetrasREGATRIBRENTAS = new char[]{'E', 'G', 'H', 'J', 'U', 'V'};</span>
+<span class="fc" id="L263">        private static final char[] LetrasCIFEXT = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'N', 'W'};</span>
+<span class="fc" id="L264">        private static final char[] LetrasNIFEXT = new char[]{'X', 'Y', 'Z'};</span>
+
+        /**
+         * Checks nif
+         *
+         * @param var1 value to be validated.
+         * @return code indicating the result of validation.
+         */
+        public int checkNif(final String var1) {
+<span class="pc bpc" id="L273" title="1 of 4 branches missed.">            return var1 != null &amp;&amp; var1.length() == 9 ? this.vNif(var1) : -1;</span>
+        }
+
+        @SuppressWarnings(&quot;Duplicates&quot;)
+        public int vNif(String var1) {
+            String var2;
+<span class="fc" id="L279">            int var5 = 0;</span>
+            long var6;
+            long var8;
+<span class="fc" id="L282">            var1 = var1.trim();</span>
+<span class="pc bpc" id="L283" title="1 of 2 branches missed.">            if (var1.length() != 9) {</span>
+<span class="nc" id="L284">                return -2;</span>
+            } else {
+<span class="fc" id="L286">                char var10 = 0;</span>
+<span class="fc" id="L287">                char var11 = 0;</span>
+<span class="fc" id="L288">                int var12 = 0;</span>
+<span class="fc" id="L289">                int var13 = 0;</span>
+<span class="fc" id="L290">                int var14 = 0;</span>
+<span class="fc" id="L291">                final char[] var15 = var1.toCharArray();</span>
+
+                int var3;
+<span class="fc bfc" id="L294" title="All 2 branches covered.">                for (var3 = 0; var3 &lt; 9; ++var3) {</span>
+<span class="fc" id="L295">                    final char var16 = var15[var3];</span>
+<span class="fc" id="L296">                    final int var17 = Character.getType(var16);</span>
+<span class="fc bfc" id="L297" title="All 4 branches covered.">                    if (var17 == 1 &amp;&amp; var12 == 0) {</span>
+<span class="fc" id="L298">                        ++var12;</span>
+<span class="fc" id="L299">                        var10 = var16;</span>
+<span class="fc" id="L300">                        var13 = var3;</span>
+<span class="pc bpc" id="L301" title="1 of 4 branches missed.">                    } else if (var17 == 1 &amp;&amp; var12 == 1) {</span>
+<span class="fc" id="L302">                        ++var12;</span>
+<span class="fc" id="L303">                        var11 = var16;</span>
+<span class="fc" id="L304">                        var14 = var3;</span>
+                    } else {
+<span class="pc bpc" id="L306" title="3 of 4 branches missed.">                        if (var17 == 1 &amp;&amp; var12 == 2) {</span>
+<span class="nc" id="L307">                            return -5;</span>
+                        }
+
+<span class="pc bpc" id="L310" title="1 of 2 branches missed.">                        if (var17 != 9) {</span>
+<span class="nc" id="L311">                            return -4;</span>
+                        }
+                    }
+                }
+
+<span class="pc bpc" id="L316" title="1 of 2 branches missed.">                if (var12 == 0) {</span>
+<span class="nc bnc" id="L317" title="All 2 branches missed.">                    if (var15[0] != 48) {</span>
+<span class="nc" id="L318">                        return -20;</span>
+                    } else {
+<span class="nc" id="L320">                        final String var20 = var1.substring(1);</span>
+<span class="nc bnc" id="L321" title="All 20 branches missed.">                        if (!var20.equals(&quot;11111111&quot;) &amp;&amp; !var20.equals(&quot;22222222&quot;) &amp;&amp; !var20.equals(&quot;33333333&quot;) &amp;&amp; !var20.equals(&quot;44444444&quot;) &amp;&amp; !var20.equals(&quot;55555555&quot;) &amp;&amp; !var20.equals(&quot;66666666&quot;) &amp;&amp; !var20.equals(&quot;77777777&quot;) &amp;&amp; !var20.equals(&quot;88888888&quot;) &amp;&amp; !var20.equals(&quot;99999999&quot;) &amp;&amp; !var20.equals(&quot;00000000&quot;)) {</span>
+<span class="nc" id="L322">                            return 0;</span>
+                        } else {
+<span class="nc" id="L324">                            return -21;</span>
+                        }
+                    }
+                } else {
+                    int var19;
+<span class="pc bpc" id="L329" title="2 of 8 branches missed.">                    if (var12 == 1 &amp;&amp; this.caracEnCad(LetrasCIF, var15[var13]) &amp;&amp; var13 == 0 &amp;&amp; Character.isDigit(var15[8])) {</span>
+<span class="fc bfc" id="L330" title="All 2 branches covered.">                        for (var3 = 1; var3 &lt; 8; ++var3) {</span>
+<span class="fc bfc" id="L331" title="All 6 branches covered.">                            if (var3 != 2 &amp;&amp; var3 != 4 &amp;&amp; var3 != 6) {</span>
+<span class="fc" id="L332">                                var19 = (var15[var3] - 48) * 2;</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">                                if (var19 &gt; 9) {</span>
+<span class="fc" id="L334">                                    var19 -= 9;</span>
+                                }
+
+<span class="fc" id="L337">                                var5 += var19;</span>
+                            } else {
+<span class="fc" id="L339">                                var5 += var15[var3] - 48;</span>
+                            }
+                        }
+
+<span class="fc" id="L343">                        var5 = 10 - var5 % 10;</span>
+<span class="pc bpc" id="L344" title="1 of 2 branches missed.">                        if (var5 == 10) {</span>
+<span class="nc" id="L345">                            var5 = 0;</span>
+                        }
+
+<span class="pc bpc" id="L348" title="1 of 2 branches missed.">                        if (var5 == var15[var3] - 48) {</span>
+<span class="pc bpc" id="L349" title="1 of 2 branches missed.">                            if (this.caracEnCad(LetrasREGATRIBRENTAS, var15[var13])) {</span>
+<span class="nc" id="L350">                                return 23;</span>
+                            } else {
+<span class="fc" id="L352">                                return 20;</span>
+                            }
+                        } else {
+<span class="nc" id="L355">                            return -10;</span>
+                        }
+<span class="pc bpc" id="L357" title="3 of 10 branches missed.">                    } else if (var12 == 2 &amp;&amp; this.caracEnCad(LetrasCIFORG_Y_EXTR, var15[var13]) &amp;&amp; var13 == 0 &amp;&amp; var14 == 8 &amp;&amp; this.caracEnCad(Letras2CIF, var15[var14])) {</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">                        for (var3 = 1; var3 &lt; 8; ++var3) {</span>
+<span class="nc bnc" id="L359" title="All 6 branches missed.">                            if (var3 != 2 &amp;&amp; var3 != 4 &amp;&amp; var3 != 6) {</span>
+<span class="nc" id="L360">                                var19 = (var15[var3] - 48) * 2;</span>
+<span class="nc bnc" id="L361" title="All 2 branches missed.">                                if (var19 &gt; 9) {</span>
+<span class="nc" id="L362">                                    var19 -= 9;</span>
+                                }
+
+<span class="nc" id="L365">                                var5 += var19;</span>
+                            } else {
+<span class="nc" id="L367">                                var5 += var15[var3] - 48;</span>
+                            }
+                        }
+
+<span class="nc" id="L371">                        var5 = 10 - var5 % 10;</span>
+<span class="nc bnc" id="L372" title="All 2 branches missed.">                        if (Letras2CIF[var5 - 1] == var15[var14]) {</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">                            if (this.caracEnCad(LetrasCIFEXT, var15[var13])) {</span>
+<span class="nc" id="L374">                                return 21;</span>
+                            } else {
+<span class="nc" id="L376">                                return 22;</span>
+                            }
+                        } else {
+<span class="nc" id="L379">                            return -10;</span>
+                        }
+<span class="pc bpc" id="L381" title="3 of 8 branches missed.">                    } else if (var12 == 1 &amp;&amp; this.caracEnCad(Letras, var15[8]) &amp;&amp; this.caracEnCad(LetrasNIF, var15[var13]) &amp;&amp; var13 == 8) {</span>
+<span class="fc" id="L382">                        var6 = Long.parseLong(var1.substring(0, var13));</span>
+<span class="fc" id="L383">                        var8 = var6 % 23L;</span>
+<span class="fc bfc" id="L384" title="All 2 branches covered.">                        if (var10 == LetrasNIF[(int) var8]) {</span>
+<span class="pc bpc" id="L385" title="3 of 6 branches missed.">                            if (!var1.equals(&quot;00000001R&quot;) &amp;&amp; !var1.equals(&quot;00000000T&quot;) &amp;&amp; !var1.equals(&quot;99999999R&quot;)) {</span>
+<span class="fc" id="L386">                                return 1;</span>
+                            } else {
+<span class="nc" id="L388">                                return -1;</span>
+                            }
+                        } else {
+<span class="fc" id="L391">                            return -11;</span>
+                        }
+<span class="pc bpc" id="L393" title="8 of 12 branches missed.">                    } else if (var12 == 2 &amp;&amp; (var15[0] == 75 || var15[0] == 76 || var15[0] == 77) &amp;&amp; this.caracEnCad(LetrasNIF, var15[var14]) &amp;&amp; var14 == 8) {</span>
+<span class="nc" id="L394">                        var2 = var1.substring(1, 3);</span>
+<span class="nc bnc" id="L395" title="All 4 branches missed.">                        if (this.caracEnCad(Numeros, var2.charAt(0)) &amp;&amp; this.caracEnCad(Numeros, var2.charAt(1))) {</span>
+<span class="nc" id="L396">                            var3 = Integer.parseInt(var2);</span>
+<span class="nc bnc" id="L397" title="All 4 branches missed.">                            if (var3 &gt;= 1 &amp;&amp; var3 &lt;= 56) {</span>
+<span class="nc" id="L398">                                var2 = var1.substring(1, var14);</span>
+<span class="nc" id="L399">                                var6 = Long.parseLong(var2);</span>
+<span class="nc" id="L400">                                var8 = var6 % 23L;</span>
+<span class="nc" id="L401">                                ++var8;</span>
+<span class="nc bnc" id="L402" title="All 2 branches missed.">                                if (var11 == LetrasNIF[(int) (var8 - 1L)]) {</span>
+<span class="nc" id="L403">                                    return 2;</span>
+                                } else {
+<span class="nc" id="L405">                                    return -11;</span>
+                                }
+                            } else {
+<span class="nc" id="L408">                                return -1;</span>
+                            }
+                        } else {
+<span class="nc" id="L411">                            return -13;</span>
+                        }
+<span class="pc bpc" id="L413" title="1 of 2 branches missed.">                    } else if (var1.equals(&quot;X0000000T&quot;)) {</span>
+<span class="nc" id="L414">                        return -1;</span>
+<span class="pc bpc" id="L415" title="2 of 8 branches missed.">                    } else if (var12 == 2 &amp;&amp; this.caracEnCad(LetrasNIFEXT, var15[0]) &amp;&amp; this.caracEnCad(LetrasNIF, var15[var14]) &amp;&amp; var14 == 8) {</span>
+<span class="fc" id="L416">                        var2 = var1.substring(1, var14);</span>
+<span class="fc" id="L417">                        var6 = Long.parseLong(var2);</span>
+<span class="pc bpc" id="L418" title="1 of 2 branches missed.">                        if (var15[0] == 89) {</span>
+<span class="fc" id="L419">                            var6 += 10000000L;</span>
+<span class="nc bnc" id="L420" title="All 2 branches missed.">                        } else if (var15[0] == 90) {</span>
+<span class="nc" id="L421">                            var6 += 20000000L;</span>
+                        }
+
+<span class="fc" id="L424">                        var8 = var6 % 23L;</span>
+<span class="fc" id="L425">                        ++var8;</span>
+<span class="fc bfc" id="L426" title="All 2 branches covered.">                        if (var11 == LetrasNIF[(int) (var8 - 1L)]) {</span>
+<span class="fc" id="L427">                            return 4;</span>
+                        } else {
+<span class="fc" id="L429">                            return -11;</span>
+                        }
+                    } else {
+<span class="fc" id="L432">                        return -1;</span>
+                    }
+                }
+            }
+        }
+
+        private boolean caracEnCad(final char[] var1, final char var2) {
+<span class="fc" id="L439">            boolean var3 = false;</span>
+
+<span class="fc bfc" id="L441" title="All 2 branches covered.">            for (char aVar1 : var1) {</span>
+<span class="fc bfc" id="L442" title="All 2 branches covered.">                if (aVar1 == var2) {</span>
+<span class="fc" id="L443">                    var3 = true;</span>
+<span class="fc" id="L444">                    break;</span>
+                }
+            }
+
+<span class="fc" id="L448">            return var3;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

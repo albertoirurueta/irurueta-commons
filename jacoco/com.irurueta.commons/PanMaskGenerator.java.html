@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PanMaskGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.irurueta:irurueta-commons</a> &gt; <a href="index.source.html" class="el_package">com.irurueta.commons</a> &gt; <span class="el_source">PanMaskGenerator.java</span></div><h1>PanMaskGenerator.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2016 Alberto Irurueta Carro (alberto@irurueta.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.irurueta.commons;
+
+import com.irurueta.commons.validators.CreditCardNetwork;
+import com.irurueta.commons.validators.CreditCardValidator;
+
+/**
+ * Class to generate masks for PAN (Personal Account Numbers) of credit cards.
+ * Masks can be used on text fields to determine how users can input text, and
+ * masks can also be used to display credit card PAN's on the screen being
+ * PCI DSS compliant by showing only the last 4 digits of the PAN.
+ */
+public class PanMaskGenerator {
+
+    /**
+     * Default character to be used to generate masks.
+     */
+    public static final char DEFAULT_MASK_CHAR = '#';
+
+    /**
+     * Default character to use to separate groups of digits.
+     */
+    public static final char DEFAULT_GROUP_SEPARATOR = ' ';
+
+    /**
+     * Constructor.
+     */
+    private PanMaskGenerator() {
+    }
+
+    /**
+     * Generates a mask having required grouping for text input or PAN masking a
+     * credit card number.
+     *
+     * @param network       a credit card network to determine grouping format.
+     * @param maskChar      mask character to use.
+     * @param separatorChar group separator character to use.
+     * @return generated mask.
+     */
+    public static String generate(final CreditCardNetwork network, final char maskChar,
+                                  final char separatorChar) {
+<span class="fc" id="L56">        final int numGroups = CreditCardValidator.getNumberOfGroupsForNetwork(</span>
+                network);
+<span class="fc" id="L58">        final int lastGroupPos = numGroups - 1;</span>
+        int groupLength;
+
+        // generate mask
+<span class="fc" id="L62">        final StringBuilder builder = new StringBuilder();</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        for (int i = 0; i &lt; numGroups; i++) {</span>
+<span class="fc" id="L64">            groupLength = CreditCardValidator.getMaxDigitsForGroupAndNetwork(i,</span>
+                    network);
+
+<span class="fc" id="L67">            repeatMaskChar(builder, maskChar, groupLength);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            if (i != lastGroupPos) {</span>
+                // add separator between groups
+<span class="fc" id="L70">                builder.append(separatorChar);</span>
+            }
+        }
+
+<span class="fc" id="L74">        return builder.toString();</span>
+    }
+
+    /**
+     * Generates a mask having required grouping for text input or PAN masking a
+     * credit card number using default group separator character.
+     *
+     * @param network  a credit card network to determine grouping format.
+     * @param maskChar mask character to use.
+     * @return generated mask.
+     */
+    public static String generate(final CreditCardNetwork network, final char maskChar) {
+<span class="fc" id="L86">        return generate(network, maskChar, DEFAULT_GROUP_SEPARATOR);</span>
+    }
+
+    /**
+     * Generates a mask having required grouping for text input or PAN masking a
+     * credit card number using default group separator and mask characters.
+     *
+     * @param network a credit card network to determine grouping format.
+     * @return generated mask.
+     */
+    public static String generate(final CreditCardNetwork network) {
+<span class="fc" id="L97">        return generate(network, DEFAULT_MASK_CHAR);</span>
+    }
+
+    /**
+     * Repeats a mask character the number of provided times and appends it to
+     * provided builder.
+     *
+     * @param builder  builder where text is added.
+     * @param maskChar mask character to use.
+     * @param times    number of times to repeat mask character.
+     */
+    private static void repeatMaskChar(final StringBuilder builder, final char maskChar,
+                                       final int times) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        for (int i = 0; i &lt; times; i++) {</span>
+<span class="fc" id="L111">            builder.append(maskChar);</span>
+        }
+<span class="fc" id="L113">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
